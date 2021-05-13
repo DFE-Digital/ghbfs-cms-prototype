@@ -6,7 +6,9 @@
 
 
 
+      <span class="govuk-caption-l">About your school</span>
 
+      <form action="school-address" method="post">
       {{ govukInput({
         id: 'school-name',
         name: 'school-name',
@@ -17,16 +19,16 @@
           classes: 'govuk-label--l',
           isPageHeading: 'true'
         },
+        value: data['school-name'],
         hint: {
         text: 'This should be the name of the school for which you are procuring a catering service.'
       }
       }) }}
 
       {{ govukButton({
-        text: 'Continue',
-        href: 'school-address'
+        text: 'Continue'
       }) }}
-
+    </form>
     </div>
   </div>
 {% endblock %}

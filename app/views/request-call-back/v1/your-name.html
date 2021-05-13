@@ -5,8 +5,8 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-
-
+      <form action="contact-details" method="post">
+      <span class="govuk-caption-l">About you</span>
       {{ govukInput({
         id: 'your-name',
         name: 'your-name',
@@ -20,10 +20,9 @@
       }) }}
 
       {{ govukButton({
-        text: 'Continue',
-        href: 'contact-details'
+        text: 'Continue'
       }) }}
-
+    </form>
     </div>
   </div>
 {% endblock %}

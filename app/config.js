@@ -7,10 +7,10 @@ module.exports = {
   serviceName: 'Get help buying for schools',
 
   // URL for heroku app (used in footer when running locally)
-  herokuURL: 'https://example-app.heroku.com',
+  herokuURL: 'https://ghbfs-prototype.herokuapp.com/',
 
   // URL for the repo (used in footer)
-  repoURL: 'https://github.com/user/repo',
+  repoURL: '',
 
   // Enable internal class on html element and the styles associated to it
   internal: true,

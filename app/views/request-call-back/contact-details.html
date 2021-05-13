@@ -4,13 +4,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-<form action="about-your-procurement" method="post">
-<span class="govuk-caption-l">About you</span>
+
 {% set emailHtml %}
 {{ govukInput({
   id: "contact-by-email",
   name: "contact-by-email",
-  value: data['contact-by-email'],
   type: "email",
   spellcheck: false,
   classes: "govuk-!-width-one-third",
@@ -24,7 +22,6 @@
 {{ govukInput({
   id: "contact-by-phone",
   name: "contact-by-phone",
-  value: data['contact-by-phone'],
   type: "tel",
   classes: "govuk-!-width-one-third",
   label: {
@@ -37,7 +34,6 @@
 {{ govukCheckboxes({
   idPrefix: "contact",
   name: "contact",
-  value: data['contact'],
   fieldset: {
     legend: {
       text: "How would you like to be contacted?",
@@ -51,7 +47,6 @@
   items: [
     {
       value: "email",
-      checked: checked("contact", "email"),
       text: "Email",
       conditional: {
         html: emailHtml
@@ -59,7 +54,6 @@
     },
     {
       value: "phone",
-      checked: checked("contact", "phone"),
       text: "Phone",
       conditional: {
         html: phoneHtml
@@ -69,9 +63,10 @@
 }) }}
 
       {{ govukButton({
-        text: 'Continue'
+        text: 'Continue',
+        href: 'contact-details'
       }) }}
-</form>
+
     </div>
   </div>
 {% endblock %}

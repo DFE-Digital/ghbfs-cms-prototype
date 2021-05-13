@@ -2,7 +2,12 @@
 
 
 
-
+{% set addressHtml %}
+{{ data['address-line-1'] }} <br>
+{{ data['address-line-2'] }} <br>
+{{ data['address-county'] }} <br>
+{{ data['address-postcode'] }}
+{% endset %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -10,75 +15,41 @@
 
       <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
 
-      <h2 class="govuk-heading-m">Personal details</h2>
+      <h2 class="govuk-heading-m">About your school</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Name"
+              text: "School name"
             },
             value: {
-              text: "Sarah Philips"
+              text: data['school-name']
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "school-name",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "school name"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Date of birth"
+              text: "School Address"
             },
-            value: {
-              text: "5 January 1978"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "date of birth"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              html: "72 Guild Street<br>London<br>SE23 6FH"
+            value: { 
+              text: addressHtml | safe
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "school-address",
                   text: "Change",
-                  visuallyHiddenText: "address"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Contact details"
-            },
-            value: {
-              html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
+                  visuallyHiddenText: "school address"
                 }
               ]
             }
@@ -87,81 +58,90 @@
       }) }}
 
 
-      <h2 class="govuk-heading-m">Application details</h2>
+      <h2 class="govuk-heading-m">About you</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Previous application number"
+              text: "Your name"
             },
             value: {
-              text: "502135326"
+              text: data['your-name']
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "your-name",
                   text: "Change",
-                  visuallyHiddenText: "previous application number"
+                  visuallyHiddenText: "your name"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Licence type"
+              text: "Your phone number"
             },
             value: {
-              text: "For personal use"
+              text: data['contact-by-phone']
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "contact-details",
                   text: "Change",
-                  visuallyHiddenText: "licence type"
+                  visuallyHiddenText: "your phone number"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Home address"
+              text: "Your email"
             },
             value: {
-              html: "72 Guild Street<br>London<br>SE23 6FH"
+              text: data['contact-by-email']
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "contact-details",
                   text: "Change",
-                  visuallyHiddenText: "home address"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Licence period"
-            },
-            value: {
-              text: "Valid for 6 months"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "licence period"
+                  visuallyHiddenText: "your email"
                 }
               ]
             }
           }
         ]
       }) }}
+
+      <h2 class="govuk-heading-m">About your procurement</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Your name"
+            },
+            value: {
+              text: data['procurement-detail']
+            },
+            actions: {
+              items: [
+                {
+                  href: "about-your-procurement",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
 
       <h2 class="govuk-heading-m">Now send your application</h2>
 

@@ -28,6 +28,9 @@ router.use(/\/(.)*\/v([0-9]+)/, (req, res, next) => {
 
 
 
-
+router.get("/get-session-data.json", function(req, res, next){
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(req.session.data, null, 3));
+})
 // Add your routes above the module.exports line
 module.exports = router

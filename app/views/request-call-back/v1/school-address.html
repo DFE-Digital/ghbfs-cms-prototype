@@ -6,8 +6,8 @@
 
 
 
-
-
+<form action="your-name" method="post">
+<span class="govuk-caption-l">About your school</span>
 {% call govukFieldset({
   legend: {
     text: "What is address of your school?",
@@ -22,6 +22,7 @@
     },
     id: "address-line-1",
     name: "address-line-1",
+    value: data['address-line-1'],
     autocomplete: "address-line1"
   }) }}
 
@@ -31,6 +32,7 @@
     },
     id: "address-line-2",
     name: "address-line-2",
+    value: data['address-line-2'],
     autocomplete: "address-line2"
   }) }}
 
@@ -41,6 +43,7 @@
     classes: "govuk-!-width-two-thirds",
     id: "address-town",
     name: "address-town",
+    value: data['address-town'],
     autocomplete: "address-level2"
   }) }}
 
@@ -50,7 +53,8 @@
     },
     classes: "govuk-!-width-two-thirds",
     id: "address-county",
-    name: "address-county"
+    name: "address-county",
+    value: data['address-county']
   }) }}
 
   {{ govukInput({
@@ -60,16 +64,16 @@
     classes: "govuk-input--width-10",
     id: "address-postcode",
     name: "address-postcode",
+    value: data['address-postcode'],
     autocomplete: "postal-code"
   }) }}
 
 {% endcall %}
 
 {{ govukButton({
-        text: 'Continue',
-        href: 'your-name'
+        text: 'Continue'
       }) }}
-
+</form>
     </div>
   </div>
 {% endblock %}
