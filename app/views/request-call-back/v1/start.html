@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Request help buying for schools</h1>
+
+      <p>The Department for Education can proivide help and support with your procurement.</p>
+      <p>They may be able to manage your procurement for you. </p>
+      <p>Etc. <br>Etc.
+      </p>
+
+      {{ govukButton({
+        text: 'Reqest a call back',
+        href: 'school-name'
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

@@ -4,8 +4,8 @@ const router = new express.Router()
 // Set variables
 router.get('*', function(req, res, next){
   // Change the service name for this feature
-  res.locals['serviceName'] = 'Example'
-
+  res.locals['serviceName'] = 'Get help buying for schools'
+  res.locals.internal = false
   // Change the service name URL so it links back this features index
   res.locals['serviceUrl'] = '/'+req.originalUrl.split('/')[1]+'/'
 

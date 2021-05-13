@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+      {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+      {{ govukTextarea({
+        name: "more-detail",
+        id: "more-detail",
+        label: {
+          text: "Tell us about your procurement?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Include details of any existing procurement"
+        }
+      }) }}
+
+      {{ govukButton({
+        text: 'Continue',
+        href: 'check-your-answers'
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
+

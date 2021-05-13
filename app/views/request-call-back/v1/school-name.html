@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+
+      {{ govukInput({
+        id: 'school-name',
+        name: 'school-name',
+        value: data['school-name'],
+        classes: 'govuk-input--width-30',
+        label: {
+          html: 'What is the name of your school?',
+          classes: 'govuk-label--l',
+          isPageHeading: 'true'
+        },
+        hint: {
+        text: 'This should be the name of the school for which you are procuring a catering service.'
+      }
+      }) }}
+
+      {{ govukButton({
+        text: 'Continue',
+        href: 'school-address'
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
