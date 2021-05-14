@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Task list
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="check-answers">
+  
+
+      {{ govukRadios({
+        idPrefix: "call-outcome",
+        name: "call-outcome",
+        fieldset: {
+          legend: {
+            text: "What was the outcome of the call?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "advice",
+            text: "Advice only provided"
+          },
+          {
+            value: "framework",
+            text: "DfE will manage a framework procurement for the school"
+          },
+          {
+            value: "bespoke",
+            text: "DfE will manage a bespoke procurement"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+
+
+    </form>
+    </div>
+  </div>
+
+{% endblock %}

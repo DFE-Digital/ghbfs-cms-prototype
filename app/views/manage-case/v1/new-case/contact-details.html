@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+
+
+
+{% set addressHtml %}
+{{ data['address-line-1'] }} <br>
+{{ data['address-line-2'] }} <br>
+{{ data['address-county'] }} <br>
+{{ data['address-postcode'] }}
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">School contact details</h1>
+
+      <p>The following details were sent om </p>
+      <h2 class="govuk-heading-m">About the school</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "School name"
+            },
+            value: {
+              text: data['school-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "school-name",
+                  text: "Change",
+                  visuallyHiddenText: "school name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "School Address"
+            },
+            value: { 
+              text: addressHtml | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "school-address",
+                  text: "Change",
+                  visuallyHiddenText: "school address"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m">Contact details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['your-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "your-name",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: data['contact-by-phone']
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "your phone number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+              text: data['contact-by-email']
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "your email"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">About the procurement</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Your name"
+            },
+            value: {
+              text: data['procurement-detail']
+            },
+            actions: {
+              items: [
+                {
+                  href: "about-your-procurement",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+        {{ govukButton({
+          text: "Continue",
+          href: "task-list"
+        }) }}
+
+
+
+    </div>
+  </div>
+{% endblock %}
+
+
+

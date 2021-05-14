@@ -11,13 +11,127 @@
         Overview of service
       </p>
 
-      <p class="govuk-!-margin-bottom-1">It includes:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/request-call-back">Request a call back</a>
-        </li>
-      </ul>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        Request a call back
+      </h1>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <p></p>
+
+      <h2 class="govuk-heading-m">
+        Version 1
+      </h2>
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <p>First version, no changes.</p>
+
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>Information about the research.</p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: 'request-call-back/v1/start'
+      }) }}
+
+
+
+
+<!--
+
+      {% set v1 %}
+        <h3 class="govuk-heading-s">Changes</h3>
+        <p>Information about this version.</p>
+
+        <h3 class="govuk-heading-s">Research notes</h3>
+        <p>Information about the research.</p>
+        <p><a href="#0">View user research report</a>.<p>
+
+        {{ govukButton({
+          text: 'View prototype',
+          href: 'v1/question'
+        }) }}
+      {% endset %}
+
+      {{ govukAccordion({
+        items: [
+          {
+            heading: { text: 'Version 1' },
+            content: { html: v1 }
+          }
+        ]
+      }) }}
+
+    -->
 
     </div>
   </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        Case management - call back
+      </h1>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <p>Overview of feature.</p>
+
+      <h2 class="govuk-heading-m">
+        Version 1
+      </h2>
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <p>First version, no changes.</p>
+
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>Information about the research.</p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: 'manage-case/v1/new-case/task-list'
+      }) }}
+
+
+
+
+<!--
+
+      {% set v1 %}
+        <h3 class="govuk-heading-s">Changes</h3>
+        <p>Information about this version.</p>
+
+        <h3 class="govuk-heading-s">Research notes</h3>
+        <p>Information about the research.</p>
+        <p><a href="#0">View user research report</a>.<p>
+
+        {{ govukButton({
+          text: 'View prototype',
+          href: 'v1/question'
+        }) }}
+      {% endset %}
+
+      {{ govukAccordion({
+        items: [
+          {
+            heading: { text: 'Version 1' },
+            content: { html: v1 }
+          }
+        ]
+      }) }}
+
+    -->
+
+    </div>
+  </div>
+
 {% endblock %}
