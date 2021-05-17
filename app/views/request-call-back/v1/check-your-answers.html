@@ -13,7 +13,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+      <h1 class="govuk-heading-l">Check your answers before sending your request for procurement help</h1>
 
       <h2 class="govuk-heading-m">About your school</h2>
 
@@ -39,9 +39,9 @@
           },
           {
             key: {
-              text: "School Address"
+              text: "School address"
             },
-            value: { 
+            value: {
               text: addressHtml | safe
             },
             actions: {
@@ -99,7 +99,7 @@
           },
           {
             key: {
-              text: "Your email"
+              text: "Your email address"
             },
             value: {
               text: data['contact-by-email']
@@ -124,7 +124,7 @@
         rows: [
           {
             key: {
-              text: "More information"
+              text: "Information"
             },
             value: {
               text: data['procurement-detail']
@@ -143,9 +143,11 @@
       }) }}
 
 
-      <h2 class="govuk-heading-m">Now send your application</h2>
+      <h2 class="govuk-heading-m">Now send your request</h2>
 
-      <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+      <p class="govuk-body">The information you have entered will be sent to the Department for Education Schools Commercial team. They will review your information and get in touch to let you know how they can support you.</p>
+
+      <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
       <form action="confirmation" method="post" novalidate>
 
@@ -160,6 +162,3 @@
     </div>
   </div>
 {% endblock %}
-
-
-
