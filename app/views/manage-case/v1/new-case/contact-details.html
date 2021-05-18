@@ -3,10 +3,10 @@
 
 
 {% set addressHtml %}
-{{ data['address-line-1'] }} <br>
-{{ data['address-line-2'] }} <br>
-{{ data['address-county'] }} <br>
-{{ data['address-postcode'] }}
+{{ data.school['address-line-1'] }} <br>
+{{ data.school['address-line-2'] }} <br>
+{{ data.school['address-county'] }} <br>
+{{ data.school['address-postcode'] }}
 {% endset %}
 
 {% block content %}
@@ -26,16 +26,7 @@
               text: "School name"
             },
             value: {
-              text: data['school-name']
-            },
-            actions: {
-              items: [
-                {
-                  href: "school-name",
-                  text: "Change",
-                  visuallyHiddenText: "school name"
-                }
-              ]
+              text: data.school['school-name']
             }
           },
           {
@@ -44,15 +35,6 @@
             },
             value: { 
               text: addressHtml | safe
-            },
-            actions: {
-              items: [
-                {
-                  href: "school-address",
-                  text: "Change",
-                  visuallyHiddenText: "school address"
-                }
-              ]
             }
           }
         ]
@@ -69,16 +51,7 @@
               text: "Name"
             },
             value: {
-              text: data['your-name']
-            },
-            actions: {
-              items: [
-                {
-                  href: "your-name",
-                  text: "Change",
-                  visuallyHiddenText: "your name"
-                }
-              ]
+              text: data.school['your-name']
             }
           },
           {
@@ -86,16 +59,7 @@
               text: "Phone number"
             },
             value: {
-              text: data['contact-by-phone']
-            },
-            actions: {
-              items: [
-                {
-                  href: "contact-details",
-                  text: "Change",
-                  visuallyHiddenText: "your phone number"
-                }
-              ]
+              text: data.school['contact-by-phone']
             }
           },
           {
@@ -103,16 +67,7 @@
               text: "Email"
             },
             value: {
-              text: data['contact-by-email']
-            },
-            actions: {
-              items: [
-                {
-                  href: "contact-details",
-                  text: "Change",
-                  visuallyHiddenText: "your email"
-                }
-              ]
+              text: data.school['contact-by-email']
             }
           }
         ]
@@ -128,16 +83,7 @@
               text: "Your name"
             },
             value: {
-              text: data['procurement-detail']
-            },
-            actions: {
-              items: [
-                {
-                  href: "about-your-procurement",
-                  text: "Change",
-                  visuallyHiddenText: "your name"
-                }
-              ]
+              text: data.school['procurement-detail']
             }
           }
         ]
