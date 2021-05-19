@@ -15,39 +15,47 @@
 
       <h1 class="govuk-heading-l">Check your answers</h1>
 
-      <h2 class="govuk-heading-m">About your school</h2>
+      <h2 class="govuk-heading-m">Procurement details</h2>
+
+      {% set existingText %}
+        {% if data['existing-contract'] == 'yes' %}
+          {{ data['existing-contract-detail'] | safe }}
+        {% else %}
+          None
+        {% endif %}
+      {% endset %}
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "School name"
+              text: "Existing contract details"
             },
             value: {
-              text: data['school-name']
+              text: existingText
             },
             actions: {
               items: [
                 {
-                  href: "school-name",
+                  href: "existing-contract",
                   text: "Change",
-                  visuallyHiddenText: "school name"
+                  visuallyHiddenText: "existing contract details"
                 }
               ]
             }
           },
           {
             key: {
-              text: "School Address"
+              text: "New procurement details"
             },
             value: { 
-              text: addressHtml | safe
+              text: data['procurement-detail'] | safe
             },
             actions: {
               items: [
                 {
-                  href: "school-address",
+                  href: "procurement-detail",
                   text: "Change",
                   visuallyHiddenText: "school address"
                 }
@@ -56,6 +64,49 @@
           }
         ]
       }) }}
+
+      <h2 class="govuk-heading-m">Help and advice</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Details of any online support provided"
+            },
+            value: {
+              text: data['online-support-detail'] | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "online-support",
+                  text: "Change",
+                  visuallyHiddenText: "online support details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Details of any recommended frameworks"
+            },
+            value: { 
+              text: data['frameworks-detail'] | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "frameworks",
+                  text: "Change",
+                  visuallyHiddenText: "framework details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
 
       <form action="confirmation" method="post" novalidate>
 

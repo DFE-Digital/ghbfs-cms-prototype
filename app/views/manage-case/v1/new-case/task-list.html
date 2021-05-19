@@ -28,10 +28,10 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="contact-details" aria-describedby="contact details">
-                  Contact form details
+                  Contact details
                 </a>
               </span>
-              <!--<strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>-->
+
             </li>
           </ul>
         </li>
@@ -47,7 +47,9 @@
                   Existing contract details
                 </a>
               </span>
-              <!--<strong class="govuk-tag app-task-list__tag" id="company-information-status">Completed</strong>-->
+              {% if data.tags.existingContract = true %}
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% endif %}
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
@@ -55,7 +57,9 @@
                   New procurement details
                 </a>
               </span>
-              <!--<strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="contact-details-status">In progress</strong>-->
+              {% if data.tags.newProcurement = true %}
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% endif %}
             </li>
            
           </ul>
@@ -63,16 +67,18 @@
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span> Available help and advice
+            <span class="app-task-list__section-number">3. </span> Help and advice
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="company-information-status">
+                <a href="online-support" aria-describedby="company-information-status">
                   Online support and guidance
                 </a>
               </span>
-              <!--<strong class="govuk-tag app-task-list__tag" id="company-information-status">Completed</strong>-->
+              {% if data.tags.onlineSupport = true %}
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% endif %}
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
@@ -80,16 +86,11 @@
                   Frameworks
                 </a>
               </span>
-              <!--<strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="contact-details-status">In progress</strong>-->
+              {% if data.tags.frameworks = true %}
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% endif %}
             </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="contact-details-status">
-                  Plan a procurement and Specify
-                </a>
-              </span>
-              <!--<strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="contact-details-status">In progress</strong>-->
-            </li>
+
 
 
            

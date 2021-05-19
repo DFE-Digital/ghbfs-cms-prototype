@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l">Online support</h1>
+
+      <h2 class="govuk-heading-s">Useful links</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="https://www.gov.uk/guidance/buying-for-schools" target="_blank">
+            Gov.uk guidance
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.gov.uk/guidance/buying-procedures-and-procurement-law-for-schools" target="_blank">
+            Buying procedures and procurement law for schools
+          </a>
+        </li>
+
+        <li>
+          <a href="" target="_blank">
+            Plan a procurement
+          </a>
+        </li>
+
+        <li>
+          <a href="" target="_blank">
+            Specify a procurement
+          </a>
+        </li>
+      </ul>
+    
+
+      <form action="task-list" method="post">
+
+        {{ govukTextarea({
+          name: "online-support-detail",
+          id: "online-support-detail",
+          value: data['online-support-detail'],
+          label: {
+            text: "Details",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Add details of any online support provided"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
+
+
+
