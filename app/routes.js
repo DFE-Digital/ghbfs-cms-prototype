@@ -26,8 +26,6 @@ router.use(/\/(.)*\/v([0-9]+)/, (req, res, next) => {
   return require(`./views/${req.originalUrl.split('/')[1]}/v${req.params[1]}/_routes`)(req, res, next);
 })
 
-
-
 router.get("/get-session-data.json", function(req, res, next){
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(req.session.data, null, 3));

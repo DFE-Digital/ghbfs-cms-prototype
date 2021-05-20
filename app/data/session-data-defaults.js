@@ -35,6 +35,13 @@ school: {
 	"address-county": "California",
 	"address-postcode": "",
 	"your-name": "Gerald Strickland"
+	},
+	tags:{
+		newProcurement: false,
+		existingContract: false,
+		onlineSupport: false,
+		frameworks: false
 	}
+
 
 }

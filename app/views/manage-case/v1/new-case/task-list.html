@@ -47,7 +47,7 @@
                   Existing contract details
                 </a>
               </span>
-              {% if data.tags.existingContract = true %}
+              {% if data.tags.existingContract == true %}
               <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
               {% endif %}
             </li>
@@ -57,7 +57,7 @@
                   New procurement details
                 </a>
               </span>
-              {% if data.tags.newProcurement = true %}
+              {% if data.tags.newProcurement == true %}
               <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
               {% endif %}
             </li>
@@ -76,7 +76,7 @@
                   Online support and guidance
                 </a>
               </span>
-              {% if data.tags.onlineSupport = true %}
+              {% if data.tags.onlineSupport == true %}
               <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
               {% endif %}
             </li>
@@ -86,7 +86,7 @@
                   Frameworks
                 </a>
               </span>
-              {% if data.tags.frameworks = true %}
+              {% if data.tags.frameworks == true %}
               <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
               {% endif %}
             </li>

@@ -13,7 +13,17 @@ router.get('*', function(req, res, next){
 })
 
 
+router.post("/new-case/existing-contract-post", function(req, res, next){
+	console.log(req.url)
+	console.log(req.body['existing-contract'])
+	if(!req.body['existing-contract']){
+		res.redirect('/manage-case/v1/new-case/existing-contract')
+	} else {
+		req.session.data.tags.existingContract = true;
+		res.redirect('/manage-case/v1/new-case/task-list');
+	}
 
+});
 
 
 // Add your routes above the module.exports line
