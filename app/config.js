@@ -7,7 +7,7 @@ module.exports = {
   serviceName: 'Get help buying for schools',
 
   // URL for heroku app (used in footer when running locally)
-  herokuURL: 'https://ghbfs-prototype.herokuapp.com/',
+  herokuURL: 'https://ghbfs-prototype.herokuapp.com',
 
   // URL for the repo (used in footer)
   repoURL: '',
