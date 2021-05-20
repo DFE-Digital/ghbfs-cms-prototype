@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Task list
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-xl">
+        Summerhill Primary School
+      </h1>
+
+      
+      <p class="govuk-body govuk-!-margin-bottom-7">Use this to record details of the school's procurement needs. You do not need to complete all sections</p>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> School details
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="contact-details" aria-describedby="contact details">
+                  Contact details
+                </a>
+              </span>
+
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Procurement details
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="existing-contract" aria-describedby="company-information-status">
+                  Existing contract details
+                </a>
+              </span>
+              {% if data.tags.existingContract == true %}
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="procurement-detail" aria-describedby="contact-details-status">
+                  New procurement details
+                </a>
+              </span>
+              {% if data.tags.newProcurement == true %}
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% endif %}
+            </li>
+           
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> Help and advice
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="online-support" aria-describedby="company-information-status">
+                  Online support and guidance
+                </a>
+              </span>
+              {% if data.tags.onlineSupport == true %}
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="frameworks" aria-describedby="frameworks">
+                  Frameworks
+                </a>
+              </span>
+              {% if data.tags.frameworks == true %}
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% endif %}
+            </li>
+
+
+
+           
+          </ul>
+        </li>
+
+      </ol>
+
+      {{ govukButton({
+        text: 'Continue',
+        href: 'call-outcome'
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}

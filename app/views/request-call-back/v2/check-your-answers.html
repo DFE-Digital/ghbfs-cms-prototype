@@ -1,0 +1,163 @@
+{% extends "layout.html" %}
+
+
+
+{% set addressHtml %}
+{{ data['address-line-1'] }} <br>
+{{ data['address-line-2'] }} <br>
+{{ data['address-county'] }} <br>
+{{ data['address-postcode'] }}
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Check your answers before sending your request for procurement help</h1>
+
+      <h2 class="govuk-heading-m">About your school</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "School name"
+            },
+            value: {
+              text: data['school-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "school-name",
+                  text: "Change",
+                  visuallyHiddenText: "school name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "School address"
+            },
+            value: {
+              text: addressHtml | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "school-address",
+                  text: "Change",
+                  visuallyHiddenText: "school address"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m">About you</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Your name"
+            },
+            value: {
+              text: data['your-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "your-name",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Your phone number"
+            },
+            value: {
+              text: data['contact-by-phone']
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "your phone number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Your email address"
+            },
+            value: {
+              text: data['contact-by-email']
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "your email"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">About your procurement</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Information"
+            },
+            value: {
+              text: data['procurement-detail']
+            },
+            actions: {
+              items: [
+                {
+                  href: "about-your-procurement",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m">Now send your request for procurement help</h2>
+
+      <p class="govuk-body">The information you have entered will be sent to the Department for Education Schools Commercial team. They will review your information and get in touch to let you know how they can support you.</p>
+
+
+      <form action="confirmation" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        {{ govukButton({
+          text: "Send request"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

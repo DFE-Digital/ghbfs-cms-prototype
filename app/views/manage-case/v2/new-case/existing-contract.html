@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      {% set contractHtml %}
+
+      {{ govukTextarea({
+          name: "existing-contract-detail",
+          id: "existing-contract-detail",
+          label: {
+            text: "Contract details"
+          },
+          value: data['existing-contract-detail'],
+          hint: {
+            text: "Add details of the existing contract"
+          }
+        }) }}
+      {% endset %}
+
+      <form action="existing-contract-post" method="post">
+        {{ govukRadios({
+          classes: "",
+          idPrefix: "existing-contract",
+          name: "existing-contract",
+          fieldset: {
+            legend: {
+              text: "Is there an existing contract in place for the goods or service?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              checked: checked("existing-contract", "yes"),
+              text: "Yes",
+              conditional: {
+                html: contractHtml
+              }
+            },
+            {
+              value: "no",
+              checked: checked("existing-contract", "no"),
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
+
+
+

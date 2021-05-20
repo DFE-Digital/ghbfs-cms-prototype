@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l">Find a framework</h1>
+
+      <p>Use the <a href="https://www.gov.uk/guidance/find-a-dfe-approved-framework-for-your-school" target="_blank" title="">find a framework tool</a> to see if there are any suitable frameworks.</p>
+
+      <form action="task-list" method="post">
+
+        {{ govukTextarea({
+          name: "frameworks-detail",
+          id: "frameworks-detail",
+          value: data['frameworks-detail'],
+          label: {
+            text: "Recommended frameworks",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Add details of any recommended frameworks and why they are suitable"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
+
+
+
