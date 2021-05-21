@@ -13,7 +13,17 @@ router.get('*', function(req, res, next){
 })
 
 
+router.post("/type-of-help-post", function(req, res, enxt){
 
+	if(req.body['type-of-help'] === "advice"){
+		res.redirect("advice-detail")
+	}  else if(req.body['type-of-help'] === "procurement"){
+		res.redirect("need-to-buy")
+	} else {
+		res.redirect("type-of-help");
+	} 
+
+});
 
 
 // Add your routes above the module.exports line
