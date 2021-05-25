@@ -40,7 +40,8 @@ school: {
 		newProcurement: false,
 		existingContract: false,
 		onlineSupport: false,
-		frameworks: false
+		frameworks: false,
+		category: false
 	}
 
 

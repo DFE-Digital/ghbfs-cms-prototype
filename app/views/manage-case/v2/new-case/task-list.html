@@ -43,22 +43,32 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="existing-contract" aria-describedby="company-information-status">
-                  Existing contract details
+                <a href="category" aria-describedby="category-status">
+                  Category
                 </a>
               </span>
-              {% if data.tags.existingContract == true %}
-              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% if data.tags.category == true %}
+              <strong class="govuk-tag app-task-list__tag" id="category-status">Completed</strong>
               {% endif %}
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="procurement-detail" aria-describedby="contact-details-status">
+                <a href="existing-contract" aria-describedby="contract-status">
+                  Existing contract details
+                </a>
+              </span>
+              {% if data.tags.existingContract == true %}
+              <strong class="govuk-tag app-task-list__tag" id="contract-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="procurement-detail" aria-describedby="new-proc-status">
                   New procurement details
                 </a>
               </span>
               {% if data.tags.newProcurement == true %}
-              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              <strong class="govuk-tag app-task-list__tag" id="new-proc-status">Completed</strong>
               {% endif %}
             </li>
            

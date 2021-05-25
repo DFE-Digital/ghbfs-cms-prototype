@@ -5,21 +5,6 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      {% set contractHtml %}
-
-      {{ govukTextarea({
-          name: "existing-contract-detail",
-          id: "existing-contract-detail",
-          label: {
-            text: "Contract details"
-          },
-          value: data['existing-contract-detail'],
-          hint: {
-            text: "Add details of the existing contract"
-          }
-        }) }}
-      {% endset %}
-
       <form action="existing-contract-post" method="post">
         {{ govukRadios({
           classes: "",
@@ -36,10 +21,7 @@
             {
               value: "yes",
               checked: checked("existing-contract", "yes"),
-              text: "Yes",
-              conditional: {
-                html: contractHtml
-              }
+              text: "Yes"
             },
             {
               value: "no",

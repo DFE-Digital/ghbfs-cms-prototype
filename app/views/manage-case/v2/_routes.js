@@ -17,10 +17,25 @@ router.post("/new-case/existing-contract-post", function(req, res, next){
 	console.log(req.url)
 	console.log(req.body['existing-contract'])
 	if(!req.body['existing-contract']){
-		res.redirect('/manage-case/v1/new-case/existing-contract')
+		res.redirect('/manage-case/v2/new-case/existing-contract')
+	} else if(req.body['existing-contract'] === "yes"){
+		
+		res.redirect('/manage-case/v2/new-case/contract-details');
 	} else {
 		req.session.data.tags.existingContract = true;
-		res.redirect('/manage-case/v1/new-case/task-list');
+		res.redirect('/manage-case/v2/new-case/procurement-detail');
+	}
+
+});
+
+router.post("/new-case/category-post", function(req, res, next){
+	console.log(req.url)
+	console.log(req.body['existing-contract'])
+	if(!req.body['category']){
+		res.redirect('/manage-case/v2/new-case/category')
+	} else {
+		req.session.data.tags.category = true;
+		res.redirect('/manage-case/v2/new-case/existing-contract');
 	}
 
 });

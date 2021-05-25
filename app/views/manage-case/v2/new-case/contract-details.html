@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Existing contract details</h1>
+
+      <form action="contract-details-post" method="post">
+        
+        {{ govukDateInput({
+          id: "contract-end-date",
+          namePrefix: "contract-end-date",
+          fieldset: {
+            legend: {
+              text: "When does the contract end?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2021"
+          }
+        }) }}
+
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "contract-extendable",
+          name: "contract-extendable",
+          fieldset: {
+            legend: {
+              text: "Can the contract be extended?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukTextarea({
+          name: "existing-supplier-detail",
+          id: "existing-supplier-detail",
+          label: {
+            text: "Existing supplier details",
+            classes: "govuk-label--m"
+          },
+          value: data['existing-supplier-detail'],
+          hint: {
+            text: "Add details of the existing contract"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
+
+
+
