@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+      <span class="govuk-caption-l">About your school</span>
+
+      
+
+      <form action="search-school-post" method="post">
+      
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Filter
+            </h1>
+          </legend>
+
+          <div class="govuk-radios govuk-radios--small">
+            {% for school in data.searchResults %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="{{school.EstablishmentName}}">
+              <label class="govuk-label govuk-radios__label" for="changed-name">
+                {{school.EstablishmentName}}
+              </label>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                {{school.Street}} {{school.Locality}} {{school.Postcode}}
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <p><a href="search-school">Search again</p>
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+    </form>
+    </div>
+  </div>
+{% endblock %}
