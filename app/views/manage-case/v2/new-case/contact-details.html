@@ -15,7 +15,7 @@
 
       <h1 class="govuk-heading-l">School contact details</h1>
 
-      <p>The following details were sent om </p>
+      <p>The school buying professional entered the following details. </p>
       <h2 class="govuk-heading-m">About the school</h2>
 
       {{ govukSummaryList({
@@ -33,7 +33,7 @@
             key: {
               text: "School Address"
             },
-            value: { 
+            value: {
               text: addressHtml | safe
             }
           }
@@ -100,6 +100,3 @@
     </div>
   </div>
 {% endblock %}
-
-
-
