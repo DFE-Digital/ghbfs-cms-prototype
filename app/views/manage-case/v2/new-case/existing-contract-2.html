@@ -9,14 +9,34 @@
 
       <form action="contract-details-post" method="post">
 
-        {{ govukInput({
-          name: "existing-supplier-name",
-          id: "existing-supplier-name",
+        {{ govukTextarea({
+          name: "contract-cost",
+          id: "contract-cost",
           label: {
-            text: "Who is the existing contract with?",
-            classes: "govuk-label--m"
-          },
-          value: data['existing-supplier-name']
+            text: "What is the current cost of the contract?",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          }
+        }) }}
+
+        {{ govukTextarea({
+          name: "contract-worked-well",
+          id: "contract-worked-well",
+          label: {
+            text: "What has worked well with the contract?",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          }
+        }) }}
+
+        {{ govukTextarea({
+          name: "contract-kpis",
+          id: "contract-kpis",
+          label: {
+            text: "How has the contract worked against and KPIs (Key Perfotmance Indicators) or SLAs (Service Level Agreeemnts)?",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          }
         }) }}
 
         
@@ -26,7 +46,7 @@
           fieldset: {
             legend: {
               text: "When does the contract end?",
-              isPageHeading: false,
+
               classes: "govuk-fieldset__legend--m"
             }
           },
