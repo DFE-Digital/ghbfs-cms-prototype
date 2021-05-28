@@ -5,20 +5,46 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form action="task-list" method="post">
+      <form action="procurement-terms" method="post">
+
+
+        <h1 class="govuk-heading-l">Procurement requirements</h1>
       
         {{ govukTextarea({
-          name: "procurement-detail",
-          id: "procurement-detail",
-          value: data['procurement-detail'],
+          name: "procurement-summary",
+          id: "procurement-summary",
+          value: data['procurement-summary'],
           label: {
-            text: "What are the procurement requirements",
-            classes: "govuk-label--l",
-            isPageHeading: true
+            text: "Summary of requirements",
+            classes: "govuk-label--m",
+            isPageHeading: false
           },
           hint: {
-            text: "Add details of the new procurement"
+            text: "Inlcude details of the school's needs, timescales and budget"
           }
+        }) }}
+
+
+        {{ govukTextarea({
+          name: "procurement-objectives",
+          id: "procurement-objectives",
+          value: data['procurement-objectives'],
+          label: {
+            text: "Objectives of the procurement",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          } 
+        }) }}
+
+        {{ govukTextarea({
+          name: "procurement-risks",
+          id: "procurement-risks",
+          value: data['procurement-risks'],
+          label: {
+            text: "Main risks and dependencies",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          } 
         }) }}
 
         {{ govukButton({

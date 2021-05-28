@@ -64,7 +64,18 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="procurement-detail" aria-describedby="new-proc-status">
-                  New procurement details
+                  Procurement requirements
+                </a>
+              </span>
+              {% if data.tags.newProcurement == true %}
+              <strong class="govuk-tag app-task-list__tag" id="new-proc-status">Completed</strong>
+              {% endif %}
+            </li>
+
+             <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="procurement-detail" aria-describedby="new-proc-status">
+                  Procurement terms
                 </a>
               </span>
               {% if data.tags.newProcurement == true %}
