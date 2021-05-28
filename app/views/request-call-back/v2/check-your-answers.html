@@ -117,30 +117,115 @@
         ]
       }) }}
 
+
+      {% if data['type-of-help'] == 'procurement' %}
+
       <h2 class="govuk-heading-m">About your procurement</h2>
 
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Information"
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: "What do you need help with?"
+              },
+              value: {
+                text: "I need help with a procurement"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "type-of-help",
+                    text: "Change",
+                    visuallyHiddenText: "your name"
+                  }
+                ]
+              }
             },
-            value: {
-              text: data['procurement-detail']
+            {
+              key: {
+                text: "Tell us what you need to buy"
+              },
+              value: {
+                text: data['need-to-buy']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "need-to-buy",
+                    text: "Change",
+                    visuallyHiddenText: "your name"
+                  }
+                ]
+              }
             },
-            actions: {
-              items: [
-                {
-                  href: "about-your-procurement",
-                  text: "Change",
-                  visuallyHiddenText: "your name"
-                }
-              ]
+            {
+              key: {
+                text: "Tell us about any existing contracts"
+              },
+              value: {
+                text: data['existing-contract']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "existing-contract",
+                    text: "Change",
+                    visuallyHiddenText: "existing contract details"
+                  }
+                ]
+              }
             }
-          }
-        ]
-      }) }}
+          ]
+        }) }}
+
+        {% endif %}
+
+      {% if data['type-of-help'] ==  'advice' %}
+
+      <h2 class="govuk-heading-m">Your question about buying for your school</h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: "What do you need help with?"
+              },
+              value: {
+                text: "I have a question about buying for my school"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "type-of-help",
+                    text: "Change",
+                    visuallyHiddenText: "your name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Your question"
+              },
+              value: {
+                text: data['advice-detail']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "advice-detail",
+                    text: "Change",
+                    visuallyHiddenText: "your name"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        {% endif %}
 
 
       <h2 class="govuk-heading-m">Now send your request for help</h2>
