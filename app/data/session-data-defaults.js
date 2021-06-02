@@ -37,7 +37,8 @@ school: {
 	"your-name": "Gerald Strickland"
 	},
 	tags:{
-		newProcurement: false,
+		procurementRequirements: false,
+		procurementTerms: false,
 		existingContract: false,
 		onlineSupport: false,
 		frameworks: false,
