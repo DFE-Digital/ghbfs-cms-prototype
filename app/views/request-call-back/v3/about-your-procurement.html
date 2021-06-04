@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="check-your-answers" method="post">
+        <span class="govuk-caption-l">About your procurement</span>
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        {{ govukTextarea({
+          name: "procurement-detail",
+          id: "procurement-detail",
+          label: {
+            text: "Tell us about your procurement",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "The Department for Education team will use this information to assess your request for help.
+            Include what you need to buy, information about your school and anything else that you want to tell us about your procurement."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

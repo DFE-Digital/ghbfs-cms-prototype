@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="check-your-answers" method="post">
+
+        {{ govukTextarea({
+          name: "advice-detail",
+          id: "advice-detail",
+          value: data['advice-detail'],
+          label: {
+            text: "What is your question?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Include any extra information that may be helpful, such as details of what you need to buy or information about your school."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+      <form action="category-post" method="post">
+        {{ govukRadios({
+          classes: "",
+          idPrefix: "category",
+          name: "category",
+          fieldset: {
+            legend: {
+              text: "Is there an existing contract in place for the goods or service?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              divider: "Business services"
+            },
+            {
+              value: "Audit",
+              checked: checked("category", "Audit"),
+              text: "Audit"
+            },
+            {
+              value: "books",
+              checked: checked("category", "books"),
+              text: "Books"
+            },
+            {
+              value: "insurance",
+              checked: checked("category", "insurance"),
+              text: "Insurance"
+            },
+            {
+              value: "leasing",
+              checked: checked("category", "leasing"),
+              text: "Leasing"
+            },
+            {
+              value: "Multi Function Devices",
+              checked: checked("category", "Multi Function Devices"),
+              text: "Multi Function Devices (MFDs)"
+            },
+            {
+              value: "Spend analysis",
+              checked: checked("category", "Spend analysis"),
+              text: "Spend analysis"
+            },
+            {
+              value: "Stationary",
+              checked: checked("category", "Stationary"),
+              text: "Stationery"
+            },{
+              divider: "Facilities management"
+            },{
+              value: "Catering",
+              checked: checked("category", "Catering"),
+              text: "Catering"
+            },{
+              value: "Cleaning",
+              checked: checked("category", "Cleaning"),
+              text: "Cleaning"
+            },{
+              value: "Build, ground and supplies",
+              checked: checked("category", "Build, ground and supplies"),
+              text: "Build, ground and supplies"
+            },{
+              value: "Furniture",
+              checked: checked("category", "Furniture"),
+              text: "Furniture"
+            },{
+              value: "Other",
+              checked: checked("category", "Other"),
+              text: "Other"
+            },{
+              divider: "ICT"
+            },{
+              value: "Hardward and commodity",
+              checked: checked("category", "Hardward and commodity"),
+              text: "Hardware and commodities"
+            },{
+              value: "Software and service",
+              checked: checked("category", "Software and service"),
+              text: "Software and service"
+            },{
+              divider: "Professional services"
+            },{
+              value: "Legal",
+              checked: checked("category", "Legal"),
+              text: "Legal"
+            },{
+              value: "Payroll",
+              checked: checked("category", "Payroll"),
+              text: "Payroll"
+            },{
+              value: "Recruitment",
+              checked: checked("category", "Recruitment"),
+              text: "Recruitment"
+            },{
+              divider: "Utilities"
+            },{
+              value: "Energy",
+              checked: checked("category", "Energy"),
+              text: "Energy"
+            },{
+              value: "Water",
+              checked: checked("category", "Water"),
+              text: "Water"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<style type="text/css" media="screen">
+  .govuk-radios__divider {
+    width: auto;
+    text-align: left;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+</style>
+{% endblock %}

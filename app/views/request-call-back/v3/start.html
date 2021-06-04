@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Get help buying for schools</h1>
+
+      <p>If you need help with buying goods or services for your school, the Department for Education can offer advice and support.</p>
+
+      <p>In some cases, the Department for Education team may be able to help with your procurement.</p>
+
+      <p>Use this service to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+          <li>ask for help with your procurement</li>
+          <li>tell the Department for Education team about your situation</li>
+          <li>find other resources that can help</li>
+        </ul>
+
+      <p>This service is open to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+          <li>state schools, including academies and multi academy trusts</li>
+          <li>special schools</li>
+          <li>maintained nursery schools</li>
+        </ul>
+
+
+
+      {{ govukButton({
+        text: 'Start now',
+        href: 'school-name'
+      }) }}
+
+      <h2 class="govuk-heading-m">Before you start</h2>
+
+      <p>Read advice about planning a procurement.</p>
+
+      <p>You may be able to buy what you need using a Department for Education approved framework. Use the find a framework service to find frameworks that may meet your needs.
+
+      <p>You can get help to create a procurement specification.</p>
+
+    </div>
+  </div>
+{% endblock %}
