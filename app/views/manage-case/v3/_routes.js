@@ -1,6 +1,8 @@
 const express = require('express')
 const router = new express.Router()
 
+let folderVersion = "v3"
+
 // Set variables
 router.get('*', function(req, res, next){
   // Change the service name for this feature
@@ -16,13 +18,13 @@ router.get('*', function(req, res, next){
 router.post("/new-case/existing-contract-post", function(req, res, next){
 	
 	if(!req.body['existing-contract']){
-		res.redirect('/manage-case/v2/new-case/existing-contract')
+		res.redirect(`/manage-case/${folderVersion}/new-case/existing-contrac`)
 	} else if(req.body['existing-contract'] === "yes"){
 		
-		res.redirect('/manage-case/v2/new-case/contract-details');
+		res.redirect(`/manage-case/${folderVersion}/new-case/contract-details`);
 	} else {
 		req.session.data.tags.existingContract = true;
-		res.redirect('/manage-case/v2/new-case/procurement-detail');
+		res.redirect(`/manage-case/${folderVersion}/new-case/procurement-detail`);
 	}
 
 });
@@ -30,10 +32,10 @@ router.post("/new-case/existing-contract-post", function(req, res, next){
 router.post("/new-case/category-post", function(req, res, next){
 	
 	if(!req.body['category']){
-		res.redirect('/manage-case/v2/new-case/category')
+		res.redirect(`/manage-case/${folderVersion}/new-case/categor`)
 	} else {
 		req.session.data.tags.category = true;
-		res.redirect('/manage-case/v2/new-case/existing-contract');
+		res.redirect(`/manage-case/${folderVersion}/new-case/existing-contract`);
 	}
 
 });
@@ -43,7 +45,7 @@ router.post("/new-case/contract-details-2-post", function(req, res, next){
 	
 
 		req.session.data.tags.existingContract = true;
-		res.redirect('/manage-case/v2/new-case/procurement-detail');
+		res.redirect(`/manage-case/${folderVersion}/new-case/procurement-detail`);
 	
 
 });
@@ -58,7 +60,7 @@ router.post("/new-case/procurement-terms", function(req, res, next){
 router.post("/new-case/procurement-terms-post", function(req, res, next){
 
 		req.session.data.tags.procurementTerms = true;
-		res.redirect('/manage-case/v2/new-case/task-list');
+		res.redirect(`/manage-case/${folderVersion}/new-case/task-list`);
 	
 });
 

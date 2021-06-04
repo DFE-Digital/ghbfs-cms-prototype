@@ -12,30 +12,42 @@
       <p>Entry point into assisted buying service. Used to capture the contact details of the user requesting help, their school and buying needs. </p>
 
       <h2 class="govuk-heading-m">
-        Version 2
+        Version 3
       </h2>
+      <h3 class="govuk-heading-s">Changes</h3>
+      <p>Updates following use research sessions.</p>
 
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>links to follow </p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: 'request-call-back/v3/start'
+      }) }}
+
+
+
+      {% set v2 %}
       <h3 class="govuk-heading-s">Changes</h3>
       <p>Updates following co-design session with procurement ops team.</p>
 
       <h3 class="govuk-heading-s">Research notes</h3>
       <p><a href="https://miro.com/app/board/o9J_lHuWMxw=/?moveToWidget=3074457359051393820&cot=14" target="_blank">Notes from co-design with procurement ops</a> </p>
-      <!--<p><a href="#0">View user research report</a>.<p>-->
+
 
       {{ govukButton({
         text: 'View prototype',
         href: 'request-call-back/v2/start'
       }) }}
-
+      {% endset %}
 
 
 
 
 
       {% set v1 %}
-        <h2 class="govuk-heading-m">
-          Version 1
-        </h2>
+  
 
         <h3 class="govuk-heading-s">Changes</h3>
         <p>First version, no changes.</p>
@@ -54,6 +66,9 @@
       {{ govukAccordion({
         items: [
           {
+            heading: { text: 'Version 2' },
+            content: { html: v2 }
+          },{
             heading: { text: 'Version 1' },
             content: { html: v1 }
           }
