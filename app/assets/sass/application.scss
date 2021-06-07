@@ -16,6 +16,12 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/related-items";
 @import "patterns/internal";
 
+.autocomplete__option {
+	font-family: "nta", Arial, sans-serif;
+}
+
+
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 .card {
 	position: relative;
