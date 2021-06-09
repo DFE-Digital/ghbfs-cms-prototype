@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+      <span class="govuk-caption-l">About your school</span>
+
+      <form action="your-name" method="post">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="search-mat">
+            Search for your establishment
+          </label>
+          </h1>
+
+        <div id="search-mat-hint" class="govuk-hint">
+          Enter name, Companies House number, Group UID, ID or UKPRN
+        </div>
+
+      
+      <div id="search-mat-autocomplete-container"></div>
+      </div>
+      
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+    </form>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+$(document).ready(function(){
+
+
+
+  accessibleAutocomplete({
+    element: document.querySelector('#search-mat-autocomplete-container'),
+    id: 'search-mat', 
+    name: 'search-mat',
+    async: true,
+    source: function(query, populateResults){
+
+      
+      let url = `https://scythe-ambiguous-arithmetic.glitch.me/data.json?sql=select%0D%0A++rowid%2C%0D%0A++UID%2C%0D%0A++%22Group+name%22%0D%0Afrom%0D%0A++GroupExtract%0D%0Awhere%0D%0A++%22Group+name%22+like+%3Ap0%0D%0Aorder+by%0D%0A++rowid%0D%0Alimit%0D%0A++10&_shape=array&p0=%25${query}%25`
+
+      
+
+      fetch(url)
+        .then(function(response){
+          return response.json()
+        })
+        .then(function(data){
+
+          let suggestions = [];
+          data.forEach(item => suggestions.push(item['Group name']))
+          console.log(suggestions);
+          populateResults(suggestions);
+        })
+      }
+  });
+});
+</script>
+{% endblock %}
