@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">About your school</span>
+      <form action="your-name" method="post">
+        <div class="govuk-form-group">
+          <h1 class="govuk-heading-l">
+          Confirm school
+          </h1>
+          
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Name and Address</dt>
+              <dd class="govuk-summary-list__value">
+                {{ data.giasSchoolData.EstablishmentName | formatWithComma }} <br>
+                {{ data.giasSchoolData.Street | formatWithComma }}
+                {{ data.giasSchoolData.Locality | formatWithComma }}
+                {{ data.giasSchoolData.Address3 | formatWithComma }}
+                {{ data.giasSchoolData.Town | formatWithComma }}
+                {{ data.giasSchoolData['County (name)'] | formatWithComma }}
+                {{ data.giasSchoolData.Postcode }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Local authority</dt>
+              <dd class="govuk-summary-list__value">{{ data.giasSchoolData['LA (name)'] }}</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Headteacher/ Principal</dt>
+              <dd class="govuk-summary-list__value">
+              {{ data.giasSchoolData["HeadTitle (name)"] }}
+              {{ data.giasSchoolData["HeadFirstName"] }}
+              {{ data.giasSchoolData["HeadLastName"] }}
+              </dd>
+            </div>
+            
+          <!--
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Age range
+              <a href="#help-text-age-range" class="help-icon modal-link">
+                <span class="govuk-visually-hidden">Help with age range field</span>
+                <span class="govuk-visually-hidden">Opens a dialog</span>
+              </a>
+              </dt>
+              <dd class="govuk-summary-list__value">
+              {{ data.giasSchoolData.StatutoryLowAge }} to {{ data.giasSchoolData.StatutoryHighAge }}
+              </dd>
+            </div>
+          -->
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Phase of education</dt>
+              <dd class="govuk-summary-list__value">
+              {{ data.giasSchoolData['PhaseOfEducation (name)'] }}
+
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">School type</dt>
+              <dd class="govuk-summary-list__value">
+              {{ data.giasSchoolData["TypeOfEstablishment (name)"] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">ID</dt>
+              <dd class="govuk-summary-list__value">
+                URN: {{ data.giasSchoolData["HeadLastName"] }} <br>
+                DfE number: {{ data.giasSchoolData["LA (code)"] }}/{{ data.giasSchoolData["EstablishmentNumber"] }}<br>
+                UKPRN: {{ data.giasSchoolData["UKPRN"] }}
+          </dd>
+        </div>
+      </dl>
+    </div>
+    
+    <p><a href="search-school" class="govuk-link">Search for a different school</a></p>
+    {{ govukButton({
+    text: 'Continue'
+    }) }}
+  </form>
+</div>
+</div>
+{% endblock %}
