@@ -21,10 +21,11 @@
           Enter the name or unique reference number (URN) of your school.
         </div>
 
-      
+
       <div id="search-school-autocomplete-container"></div>
       </div>
       <input type="hidden" name="school-urn" id="school-urn">
+
 
       {{ govukButton({
         text: 'Continue'
@@ -41,7 +42,7 @@ $(document).ready(function(){
 
   accessibleAutocomplete({
     element: document.querySelector('#search-school-autocomplete-container'),
-    id: 'search-school', 
+    id: 'search-school',
     name: 'search-school',
     async: true,
     source: function(query, populateResults){
