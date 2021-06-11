@@ -91,6 +91,27 @@ router.post("/search-school-post", function(req, res, next){
 
 });
 
+router.post("/search-mat-post", function(req, res, next){
+
+	let url = `https://scythe-ambiguous-arithmetic.glitch.me/data.json?sql=select%0D%0A++*%0D%0Afrom%0D%0A++GroupExtract%0D%0Awhere%0D%0A++%22UID%22+%3D+%3Ap0%0D%0Aorder+by%0D%0A++rowid%0D%0Alimit%0D%0A++10` + 
+						`&_shape=array&p0=${req.body['mat-uid']}`;
+
+	console.log(url)
+	axios.get(url)
+	  .then(function (response) {
+	    // handle success
+	    console.log(response);
+	    req.session.data.giasMatData = response.data[0];
+	    res.redirect("confirm-mat")
+	  })
+	  .catch(function (error) {
+	    // handle error
+	    //console.log(error);
+	    res.send(error)
+	  })
+
+});
+
 
 
 // Add your routes above the module.exports line

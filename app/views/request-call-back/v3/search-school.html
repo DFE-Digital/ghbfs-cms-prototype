@@ -55,7 +55,7 @@ $(document).ready(function(){
           })
           .then(function(data){
             let suggestions = [];
-            data.forEach(item => suggestions.push(`${item.URN} - ${item.EstablishmentName} (${item.Locality}, ${item.Postcode})`))
+            data.forEach(item => suggestions.push(`${item.UKPRN} - ${item.EstablishmentName} (${item.Locality}, ${item.Postcode})`))
             populateResults(suggestions);
           })
         }
