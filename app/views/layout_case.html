@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back to case list",
+    href: "/manage-case/v3/case-list"
+  }) }}
+{% endblock %}
