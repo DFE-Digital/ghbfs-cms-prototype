@@ -1,3 +1,6 @@
+const moment = require("moment")
+
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -51,5 +54,12 @@ module.exports = function (env) {
       return str + ","
     }
   }
+
+  filters.daysAgo = function(num) {
+      var d = moment().subtract(num,"days").format("D MMMM YYYY")
+      if (d !== 'Invalid date') return d
+      else return ''
+  }
+
   return filters
 }

@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+
+
+{% set addressHtml %}
+{{ data.school['address-line-1'] }} <br>
+{{ data.school['address-line-2'] }} <br>
+{{ data.school['address-county'] }} <br>
+{{ data.school['address-postcode'] }}
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">School contact details</h1>
+
+      {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% set schoolDetails %}
+
+{{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "School name"
+            },
+            value: {
+              text: data.school['school-name']
+            }
+          },
+          {
+            key: {
+              text: "School Address"
+            },
+            value: {
+              text: addressHtml | safe
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data.school['your-name']
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: data.school['contact-by-phone']
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+              text: data.school['contact-by-email']
+            }
+          }
+        ]
+      }) }}
+
+{% endset %}
+
+
+{% set requestDetails %}
+
+{{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Your name"
+            },
+            value: {
+              text: data.school['procurement-detail']
+            }
+          }
+        ]
+      }) }}
+
+
+{% endset %}
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "School details",
+      id: "school-details",
+      panel: {
+        html: schoolDetails
+      }
+    },
+    {
+      label: "Request details",
+      id: "request-details",
+      panel: {
+        html: requestDetails
+      }
+    }
+  ]
+}) }}
+
+    </div>
+  </div>
+{% endblock %}
