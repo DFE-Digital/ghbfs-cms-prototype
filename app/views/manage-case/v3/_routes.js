@@ -31,11 +31,11 @@ router.post("/new-case/existing-contract-post", function(req, res, next){
 
 router.post("/new-case/category-post", function(req, res, next){
 	
-	if(!req.body['category']){
-		res.redirect(`/manage-case/${folderVersion}/new-case/categor`)
+	if(!req.body['procurement-category']){
+		res.redirect(`/manage-case/${folderVersion}/new-case/category`)
 	} else {
 		req.session.data.tags.category = true;
-		res.redirect(`/manage-case/${folderVersion}/new-case/existing-contract`);
+		res.redirect(`/manage-case/${folderVersion}/new-case#request-details`);
 	}
 
 });

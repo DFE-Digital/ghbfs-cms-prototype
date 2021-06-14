@@ -23,7 +23,7 @@
 {% set schoolDetails %}
 
 {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
+        classes: 'govuk-!-margin-bottom-5',
         rows: [
           {
             key: {
@@ -48,7 +48,7 @@
 
 {% set contactDetails %}
   {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
+        classes: 'govuk-!-margin-bottom-5',
         rows: [
           {
             key: {
@@ -80,21 +80,39 @@
 {% endset %}
 
 
+
+
 {% set requestDetails %}
 
-{{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Your name"
-            },
-            value: {
-              text: data.school['procurement-detail']
-            }
-          }
-        ]
-      }) }}
+<dl class="govuk-summary-list govuk-!-margin-bottom-5'">
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Category
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['procurement-category'] %}
+            {{ data['procurement-category']}} <a class="govuk-link govuk-!-margin-left-2" href="new-case/category">change <span class="govuk-visually-hidden">category</span></a>
+          {% else %}
+          <a class="govuk-link" href="new-case/category">Add category</a>
+          {% endif %}
+        </dd>
+        
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Procurement details
+        </dt>
+        <dd class="govuk-summary-list__value">
+          I need a new catering provider. The current contract ends at the end of the school year. 
+        </dd>
+        
+      </div>
+    
+  
+</dl>
 
 
 {% endset %}
@@ -128,14 +146,17 @@
 
 <h3 class="govuk-heading-m">Actions</h3>
 <ul class="govuk-list">
+  
+  {% if not data['procurement-category'] %}
   <li>
     <a class="govuk-link" href="new-case/category">Add category</a>
   </li>
+  {% endif %}        
   <li>
-    <a class="govuk-link" href="#">Arrange consultation</a>
+    <a class="govuk-link" href="new-case/consultation">Arrange consultation</a>
   </li>
   <li>
-    <a class="govuk-link" href="#">Send email guidance</a>
+    <a class="govuk-link" href="new-case/guidance">Send email guidance</a>
   </li>
 </ul>
 

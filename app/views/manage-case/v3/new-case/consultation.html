@@ -1,0 +1,47 @@
+{% extends "layout_case.html" %}
+
+
+
+{% set addressHtml %}
+{{ data.school['address-line-1'] }} <br>
+{{ data.school['address-line-2'] }} <br>
+{{ data.school['address-county'] }} <br>
+{{ data.school['address-postcode'] }}
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Arrange a consultation</h1>
+
+      <form action="../case-list" method="post">
+      {{ govukDateInput({
+        id: "consultation-date",
+        namePrefix: "consultation-date",
+        fieldset: {
+          legend: {
+            text: "Enter the arranged date",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "For example, 12 11 2007"
+        }
+      }) }}
+
+      {{ govukButton({
+          text: "Save and continue"
+        }) }}
+    </form>
+      
+
+    </div>
+  </div>
+{% endblock %}
