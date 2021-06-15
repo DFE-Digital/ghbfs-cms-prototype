@@ -15,49 +15,49 @@ router.get('*', function(req, res, next){
 })
 
 
-router.post("/new-case/existing-contract-post", function(req, res, next){
+router.post("/call-back/existing-contract-post", function(req, res, next){
 	
 	if(!req.body['existing-contract']){
-		res.redirect(`/manage-case/${folderVersion}/new-case/existing-contrac`)
+		res.redirect(`/manage-case/${folderVersion}/call-back/existing-contrac`)
 	} else if(req.body['existing-contract'] === "yes"){
 		
-		res.redirect(`/manage-case/${folderVersion}/new-case/contract-details`);
+		res.redirect(`/manage-case/${folderVersion}/call-back/contract-details`);
 	} else {
 		req.session.data.tags.existingContract = true;
-		res.redirect(`/manage-case/${folderVersion}/new-case/procurement-detail`);
+		res.redirect(`/manage-case/${folderVersion}/call-back/procurement-detail`);
 	}
 
 });
 
-router.post("/new-case/category-post", function(req, res, next){
+router.post("/call-back/category-post", function(req, res, next){
 	
 	if(!req.body['procurement-category']){
-		res.redirect(`/manage-case/${folderVersion}/new-case/category`)
+		res.redirect(`/manage-case/${folderVersion}/call-back/category`)
 	} else {
 		req.session.data.tags.category = true;
-		res.redirect(`/manage-case/${folderVersion}/new-case#request-details`);
+		res.redirect(`/manage-case/${folderVersion}/call-back#request-details`);
 	}
 
 });
 
 
-router.post("/new-case/contract-details-2-post", function(req, res, next){
+router.post("/call-back/contract-details-2-post", function(req, res, next){
 	
 
 		req.session.data.tags.existingContract = true;
-		res.redirect(`/manage-case/${folderVersion}/new-case/procurement-detail`);
+		res.redirect(`/manage-case/${folderVersion}/call-back/procurement-detail`);
 	
 
 });
 
-router.post("/new-case/procurement-terms", function(req, res, next){
+router.post("/call-back/procurement-terms", function(req, res, next){
 
 		req.session.data.tags.procurementRequirements = true;
 		next()
 	
 });
 
-router.post("/new-case/procurement-terms-post", function(req, res, next){
+router.post("/call-back/procurement-terms-post", function(req, res, next){
 
 		req.session.data.tags.procurementTerms = true;
 		res.redirect(`/manage-case/${folderVersion}/new-case/task-list`);

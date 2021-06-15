@@ -16,25 +16,10 @@
         {{ data.school['school-name'] }}
       </h1>
 
-
+      {% include "../includes/school-details.html" %}
       <p class="govuk-body govuk-!-margin-bottom-7">Use this to record details of the school's procurement needs. You do not need to complete all the sections.</p>
 
       <ol class="app-task-list">
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">1. </span> School details
-          </h2>
-          <ul class="app-task-list__items">
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="contact-details" aria-describedby="contact details">
-                  Contact details
-                </a>
-              </span>
-
-            </li>
-          </ul>
-        </li>
 
         <li>
           <h2 class="app-task-list__section">
@@ -47,7 +32,7 @@
                   Category
                 </a>
               </span>
-              {% if data.tags.category == true %}
+              {% if data['procurement-category'] %}
               <strong class="govuk-tag app-task-list__tag" id="category-status">Completed</strong>
               {% endif %}
             </li>

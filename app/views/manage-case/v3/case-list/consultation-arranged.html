@@ -1,0 +1,38 @@
+{% extends "layout_noback.html" %}
+
+{% block content %}
+<h1 class="govuk-heading-l">All cases</h1>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"> Organisation </th>
+          <th class="govuk-table__header" scope="col"> Status </th>
+          <th class="govuk-table__header" scope="col"> Received </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="../call-back">Hill valley high school</a>
+          </td>
+          <td class="govuk-table__cell">
+            {{govukTag({
+              text: "Consultation booked",
+              classes: "govuk-tag--purple"
+            })}} <br>
+            23 June 2020  11:00 am
+            
+          </td>
+          <td class="govuk-table__cell">
+            {{ 1 | daysAgo }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

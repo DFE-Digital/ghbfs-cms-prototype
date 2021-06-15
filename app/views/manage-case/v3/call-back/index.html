@@ -1,0 +1,43 @@
+{% extends "layout_case.html" %}
+
+
+
+{% set addressHtml %}
+{{ data.school['address-line-1'] }} <br>
+{{ data.school['address-line-2'] }} <br>
+{{ data.school['address-county'] }} <br>
+{{ data.school['address-postcode'] }}
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">{{ data.school['school-name'] }}</h1>
+
+{% include "../includes/school-details.html" %}
+
+<h3 class="govuk-heading-m">Actions</h3>
+<ul class="govuk-list">
+  
+  {% if not data['procurement-category'] %}
+  <li>
+    <a class="govuk-link" href="call-back/category">Add category</a>
+  </li>
+  {% endif %}        
+  <li>
+    <a class="govuk-link" href="call-back/task-list">Start consultation</a>
+  </li>
+</ul>
+
+
+      
+
+    </div>
+  </div>
+{% endblock %}
