@@ -1,3 +1,11 @@
+{% set addressHtml %}
+{{ data.school['address-line-1'] }} <br>
+{{ data.school['address-line-2'] }} <br>
+{{ data.school['address-county'] }} <br>
+{{ data.school['address-postcode'] }}
+{% endset %}
+
+
 {% set schoolDetails %}
 
 {{ govukSummaryList({
