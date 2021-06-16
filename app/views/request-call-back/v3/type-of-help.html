@@ -8,12 +8,12 @@
         <span class="govuk-caption-l">About your procurement</span>
         {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
-        {{ govukRadios({
+        {{ govukCheckboxes({
           idPrefix: "type-of-help",
           name: "type-of-help",
           fieldset: {
             legend: {
-              text: "What stafe of procurement are you at?",
+              text: "What stage of procurement are you at?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -21,19 +21,23 @@
           items: [
             {
               value: "1",
-              text: "I have just started looking at options"
+              text: "I am unsure about how to run a compliant procurement"
             },
             {
-              value: "2",
-              text: "I need help with compliance"
-            },
-            {
-              value: "3",
+              value: "4",
               text: "I need help finding a supplier"
             },
             {
               value: "4",
               text: "I need help choosing a supplier"
+            },
+            {
+              value: "4",
+              text: "I have found a supplier and help with awarding a contract"
+            },
+            {
+              value: "5",
+              text: "Other"
             }
           ]
         }) }}
