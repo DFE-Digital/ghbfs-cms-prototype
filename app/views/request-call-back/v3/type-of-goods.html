@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="description" method="post">
+
+
+
+        {{ govukInput({
+          name: "advice-detail",
+          id: "advice-detail",
+          value: data['advice-detail'],
+          label: {
+            text: "What type of goods or service do you need to buy?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "For example, catering services or IT equipment."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
