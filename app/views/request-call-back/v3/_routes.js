@@ -16,10 +16,12 @@ router.get('*', function(req, res, next){
 
 router.post("/type-of-help-post", function(req, res, enxt){
 
-	if(req.body['type-of-help'] === "advice"){
-		res.redirect("advice-detail")
-	}  else if(req.body['type-of-help'] === "procurement"){
-		res.redirect("need-to-buy")
+	if(req.body['type-of-help'] === "supplier"){
+		res.redirect("type-of-goods")
+	}  else if(req.body['type-of-help'] === "compliance"){
+		res.redirect("compliance-help")
+	} else if(req.body['type-of-help'] === "other"){
+		res.redirect("how-can-we-help")
 	} else {
 		res.redirect("type-of-help");
 	} 
