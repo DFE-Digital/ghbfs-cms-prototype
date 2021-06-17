@@ -41,5 +41,15 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
+
+
+
+  filters.formatWithComma = function(str){
+    if(!str) {
+      return ''
+    } else {
+      return str + ","
+    }
+  }
   return filters
 }

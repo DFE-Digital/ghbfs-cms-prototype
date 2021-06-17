@@ -67,18 +67,21 @@ console.log(url)
 });
 
 
+
+
 router.post("/search-school-post", function(req, res, next){
 
-	let url = `https://scythe-ambiguous-arithmetic.glitch.me/data.json?sql=select%0D%0A++rowid%2C%0D%0A++URN%2C%0D%0A++EstablishmentNumber%2C%0D%0A++EstablishmentName%2C%0D%0A++Street%2C%0D%0A++Locality%2C%0D%0A++Postcode%0D%0Afrom%0D%0A++edubasealldata20210521%0D%0Awhere%0D%0A++%22EstablishmentName%22+like+%3Ap0%0D%0A++OR+%22URN%22+is+%3Ap0%0D%0Aorder+by%0D%0A++rowid%0D%0Alimit%0D%0A++10` +
-						`&_shape=array&p0=%25${req.body['search-school']}%25`
+	let url = `https://scythe-ambiguous-arithmetic.glitch.me/data.json?sql=select+*%0D%0Afrom%0D%0A++edubasealldata20210521%0D%0Awhere%0D%0A++%22URN%22+%3D+%3Ap0%0D%0Aorder+by%0D%0A++rowid%0D%0Alimit%0D%0A++10&` +
+						`&_shape=array&p0=${req.body['school-urn']}`;
+
 
 	console.log(url)
 	axios.get(url)
 	  .then(function (response) {
 	    // handle success
 	    console.log(response);
-	    req.session.data.searchResults = response.data;
-	    res.redirect("search-school-results")
+	    req.session.data.giasSchoolData = response.data[0];
+	    res.redirect("confirm-school")
 	  })
 	  .catch(function (error) {
 	    // handle error
@@ -87,6 +90,28 @@ router.post("/search-school-post", function(req, res, next){
 	  })
 
 });
+
+router.post("/search-mat-post", function(req, res, next){
+
+	let url = `https://scythe-ambiguous-arithmetic.glitch.me/data.json?sql=select%0D%0A++*%0D%0Afrom%0D%0A++GroupExtract%0D%0Awhere%0D%0A++%22UID%22+%3D+%3Ap0%0D%0Aorder+by%0D%0A++rowid%0D%0Alimit%0D%0A++10` + 
+						`&_shape=array&p0=${req.body['mat-uid']}`;
+
+	console.log(url)
+	axios.get(url)
+	  .then(function (response) {
+	    // handle success
+	    console.log(response);
+	    req.session.data.giasMatData = response.data[0];
+	    res.redirect("confirm-mat")
+	  })
+	  .catch(function (error) {
+	    // handle error
+	    //console.log(error);
+	    res.send(error)
+	  })
+
+});
+
 
 
 // Add your routes above the module.exports line

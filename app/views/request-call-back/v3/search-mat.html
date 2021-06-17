@@ -8,7 +8,7 @@
 
       <span class="govuk-caption-l">About your school</span>
 
-      <form action="your-name" method="post">
+      <form action="search-mat-post" method="post">
 
       <div class="govuk-form-group">
         <h1 class="govuk-label-wrapper">
@@ -24,7 +24,7 @@
       
       <div id="search-mat-autocomplete-container"></div>
       </div>
-      
+      <input type="hidden" name="mat-uid" id="mat-uid">
 
       {{ govukButton({
         text: 'Continue'
@@ -60,11 +60,17 @@ $(document).ready(function(){
         .then(function(data){
 
           let suggestions = [];
-          data.forEach(item => suggestions.push(item['Group name']))
+          data.forEach(item => suggestions.push(item.UID + " - " + item['Group name']))
           console.log(suggestions);
           populateResults(suggestions);
         })
-      }
+      },
+    onConfirm: function(confirmed){
+      let endChar = confirmed.indexOf(' - ');
+      let uid = confirmed.substr(0,endChar);
+      document.querySelector("#mat-uid").value = uid;
+
+    }
   });
 });
 </script>
