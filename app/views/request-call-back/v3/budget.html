@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="suppliers" method="post">
+        <span class="govuk-caption-l">About your procurement</span>
+
+        {{ govukInput({
+          id: "cost",
+          name: "cost",
+          label: {
+            text: "What is the budget?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Enter the budget over the whole contract"
+          },
+          prefix: {
+            text: "£"
+          },
+          classes: "govuk-input--width-10",
+          spellcheck: false
+        }) }}
+
+        <p>
+          <a href="">I do not know my budget</a>
+        </p>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
