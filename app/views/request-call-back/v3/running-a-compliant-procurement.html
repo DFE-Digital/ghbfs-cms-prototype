@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="check-your-answers" method="post">
+
+        <h1 class="govuk-heading-l">Help running a compliant procurement</h1>
+
+        {% set helpHtml %}
+        <p>Have you looked at the <a href="https://www.gov.uk/guidance/buying-for-schools">guidance on gov.uk</a>?</p>
+        {% endset %}
+        {{ govukInsetText({
+          html: helpHtml
+        }) }}
+
+        {{ govukTextarea({
+          name: "advice-detail",
+          id: "advice-detail",
+          value: data['advice-detail'],
+          label: {
+            text: "How can we help?",
+            classes: "govuk-label--m",
+            isPageHeading: fasle
+          },
+          hint: {
+            text: "Include any information that may be helpful, such as details of what you need to buy or information about your school."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
