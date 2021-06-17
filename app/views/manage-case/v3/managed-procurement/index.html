@@ -12,8 +12,8 @@
 
       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ data.school['school-name'] }}</h1>
       {{govukTag({
-          text: "Consultation booked",
-          classes: "govuk-tag--purple govuk-!-margin-bottom-7 govuk-!-margin-top-1"
+          text: "Framework procurement",
+          classes: "govuk-tag--orange govuk-!-margin-bottom-7 govuk-!-margin-top-1"
         })}}
 
 {% set schoolDetails %}
@@ -131,7 +131,7 @@
       }
     },
     {
-      label: "Request details",
+      label: "Procurement details",
       id: "request-details",
       panel: {
         html: requestDetails
@@ -143,13 +143,14 @@
 <h3 class="govuk-heading-m">Actions</h3>
 <ul class="govuk-list">
   
-  {% if not data['procurement-category'] %}
   <li>
-    <a class="govuk-link" href="call-back/category">Add category</a>
+    <a class="govuk-link" href="#">Specification</a>
   </li>
-  {% endif %}        
   <li>
-    <a class="govuk-link" href="call-back/start">Start consultation</a>
+    <a class="govuk-link" href="#">Participation agreement</a>
+  </li>
+  <li>
+    <a class="govuk-link" href="#">Route to market</a>
   </li>
 </ul>
 

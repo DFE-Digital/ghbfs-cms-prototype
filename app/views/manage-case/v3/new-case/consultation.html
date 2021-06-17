@@ -77,28 +77,33 @@
   
     <div class="govuk-date-input__item">
       
-        {{ govukRadios({
-          classes: "govuk-radios--inline ",
-          idPrefix: "consultation-date-ampm",
-          name: "consultation-date-ampm",
-          fieldset: {
-            legend: {
-              text: "AM or PM",
-              isPageHeading: false,
-              classes: "govuk-label govuk-date-input__label"
-            }
-          },
-          items: [
-            {
-              value: "AM",
-              text: "AM"
-            },
-            {
-              value: "PM",
-              text: "PM"
-            }
-          ]
-        }) }}
+      <fieldset class="govuk-fieldset hacky-fix">
+        
+        <legend class="govuk-fieldset__legend govuk-label govuk-date-input__label">
+          
+          AM or PM
+          
+        </legend>
+        
+        <div class="govuk-radios govuk-radios--inline ">
+        
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="consultation-date-ampm" name="consultation-date-ampm" type="radio" value="AM">
+            <label class="govuk-label govuk-radios__label" for="consultation-date-ampm">
+              AM
+            </label>
+            
+          </div>
+        
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="consultation-date-ampm-2" name="consultation-date-ampm" type="radio" value="PM">
+            <label class="govuk-label govuk-radios__label" for="consultation-date-ampm-2">
+              PM
+            </label>
+            
+          </div>
+        </div>
+      </fieldset>
       
 
 
@@ -120,4 +125,10 @@
 
     </div>
   </div>
+
+  <style type="text/css" media="screen">
+    .hacky-fix {
+      height: 56px;
+    }
+  </style>
 {% endblock %}
