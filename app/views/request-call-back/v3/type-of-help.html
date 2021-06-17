@@ -8,24 +8,36 @@
         <span class="govuk-caption-l">About your procurement</span>
         {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
-        {{ govukRadios({
+        {{ govukCheckboxes({
           idPrefix: "type-of-help",
           name: "type-of-help",
           fieldset: {
             legend: {
-              text: "What do you need help with?",
+              text: "What best describes how you need support?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
             {
-              value: "advice",
-              text: "I have a question about buying for my school"
+              value: "1",
+              text: "I am unsure about how to run a compliant procurement"
             },
             {
-              value: "procurement",
-              text: "I need help with a procurement"
+              value: "4",
+              text: "I need help finding a supplier"
+            },
+            {
+              value: "4",
+              text: "I need help choosing a supplier"
+            },
+            {
+              value: "4",
+              text: "I have found a supplier and need help with awarding a contract"
+            },
+            {
+              value: "5",
+              text: "Other"
             }
           ]
         }) }}
