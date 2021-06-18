@@ -7,10 +7,10 @@
 
       <form action="check-your-answers" method="post">
 
-        <h1 class="govuk-heading-l">Help running a compliant procurement</h1>
+        <h1 class="govuk-heading-l">Help with compliance or legal matters</h1>
 
         {% set helpHtml %}
-        <p>Have you looked at the <a href="https://www.gov.uk/guidance/buying-for-schools">guidance on gov.uk</a>?</p>
+        <p>You can find <a href="https://www.gov.uk/guidance/buying-for-schools">advice about running a compliant procurement process</a> on GOV.UK.</p>
         {% endset %}
         {{ govukInsetText({
           html: helpHtml
@@ -26,12 +26,12 @@
             isPageHeading: fasle
           },
           hint: {
-            text: "Include any information that may be helpful, such as details of what you need to buy or information about your school."
+            text: "Include any information that may be helpful, such as details of what you need to buy or what stage you are at in your procurement."
           }
         }) }}
 
         {{ govukButton({
-          text: "Save and continue"
+          text: "Continue"
         }) }}
 
       </form>
