@@ -15,6 +15,17 @@
 
       <h1 class="govuk-heading-l">Check your answers and send your request for help</h1>
 
+
+      {% set schoolAddressHtml %}
+      {{ data.giasSchoolData.Street | formatWithComma }}
+                {{ data.giasSchoolData.Locality | formatWithComma }}
+                {{ data.giasSchoolData.Address3 | formatWithComma }}
+                {{ data.giasSchoolData.Town | formatWithComma }}
+                {{ data.giasSchoolData['County (name)'] | formatWithComma }}
+                {{ data.giasSchoolData.Postcode }}
+
+      {% endset %}
+      {% if data['type-of-establishment'] == "school" %}
       <h2 class="govuk-heading-m">About your school</h2>
 
       {{ govukSummaryList({
@@ -25,7 +36,7 @@
               text: "School name"
             },
             value: {
-              text: data['school-name']
+              text: data.giasSchoolData.EstablishmentName
             },
             actions: {
               items: [
@@ -42,20 +53,60 @@
               text: "School address"
             },
             value: {
-              text: addressHtml | safe
-            },
-            actions: {
-              items: [
-                {
-                  href: "school-address",
-                  text: "Change",
-                  visuallyHiddenText: "school address"
-                }
-              ]
+              text: schoolAddressHtml | safe
+            
             }
           }
         ]
       }) }}
+
+      {% endif %}
+
+
+      {% set establishmentAddressHtml %}
+      {{ data.giasMatData['Group Street'] | formatWithComma }}
+                    {{ data.giasMatData['Group Locality'] | formatWithComma }}
+                    {{ data.giasMatData['Group Address 3'] | formatWithComma }}
+                    {{ data.giasMatData['Group Town'] | formatWithComma }}
+                    {{ data.giasMatData['Group Postcode'] | formatWithComma }}
+
+      {% endset %}
+      {% if data['type-of-establishment'] == "mat" %}
+      <h2 class="govuk-heading-m">About your Establishment</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Establishment name"
+            },
+            value: {
+              text: data.giasMatData['Group name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "school-name",
+                  text: "Change",
+                  visuallyHiddenText: "school name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Establishment address"
+            },
+            value: {
+              text: establishmentAddressHtml | safe
+            
+            }
+          }
+        ]
+      }) }}
+
+      {% endif %}
 
 
       <h2 class="govuk-heading-m">About you</h2>
@@ -118,10 +169,11 @@
       }) }}
 
 
-      {% if data['type-of-help'] == 'procurement' %}
 
-      <h2 class="govuk-heading-m">About your procurement</h2>
 
+      <h2 class="govuk-heading-m">About your request for support</h2>
+
+      {% if data['type-of-help'] ==  'compliance' %}
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-9',
           rows: [
@@ -130,48 +182,31 @@
                 text: "What do you need help with?"
               },
               value: {
-                text: "I need help with a procurement"
+                text: "Compliance or legal matters"
               },
               actions: {
                 items: [
                   {
                     href: "type-of-help",
                     text: "Change",
-                    visuallyHiddenText: "your name"
+                    visuallyHiddenText: "what you need help with"
                   }
                 ]
               }
             },
             {
               key: {
-                text: "Tell us what you need to buy"
+                text: "How can we help?"
               },
               value: {
-                text: data['need-to-buy']
+                text: data['compliance-help--detail']
               },
               actions: {
                 items: [
                   {
-                    href: "need-to-buy",
+                    href: "compliance-help",
                     text: "Change",
-                    visuallyHiddenText: "your name"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Tell us about any existing contracts"
-              },
-              value: {
-                text: data['existing-contract']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "existing-contract",
-                    text: "Change",
-                    visuallyHiddenText: "existing contract details"
+                    visuallyHiddenText: "how we can help"
                   }
                 ]
               }
@@ -181,10 +216,8 @@
 
         {% endif %}
 
-      {% if data['type-of-help'] ==  'advice' %}
 
-      <h2 class="govuk-heading-m">Your question about buying for your school</h2>
-
+        {% if data['type-of-help'] ==  'other' %}
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-9',
           rows: [
@@ -193,21 +226,21 @@
                 text: "What do you need help with?"
               },
               value: {
-                text: "I have a question about buying for my school"
+                text: "Something else"
               },
               actions: {
                 items: [
                   {
                     href: "type-of-help",
                     text: "Change",
-                    visuallyHiddenText: "your name"
+                    visuallyHiddenText: "how we can help"
                   }
                 ]
               }
             },
             {
               key: {
-                text: "Your question"
+                text: "How can we help?"
               },
               value: {
                 text: data['advice-detail']
@@ -215,7 +248,7 @@
               actions: {
                 items: [
                   {
-                    href: "advice-detail",
+                    href: "compliance-help",
                     text: "Change",
                     visuallyHiddenText: "your name"
                   }
@@ -226,6 +259,130 @@
         }) }}
 
         {% endif %}
+
+
+        {% if data['type-of-help'] ==  'supplier' %}
+
+
+        {% set supplierHtml %}
+          {{data['suppliers']}}
+          {% if data['suppliers'] == 'yes' %}
+            :<br>
+            {{data['supplier-detail']}}
+          {% endif %}
+
+        {% endset %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: "What do you need help with?"
+              },
+              value: {
+                text: "Finding or choosing a supplier"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "type-of-help",
+                    text: "Change",
+                    visuallyHiddenText: "how we can help"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Type of goods or service"
+              },
+              value: {
+                text: data['type-of-goods']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "type-of-goods",
+                    text: "Change",
+                    visuallyHiddenText: "type of goods or service"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "When you need the new supplier"
+              },
+              value: {
+                text: data['when-needed']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "when-needed",
+                    text: "Change",
+                    visuallyHiddenText: "when you need the new supplier"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Budget"
+              },
+              value: {
+                text: "£" + data['budget']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "budget",
+                    text: "Change",
+                    visuallyHiddenText: "budget"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Have you found or contacted any suppliers?"
+              },
+              value: {
+                text: supplierHtml | safe
+              },
+              actions: {
+                items: [
+                  {
+                    href: "suppliers",
+                    text: "Change",
+                    visuallyHiddenText: " if you found or contacted any suppliers"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Describe what you need to buy"
+              },
+              value: {
+                text: data['description']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "description",
+                    text: "Change",
+                    visuallyHiddenText: " description of what you need to buy"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        {% endif %}
+
 
 
       <h2 class="govuk-heading-m">Now send your request for help</h2>
