@@ -7,22 +7,24 @@
 
       <form action="check-your-answers" method="post">
 
+
+
         {{ govukTextarea({
-          name: "advice-detail",
-          id: "advice-detail",
-          value: data['advice-detail'],
+          name: "description",
+          id: "description",
+          value: data['description'],
           label: {
-            text: "What is your question?",
+            text: "Describe what you need to buy",
             classes: "govuk-label--l",
             isPageHeading: true
           },
           hint: {
-            text: "Include any extra information that may be helpful, such as details of what you need to buy or information about your school."
+            text: "Include any specific requirements that it might be useful for the supported buying team to know."
           }
         }) }}
 
         {{ govukButton({
-          text: "Save and continue"
+          text: "Continue"
         }) }}
 
       </form>
