@@ -29,7 +29,9 @@
           }
         ]
       }) }}
-
+<p>
+  <a href="https://www.get-information-schools.service.gov.uk/Establishments/Establishment/Details/104882" target="_blank">View school information (opens in a new tab)</a>
+</p>
 {% endset %}
 
 {% set contactDetails %}
@@ -70,31 +72,78 @@
 
 {% set requestDetails %}
 
-<dl class="govuk-summary-list govuk-!-margin-bottom-5'">
+<p>Request sent on {{ 3 |daysAgo }}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
   
     
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Category
+          What do you need help with?
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data['procurement-category'] %}
-            {{ data['procurement-category']}} <a class="govuk-link govuk-!-margin-left-2" href="new-case/category">change <span class="govuk-visually-hidden">category</span></a>
-          {% else %}
-          <a class="govuk-link" href="new-case/category">Add category</a>
-          {% endif %}
-        </dd>
-        
+          Finding or choosing a supplier
+        </dd>        
       </div>
-
+    
+  
+    
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Procurement details
+          Type of goods or service
         </dt>
         <dd class="govuk-summary-list__value">
-          I need a new catering provider. The current contract ends at the end of the school year. 
-        </dd>
+          computers and laptops
+        </dd>        
+      </div>
+    
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          When you need the new supplier
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1 to 6 months
+        </dd>        
+      </div>
+    
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Budget
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £20000
+        </dd>        
+      </div>
+    
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Have you found or contacted any suppliers?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          
+          
+            We have contacted a local supplier, but they are not able to supply what we need
+          
+
         
+        </dd>        
+      </div>
+    
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Describe what you need to buy
+        </dt>
+        <dd class="govuk-summary-list__value">
+          I need 30 laptops and/or desktop computers to replace the old ones in our IT classroom. 
+        </dd>        
       </div>
     
   

@@ -29,13 +29,13 @@ router.post("/call-back/existing-contract-post", function(req, res, next){
 
 });
 
-router.post("/call-back/category-post", function(req, res, next){
+router.post("/:folder/category-post", function(req, res, next){
 	
 	if(!req.body['procurement-category']){
-		res.redirect(`/manage-case/${folderVersion}/call-back/category`)
+		res.redirect(`/manage-case/${folderVersion}/${req.params.folder}/category`)
 	} else {
 		req.session.data.tags.category = true;
-		res.redirect(`/manage-case/${folderVersion}/call-back#request-details`);
+		res.redirect(`/manage-case/${folderVersion}/${req.params.folder}#request-details`);
 	}
 
 });
@@ -60,7 +60,7 @@ router.post("/call-back/procurement-terms", function(req, res, next){
 router.post("/call-back/procurement-terms-post", function(req, res, next){
 
 		req.session.data.tags.procurementTerms = true;
-		res.redirect(`/manage-case/${folderVersion}/new-case/task-list`);
+		res.redirect(`/manage-case/${folderVersion}/call-back/task-list`);
 	
 });
 
