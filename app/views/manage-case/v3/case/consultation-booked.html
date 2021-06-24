@@ -1,14 +1,6 @@
 {% extends "layout_case.html" %}
 
 
-
-{% set addressHtml %}
-{{ data.school['address-line-1'] }} <br>
-{{ data.school['address-line-2'] }} <br>
-{{ data.school['address-county'] }} <br>
-{{ data.school['address-postcode'] }}
-{% endset %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="key-info">
@@ -20,25 +12,23 @@
 
       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ data.school['school-name'] }}</h1>
       {{govukTag({
-          text: "New",
-          classes: "govuk-tag--blue govuk-!-margin-bottom-7 govuk-!-margin-top-1"
+          text: "Consultation booked",
+          classes: "govuk-tag--purple govuk-!-margin-bottom-7 govuk-!-margin-top-1"
         })}}
 
 {% include "../includes/school-details.html" %}
+
 
 <h3 class="govuk-heading-m">Actions</h3>
 <ul class="govuk-list">
   
   {% if not data['procurement-category'] %}
   <li>
-    <a class="govuk-link" href="new-case/category">Add category</a>
+    <a class="govuk-link" href="call-back/category">Add category</a>
   </li>
   {% endif %}        
   <li>
-    <a class="govuk-link" href="new-case/consultation">Arrange consultation</a>
-  </li>
-  <li>
-    <a class="govuk-link" href="new-case/guidance">Send email guidance</a>
+    <a class="govuk-link" href="call-back/start">Start consultation</a>
   </li>
 </ul>
 

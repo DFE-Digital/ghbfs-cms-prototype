@@ -1,8 +1,7 @@
 {% set addressHtml %}
-{{ data.school['address-line-1'] }} <br>
-{{ data.school['address-line-2'] }} <br>
-{{ data.school['address-county'] }} <br>
-{{ data.school['address-postcode'] }}
+{{case.school.street}} <br>
+{{case.school.town}} <br>
+{{case.school.postcode}} <br>
 {% endset %}
 
 
@@ -13,10 +12,26 @@
         rows: [
           {
             key: {
-              text: "School name"
+              text: "Contact name"
             },
             value: {
-              text: data.school['school-name']
+              text: case["first_name"] + " " + case["last_name"]
+            }
+          },
+          {
+            key: {
+              text: "Contact phone"
+            },
+            value: {
+              text: "0" + case["phone"]
+            }
+          },
+          {
+            key: {
+              text: "Contact email"
+            },
+            value: {
+              text: case["email"]
             }
           },
           {
@@ -30,53 +45,30 @@
         ]
       }) }}
 <p>
-  <a href="https://www.get-information-schools.service.gov.uk/Establishments/Establishment/Details/104882" target="_blank">View school information (opens in a new tab)</a>
+  <a href="https://www.get-information-schools.service.gov.uk/Establishments/Establishment/Details/{{case.school.urn}}" target="_blank">View school information (opens in a new tab)</a>
 </p>
 {% endset %}
 
-{% set contactDetails %}
-  {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-5',
-        rows: [
-          {
-            key: {
-              text: "Name"
-            },
-            value: {
-              text: data.school['your-name']
-            }
-          },
-          {
-            key: {
-              text: "Phone number"
-            },
-            value: {
-              text: data.school['contact-by-phone']
-            }
-          },
-          {
-            key: {
-              text: "Email"
-            },
-            value: {
-              text: data.school['contact-by-email']
-            }
-          }
-        ]
-      }) }}
-
-{% endset %}
 
 
 
 
 {% set requestDetails %}
 
-<p>Request sent on {{ 3 |daysAgo }}
+<p>Request sent on {{ 3 |daysAgo}}
 
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
   
-    
+      {% if data['procurement-category'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Category
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['procurement-category']}} <br>  <a href="category">change <span class="govuk-visually-hidden">category</span></a>
+        </dd>        
+      </div>
+      {% endif %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           What do you need help with?
@@ -126,12 +118,7 @@
           Have you found or contacted any suppliers?
         </dt>
         <dd class="govuk-summary-list__value">
-          
-          
             We have contacted a local supplier, but they are not able to supply what we need
-          
-
-        
         </dd>        
       </div>
     
@@ -160,13 +147,6 @@
       id: "school-details",
       panel: {
         html: schoolDetails
-      }
-    },
-    {
-      label: "Contact details",
-      id: "contact-details",
-      panel: {
-        html: contactDetails
       }
     },
     {

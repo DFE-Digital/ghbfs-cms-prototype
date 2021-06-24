@@ -5,7 +5,7 @@
 
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds-from-desktop">
+  <div class="govuk-grid-column-full">
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -15,20 +15,23 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
+
+        {% for case in cases %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="new-case">Hill valley high school</a>
+            <a href="case/{{case.id}}/{{ case.status | formatCaseListUrl }}">{{case.school.name}}</a>
           </td>
           <td class="govuk-table__cell">
             {{govukTag({
-              text: "New",
-              classes: "govuk-tag--blue"
+              text: case.status,
+              classes: case.status | formatCaseTagColour
             })}}
           </td>
           <td class="govuk-table__cell">
             {{ 1 | daysAgo }}
           </td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

@@ -61,5 +61,34 @@ module.exports = function (env) {
       else return ''
   }
 
+
+  filters.formatCaseTagColour = function(str){
+    let statusColour = ""
+    switch (str){
+      case "new":
+        statusColour =  "govuk-tag--blue";
+        break;
+      case "Consultation booked":
+        statusColour = "govuk-tag--purple";
+        break;
+      }
+
+    return statusColour;
+  }
+
+  filters.formatCaseListUrl = function(str){
+    let url = ""
+    switch (str){
+      case "new":
+        url =  "new-case";
+        break;
+      case "Consultation booked":
+        url = "consultation-booked";
+        break;
+      }
+
+    return url;
+  }
+
   return filters
 }

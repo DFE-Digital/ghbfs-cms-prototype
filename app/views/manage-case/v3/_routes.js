@@ -1,6 +1,8 @@
 const express = require('express')
 const router = new express.Router()
 
+const schools = require(`./data/schools.js`);
+
 let folderVersion = "v3"
 
 // Set variables
@@ -62,6 +64,47 @@ router.post("/call-back/procurement-terms-post", function(req, res, next){
 		req.session.data.tags.procurementTerms = true;
 		res.redirect(`/manage-case/${folderVersion}/call-back/task-list`);
 	
+});
+
+router.all("/case-list", function(req, res, next){
+	
+
+	res.locals.cases = schools;
+	next()
+
+})
+
+router.get("/case/:id/:pageName", function(req, res, next){
+
+	res.locals.case = schools.find(school => school.id == req.params.id);
+	
+
+	res.render(`manage-case/${folderVersion}/case/${req.params.pageName}`)
+
+})
+
+router.post("/case/:id/category-post", function(req, res, next){
+	
+	if(!req.body['procurement-category']){
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/category`)
+	} else {
+		req.session.data.tags.category = true;
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/new-case`);
+	}
+
+});
+
+router.post("/case/:id/consultation-post", function(req, res, next){
+
+		let school = schools.find(school => school.id == req.params.id);
+		
+		school.status = "Consultation booked"
+
+		school.consultation = req.body;
+	
+		res.redirect(`/manage-case/${folderVersion}/case-list`);
+	
+
 });
 
 // Add your routes above the module.exports line
