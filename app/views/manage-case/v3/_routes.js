@@ -128,6 +128,17 @@ router.post("/case/:id/guidance-post", function(req, res, next){
 	
 });
 
+router.post("/case/:id/call-back/close-case-post", function(req, res, next){
+
+		let school = schools.find(school => school.id == req.params.id);
+		
+		school.status = "closed"
+
+		school["guidance-details"] = req.body["guidance-details"];
+	
+		res.redirect(`/manage-case/${folderVersion}/case-list`);
+	
+});
 
 
 // Add your routes above the module.exports line

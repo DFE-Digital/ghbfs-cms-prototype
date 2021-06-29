@@ -1,0 +1,34 @@
+{% extends "layout_case.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+
+      <form action="close-case-post" method="post">
+
+        {{ govukTextarea({
+          name: "online-support-detail",
+          id: "online-support-detail",
+          value: data['online-support-detail'],
+          label: {
+            text: "Support details",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Add details of any advice and online support shared with the school."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and close case"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

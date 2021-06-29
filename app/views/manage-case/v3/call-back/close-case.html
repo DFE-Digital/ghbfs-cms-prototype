@@ -1,0 +1,42 @@
+{% extends "layout_case.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ data.school['school-name'] }}</h1>
+      {{govukTag({
+          text: "Consultation booked",
+          classes: "govuk-tag--purple govuk-!-margin-bottom-7 govuk-!-margin-top-1"
+        })}}
+
+      {% include "../includes/school-details.html" %}
+
+
+
+
+      <form action="../case-list/closed" method="post">
+
+        {{ govukTextarea({
+          name: "online-support-detail",
+          id: "online-support-detail",
+          value: data['online-support-detail'],
+          label: {
+            text: "Support details",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Add details of any advice and online support shared with the school."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and close case"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
