@@ -71,7 +71,12 @@ module.exports = function (env) {
       case "Consultation booked":
         statusColour = "govuk-tag--purple";
         break;
+      case "closed":
+        statusColour = "govuk-tag--grey";
+        break;
       }
+
+      
 
     return statusColour;
   }
@@ -84,6 +89,9 @@ module.exports = function (env) {
         break;
       case "Consultation booked":
         url = "consultation-booked";
+        break;
+      case "closed":
+        url = "closed-case";
         break;
       }
 

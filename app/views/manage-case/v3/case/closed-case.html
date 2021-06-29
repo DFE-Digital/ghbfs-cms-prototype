@@ -1,0 +1,100 @@
+{% extends "layout_case.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ case.school.name }}</h1>
+      {{govukTag({
+          text: "Closed",
+          classes: "govuk-tag--grey govuk-!-margin-bottom-7 govuk-!-margin-top-1"
+        })}}
+
+{% set addressHtml %}
+{{case.school.street}} <br>
+{{case.school.town}} <br>
+{{case.school.postcode}} <br>
+{% endset %}
+
+
+{% set schoolDetails %}
+  {% include "../includes/school-tab.html" %}
+{% endset %}
+
+{% set requestDetails %}
+  {% include "../includes/request-details.html" %}
+{% endset %}
+
+{% set closedDetails %}
+  {% include "../includes/closed-details.html" %}
+{% endset %}
+
+
+
+{% set historyDetails %}
+
+
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "Request for support"
+      },
+      content: {
+        html: requestDetails
+      }
+    },
+    {
+      heading: {
+        text: "Case closed"
+      },
+      content: {
+        html: closedDetails
+      }
+    }
+  ]
+}) }}
+  
+{% endset %}
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "School details",
+      id: "school-details",
+      panel: {
+        html: schoolDetails
+      }
+    },
+    {
+      label: "Case history",
+      id: "case-history",
+      panel: {
+        html: historyDetails
+      }
+    }
+  ]
+}) }} 
+
+
+<h3 class="govuk-heading-m">Actions</h3>
+<ul class="govuk-list">
+  <li>
+    <a class="govuk-link" href="guidance">Re-open case</a>
+  </li>
+</ul>
+
+
+      
+
+    </div>
+  </div>
+{% endblock %}

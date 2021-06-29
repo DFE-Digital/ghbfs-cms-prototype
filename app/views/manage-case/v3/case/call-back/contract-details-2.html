@@ -1,0 +1,53 @@
+{% extends "layout_case.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Existing contract details</h1>
+
+      <form action="contract-details-2-post" method="post">
+
+        {{ govukTextarea({
+          name: "contract-cost",
+          id: "contract-cost",
+          label: {
+            text: "What is the current cost of the contract?",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          }
+        }) }}
+
+        {{ govukTextarea({
+          name: "contract-worked-well",
+          id: "contract-worked-well",
+          label: {
+            text: "What has worked well with the contract?",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          }
+        }) }}
+
+        {{ govukTextarea({
+          name: "contract-kpis",
+          id: "contract-kpis",
+          label: {
+            text: "How has the contract worked against and KPIs (Key Performance Indicators) or SLAs (Service Level Agreements)?",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          }
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

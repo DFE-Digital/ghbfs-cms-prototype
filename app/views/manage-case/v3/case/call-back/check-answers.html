@@ -1,0 +1,126 @@
+{% extends "layout_case.html" %}
+
+
+
+{% set addressHtml %}
+{{ data['address-line-1'] }} <br>
+{{ data['address-line-2'] }} <br>
+{{ data['address-county'] }} <br>
+{{ data['address-postcode'] }}
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Check your answers</h1>
+
+      <h2 class="govuk-heading-m">Procurement details</h2>
+
+      {% set existingText %}
+        {% if data['existing-contract'] == 'yes' %}
+          {{ data['existing-contract-detail'] | safe }}
+        {% else %}
+          None
+        {% endif %}
+      {% endset %}
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Existing contract details"
+            },
+            value: {
+              text: existingText
+            },
+            actions: {
+              items: [
+                {
+                  href: "existing-contract",
+                  text: "Change",
+                  visuallyHiddenText: "existing contract details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "New procurement details"
+            },
+            value: { 
+              text: data['procurement-detail'] | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "procurement-detail",
+                  text: "Change",
+                  visuallyHiddenText: "school address"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Help and advice</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Details of any online support provided"
+            },
+            value: {
+              text: data['online-support-detail'] | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "online-support",
+                  text: "Change",
+                  visuallyHiddenText: "online support details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Details of any recommended frameworks"
+            },
+            value: { 
+              text: data['frameworks-detail'] | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "frameworks",
+                  text: "Change",
+                  visuallyHiddenText: "framework details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <form action="confirmation" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
+
+
+

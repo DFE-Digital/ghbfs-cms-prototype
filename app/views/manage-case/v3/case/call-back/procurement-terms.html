@@ -1,0 +1,77 @@
+{% extends "layout_case.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="procurement-terms-post" method="post">
+
+
+        <h1 class="govuk-heading-l">Procurement requirements</h1>
+
+
+        
+
+        {{ govukDateInput({
+          id: "procurement-start-date",
+          namePrefix: "procurement-start-date",
+          fieldset: {
+            legend: {
+              text: "What is the desired start date of the new contract?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2007"
+          }
+        }) }}
+
+
+
+        {{ govukRadios({
+          idPrefix: "procurement-length",
+          name: "procurement-length",
+          fieldset: {
+            legend: {
+              text: "What is the proposed length of the contract?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "one-off",
+              text: "One off purchase"
+            },
+            {
+              value: "1 year",
+              text: "1 year"
+            },
+            {
+              value: "1 to 2 years",
+              text: "1 to 2 years"
+            },
+            {
+              value: "3 to 4 years",
+              text: "3 to 4 years"
+            },
+            {
+              value: "Over 4 years",
+              text: "Over 4 years"
+            }
+          ]
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

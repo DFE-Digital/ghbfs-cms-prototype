@@ -83,6 +83,15 @@ router.get("/case/:id/:pageName", function(req, res, next){
 
 })
 
+router.get("/case/:id/:folderName/:pageName", function(req, res, next){
+
+	res.locals.case = schools.find(school => school.id == req.params.id);
+	
+
+	res.render(`manage-case/${folderVersion}/case/${req.params.folderName}/${req.params.pageName}`)
+
+})
+
 router.post("/case/:id/category-post", function(req, res, next){
 	
 	if(!req.body['procurement-category']){
@@ -106,6 +115,20 @@ router.post("/case/:id/consultation-post", function(req, res, next){
 	
 
 });
+
+router.post("/case/:id/guidance-post", function(req, res, next){
+
+		let school = schools.find(school => school.id == req.params.id);
+		
+		school.status = "closed"
+
+		school["guidance-details"] = req.body["guidance-details"];
+	
+		res.redirect(`/manage-case/${folderVersion}/case-list`);
+	
+});
+
+
 
 // Add your routes above the module.exports line
 module.exports = router

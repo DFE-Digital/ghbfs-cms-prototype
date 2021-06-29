@@ -1,0 +1,107 @@
+{% extends "layout_case.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Existing contract details</h1>
+
+      <form action="contract-details-2" method="post">
+
+        {{ govukInput({
+          name: "existing-supplier-name",
+          id: "existing-supplier-name",
+          label: {
+            text: "Who is the existing contract with?",
+            classes: "govuk-label--m"
+          },
+          value: data['existing-supplier-name']
+        }) }}
+
+        
+        {{ govukDateInput({
+          id: "contract-end-date",
+          namePrefix: "contract-end-date",
+          fieldset: {
+            legend: {
+              text: "When does the contract end?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2021"
+          }
+        }) }}
+
+
+        {% set extendedYesHtml %}
+
+        {{ govukRadios({
+          classes: "",
+          idPrefix: "want-to-extend",
+          name: "want-to-extend",
+          fieldset: {
+            legend: {
+              text: "Does the school buyer want to extend the contract?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {% endset %}
+
+
+        {{ govukRadios({
+          classes: "",
+          idPrefix: "contract-extendable",
+          name: "contract-extendable",
+          fieldset: {
+            legend: {
+              text: "Can the contract be extended?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: extendedYesHtml 
+              }
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
+
+
+

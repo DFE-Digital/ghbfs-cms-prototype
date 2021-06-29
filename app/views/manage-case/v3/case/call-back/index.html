@@ -1,6 +1,5 @@
 {% extends "layout_case.html" %}
 
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="key-info">
@@ -10,7 +9,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ data.school['school-name'] }}</h1>
+       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ data.school['school-name'] }}</h1>
       {{govukTag({
           text: "Consultation booked",
           classes: "govuk-tag--purple govuk-!-margin-bottom-7 govuk-!-margin-top-1"
@@ -18,13 +17,12 @@
 
 {% include "../includes/school-details.html" %}
 
-
 <h3 class="govuk-heading-m">Actions</h3>
 <ul class="govuk-list">
   
   {% if not data['procurement-category'] %}
   <li>
-    <a class="govuk-link" href="category">Add category</a>
+    <a class="govuk-link" href="call-back/category">Add category</a>
   </li>
   {% endif %}        
   <li>

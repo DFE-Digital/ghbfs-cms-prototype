@@ -1,0 +1,80 @@
+<p>Request sent on {{ 3 |daysAgo}}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      {% if data['procurement-category'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Category
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['procurement-category']}} <br>  <a href="category">change <span class="govuk-visually-hidden">category</span></a>
+        </dd>        
+      </div>
+      {% endif %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          What do you need help with?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Finding or choosing a supplier
+        </dd>        
+      </div>
+    
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Type of goods or service
+        </dt>
+        <dd class="govuk-summary-list__value">
+          computers and laptops
+        </dd>        
+      </div>
+    
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          When you need the new supplier
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1 to 6 months
+        </dd>        
+      </div>
+    
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Budget
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £20000
+        </dd>        
+      </div>
+    
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Have you found or contacted any suppliers?
+        </dt>
+        <dd class="govuk-summary-list__value">
+            We have contacted a local supplier, but they are not able to supply what we need
+        </dd>        
+      </div>
+    
+  
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Describe what you need to buy
+        </dt>
+        <dd class="govuk-summary-list__value">
+          I need 30 laptops and/or desktop computers to replace the old ones in our IT classroom. 
+        </dd>        
+      </div>
+    
+  
+</dl>
