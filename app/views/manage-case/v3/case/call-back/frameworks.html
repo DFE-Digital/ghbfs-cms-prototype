@@ -1,4 +1,4 @@
-{% extends "layout_case.html" %}
+{% extends "layout.html" %}
 
 
 {% block content %}
@@ -66,7 +66,8 @@
             text: "Add details of any recommended frameworks and why they may be suitable for the school's needs."
           }
         }) }}
-
+        <input type="hidden" name="tags_frameworks" value="true">
+        
         {{ govukButton({
           text: "Save and continue"
         }) }}

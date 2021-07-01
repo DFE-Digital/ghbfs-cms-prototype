@@ -17,16 +17,15 @@ router.get('*', function(req, res, next){
 })
 
 
-router.post("/call-back/existing-contract-post", function(req, res, next){
+router.post("/case/:id/call-back/existing-contract-post", function(req, res, next){
 	
 	if(!req.body['existing-contract']){
-		res.redirect(`/manage-case/${folderVersion}/call-back/existing-contrac`)
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/call-back/existing-contract`)
 	} else if(req.body['existing-contract'] === "yes"){
-		
-		res.redirect(`/manage-case/${folderVersion}/call-back/contract-details`);
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/call-back/contract-details`);
 	} else {
-		req.session.data.tags.existingContract = true;
-		res.redirect(`/manage-case/${folderVersion}/call-back/procurement-detail`);
+		req.session.data.tags_existingContract = "true";
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/call-back/task-list`);
 	}
 
 });
@@ -43,28 +42,17 @@ router.post("/:folder/category-post", function(req, res, next){
 });
 
 
-router.post("/call-back/contract-details-2-post", function(req, res, next){
+router.post("/case/:id/call-back/contract-details-2-post", function(req, res, next){
 	
 
-		req.session.data.tags.existingContract = true;
-		res.redirect(`/manage-case/${folderVersion}/call-back/procurement-detail`);
+		req.session.data.tags_existingContract = "true";
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/call-back/task-list`);
 	
 
 });
 
-router.post("/call-back/procurement-terms", function(req, res, next){
 
-		req.session.data.tags.procurementRequirements = true;
-		next()
-	
-});
 
-router.post("/call-back/procurement-terms-post", function(req, res, next){
-
-		req.session.data.tags.procurementTerms = true;
-		res.redirect(`/manage-case/${folderVersion}/call-back/task-list`);
-	
-});
 
 router.all("/case-list", function(req, res, next){
 	

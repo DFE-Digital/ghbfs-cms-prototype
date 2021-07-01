@@ -12,7 +12,7 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ data.school['school-name'] }}</h1>
+       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ case.school.name }}</h1>
       {{govukTag({
           text: "Consultation booked",
           classes: "govuk-tag--purple govuk-!-margin-bottom-7 govuk-!-margin-top-1"
@@ -47,7 +47,7 @@
                   Procurement requirements
                 </a>
               </span>
-              {% if data.tags.procurementRequirements == true %}
+              {% if data.tags_procurementRequirements == "true" %}
               <strong class="govuk-tag app-task-list__tag" id="new-proc-status">Completed</strong>
               {% endif %}
             </li>
@@ -58,7 +58,7 @@
                   Procurement terms
                 </a>
               </span>
-              {% if data.tags.procurementTerms == true %}
+              {% if data.tags_procurementTerms == "true" %}
               <strong class="govuk-tag app-task-list__tag" id="new-proc-status">Completed</strong>
               {% endif %}
             </li>
@@ -68,7 +68,7 @@
                   Existing contract details
                 </a>
               </span>
-              {% if data.tags.existingContract == true %}
+              {% if data.tags_existingContract == "true" %}
               <strong class="govuk-tag app-task-list__tag" id="contract-status">Completed</strong>
               {% endif %}
             </li>
@@ -79,7 +79,7 @@
                   Available frameworks
                 </a>
               </span>
-              {% if data.tags.framework == true %}
+              {% if data.tags_frameworks == "true" %}
               <strong class="govuk-tag app-task-list__tag" id="contract-status">Completed</strong>
               {% endif %}
             </li>
@@ -99,7 +99,7 @@
                 <a href="type-of-procurement" aria-describedby="frameworks">
                   Start a managed procurement
                 </a>
-              {% if data.tags.frameworks == true %}
+              {% if data.tags_frameworks == "true" %}
               <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
               {% endif %}
             </li>
