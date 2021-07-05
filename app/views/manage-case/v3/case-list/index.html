@@ -19,7 +19,7 @@
         {% for case in cases %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="case/{{case.id}}/{{ case.status | formatCaseListUrl }}">{{case.school.name}}</a>
+            <a href="case/{{case.id}}/{{ case.status | formatCaseListUrl }}" class="govuk-link--no-visited-state">{{case.school.name}}</a>
           </td>
           <td class="govuk-table__cell">
             {{govukTag({

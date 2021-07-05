@@ -109,7 +109,7 @@ module.exports = [{
   "last_name": "Le Jean",
   "phone": "1278620313",
   "email": "alejean7@cam.ac.uk",
-  "status": "new",
+  "status": "Consultation booked",
   "school": {
     "urn": 100479,
     "name": "Bevington Primary School",
@@ -124,7 +124,7 @@ module.exports = [{
   "last_name": "Corser",
   "phone": "6996516560",
   "email": "lcorser8@utexas.edu",
-  "status": "new",
+  "status": "Bespoke procurement",
   "school": {
     "urn": 100096,
     "name": "Swiss Cottage School - Development & Research Centre",
@@ -139,7 +139,7 @@ module.exports = [{
   "last_name": "Rosendall",
   "phone": "2827366486",
   "email": "rrosendall9@technorati.com",
-  "status": "new",
+  "status": "Framework procurement",
   "school": {
     "urn": 100391,
     "name": "New River College Secondary",

@@ -1,0 +1,109 @@
+{% set addressHtml %}
+{{case.school.street}} <br>
+{{case.school.town}} <br>
+{{case.school.postcode}} <br>
+{% endset %}
+
+
+{% set schoolDetails %}
+  {% include "../includes/school-tab.html" %}
+{% endset %}
+
+{% set requestDetails %}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Consultation time
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ 0 | daysAgo}} <br> 11:00am
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> consultation date and time</span>
+          </a>
+        </dd>         
+      </div>
+
+      {% if data['procurement-category'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Category
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['procurement-category']}} 
+        </dd>   
+
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="category">
+            Change<span class="govuk-visually-hidden"> category</span>
+          </a>
+        </dd>      
+      </div>
+      {% endif %}
+</dl>
+<p><a href="#">Change consultation time</a></p>
+  {% include "../includes/request-details.html" %}
+{% endset %}
+
+{% set closedDetails %}
+  {% include "../includes/consultation-details.html" %}
+{% endset %}
+
+
+
+{% set historyDetails %}
+
+
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "Request for support"
+      },
+      content: {
+        html: requestDetails
+      }
+    },
+    {
+      heading: {
+        text: "Consultation booked"
+      },
+      content: {
+        html: closedDetails
+      }
+    }
+  ]
+}) }}
+  
+{% endset %}
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "School details",
+      id: "school-details",
+      panel: {
+        html: schoolDetails
+      }
+    },
+    {
+      label: "Request details",
+      id: "request-details",
+      panel: {
+        html: requestDetails
+      }
+    },
+    {
+      label: "Case history",
+      id: "case-history",
+      panel: {
+        html: historyDetails
+      }
+    }
+  ]
+}) }} 
