@@ -127,6 +127,20 @@ router.post("/case/:id/call-back/close-case-post", function(req, res, next){
 		res.redirect(`/manage-case/${folderVersion}/case-list`);
 	
 });
+router.post("/case/:id/call-back/type-of-procurement-post", function(req, res, next){
+	
+		let school = schools.find(school => school.id == req.params.id);
+		
+		if(!req.body['type-of-procurement']){
+			res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/call-back/type-of-procurement`);
+		} else {
+			school.status = req.body['type-of-procurement']
+		}
+
+	
+		res.redirect(`/manage-case/${folderVersion}/case-list`);
+	
+});
 
 
 // Add your routes above the module.exports line

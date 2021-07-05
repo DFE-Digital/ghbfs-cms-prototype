@@ -14,11 +14,11 @@
 
        <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ case.school.name }}</h1>
       {{govukTag({
-          text: "Consultation booked",
+          text: "Consultation started",
           classes: "govuk-tag--purple govuk-!-margin-bottom-7 govuk-!-margin-top-1"
         })}}
 
-      {% include "../../includes/school-details.html" %}
+      {% include "../../includes/school-details-consultation.html" %}
 
 
       <h2 class="govuk-heading-m">
@@ -33,7 +33,7 @@
           <ul class="app-task-list__items govuk-!-padding-left-0">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="category" aria-describedby="category-status">
+                <a href="category" aria-describedby="category-status" class="govuk-link--no-visited-state">
                   Category
                 </a>
               </span>
@@ -43,7 +43,7 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="procurement-detail" aria-describedby="new-proc-status">
+                <a href="procurement-detail" aria-describedby="new-proc-status" class="govuk-link--no-visited-state">
                   Procurement requirements
                 </a>
               </span>
@@ -54,7 +54,7 @@
 
              <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="procurement-terms" aria-describedby="new-proc-status">
+                <a href="procurement-terms" aria-describedby="new-proc-status" class="govuk-link--no-visited-state">
                   Procurement terms
                 </a>
               </span>
@@ -64,7 +64,7 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="existing-contract" aria-describedby="contract-status">
+                <a href="existing-contract" aria-describedby="contract-status" class="govuk-link--no-visited-state">
                   Existing contract details
                 </a>
               </span>
@@ -75,7 +75,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="frameworks" aria-describedby="contract-status">
+                <a href="frameworks" aria-describedby="contract-status" class="govuk-link--no-visited-state">
                   Available frameworks
                 </a>
               </span>
@@ -91,12 +91,12 @@
       <h3 class="govuk-heading-m">Actions</h3>
        <ul class="govuk-list">
             <li>
-                <a href="close-case" aria-describedby="company-information-status">
+                <a href="close-case" aria-describedby="company-information-status" class="govuk-link--no-visited-state">
                   Close case
                 </a>
           </li>
             <li>
-                <a href="type-of-procurement" aria-describedby="frameworks">
+                <a href="type-of-procurement" aria-describedby="frameworks" class="govuk-link--no-visited-state">
                   Start a managed procurement
                 </a>
               {% if data.tags_frameworks == "true" %}

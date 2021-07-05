@@ -62,40 +62,36 @@ module.exports = function (env) {
   }
 
 
+let statuses = {
+  "new": {
+    statusClass : "govuk-tag--blue",
+    statusUrl : "new-case"
+  },
+  "Consultation booked": {
+    statusClass : "govuk-tag--purple",
+    statusUrl : "consultation-booked"
+  },
+  "closed": {
+    statusClass : "govuk-tag--grey",
+    statusUrl : "closed-case"
+  },
+  "Framework procurement": {
+    statusClass : "govuk-tag--turquoise",
+    statusUrl : "manage-procurement"
+  },
+  "Bespoke procurement": {
+    statusClass : "govuk-tag--turquoise",
+    statusUrl : "manage-procurement"
+  }
+}
+
+
   filters.formatCaseTagColour = function(str){
-    let statusColour = ""
-    switch (str){
-      case "new":
-        statusColour =  "govuk-tag--blue";
-        break;
-      case "Consultation booked":
-        statusColour = "govuk-tag--purple";
-        break;
-      case "closed":
-        statusColour = "govuk-tag--grey";
-        break;
-      }
-
-      
-
-    return statusColour;
+    return statuses[str].statusClass;
   }
 
   filters.formatCaseListUrl = function(str){
-    let url = ""
-    switch (str){
-      case "new":
-        url =  "new-case";
-        break;
-      case "Consultation booked":
-        url = "consultation-booked";
-        break;
-      case "closed":
-        url = "closed-case";
-        break;
-      }
-
-    return url;
+    return statuses[str].statusUrl;
   }
 
   return filters

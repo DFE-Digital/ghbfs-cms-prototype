@@ -5,7 +5,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form action="../managed-procurement" method="post">
+      <form action="type-of-procurement-post" method="post">
         {{ govukRadios({
           classes: "",
           idPrefix: "type-of-procurement",
@@ -19,12 +19,12 @@
           },
           items: [
             {
-              value: "Framework",
+              value: "Framework procurement",
               checked: checked("type-of-procurement", "Framework"),
               text: "Framework"
             },
             {
-              value: "Bespoke",
+              value: "Bespoke procurement",
               checked: checked("type-of-procurement", "Bespoke"),
               text: "Bespoke"
             }
