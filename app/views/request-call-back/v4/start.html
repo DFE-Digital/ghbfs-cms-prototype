@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Supported buying for schools</h1>
+
+      <p>If you need help with buying goods or services for your school, the Department for Education’s team of procurement experts can offer free advice and support.</p>
+
+      <h2 class="govuk-heading-m">How this service works</h2>
+
+      <p>Use this service to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+          <li>ask for help with your procurement</li>
+          <li>get advice from the team about what buying process you should follow</li>
+          <li>get advice about the right framework for your needs</li>
+          <li>ask questions about legal or compliance issues</li>
+        </ul>
+
+      <p>You will be asked some questions about your school and what you need to buy. The information you provide will help the supported buying team understand your situation and offer the most appropriate advice.</p>
+
+      <p>The supported buying team aim to respond to your request for help within 1 week. Their first response will be sent by email. Once you have received your first response by email you will be able to arrange a telephone consultation.</p>
+
+      <h2 class="govuk-heading-m">Who this service is for</h2>
+
+      <p>You can use this service if you are are buying goods or services for a:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+          <li>maintained school</li>
+          <li>academy</li>
+          <li>multi-academy trust</li>
+          <li>special school</li>
+          <li>maintained nursery school</li>
+          <li>or any combination of these types of school</li>
+        </ul>
+
+
+      {{ govukButton({
+        text: 'Start now',
+        href: 'interruption-card-about'
+      }) }}
+
+      <h2 class="govuk-heading-m">Before you start</h2>
+
+      <p>Read advice from the Department for Education about <a href="#">how to plan a procurement</a>.</p>
+
+      <p>You may be able to buy what you need using a Department for Education approved framework. Use the <a href="#">find a framework service</a> to find frameworks that may meet your needs.</a>
+
+      <p>If you are planning a catering procurement, the Department for Education has a new service which can help you <a href="#">create a specification for a catering service</a>, step by step.</p>
+
+    </div>
+  </div>
+{% endblock %}

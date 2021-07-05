@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="check-your-answers" method="post">
+
+
+
+        {{ govukTextarea({
+          name: "description",
+          id: "description",
+          value: data['description'],
+          label: {
+            text: "Describe what you need to buy",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Include any specific requirements that it might be useful for the supported buying team to know."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

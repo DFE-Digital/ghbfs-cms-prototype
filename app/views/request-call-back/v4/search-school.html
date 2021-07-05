@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+      <span class="govuk-caption-l">About your school</span>
+
+      <form action="search-school-post" method="post">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="search-school">
+            Search for your school
+          </label>
+          </h1>
+
+        <div id="search-school-hint" class="govuk-hint">
+          Enter the name or unique reference number (URN) of your school.
+        </div>
+
+
+      <div id="search-school-autocomplete-container"></div>
+      </div>
+      <input type="hidden" name="school-urn" id="school-urn">
+
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+    </form>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+$(document).ready(function(){
+
+  accessibleAutocomplete({
+    element: document.querySelector('#search-school-autocomplete-container'),
+    id: 'search-school',
+    name: 'search-school',
+    async: true,
+    source: function(query, populateResults){
+
+      let url = `https://scythe-ambiguous-arithmetic.glitch.me/data.json?sql=select%0D%0A++rowid%2C%0D%0A++URN%2C%0D%0A++EstablishmentNumber%2C%0D%0A++EstablishmentName%2C%0D%0A++Locality%2C%0D%0A++Postcode%0D%0Afrom%0D%0A++edubasealldata20210521%0D%0Awhere%0D%0A++%22EstablishmentName%22+like+%3Ap0%0D%0A++OR+%22URN%22+like+%3Ap0%0D%0Aorder+by%0D%0A++rowid%0D%0Alimit%0D%0A++10&_shape=array&p0=%25${query}%25`
+      if(query.length > 3){
+        fetch(url)
+          .then(function(response){
+            return response.json()
+          })
+          .then(function(data){
+            let suggestions = [];
+            data.forEach(item => suggestions.push(`${item.URN} - ${item.EstablishmentName} (${item.Locality}, ${item.Postcode})`))
+            populateResults(suggestions);
+          })
+        }
+      },
+    onConfirm: function(confirmed){
+      let urn = confirmed.substr(0,6);
+      document.querySelector("#school-urn").value = urn;
+    }
+  });
+});
+</script>
+{% endblock %}

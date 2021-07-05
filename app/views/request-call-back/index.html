@@ -13,6 +13,25 @@
       <p>The information given in this form is used by the supported buying team to make an initial assessment of the school's needs and assign the case to the most appropriate member of the team.</p>
 
       <h2 class="govuk-heading-m">
+        Version 4
+      </h2>
+      <h3 class="govuk-heading-s">Changes</h3>
+      <p>Updates following user research sessions:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>No changes yet</li>
+      </ul>
+
+      
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: 'request-call-back/v4/start'
+      }) }}
+
+      {% set v3 %}
+
+      <h2 class="govuk-heading-m">
         Version 3
       </h2>
       <h3 class="govuk-heading-s">Changes</h3>
@@ -30,14 +49,14 @@
       <h3 class="govuk-heading-s">Research notes</h3>
       <p><a href="https://docs.google.com/presentation/d/146vcSi4pRxfbagmVwTNZMSYEluoqnoZ3WRV7-J3V2fA/edit?usp=sharing">User research report</a>
       <p><a href="https://drive.google.com/drive/folders/1x22BHeBmcN3gNOQcZWpJfFs-78InaZDD?usp=sharing">Observer notes</a></p>
-
-
-      <!--<p><a href="#0">View user research report</a>.<p>-->
-
       {{ govukButton({
         text: 'View prototype',
         href: 'request-call-back/v3/start'
       }) }}
+
+      {% endset %}
+
+      
 
 
 
@@ -86,6 +105,9 @@
       {{ govukAccordion({
         items: [
           {
+            heading: { text: 'Version 3' },
+            content: { html: v3 }
+          },{
             heading: { text: 'Version 2' },
             content: { html: v2 }
           },{

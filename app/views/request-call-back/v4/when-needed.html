@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="budget" method="post">
+        <span class="govuk-caption-l">About your procurement</span>
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        {{ govukRadios({
+          idPrefix: "when-needed",
+          name: "when-needed",
+          fieldset: {
+            legend: {
+              text: "When do you need the goods or service?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+
+
+          items: [
+
+            {
+              value: "Less than one month",
+              text: "In the next 30 days"
+            },
+            {
+              value: "1 to 6 months",
+              text: "1 to 6 months"
+            },
+            {
+              value: "Over 6 months",
+              text: "Over 6 months"
+            },
+            {
+              value: "I'm not sure, or I don't know",
+              text: "I'm not sure, or I don't know"
+            }
+          ]
+        }) }}
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

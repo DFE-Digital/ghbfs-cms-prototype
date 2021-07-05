@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="check-your-answers" method="post">
+
+        {{ govukTextarea({
+          name: "advice-detail",
+          id: "advice-detail",
+          value: data['advice-detail'],
+          label: {
+            text: "How can we help?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Describe your problem in a few sentences. Include things like the type of goods or service you are buying and anything else that might be helpful for the supported buying team to know."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="check-your-answers" method="post">
+        <span class="govuk-caption-l">About your procurement</span>
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        {{ govukTextarea({
+          name: "existing-contract",
+          id: "existing-contract",
+          value: data['existing-contract'],
+          label: {
+            text: "Tell us about any existing contracts",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Include your existing contract's end date, if you know it. You could also include anything that you particularly like or dislike about the current provider."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="type-of-help-post" method="post">
+        <span class="govuk-caption-l">About your procurement</span>
+        
+
+        {{ govukRadios({
+          idPrefix: "type-of-help",
+          name: "type-of-help",
+          fieldset: {
+            legend: {
+              text: "What do you need help with?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+
+
+          items: [
+
+            {
+              value: "supplier",
+              text: "Finding or choosing a supplier"
+            },
+            {
+              value: "compliance",
+              text: "Compliance or legal matters"
+            },
+            {
+              value: "other",
+              text: "Something else"
+            }
+          ]
+        }) }}
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

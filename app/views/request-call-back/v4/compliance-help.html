@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="check-your-answers" method="post">
+
+        <h1 class="govuk-heading-l">Help with compliance or legal matters</h1>
+
+        {% set helpHtml %}
+        <p>You can find <a href="https://www.gov.uk/guidance/buying-for-schools">advice about running a compliant procurement process</a> on GOV.UK.</p>
+        {% endset %}
+        {{ govukInsetText({
+          html: helpHtml
+        }) }}
+
+        {{ govukTextarea({
+          name: "compliance-help--detail",
+          id: "compliance-help--detail",
+          value: data['compliance-help--detail'],
+          label: {
+            text: "How can we help?",
+            classes: "govuk-label--m",
+            isPageHeading: fasle
+          },
+          hint: {
+            text: "Include any information that may be helpful, such as details of what you need to buy or what stage you are at in your procurement. The information you enter will only be seen by the DfE Schools Commercial team."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
