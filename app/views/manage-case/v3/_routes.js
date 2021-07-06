@@ -2,6 +2,7 @@ const express = require('express')
 const router = new express.Router()
 
 const schools = require(`./data/schools.js`);
+const supportInformation = require(`./data/support-information.js`);
 
 let folderVersion = "v3"
 
@@ -14,6 +15,13 @@ router.get('*', function(req, res, next){
   res.locals['serviceUrl'] = '/'+req.originalUrl.split('/')[1]+'/'
 
   next()
+})
+
+router.all('/case/:id/*', function(req, res, next){
+	res.locals.case = schools.find(school => school.id == req.params.id);
+	res.locals.supportInformation = supportInformation.find(item => item.id == req.params.id);
+	console.log(res.locals.supportInformation);
+	next()
 })
 
 
@@ -64,17 +72,11 @@ router.all("/case-list", function(req, res, next){
 
 router.get("/case/:id/:pageName", function(req, res, next){
 
-	res.locals.case = schools.find(school => school.id == req.params.id);
-	
-
 	res.render(`manage-case/${folderVersion}/case/${req.params.pageName}`)
 
 })
 
 router.get("/case/:id/:folderName/:pageName", function(req, res, next){
-
-	res.locals.case = schools.find(school => school.id == req.params.id);
-	
 
 	res.render(`manage-case/${folderVersion}/case/${req.params.folderName}/${req.params.pageName}`)
 

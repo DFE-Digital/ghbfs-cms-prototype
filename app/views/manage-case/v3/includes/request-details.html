@@ -8,7 +8,7 @@
           What do you need help with?
         </dt>
         <dd class="govuk-summary-list__value">
-          Finding or choosing a supplier
+          {{ supportInformation['type-of-help']}}
         </dd>        
       </div>
     
@@ -19,7 +19,7 @@
           Type of goods or service
         </dt>
         <dd class="govuk-summary-list__value">
-          computers and laptops
+          {{ supportInformation['type-of-goods']}}
         </dd>        
       </div>
     
@@ -30,7 +30,7 @@
           When you need the new supplier
         </dt>
         <dd class="govuk-summary-list__value">
-          1 to 6 months
+          {{ supportInformation['when-needed']}}
         </dd>        
       </div>
     
@@ -41,7 +41,7 @@
           Budget
         </dt>
         <dd class="govuk-summary-list__value">
-          £20000
+          £{{ supportInformation['budget']}}
         </dd>        
       </div>
     
@@ -52,7 +52,12 @@
           Have you found or contacted any suppliers?
         </dt>
         <dd class="govuk-summary-list__value">
-            We have contacted a local supplier, but they are not able to supply what we need
+          {% if supportInformation['suppliers'] == "yes" %}
+            {{ supportInformation['supplier-detail']}}
+          {% else %}
+            no
+          {% endif %}
+
         </dd>        
       </div>
     
@@ -63,7 +68,7 @@
           Describe what you need to buy
         </dt>
         <dd class="govuk-summary-list__value">
-          I need 30 laptops and/or desktop computers to replace the old ones in our IT classroom. 
+          {{ supportInformation['description']}}
         </dd>        
       </div>
     

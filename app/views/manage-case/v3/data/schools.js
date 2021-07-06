@@ -19,7 +19,7 @@ module.exports = [{
   "last_name": "Angear",
   "phone": "8393402978",
   "email": "pangear1@domainmarket.com",
-  "status": "new",
+  "status": "Framework procurement",
   "school": {
     "urn": 100243,
     "name": "Thomas Fairchild Community School",
@@ -49,7 +49,7 @@ module.exports = [{
   "last_name": "Ambrus",
   "phone": "3983531647",
   "email": "pambrus3@netlog.com",
-  "status": "new",
+  "status": "Bespoke procurement",
   "school": {
     "urn": 100174,
     "name": "St Alfege with St Peter's Church of England Primary School",
@@ -64,7 +64,7 @@ module.exports = [{
   "last_name": "Vanyutin",
   "phone": "8914272157",
   "email": "tvanyutin4@yolasite.com",
-  "status": "new",
+  "status": "Consultation booked",
   "school": {
     "urn": 100373,
     "name": "Ravenscourt Park Preparatory School",
@@ -87,65 +87,5 @@ module.exports = [{
     "town": "London",
     "county": null,
     "postcode": "E8 3EN"
-  }
-}, {
-  "id": 7,
-  "first_name": "Margalit",
-  "last_name": "Sprigin",
-  "phone": "2613651037",
-  "email": "msprigin6@cnbc.com",
-  "status": "new",
-  "school": {
-    "urn": 100448,
-    "name": "St Andrew's (Barnsbury) Church of England Primary School",
-    "street": "Matilda Street",
-    "town": "London",
-    "county": null,
-    "postcode": "N1 0LB"
-  }
-}, {
-  "id": 8,
-  "first_name": "Aimee",
-  "last_name": "Le Jean",
-  "phone": "1278620313",
-  "email": "alejean7@cam.ac.uk",
-  "status": "Consultation booked",
-  "school": {
-    "urn": 100479,
-    "name": "Bevington Primary School",
-    "street": "Bevington Road",
-    "town": "London",
-    "county": null,
-    "postcode": "W10 5TW"
-  }
-}, {
-  "id": 9,
-  "first_name": "Lexine",
-  "last_name": "Corser",
-  "phone": "6996516560",
-  "email": "lcorser8@utexas.edu",
-  "status": "Bespoke procurement",
-  "school": {
-    "urn": 100096,
-    "name": "Swiss Cottage School - Development & Research Centre",
-    "street": "80 Avenue Road",
-    "town": "London",
-    "county": null,
-    "postcode": "NW8 6HX"
-  }
-}, {
-  "id": 10,
-  "first_name": "Rozalin",
-  "last_name": "Rosendall",
-  "phone": "2827366486",
-  "email": "rrosendall9@technorati.com",
-  "status": "Framework procurement",
-  "school": {
-    "urn": 100391,
-    "name": "New River College Secondary",
-    "street": "Lough Road",
-    "town": "London",
-    "county": null,
-    "postcode": "N7 8RH"
   }
 }]
