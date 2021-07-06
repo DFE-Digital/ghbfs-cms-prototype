@@ -8,7 +8,13 @@
           What do you need help with?
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ supportInformation['type-of-help']}}
+          {% if supportInformation['type-of-help'] == 'supplier' %}
+            Finding or choosing a supplier
+          {% elseif  supportInformation['type-of-help'] == 'compliance' %}
+            Compliance or legal matters
+          {% elseif  supportInformation['type-of-help'] == 'other' %}
+            Something else
+          {% endif %}
         </dd>        
       </div>
     
