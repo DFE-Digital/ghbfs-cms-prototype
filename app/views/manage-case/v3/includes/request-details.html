@@ -18,8 +18,7 @@
         </dd>        
       </div>
     
-  
-    
+    {% if supportInformation['type-of-help'] == 'supplier' %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Type of goods or service
@@ -28,8 +27,6 @@
           {{ supportInformation['type-of-goods']}}
         </dd>        
       </div>
-    
-  
     
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -77,6 +74,17 @@
           {{ supportInformation['description']}}
         </dd>        
       </div>
-    
+    {% else %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          How can we help you?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ supportInformation['advice-detail']}}
+        </dd>        
+      </div>
+
+    {% endif %}
   
 </dl>
