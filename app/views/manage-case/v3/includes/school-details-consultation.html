@@ -1,8 +1,3 @@
-{% set addressHtml %}
-{{case.school.street}} <br>
-{{case.school.town}} <br>
-{{case.school.postcode}} <br>
-{% endset %}
 
 
 {% set schoolDetails %}
@@ -62,18 +57,18 @@
   items: [
     {
       heading: {
-        text: "Request for support"
-      },
-      content: {
-        html: requestDetails
-      }
-    },
-    {
-      heading: {
         text: "Consultation booked"
       },
       content: {
         html: closedDetails
+      }
+    },
+    {
+      heading: {
+        text: "Request for support"
+      },
+      content: {
+        html: requestDetails
       }
     }
   ]
