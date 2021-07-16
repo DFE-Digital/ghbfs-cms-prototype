@@ -11,8 +11,24 @@
     <div class="govuk-grid-column-two-thirds">
       <p>Used for procurement ops to contact user to find out more about their requirements.</p>
       <h2 class="govuk-heading-m">
-        Version 3
+        Version 4
       </h2>
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <p>No changes yet</p>
+      
+
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>No research done yet</p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/manage-case/v4/case-list'
+      }) }}
+
+
+      {% set v3 %}
 
       <h3 class="govuk-heading-s">Changes</h3>
       <p>Updates following co-design session with procurement ops team.</p>
@@ -23,13 +39,17 @@
       </ul>
 
       <h3 class="govuk-heading-s">Research notes</h3>
-      
+      <p>No research done yet</p>
       <!--<p><a href="#0">View user research report</a>.<p>-->
 
       {{ govukButton({
         text: 'View prototype',
         href: '/manage-case/v3/case-list'
       }) }}
+
+
+      {% endset %}
+
 
 
 

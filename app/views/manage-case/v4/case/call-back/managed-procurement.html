@@ -1,4 +1,4 @@
-{% extends "layout_case.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
   Task list
@@ -12,13 +12,13 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ case.school.name }}</h1>
+       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ data.school['school-name'] }}</h1>
       {{govukTag({
-          text: "Consultation started",
+          text: "Consultation booked",
           classes: "govuk-tag--purple govuk-!-margin-bottom-7 govuk-!-margin-top-1"
         })}}
 
-      {% include "../../includes/school-details-consultation.html" %}
+      {% include "../includes/school-details.html" %}
 
 
       <h2 class="govuk-heading-m">
@@ -33,7 +33,7 @@
           <ul class="app-task-list__items govuk-!-padding-left-0">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="category" aria-describedby="category-status" class="govuk-link--no-visited-state">
+                <a href="category" aria-describedby="category-status">
                   Category
                 </a>
               </span>
@@ -43,43 +43,43 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="procurement-detail" aria-describedby="new-proc-status" class="govuk-link--no-visited-state">
+                <a href="procurement-detail" aria-describedby="new-proc-status">
                   Procurement requirements
                 </a>
               </span>
-              {% if data.tags_procurementRequirements == "true" %}
+              {% if data.tags.procurementRequirements == true %}
               <strong class="govuk-tag app-task-list__tag" id="new-proc-status">Completed</strong>
               {% endif %}
             </li>
 
              <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="procurement-terms" aria-describedby="new-proc-status" class="govuk-link--no-visited-state">
+                <a href="procurement-terms" aria-describedby="new-proc-status">
                   Procurement terms
                 </a>
               </span>
-              {% if data.tags_procurementTerms == "true" %}
+              {% if data.tags.procurementTerms == true %}
               <strong class="govuk-tag app-task-list__tag" id="new-proc-status">Completed</strong>
               {% endif %}
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="existing-contract" aria-describedby="contract-status" class="govuk-link--no-visited-state">
+                <a href="existing-contract" aria-describedby="contract-status">
                   Existing contract details
                 </a>
               </span>
-              {% if data.tags_existingContract == "true" %}
+              {% if data.tags.existingContract == true %}
               <strong class="govuk-tag app-task-list__tag" id="contract-status">Completed</strong>
               {% endif %}
             </li>
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="frameworks" aria-describedby="contract-status" class="govuk-link--no-visited-state">
+                <a href="frameworks" aria-describedby="contract-status">
                   Available frameworks
                 </a>
               </span>
-              {% if data.tags_frameworks == "true" %}
+              {% if data.tags.framework == true %}
               <strong class="govuk-tag app-task-list__tag" id="contract-status">Completed</strong>
               {% endif %}
             </li>
@@ -91,15 +91,17 @@
       <h3 class="govuk-heading-m">Actions</h3>
        <ul class="govuk-list">
             <li>
-                <a href="close-case" aria-describedby="company-information-status" class="govuk-link--no-visited-state">
+                <a href="online-support" aria-describedby="company-information-status">
                   Close case
                 </a>
           </li>
             <li>
-                <a href="type-of-procurement" aria-describedby="frameworks" class="govuk-link--no-visited-state">
+                <a href="procurement" aria-describedby="frameworks">
                   Start a managed procurement
                 </a>
-              
+              {% if data.tags.frameworks == true %}
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+              {% endif %}
             </li>
           </ul>
 
