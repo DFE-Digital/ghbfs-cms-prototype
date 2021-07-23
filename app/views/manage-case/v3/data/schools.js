@@ -19,7 +19,7 @@ module.exports = [{
   "last_name": "Angear",
   "phone": "8393402978",
   "email": "pangear1@domainmarket.com",
-  "status": "Framework procurement",
+  "status": "new",
   "school": {
     "urn": 100243,
     "name": "Thomas Fairchild Community School",
@@ -49,7 +49,7 @@ module.exports = [{
   "last_name": "Ambrus",
   "phone": "3983531647",
   "email": "pambrus3@netlog.com",
-  "status": "Bespoke procurement",
+  "status": "new",
   "school": {
     "urn": 100174,
     "name": "St Alfege with St Peter's Church of England Primary School",
@@ -64,7 +64,7 @@ module.exports = [{
   "last_name": "Vanyutin",
   "phone": "8914272157",
   "email": "tvanyutin4@yolasite.com",
-  "status": "Consultation booked",
+  "status": "new",
   "school": {
     "urn": 100373,
     "name": "Ravenscourt Park Preparatory School",
