@@ -66,28 +66,53 @@
 
 {% set historyDetails %}
 
+<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+  {% for note in case.history | sort(true, false, "index") %}
+    <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+          {{ note.title }}
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ note.date  }}
+        </dd>        
+      </div> 
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Notes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ note.caseNote | safe }}
+        </dd>        
+      </div> 
+      </dl>
+    </div>
+  </div>
+  {% endfor %}
+  
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+          Request for support
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+      {% include "../includes/request-details-specify.html" %}
+    </div>
+  </div>
+</div>
 
-{{ govukAccordion({
-  id: "accordion-default",
-  items: [
-    {
-      heading: {
-        text: "Reply to school"
-      },
-      content: {
-        html: replyDetails
-      }
-    },
-    {
-      heading: {
-        text: "Request for support"
-      },
-      content: {
-        html: requestDetails
-      }
-    }
-  ]
-}) }}
   
 {% endset %}
 

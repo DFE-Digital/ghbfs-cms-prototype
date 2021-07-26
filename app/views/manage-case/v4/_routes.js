@@ -1,6 +1,8 @@
 const express = require('express')
 const router = new express.Router()
 
+const moment = require("moment")
+
 const schools = require(`./data/schools.js`);
 const supportInformation = require(`./data/support-information.js`);
 
@@ -148,6 +150,46 @@ router.post("/case/:id/call-back/type-of-procurement-post", function(req, res, n
 		res.redirect(`/manage-case/${folderVersion}/case-list`);
 	
 });
+
+let addToHistory = function(caseId, data){
+	let school = schools.find(school => caseId);
+	if(!school.history){
+		school.history = [];
+	}
+	data.index = school.history.length;
+	school.history.push(data);
+}
+router.post("/case/:id/reply-post", function(req, res, next){
+
+	let school = schools.find(school => req.params.id);
+
+	school.status = "In progress";
+	let data = {
+		date : moment().format("D MMMM YYYY"),
+		title: "Reply to school",
+		caseNote: req.body['reply-details']
+	};
+	addToHistory(req.params.id, data);
+
+	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/in-progress-specify`)
+
+})
+
+
+
+router.post("/case/:id/case-note-post", function(req, res, next){
+
+	let data = {
+		date : moment().format("D MMMM YYYY"),
+		title: "Case note",
+		caseNote: req.body['case-note-details']
+	};
+	addToHistory(req.params.id, data);
+
+	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/in-progress-specify`)
+
+})
+
 
 
 // Add your routes above the module.exports line

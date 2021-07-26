@@ -67,6 +67,10 @@ let statuses = {
     statusClass : "govuk-tag--blue",
     statusUrl : "new-case"
   },
+  "In progress": {
+    statusClass : "govuk-tag--blue",
+    statusUrl : "new-case"
+  },
   "Consultation booked": {
     statusClass : "govuk-tag--purple",
     statusUrl : "consultation-booked"
