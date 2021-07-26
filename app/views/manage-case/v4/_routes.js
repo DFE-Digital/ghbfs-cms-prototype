@@ -6,6 +6,11 @@ const supportInformation = require(`./data/support-information.js`);
 
 let folderVersion = "v4"
 
+router.all('*', function(req, res, next){
+	res.locals.folderVersion = folderVersion;
+	next()
+})
+
 // Set variables
 router.get('*', function(req, res, next){
   // Change the service name for this feature

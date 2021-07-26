@@ -1,6 +1,11 @@
 module.exports = [{
       "id": 1,
       "type-of-establishment": "school",
+      "type-of-help": "specify",
+      "specify-question": "jlkkjlljk"
+   },{
+      "id": 1,
+      "type-of-establishment": "school",
       "type-of-help": "supplier",
       "type-of-goods": "minibus",
       "when-needed": "1 to 6 months",

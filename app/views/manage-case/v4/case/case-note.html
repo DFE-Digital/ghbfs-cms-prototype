@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+
+
+
+      <form action="in-progress-specify" method="post">
+
+        {{ govukTextarea({
+          name: "case-not-details",
+          id: "case-not-details",
+          value: data['case-not-details'],
+          label: {
+            text: "Add case note",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Add details of any advice and support shared with the school."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

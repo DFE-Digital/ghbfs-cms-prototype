@@ -1,0 +1,122 @@
+
+
+
+{% set schoolDetails %}
+
+{{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-5',
+        rows: [
+          {
+            key: {
+              text: "Contact name"
+            },
+            value: {
+              text: case["first_name"] + " " + case["last_name"]
+            }
+          },
+          {
+            key: {
+              text: "Contact phone"
+            },
+            value: {
+              text: "0" + case["phone"]
+            }
+          },
+          {
+            key: {
+              text: "Contact email"
+            },
+            value: {
+              text: case["email"]
+            }
+          }
+        ]
+      }) }}
+
+{% endset %}
+
+{% set replyDetails %}
+
+<p>Request sent on {{ 0 |daysAgo}}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Advice and support provided
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['reply-details'] |safe }}
+        </dd>        
+      </div> 
+  
+</dl>
+
+
+{% endset %}
+
+{% set requestDetails %}
+
+
+{% include "../includes/request-details-specify.html" %}
+
+
+{% endset %}
+
+
+{% set historyDetails %}
+
+
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "Reply to school"
+      },
+      content: {
+        html: replyDetails
+      }
+    },
+    {
+      heading: {
+        text: "Request for support"
+      },
+      content: {
+        html: requestDetails
+      }
+    }
+  ]
+}) }}
+  
+{% endset %}
+
+
+
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "School details",
+      id: "school-details",
+      panel: {
+        html: schoolDetails
+      }
+    },
+    {
+      label: "Request details",
+      id: "request-details",
+      panel: {
+        html: requestDetails
+      }
+    },
+    {
+      label: "Case history",
+      id: "case-history",
+      panel: {
+        html: historyDetails
+      }
+    }
+  ]
+}) }} 
