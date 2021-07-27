@@ -163,7 +163,7 @@ router.post("/case/:id/reply-post", function(req, res, next){
 
 	let school = schools.find(school => req.params.id);
 
-	school.status = "In progress";
+	school.status = "Open";
 	let data = {
 		date : moment().format("D MMMM YYYY"),
 		title: "Reply to school",

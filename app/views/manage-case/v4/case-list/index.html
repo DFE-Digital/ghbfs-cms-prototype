@@ -1,7 +1,7 @@
 {% extends "layout_noback.html" %}
 
 {% block content %}
-<h1 class="govuk-heading-l">All cases</h1>
+<h1 class="govuk-heading-l">My cases</h1>
 
 
 <div class="govuk-grid-row">
@@ -19,7 +19,7 @@
         {% for case in cases %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            {% if case.specify == true %}
+            {% if case.specify == true and case.status == "new" %}
               <a href="case/{{case.id}}/new-specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>
             {% else %}
               <a href="case/{{case.id}}/{{ case.status | formatCaseListUrl }}" class="govuk-link--no-visited-state">{{case.school.name}}</a>
