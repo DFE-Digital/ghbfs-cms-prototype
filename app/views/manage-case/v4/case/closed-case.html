@@ -12,85 +12,18 @@
 
       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ case.school.name }}</h1>
       {{govukTag({
-          text: "Closed",
+          text: case.status,
           classes: "govuk-tag--grey govuk-!-margin-bottom-7 govuk-!-margin-top-1"
         })}}
 
-{% set addressHtml %}
-{{case.school.street}} <br>
-{{case.school.town}} <br>
-{{case.school.postcode}} <br>
-{% endset %}
+  {% include "../includes/specify-closed.html" %}
 
-
-{% set schoolDetails %}
-  {% include "../includes/school-tab.html" %}
-{% endset %}
-
-{% set requestDetails %}
-  {% include "../includes/request-details.html" %}
-{% endset %}
-
-{% set closedDetails %}
-  {% include "../includes/closed-details.html" %}
-{% endset %}
-
-
-
-{% set historyDetails %}
-
-
-{{ govukAccordion({
-  id: "accordion-default",
-  items: [
-    {
-      heading: {
-        text: "Request for support"
-      },
-      content: {
-        html: requestDetails
-      }
-    },
-    {
-      heading: {
-        text: "Case closed"
-      },
-      content: {
-        html: closedDetails
-      }
-    }
-  ]
-}) }}
-  
-{% endset %}
-
-
-{{ govukTabs({
-  items: [
-    {
-      label: "School details",
-      id: "school-details",
-      panel: {
-        html: schoolDetails
-      }
-    },
-    {
-      label: "Case history",
-      id: "case-history",
-      panel: {
-        html: historyDetails
-      }
-    }
-  ]
-}) }} 
-
-
-<h3 class="govuk-heading-m">Actions</h3>
-<ul class="govuk-list">
-  <li>
-    <a class="govuk-link" href="guidance">Re-open case</a>
-  </li>
-</ul>
+  <h3 class="govuk-heading-m">Actions</h3>
+  <ul class="govuk-list">
+    <li>
+      <a class="govuk-link govuk-link--no-visited-state" href="#">Re-open case</a>
+    </li>
+  </ul>
 
 
       
