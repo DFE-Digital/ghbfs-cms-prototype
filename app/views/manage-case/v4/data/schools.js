@@ -136,7 +136,14 @@ module.exports = [{
       "history": [
          {
             "title": "Reply to school",
-            "caseNote": "Sent the following email: \r\n\r\nHi Jenny\r\n\r\nHere's some links you might find useful",
+            "caseNote": `Hi Jenny,
+            Thanks for your question. You don't need to fill in the food policy section if your school doesn't currently have a food policy. The specification that you have produced already includes the requirement for service providers to meet the Department for Education standards for school food in England. You can read more about school food standards on GOV.UK:
+
+            https://www.gov.uk/government/publications/standards-for-school-food-in-england
+
+            If your school has requirements that go beyond the Department for Education standards, then including this information can help service providers tailor their responses and could help you find a supplier that best meets your needs.
+            Kind regards
+            Mark`,
             "date": "28 July 2021",
             "index": 0
          }
