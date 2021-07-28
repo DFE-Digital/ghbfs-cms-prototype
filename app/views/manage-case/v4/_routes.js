@@ -207,6 +207,26 @@ router.post("/case/:id/case-note-post", function(req, res, next){
 })
 
 
+router.post("/case/:id/close-case-post", function(req, res, next){
+	let school = schools.find(school => school.id == req.params.id);
+	console.log(school)
+
+	school.status = "closed";
+
+	let data = {
+		title: "Case closed",
+		caseNote: req.body['close-case-details']
+	};
+	addToHistory(req.params.id, data);
+
+
+	req.session.data['close-case-details'] = "";
+
+	res.redirect(`/manage-case/${folderVersion}/case-list`)
+
+})
+
+
 
 // Add your routes above the module.exports line
 module.exports = router

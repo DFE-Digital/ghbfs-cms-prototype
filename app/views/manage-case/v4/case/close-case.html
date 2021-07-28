@@ -5,14 +5,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form action="guidance-post" method="post">
+      <form action="close-case-post" method="post">
 
         {{ govukTextarea({
-          name: "guidance-details",
-          id: "guidance-details",
-          value: data['guidance-details'],
+          name: "close-case-details",
+          id: "close-case-details",
+          value: data['close-case-details'],
           label: {
-            text: "Enter case note",
+            text: "Close case",
             classes: "govuk-label--l",
             isPageHeading: true
           },
