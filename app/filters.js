@@ -68,7 +68,7 @@ module.exports = function (env) {
 
 let statuses = {
   "new": {
-    statusClass : "govuk-tag--blue",
+    statusClass : "govuk-tag--green",
     statusUrl : "new-case"
   },
   "Open": {
