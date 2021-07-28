@@ -26,7 +26,11 @@
           Attached specification
         </dt>
         <dd class="govuk-summary-list__value">
-          <a href="{{supportInformation.docUrl}}" type="download">catering-sepcification-1.docx</a>
+          {% if supportInformation.docUrl %}
+            <a href="{{supportInformation.docUrl}}" type="download">catering-sepcification-1.docx</a>
+          {% else %}
+            No Specification included
+          {% endif %}
         </dd>        
       </div>
     
