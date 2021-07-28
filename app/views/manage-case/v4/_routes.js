@@ -8,6 +8,13 @@ const supportInformation = require(`./data/support-information.js`);
 
 let folderVersion = "v4"
 
+
+router.get("/get-school-data.json", function(req, res, next){
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(schools, null, 3));
+})
+
+
 router.all('*', function(req, res, next){
 	res.locals.folderVersion = folderVersion;
 	next()
@@ -152,24 +159,32 @@ router.post("/case/:id/call-back/type-of-procurement-post", function(req, res, n
 });
 
 let addToHistory = function(caseId, data){
-	let school = schools.find(school => caseId);
+	let school = schools.find(school => school.id == caseId);
+
+	let now = moment();
+	data.date = now.format("D MMMM YYYY");
 	if(!school.history){
 		school.history = [];
 	}
 	data.index = school.history.length;
 	school.history.push(data);
+	school.lastUpdated = now.format("YYYY-MM-DD")
 }
+
+
 router.post("/case/:id/reply-post", function(req, res, next){
 
-	let school = schools.find(school => req.params.id);
+	let school = schools.find(school => school.id == req.params.id);
+	console.log(school)
 
 	school.status = "Open";
 	let data = {
-		date : moment().format("D MMMM YYYY"),
 		title: "Reply to school",
 		caseNote: req.body['reply-details']
 	};
 	addToHistory(req.params.id, data);
+
+	req.session.data['reply-details'] = "";
 
 	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/in-progress-specify`)
 
@@ -180,11 +195,12 @@ router.post("/case/:id/reply-post", function(req, res, next){
 router.post("/case/:id/case-note-post", function(req, res, next){
 
 	let data = {
-		date : moment().format("D MMMM YYYY"),
 		title: "Case note",
 		caseNote: req.body['case-note-details']
 	};
 	addToHistory(req.params.id, data);
+
+	req.session.data['case-note-details'] = "";
 
 	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/in-progress-specify`)
 

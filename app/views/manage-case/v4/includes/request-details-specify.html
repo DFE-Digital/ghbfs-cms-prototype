@@ -1,4 +1,4 @@
-<p>Request sent on {{ 3 |daysAgo}}
+<p>Request sent on  {{ case.lastUpdated | formatDate }}
 
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
   
@@ -8,17 +8,7 @@
           Category
         </dt>
         <dd class="govuk-summary-list__value">
-          Catering services
-        </dd>        
-      </div>
-
-
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          How can we support you with your specification?
-        </dt>
-        <dd class="govuk-summary-list__value">
-          I need advice and guidance on what information to provide
+          {{ supportInformation.category }}
         </dd>        
       </div>
 
@@ -27,7 +17,7 @@
           Description of problem
         </dt>
         <dd class="govuk-summary-list__value">
-          I'm not sure how to work out my budget. Is this per year?
+          {{ supportInformation['specify-question'] | safe}}
         </dd>        
       </div>
 
@@ -36,7 +26,7 @@
           Attached specification
         </dt>
         <dd class="govuk-summary-list__value">
-          <a href="/public/images/manage-case/v4/catering-sepcification-1.docx" type="download">catering-sepcification-1.docx</a>
+          <a href="{{supportInformation.docUrl}}" type="download">catering-sepcification-1.docx</a>
         </dd>        
       </div>
     

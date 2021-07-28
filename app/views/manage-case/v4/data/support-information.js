@@ -1,9 +1,4 @@
-module.exports = [{
-      "id": 1,
-      "type-of-establishment": "school",
-      "type-of-help": "specify",
-      "specify-question": "jlkkjlljk"
-   },{
+let oldData = [{
       "id": 1,
       "type-of-establishment": "school",
       "type-of-help": "supplier",
@@ -56,5 +51,26 @@ module.exports = [{
       "supplier-detail": "",
       "suppliers": "no",
       "description": "Coaches to accommodate 120 students plus 7 staff. Outward and return journey to Gatwick Airport from Tonbridge. "
+   }
+]
+
+module.exports = [{
+      "id": 1,
+      "type-of-help": "specify",
+      "category": "Catering",
+      "specify-question": "I've completed a specification, but I'm not sure what to do with it now. How do I contact suppliers?",
+      "docUrl": "/public/images/manage-case/v4/catering-sepcification-1.docx"
+   },{
+      "id": 2,
+      "type-of-help": "specify",
+      "category": "Catering",
+      "specify-question": "I've found your service, I've managed to complete my specification but I don't understand the food policy section. I don't know if it's relevant for me. Can you explain what it means and what difference it'd make?",
+      "docUrl": "/public/images/manage-case/v4/catering-sepcification-1.docx"
+   },{
+      "id": 3,
+      "type-of-help": "specify",
+      "category": "Catering",
+      "specify-question": "I've found your service and I don't know how to find the information I need to get started.",
+      "docUrl": "/public/images/manage-case/v4/catering-sepcification-1.docx"
    }
 ]

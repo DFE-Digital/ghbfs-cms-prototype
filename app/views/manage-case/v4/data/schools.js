@@ -1,26 +1,12 @@
-module.exports = [{
-  "id": 0,
-  "first_name": "Con",
-  "last_name": "Westraw",
-  "email": "cwestraw0@npr.org",
-  "phone": "7354190016",
-  "status": "new",
-  "specify": true,
-  "school": {
-    "urn": 100323,
-    "name": "Bentworth Primary School",
-    "street": "Bentworth Road",
-    "town": "London",
-    "county": "Westway",
-    "postcode": "W12 7AJ"
-  }
-},{
+let oldData = [{
   "id": 1,
   "first_name": "Tomlin",
   "last_name": "Trusse",
   "phone": "7354190016",
   "email": "ttrusse0@marketwatch.com",
   "status": "new",
+  "receivedDate": "2021-07-2",
+  "lastUpdated": "2021-07-2",
   "school": {
     "urn": 100637,
     "name": "La Retraite Roman Catholic Girls' School",
@@ -36,6 +22,8 @@ module.exports = [{
   "phone": "8393402978",
   "email": "pangear1@domainmarket.com",
   "status": "new",
+  "receivedDate": "2021-07-2",
+  "lastUpdated": "2021-07-2",
   "school": {
     "urn": 100243,
     "name": "Thomas Fairchild Community School",
@@ -51,6 +39,8 @@ module.exports = [{
   "phone": "9596913014",
   "email": "lbiasioni2@nationalgeographic.com",
   "status": "new",
+  "receivedDate": "2021-07-2",
+  "lastUpdated": "2021-07-2",
   "school": {
     "urn": 100570,
     "name": "Hitherfield Junior School",
@@ -66,6 +56,8 @@ module.exports = [{
   "phone": "3983531647",
   "email": "pambrus3@netlog.com",
   "status": "new",
+  "receivedDate": "2021-07-2",
+  "lastUpdated": "2021-07-2",
   "school": {
     "urn": 100174,
     "name": "St Alfege with St Peter's Church of England Primary School",
@@ -81,6 +73,8 @@ module.exports = [{
   "phone": "8914272157",
   "email": "tvanyutin4@yolasite.com",
   "status": "new",
+  "receivedDate": "2021-07-2",
+  "lastUpdated": "2021-07-2",
   "school": {
     "urn": 100373,
     "name": "Ravenscourt Park Preparatory School",
@@ -96,6 +90,8 @@ module.exports = [{
   "phone": "2255925977",
   "email": "lmcgurk5@ucoz.com",
   "status": "new",
+  "receivedDate": "2021-07-2",
+  "lastUpdated": "2021-07-2",
   "school": {
     "urn": 100226,
     "name": "Gayhurst Junior School",
@@ -104,4 +100,60 @@ module.exports = [{
     "county": null,
     "postcode": "E8 3EN"
   }
+}];
+
+module.exports = [{
+  "id": 1,
+  "first_name": "Leanne ",
+  "last_name": "Jackson",
+  "email": "enquiries@urhazelgrovehigh.co.uk",
+  "status": "new",
+  "school": {
+    "urn": 137923,
+    "name": "Hazel Grove High School",
+    "street": "Hollydale Road",
+    "postcode": "SK7 5JX"
+  },
+  "receivedDate": "2021-07-24",
+  "lastUpdated": "2021-07-24",
+  "phone": "161 549 7700",
+  "specify": true
+}, {
+      "id": 2,
+      "first_name": "Jenny ",
+      "last_name": "Woodhouse",
+      "email": "jenny.woodhouse@urbishopbarrington.net",
+      "status": "Open",
+      "school": {
+         "urn": 100952,
+         "name": "Bishop Barrington School",
+         "postcode": "DL14 6LA"
+      },
+      "receivedDate": "2021-07-26",
+      "lastUpdated": "2021-07-28",
+      "phone": "1388 603307",
+      "specify": true,
+      "history": [
+         {
+            "title": "Reply to school",
+            "caseNote": "Sent the following email: \r\n\r\nHi Jenny\r\n\r\nHere's some links you might find useful",
+            "date": "28 July 2021",
+            "index": 0
+         }
+      ]
+   }, {
+  "id": 3,
+  "first_name": "Robert ",
+  "last_name": "Nowak",
+  "email": "office@urmonkwickjunior.school",
+  "status": "new",
+  "school": {
+    "urn": 100341,
+    "name": "Monkwick Junior School",
+    "postcode": "CO2 8NN"
+  },
+  "receivedDate": "2021-07-27",
+  "lastUpdated": "2021-07-27",
+  "phone": "1206 575399",
+  "specify": true
 }]

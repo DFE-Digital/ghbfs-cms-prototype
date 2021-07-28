@@ -1,7 +1,7 @@
 {% extends "layout_noback.html" %}
 
 {% block content %}
-<h1 class="govuk-heading-l">My cases</h1>
+<h1 class="govuk-heading-l">Cases</h1>
 
 
 <div class="govuk-grid-row">
@@ -11,12 +11,12 @@
         <tr class="govuk-table__row">
           <th class="govuk-table__header" scope="col"> Organisation </th>
           <th class="govuk-table__header" scope="col"> Status </th>
-          <th class="govuk-table__header" scope="col"> Received </th>
+          <th class="govuk-table__header" scope="col"> Last updated </th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
 
-        {% for case in cases %}
+        {% for case in cases | sort(false, false, "lastUpdated")%}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             {% if case.specify == true and case.status == "new" %}
@@ -32,7 +32,7 @@
             })}}
           </td>
           <td class="govuk-table__cell">
-            {{ 1 | daysAgo }}
+            {{ case.lastUpdated | formatDate }}
           </td>
         </tr>
         {% endfor %}
