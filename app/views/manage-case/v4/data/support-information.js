@@ -59,7 +59,7 @@ module.exports = [{
       "type-of-help": "specify",
       "category": "Catering",
       "specify-question": "I've completed a specification, but I'm not sure what to do with it now. How do I contact suppliers?",
-      "docUrl": "/public/images/manage-case/v4/specification 1.docx",
+      "docUrl": "/public/images/manage-case/v4/specification-1.docx",
       "docName": "specification 1.docx"
    },{
       "id": 2,
