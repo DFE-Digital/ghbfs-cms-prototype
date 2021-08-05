@@ -1,0 +1,147 @@
+
+
+
+{% set schoolDetails %}
+
+{{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-5',
+        rows: [
+          {
+            key: {
+              text: "Contact name"
+            },
+            value: {
+              text: case["first_name"] + " " + case["last_name"]
+            }
+          },
+          {
+            key: {
+              text: "Contact phone"
+            },
+            value: {
+              text: "0" + case["phone"]
+            }
+          },
+          {
+            key: {
+              text: "Contact email"
+            },
+            value: {
+              text: case["email"]
+            }
+          }
+        ]
+      }) }}
+
+{% endset %}
+
+{% set replyDetails %}
+
+<p>Request sent on {{ 0 |daysAgo}}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Advice and support provided
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['reply-details'] |safe }}
+        </dd>        
+      </div> 
+  
+</dl>
+
+
+{% endset %}
+
+{% set requestDetails %}
+
+
+{% include "../includes/request-details-specify.html" %}
+
+
+{% endset %}
+
+
+{% set historyDetails %}
+
+<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{case.id}}">
+  {% for note in case.history | sort(true, false, "index") %}
+    <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-{{case.index}}">
+          {{ note.title }}
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-{{case.index}}">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ note.date  }}
+        </dd>        
+      </div> 
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Notes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ note.caseNote | safe |nl2br}}
+        </dd>        
+      </div> 
+      </dl>
+    </div>
+  </div>
+  {% endfor %}
+  
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-0">
+          Request for support
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-0">
+      {% include "../includes/request-details-specify.html" %}
+    </div>
+  </div>
+</div>
+
+  
+{% endset %}
+
+
+
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "School details",
+      id: "school-details",
+      panel: {
+        html: schoolDetails
+      }
+    },
+    {
+      label: "Request details",
+      id: "request-details",
+      panel: {
+        html: requestDetails
+      }
+    },
+    {
+      label: "Case history",
+      id: "case-history",
+      panel: {
+        html: historyDetails
+      }
+    }
+  ]
+}) }} 

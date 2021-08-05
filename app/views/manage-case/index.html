@@ -11,7 +11,7 @@
     <div class="govuk-grid-column-two-thirds">
       <p>Used for procurement ops to contact user to find out more about their requirements.</p>
       <h2 class="govuk-heading-m">
-        Version 4
+        Version 5
       </h2>
 
       <h3 class="govuk-heading-s">Changes</h3>
@@ -24,8 +24,29 @@
 
       {{ govukButton({
         text: 'View prototype',
+        href: '/manage-case/v5/case-list'
+      }) }}
+
+
+      {% set v4 %}
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <p>Added scenarios for specify support journey.</p>
+      
+
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="https://miro.com/app/board/o9J_lHuWMxw=/?moveToWidget=3074457361919131330&cot=14">UR affinity sort</a></li>
+        <li><a href="https://drive.google.com/drive/u/2/folders/1lIOxa6biOW5R5VAoGpikx1WVBeRNk6t_">UR observer notes</a></li>
+      </ul>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
         href: '/manage-case/v4/case-list'
       }) }}
+
+      {% endset %}
 
 
       {% set v3 %}
@@ -96,6 +117,9 @@
       {{ govukAccordion({
         items: [
           {
+            heading: { text: 'Version 4' },
+            content: { html: v4 }
+          },{
             heading: { text: 'Version 3' },
             content: { html: v3 }
           },{
