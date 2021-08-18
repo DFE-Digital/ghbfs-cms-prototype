@@ -1,0 +1,55 @@
+{% extends "layout_noback.html" %}
+
+{% block content %}
+<span class="govuk-caption-l">Jenni Weiner</span>
+
+<h1 class="govuk-heading-l">My cases</h1>
+
+<ul class="govuk-list">
+  <li>
+    <a href="../case-list">All cases</a>
+  </li>
+  <li>
+    <a href="new-cases">New cases</a>
+  </li>
+</ul>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"> Organisation </th>
+          <th class="govuk-table__header" scope="col"> Status </th>
+          <th class="govuk-table__header" scope="col"> Last updated </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        {% for case in cases | sort(false, false, "lastUpdated") %}
+
+          {% if (case.status != "new") and (case.assignedTo === "Jenni Weiner") %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>
+              
+            </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: case.status, 
+                classes: case.status | formatCaseTagColour
+              })}}
+            </td>
+            <td class="govuk-table__cell">
+              {{ case.lastUpdated | formatDate }}
+            </td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

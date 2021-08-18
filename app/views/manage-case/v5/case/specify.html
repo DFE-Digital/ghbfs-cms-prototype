@@ -11,24 +11,48 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ case.school.name }}</h1>
-      {{govukTag({
-          text: "New",
-          classes: "govuk-tag--blue govuk-!-margin-bottom-7 govuk-!-margin-top-1"
-        })}}
 
-{% include "../includes/school-details-specify.html" %}
+      {{govukTag({
+        text: case.status,
+        classes: case.status | formatCaseTagColour + " govuk-!-margin-bottom-7 "
+      })}}
+
+
+{% include "../includes/specify-in-progress.html" %}
+
 
 <h3 class="govuk-heading-m">Actions</h3>
 <ul class="govuk-list">
+  {% if case.status === "new" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign">Assign to case worker</a>
+  </li>
+  {% endif %}
+
+  {% if case.status === "Open" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign">Change case owner</a>
+  </li>
+
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
   </li>
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
   </li>
+  {% endif %}
+
+  {% if case.status !== "closed" %}
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="close-case">Close case</a>
   </li>
+  {% endif %}
+
+  {% if case.status === "closed" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="open-case">Re-open case</a>
+  </li>
+  {% endif %}
 </ul>
 
 

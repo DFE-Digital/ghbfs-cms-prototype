@@ -76,7 +76,7 @@ router.post("/case/:id/call-back/contract-details-2-post", function(req, res, ne
 
 
 
-router.all("/case-list", function(req, res, next){
+router.all("/case-list*", function(req, res, next){
 	
 
 	res.locals.cases = schools;
@@ -163,6 +163,7 @@ let addToHistory = function(caseId, data){
 
 	let now = moment();
 	data.date = now.format("D MMMM YYYY");
+	data.time = now.format("h:mma");
 	if(!school.history){
 		school.history = [];
 	}
@@ -202,7 +203,36 @@ router.post("/case/:id/case-note-post", function(req, res, next){
 
 	req.session.data['case-note-details'] = "";
 
-	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/in-progress-specify`)
+	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify`)
+
+})
+
+router.post("/case/:id/contact-post", function(req, res, next){
+
+	let data = {
+		title: req.body['type-of-contact'],
+		caseNote: req.body['contact-details']
+	};
+	addToHistory(req.params.id, data);
+
+	req.session.data['type-of-contact'] = "";
+	req.session.data['contact-details'] = "";
+
+	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify`)
+
+})
+
+router.post("/case/:id/assign-post", function(req, res, next){
+
+	let school = schools.find(school => school.id == req.params.id);
+
+	school.assignedTo = req.session.data['assign-to-caseworker']
+	school.status = "Open";
+	console.log(school)
+	req.session.data['assign-to-caseworker'] = "";
+	
+
+	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify#case-history`)
 
 })
 
