@@ -42,13 +42,13 @@
   </li>
   {% endif %}
 
-  {% if case.status !== "closed" %}
+  {% if case.status !== "resolved" and case.status !== "new" %}
   <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="close-case">Close case</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="close-case">Resolve case</a>
   </li>
   {% endif %}
 
-  {% if case.status === "closed" %}
+  {% if case.status === "resolved" %}
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="open-case">Re-open case</a>
   </li>

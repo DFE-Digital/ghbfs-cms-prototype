@@ -124,7 +124,7 @@ router.post("/case/:id/guidance-post", function(req, res, next){
 
 		let school = schools.find(school => school.id == req.params.id);
 		
-		school.status = "closed"
+		school.status = "resolved"
 
 		school["guidance-details"] = req.body["guidance-details"];
 	
@@ -136,7 +136,7 @@ router.post("/case/:id/call-back/close-case-post", function(req, res, next){
 
 		let school = schools.find(school => school.id == req.params.id);
 		
-		school.status = "closed"
+		school.status = "resolved"
 
 		school["guidance-details"] = req.body["guidance-details"];
 	
@@ -170,6 +170,7 @@ let addToHistory = function(caseId, data){
 	data.index = school.history.length;
 	school.history.push(data);
 	school.lastUpdated = now.format("YYYY-MM-DD")
+	data.addedBy = "	Jenni Weiner"
 }
 
 
@@ -241,10 +242,10 @@ router.post("/case/:id/close-case-post", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
 	console.log(school)
 
-	school.status = "closed";
+	school.status = "resolved";
 
 	let data = {
-		title: "Case closed",
+		title: "Case resolved",
 		caseNote: req.body['close-case-details']
 	};
 	addToHistory(req.params.id, data);

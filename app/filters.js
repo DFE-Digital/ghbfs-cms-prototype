@@ -79,7 +79,7 @@ let statuses = {
     statusClass : "govuk-tag--purple",
     statusUrl : "consultation-booked"
   },
-  "closed": {
+  "resolved": {
     statusClass : "govuk-tag--grey",
     statusUrl : "closed-case"
   },
