@@ -1,9 +1,16 @@
 
-
+{% set addressHtml %}
+{{case.school.street}} <br>
+{{case.school.town}} <br>
+{{case.school.postcode}} <br>
+{% endset %}
 
 {% set schoolDetails %}
 
-{{ govukSummaryList({
+
+
+
+      {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-5',
         rows: [
           {
@@ -29,10 +36,21 @@
             value: {
               text: case["email"]
             }
+          },
+          {
+            key: {
+              text: "School Address"
+            },
+            value: {
+              text: addressHtml | safe
+            }
           }
         ]
       }) }}
 
+<p>
+  <a href="https://www.get-information-schools.service.gov.uk/Establishments/Establishment/Details/{{case.school.urn}}" target="_blank">View school information (opens in a new tab)</a>
+</p>
 {% endset %}
 
 {% set replyDetails %}
