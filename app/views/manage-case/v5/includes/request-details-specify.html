@@ -8,8 +8,13 @@
           Category
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ supportInformation.category }}
-        </dd>        
+          {{ case.category }}
+        </dd>    
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="category">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd>    
       </div>
 
       <div class="govuk-summary-list__row">
@@ -18,7 +23,9 @@
         </dt>
         <dd class="govuk-summary-list__value">
           {{ supportInformation['specify-question'] | safe}}
-        </dd>        
+        </dd>  
+        <dd class="govuk-summary-list__actions">
+        </dd>       
       </div>
 
       <div class="govuk-summary-list__row">
@@ -31,6 +38,8 @@
           {% else %}
             No Specification included
           {% endif %}
+        </dd> 
+        <dd class="govuk-summary-list__actions">
         </dd>        
       </div>
     

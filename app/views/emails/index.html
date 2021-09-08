@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        Emails replies to school
+      </h1>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <p>Used for testing email responses to schools after that have requested help through the specify tool.</p>
+
+      <h2 class="govuk-heading-m">
+        Version 1
+      </h2>
+      <h3 class="govuk-heading-s">Changes</h3>
+      <p>First version, no changes</p>
+
+
+
+      
+
+      {{ govukButton({
+        text: 'View emails',
+        href: 'emails/v1'
+      }) }}
+
+      
+
+    </div>
+  </div>
+{% endblock %}

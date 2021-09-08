@@ -97,12 +97,15 @@ router.get("/case/:id/:folderName/:pageName", function(req, res, next){
 })
 
 router.post("/case/:id/category-post", function(req, res, next){
-	
+	let school = schools.find(school => school.id == req.params.id);
+
 	if(!req.body['procurement-category']){
 		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/category`)
 	} else {
 		req.session.data.tags.category = true;
-		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/new-case`);
+		school.category = req.body['procurement-category'];
+		req.body['procurement-category'] = "";
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify#request-details`);
 	}
 
 });
