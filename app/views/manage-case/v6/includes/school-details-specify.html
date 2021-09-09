@@ -1,0 +1,72 @@
+{% set addressHtml %}
+{{case.school.street}} <br>
+{{case.school.town}} <br>
+{{case.school.postcode}} <br>
+{% endset %}
+
+
+{% set schoolDetails %}
+
+{{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-5',
+        rows: [
+          {
+            key: {
+              text: "Contact name"
+            },
+            value: {
+              text: case["first_name"] + " " + case["last_name"]
+            }
+          },
+          {
+            key: {
+              text: "Contact phone"
+            },
+            value: {
+              text: "0" + case["phone"]
+            }
+          },
+          {
+            key: {
+              text: "Contact email"
+            },
+            value: {
+              text: case["email"]
+            }
+          }
+        ]
+      }) }}
+
+{% endset %}
+
+
+
+
+
+{% set requestDetails %}
+
+
+{% include "../includes/request-details-specify.html" %}
+
+
+{% endset %}
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "School details",
+      id: "school-details",
+      panel: {
+        html: schoolDetails
+      }
+    },
+    {
+      label: "Request details",
+      id: "request-details",
+      panel: {
+        html: requestDetails
+      }
+    }
+  ]
+}) }} 

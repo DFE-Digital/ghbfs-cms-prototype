@@ -11,8 +11,27 @@
     <div class="govuk-grid-column-two-thirds">
       <p>Used for procurement ops to contact user to find out more about their requirements.</p>
       <h2 class="govuk-heading-m">
-        Version 5
+        Version 6
       </h2>
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>no changes yet</li>
+      </ul>
+      
+
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>No research done yet</p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/manage-case/v6/case-list'
+      }) }}
+
+      {% set v5 %}
+
+      <p>First release to support request for help through specify service. </p>
 
       <h3 class="govuk-heading-s">Changes</h3>
       <ul class="govuk-list govuk-list--bullet">
@@ -31,6 +50,7 @@
         href: '/manage-case/v5/case-list'
       }) }}
 
+      {% endset %}
 
       {% set v4 %}
 
@@ -121,6 +141,9 @@
       {{ govukAccordion({
         items: [
           {
+            heading: { text: 'Version 5 - first release' },
+            content: { html: v5 }
+          },{
             heading: { text: 'Version 4' },
             content: { html: v4 }
           },{

@@ -1,0 +1,65 @@
+{% extends "layout_noback.html" %}
+
+{% block content %}
+<h1 class="govuk-heading-l">New cases</h1>
+
+<ul class="govuk-tabs__list govuk-!-margin-bottom-5" role="tablist">
+  <li class="govuk-tabs__list-item" role="presentation">
+    <a class="govuk-tabs__tab" href="my-cases" id="tab_school-details" role="tab" aria-controls="school-details" aria-selected="true" tabindex="0">
+      My cases
+    </a>
+  </li>
+  <li class="govuk-tabs__list-item   govuk-tabs__list-item--selected" role="presentation">
+    <a class="govuk-tabs__tab" href="new-cases" id="tab_request-details" role="tab" aria-controls="request-details" aria-selected="false" tabindex="-1">
+      New cases
+    </a>
+  </li>
+  <li class="govuk-tabs__list-item" role="presentation">
+    <a class="govuk-tabs__tab " href="../case-list" id="tab_case-history" role="tab" aria-controls="case-history" aria-selected="false" tabindex="-1">
+      All cases
+    </a>
+  </li>
+</ul>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"> Organisation </th>
+          <th class="govuk-table__header" scope="col"> Category </th>
+          <th class="govuk-table__header" scope="col"> Status </th>
+          <th class="govuk-table__header" scope="col"> Date received </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        {% for case in cases | sort(false, false, "receivedDate") %}
+
+          {% if case.status === "new" %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>
+              
+            </td>
+            <td class="govuk-table__cell">
+            {{case.category}}
+          </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: case.status, 
+                classes: case.status | formatCaseTagColour
+              })}}
+            </td>
+            <td class="govuk-table__cell">
+              {{ case.receivedDate | formatDate }}
+            </td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
