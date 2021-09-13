@@ -3,7 +3,6 @@ const router = new express.Router()
 
 const moment = require("moment")
 
-const notifyApiKey = process.env.NOTIFY_API_KEY;
 
 const schools = require(`./data/schools.js`);
 const supportInformation = require(`./data/support-information.js`);
@@ -11,6 +10,11 @@ const supportInformation = require(`./data/support-information.js`);
 let folderVersion = "v6"
 
 
+//notify stuff
+const notifyApiKey = process.env.NOTIFY_API_KEY;
+var NotifyClient = require('notifications-node-client').NotifyClient
+
+var notifyClient = new NotifyClient(notifyApiKey)
 
 
 
@@ -43,6 +47,78 @@ router.all('/case/:id/*', function(req, res, next){
 	console.log(res.locals.supportInformation);
 	next()
 })
+
+
+router.get("/case/:id/template-preview/:templateId", function(req, res, next){
+	let school = schools.find(school => school.id == req.params.id);
+
+	personalisation = { 
+		"toName": `${school.first_name} ${school.last_name}`,
+		"fromName": "Jenni Weiner" 
+	}
+
+	notifyClient
+	  .previewTemplateById(req.params.templateId, personalisation)
+	  .then(function(response){
+	  		res.locals.emailPreview = response.body
+	  		res.render(`manage-case/${folderVersion}/case/template-preview`)
+	  	})
+	  .catch((err) => console.error(err))
+})
+
+router.post("/case/:id/non-template-preview", function(req, res, next){
+
+	let templateId = "ac679471-8bb9-4364-a534-e87f585c46f3";
+	let school = schools.find(school => school.id == req.params.id);
+
+	personalisation = { 
+		"toName": `${school.first_name} ${school.last_name}`,
+		"fromName": "Jenni Weiner",
+		"text": req.body["non-template-email-body"]
+	}
+
+	notifyClient
+	  .previewTemplateById(templateId, personalisation)
+	  .then(function(response){
+	  		res.locals.emailPreview = response.body
+	  		req.session.data["non-template-email-html"] = response.body.html
+	  		res.render(`manage-case/${folderVersion}/case/non-template-preview`)
+	  	})
+	  .catch((err) => console.error(err))
+})
+
+router.post("/case/:id/non-template-preview-post", function(req, res, next){
+
+	let templateId = "ac679471-8bb9-4364-a534-e87f585c46f3";
+	let school = schools.find(school => school.id == req.params.id);
+
+	personalisation = { 
+		"toName": `${school.first_name} ${school.last_name}`,
+		"fromName": "Jenni Weiner",
+		"text": req.session.data["non-template-email-body"]
+	}
+
+	notifyClient
+	  .sendEmail(templateId, 'james.crisp@digital.education.gov.uk', {
+	  	personalisation: personalisation,
+	  	reference: ''
+	  })
+	  .then(function(response){
+	  		res.locals.emailPreview = response.body;
+
+	  		let data = {
+					title: "Email to school",
+					caseNote: req.session.data["non-template-email-html"]
+				};
+				addToHistory(req.params.id, data);
+
+	  		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/in-progress-specify#case-history`)
+	  	})
+	  .catch((err) => console.error(err))
+})
+
+
+
 
 
 router.post("/case/:id/call-back/existing-contract-post", function(req, res, next){
@@ -141,7 +217,7 @@ router.post("/case/:id/guidance-post", function(req, res, next){
 	
 });
 
-router.post("/case/:id/call-back/close-case-post", function(req, res, next){
+router.post("/case/:id/call-back/type-of-email-post", function(req, res, next){
 
 		let school = schools.find(school => school.id == req.params.id);
 		
@@ -266,6 +342,21 @@ router.post("/case/:id/close-case-post", function(req, res, next){
 
 })
 
+router.post("/case/:id/type-of-email-post", function(req, res, next){
+	if(req.body['type-of-email'] == "Template"){
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/template-email`)
+	} else if(req.body['type-of-email'] == "Non-template"){
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/non-template-email`);
+	} else {
+		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/type-of-email`);
+	}
+
+})
+
+
+
+
+	
 
 
 // Add your routes above the module.exports line

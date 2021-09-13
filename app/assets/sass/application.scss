@@ -27,6 +27,21 @@ $govuk-assets-path: '/govuk/assets/';
 	font-family: "nta", Arial, sans-serif;
 }
 
+.email-preview {
+	border: 1px solid $govuk-border-colour;
+
+	&-body {
+		padding: 15px 60px;
+	}
+
+	.govuk-summary-list__key {
+		padding-left: 60px
+	}
+
+	.govuk-summary-value {
+		padding-right: 60px
+	}
+}
 
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you

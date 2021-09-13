@@ -1,0 +1,46 @@
+
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+
+      <h1 class="govuk-heading-l">Send template email</h1>
+
+      <form action="template-search-results" method="post">
+
+
+
+
+        {{ govukInput({
+          label: {
+            text: "Search for a template"
+          },
+ 
+          id: "teamplate-search",
+          name: "teamplate-search",
+          spellcheck: false
+        }) }}
+
+        {{ govukButton({
+            text: "Search"
+          }) }}
+
+      </form>
+
+
+      <h2 class="govuk-heading-m">Search results</h2>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <div class="Search-result">
+      	<h3 class="govuk-heading-m"><a href="template-preview/f4696e59-8d89-4ac5-84ca-17293b79c337">What is a framework?</a></h3>
+      	<p>Use this to give general advice about a framework</p>
+		<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      </div>
+
+
+    </div>
+  </div>
+{% endblock %}
