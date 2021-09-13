@@ -3,10 +3,16 @@ const router = new express.Router()
 
 const moment = require("moment")
 
+const notifyApiKey = process.env.NOTIFY_API_KEY;
+
 const schools = require(`./data/schools.js`);
 const supportInformation = require(`./data/support-information.js`);
 
 let folderVersion = "v6"
+
+
+
+
 
 
 router.get("/get-school-data.json", function(req, res, next){
