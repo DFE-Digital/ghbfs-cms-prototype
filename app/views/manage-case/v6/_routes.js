@@ -27,6 +27,7 @@ let addToHistory = function(caseId, data){
 
 //notify stuff
 const notifyApiKey = process.env.NOTIFY_API_KEY;
+const testEmail = process.env.TEST_EMAIL;
 var NotifyClient = require('notifications-node-client').NotifyClient
 
 var notifyClient = new NotifyClient(notifyApiKey)
@@ -65,7 +66,7 @@ router.all('/case/:id/*', function(req, res, next){
 
 
 router.post("/case/:id/template-preview-post", function(req, res, next){
-	console.log("hklhhkkkjhj")
+	
 	let school = schools.find(school => school.id == req.params.id);
 
 	let data = {
@@ -129,24 +130,27 @@ router.post("/case/:id/non-template-preview-post", function(req, res, next){
 		"fromName": "Jenni Weiner",
 		"text": req.session.data["non-template-email-body"]
 	}
+ console.log(personalisation)
+	let data = {
+						title: "Email to school",
+						caseNote: req.session.data["non-template-email-html"]
+					};
+	addToHistory(req.params.id, data);
+	console.log(testEmail)
 
-	notifyClient
-	  .sendEmail(templateId, 'james.crisp@digital.education.gov.uk', {
-	  	personalisation: personalisation,
-	  	reference: ''
-	  })
-	  .then(function(response){
-	  		res.locals.emailPreview = response.body;
-
-	  		let data = {
-					title: "Email to school",
-					caseNote: req.session.data["non-template-email-html"]
-				};
-				addToHistory(req.params.id, data);
-
-	  		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify#case-history`)
-	  	})
-	  .catch((err) => console.error(err))
+	if(testEmail){
+		notifyClient
+		  .sendEmail(templateId, testEmail, {
+		  	personalisation: personalisation,
+		  	reference: ''
+		  })
+		  .then(function(response){
+		  		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify#case-history`)
+		  	})
+		  .catch((err) => console.error(err))
+		} else {
+			res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify#case-history`)
+		}
 })
 
 
