@@ -11,34 +11,38 @@
       <h1 class="govuk-heading-l">Preview template email</h1>
 
       
+      <form action="../template-preview-post" method="post" >
+        
+        <div class="email-preview  govuk-body govuk-!-margin-bottom-5">
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                To
+              </dt>
+              <dd class="govuk-summary-list__value">
+               {{case.email}}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Subject
+              </dt>
+              <dd class="govuk-summary-list__value">
+               {{ emailPreview.subject |safe}}
+              </dd>
+            </div>
+          </dl>
 
 
-      <div class="email-preview">
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              To
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{case.email}}
-            </dd>
+          <div class="email-preview-body">
+            {{ emailPreview.html |safe}}
           </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Subject
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ emailPreview.subject |safe}}
-            </dd>
-          </div>
-        </dl>
-
-
-        <div class="email-preview-body">
-          {{ emailPreview.html |safe}}
         </div>
-      </div>
+        {{ govukButton({
+          text: "Confirm and send email"
+        }) }}
+      </form>
     </div>
   </div>
 {% endblock %}

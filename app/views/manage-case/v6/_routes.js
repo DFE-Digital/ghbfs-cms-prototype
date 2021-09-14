@@ -9,6 +9,21 @@ const supportInformation = require(`./data/support-information.js`);
 
 let folderVersion = "v6"
 
+let addToHistory = function(caseId, data){
+	let school = schools.find(school => school.id == caseId);
+
+	let now = moment();
+	data.date = now.format("D MMMM YYYY");
+	data.time = now.format("h:mma");
+	if(!school.history){
+		school.history = [];
+	}
+	data.index = school.history.length;
+	school.history.push(data);
+	school.lastUpdated = now.format("YYYY-MM-DD")
+	data.addedBy = "	Jenni Weiner"
+}
+
 
 //notify stuff
 const notifyApiKey = process.env.NOTIFY_API_KEY;
@@ -49,6 +64,20 @@ router.all('/case/:id/*', function(req, res, next){
 })
 
 
+router.post("/case/:id/template-preview-post", function(req, res, next){
+	console.log("hklhhkkkjhj")
+	let school = schools.find(school => school.id == req.params.id);
+
+	let data = {
+					title: "Email to school",
+					caseNote: req.session.data["template-email-html"] 
+				};
+	addToHistory(req.params.id, data);
+
+	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify#case-history`)
+
+})
+
 router.get("/case/:id/template-preview/:templateId", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
 
@@ -60,11 +89,14 @@ router.get("/case/:id/template-preview/:templateId", function(req, res, next){
 	notifyClient
 	  .previewTemplateById(req.params.templateId, personalisation)
 	  .then(function(response){
-	  		res.locals.emailPreview = response.body
+	  		res.locals.emailPreview = response.body;
+	  		req.session.data["template-email-html"] = response.body.html;
 	  		res.render(`manage-case/${folderVersion}/case/template-preview`)
 	  	})
 	  .catch((err) => console.error(err))
 })
+
+
 
 router.post("/case/:id/non-template-preview", function(req, res, next){
 
@@ -112,10 +144,12 @@ router.post("/case/:id/non-template-preview-post", function(req, res, next){
 				};
 				addToHistory(req.params.id, data);
 
-	  		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/in-progress-specify#case-history`)
+	  		res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify#case-history`)
 	  	})
 	  .catch((err) => console.error(err))
 })
+
+
 
 
 
@@ -243,20 +277,6 @@ router.post("/case/:id/call-back/type-of-procurement-post", function(req, res, n
 	
 });
 
-let addToHistory = function(caseId, data){
-	let school = schools.find(school => school.id == caseId);
-
-	let now = moment();
-	data.date = now.format("D MMMM YYYY");
-	data.time = now.format("h:mma");
-	if(!school.history){
-		school.history = [];
-	}
-	data.index = school.history.length;
-	school.history.push(data);
-	school.lastUpdated = now.format("YYYY-MM-DD")
-	data.addedBy = "	Jenni Weiner"
-}
 
 
 router.post("/case/:id/reply-post", function(req, res, next){
