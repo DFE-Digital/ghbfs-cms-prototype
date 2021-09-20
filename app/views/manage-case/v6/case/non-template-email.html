@@ -70,29 +70,7 @@
         </div>
       </details>
 
-      <div class="email-preview  govuk-body govuk-!-margin-bottom-5">
-      <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                To
-              </dt>
-              <dd class="govuk-summary-list__value">
-               {{case.email}}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Subject
-              </dt>
-              <dd class="govuk-summary-list__value">
-               {{ emailPreview.subject |safe}}
-              </dd>
-            </div>
-          </dl>
-
-
-          <div class="email-preview-body">
-          <p>Hi {{ case.first_name }} {{ case.last_name}} </p>
+ 
             {{ govukTextarea({
               name: "non-template-email-body",
               id: "non-template-email-body",
@@ -104,13 +82,7 @@
               value: "Thank you for getting in touch with the Get Help Buying For Schools team, and thank you for using our online service to create your catering specification."
             }) }}
 
-            <p>Kind regards, <br><br>
-              Jenni Weiner<br>
-              Procurement Specialist<br>
-              Get Help Buying For Schools</p>
 
-            </div>
-          </div>
 
         {{ govukButton({
           text: "Preview email"
