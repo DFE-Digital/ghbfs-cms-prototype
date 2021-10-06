@@ -13,14 +13,14 @@ let addToHistory = function(caseId, data){
 	let school = schools.find(school => school.id == caseId);
 
 	let now = moment();
-	data.date = now.format("D MMMM YYYY");
+	data.date = now.format("D MMM YYYY");
 	data.time = now.format("h:mma");
 	if(!school.history){
 		school.history = [];
 	}
 	data.index = school.history.length;
 	school.history.push(data);
-	school.lastUpdated = now.format("YYYY-MM-DD")
+	school.lastUpdated = now.format("YYYY-MM-DD H:mma")
 	data.addedBy = "	Jenni Weiner"
 }
 

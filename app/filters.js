@@ -59,6 +59,10 @@ module.exports = function (env) {
     return moment(dateString, "YYYY-MM-DD").format("D MMMM YYYY");
   }
 
+  filters.formatTableDate = function(dateString){
+    return moment(dateString, "YYYY-MM-DD HH:mm").format("D MMM YYYY H:mma");
+  }
+
   filters.daysAgo = function(num) {
       var d = moment().subtract(num,"days").format("D MMMM YYYY")
       if (d !== 'Invalid date') return d

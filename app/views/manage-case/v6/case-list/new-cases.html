@@ -26,6 +26,7 @@
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"> Case </th>
           <th class="govuk-table__header" scope="col"> Organisation </th>
           <th class="govuk-table__header" scope="col"> Category </th>
           <th class="govuk-table__header" scope="col"> Status </th>
@@ -38,6 +39,9 @@
 
           {% if case.status === "new" %}
           <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.uid}}</a>
+            </td>
             <td class="govuk-table__cell">
               
                 <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>
@@ -53,7 +57,7 @@
               })}}
             </td>
             <td class="govuk-table__cell">
-              {{ case.receivedDate | formatDate }}
+              {{ case.receivedDate | formatTableDate }}
             </td>
           </tr>
           {% endif %}

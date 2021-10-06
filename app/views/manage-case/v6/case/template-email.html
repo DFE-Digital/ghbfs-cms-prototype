@@ -37,7 +37,7 @@
 
 
 
-
+{#
         {{ govukInput({
           label: {
             text: "Search for a template"
@@ -56,8 +56,9 @@
 
 
       <h2 class="govuk-heading-m">Search results</h2>
-      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+#}
       {% for template in templateEmails %}
       <div class="Search-result">
       	<h3 class="govuk-heading-m"><a href="template-preview/{{template.id}}">{{template.name}}</a></h3>
