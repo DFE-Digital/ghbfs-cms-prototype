@@ -1,0 +1,193 @@
+{% extends "layout_case.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-l">Check your answers before creating a new case</h1>
+
+      <h2 class="govuk-heading-m">Establishment details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Establishment URN"
+            },
+            value: {
+              text: data['establishment-urn']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Establishment name"
+            },
+            value: {
+              text: "look up from DSI"
+            },
+            actions: {   
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m">Contact details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Contact details"
+            },
+            value: {
+              text: data['contact-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact email"
+            },
+            value: {
+              text: data['contact-email']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact phone number"
+            },
+            value: {
+              text: data['contact-phone']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Case details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Hub identification number"
+            },
+            value: {
+              text: data['hub-identification-number']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Hubs procurement estimated completion date"
+            },
+            value: {
+              text: data['procurement-estimated-completion-date-day'] + " " + data['procurement-estimated-completion-date-month'] + " " + data['procurement-estimated-completion-date-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Hubs savings total estimate"
+            },
+            value: {
+              text: data['savings-total-estimate-hubs']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Case notes"
+            },
+            value: {
+              text: data['case-notes']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <p class="govuk-body">Check all the details before submitting as it is not currently possible to edit case details once they are created.</p>
+
+      {{ govukButton({
+        text: "Create case"
+      }) }}
+      
+    </div>
+  </div>
+{% endblock %}

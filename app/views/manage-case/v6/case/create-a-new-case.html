@@ -1,0 +1,117 @@
+{% extends "layout_case.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Create a new case</h1>
+
+      <form action="check-new-case-details" method="post">
+        {{ govukInput({
+          label: {
+            text: "Hub identification number"
+          },
+          classes: "govuk-input--width-10",
+          id: "hub-identification-number",
+          name: "hub-identification-number"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Establishment URN"
+          },
+          classes: "govuk-input--width-10",
+          id: "establishment-urn",
+          name: "establishment-urn"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Contact name"
+          },
+          classes: "govuk-input--width-20",
+          id: "contact-name",
+          name: "contact-name"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Contact email"
+          },
+          classes: "govuk-input--width-20",
+          id: "contact-email",
+          name: "contact-email"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Contact phone number (optional)"
+          },
+          classes: "govuk-input--width-20",
+          id: "contact-phone",
+          name: "contact-phone"
+        }) }}
+
+        {{ govukDateInput({
+          id: "procurement-estimated-completion-date",
+          namePrefix: "procurement-estimated-completion-date",
+          fieldset: {
+            legend: {
+              text: "Hubs procurement estimated completion date"
+            }
+          },
+          hint: {
+            text: "Enter the procurement estimated completion date supplied from the Hubs"
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "savings-total-estimate-hubs",
+          name: "savings-total-estimate-hubs",
+          label: {
+            text: "Hubs estimated total savings"
+          },
+          hint: {
+            text: "Enter the estimated savings supplied from the Hubs"
+          },
+          prefix: {
+            text: "£"
+          },
+          classes: "govuk-input--width-5",
+          spellcheck: false
+        }) }}
+{#
+        {{ govukDateInput({
+          id: "current-contract-end-date",
+          namePrefix: "current-contract-end-date",
+          fieldset: {
+            legend: {
+              text: "Current contract end date"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+#}
+        {{ govukTextarea({
+          name: "case-notes",
+          id: "case-notes",
+          label: {
+            text: "Case notes"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
