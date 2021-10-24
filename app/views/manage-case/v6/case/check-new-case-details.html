@@ -38,7 +38,17 @@
               text: "Establishment name"
             },
             value: {
-              text: "look up from DSI"
+              text: data['establishment-name']
+            },
+            actions: {   
+            }
+          },
+          {
+            key: {
+              text: "Establishment postcode"
+            },
+            value: {
+              text: data['establishment-postcode']
             },
             actions: {   
             }
@@ -113,6 +123,65 @@
         rows: [
           {
             key: {
+              text: "Type of case"
+            },
+            value: {
+              text: data['type-of-case']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Category"
+            },
+            value: {
+              text: data['category']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Case notes"
+            },
+            value: {
+              text: data['case-notes']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Hubs migration case information</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
               text: "Hub identification number"
             },
             value: {
@@ -151,23 +220,6 @@
             },
             value: {
               text: data['savings-total-estimate-hubs']
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Case notes"
-            },
-            value: {
-              text: data['case-notes']
             },
             actions: {
               items: [
