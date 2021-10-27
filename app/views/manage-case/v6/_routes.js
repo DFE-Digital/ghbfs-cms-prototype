@@ -378,6 +378,12 @@ router.post("/case/:id/type-of-email-post", function(req, res, next){
 router.post("/case/0/create-new-case-post", function(req, res, next) {
 	console.log('adding a new case')
 	let id = Math.floor(Math.random() * (100 - 21 + 1)) + 21;
+	let caseType = "";
+	if (req.session.data['hub-identification-number']) {
+		caseType = "NW Hubs"
+	} else {
+		caseType = "Other"
+	}
 	let data = {
 		id: id,
 		uid: '0000' + id,
@@ -389,7 +395,7 @@ router.post("/case/0/create-new-case-post", function(req, res, next) {
 		receivedDate: moment(),
 		lastUpdated: moment(),
 		assignedTo: "",
-		typeOfCase: req.session.data['type-of-case'],
+		typeOfCase: caseType,
 		hubIdentificationNumber: req.session.data['hub-identification-number'],
 		hubProcurementCompletionDate: moment(req.session.data['procurement-estimated-completion-date-year'] + ' ' + req.session.data['procurement-estimated-completion-date-month'] + ' ' + req.session.data['procurement-estimated-completion-date-day']),
 		hubsSavingsTotalEstimate: req.session.data['savings-total-estimate-hubs'],

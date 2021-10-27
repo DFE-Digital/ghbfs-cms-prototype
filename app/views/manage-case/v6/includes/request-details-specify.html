@@ -22,7 +22,7 @@
           Type of case
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ "NW Hubs case" if case.typeOfCase else "Specify" }}
+          {{ case.typeOfCase or "Specify" }}
         </dd>  
         <dd class="govuk-summary-list__actions">
         </dd>       
