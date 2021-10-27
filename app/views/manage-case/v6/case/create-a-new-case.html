@@ -2,31 +2,10 @@
 <link href="public/autocomplete/accessible-autocomplete.min.css" media="all" rel="stylesheet" type="text/css" />
 <script src="/public/autocomplete/accessible-autocomplete-min.js"></script>
 {% block pageScripts %}
-  {#<script src="/public/autocomplete/accessible-autocomplete-min.js"></script>#}
   
 
   <script type="text/javascript">
-  {#  const countries = [
-      'France',
-      'Germany',
-      'United Kingdom',
-      'United States'
-    ]
 
-  accessibleAutocomplete({
-    element: document.querySelector('#my-autocomplete-container'),
-    id: 'my-autocomplete', // To match it to the existing <label>.
-    source: countries,
-    name: 'establishment-urn'
-  })
-
-  
-  var request = new XMLHttpRequest();
-  request.open("GET", "../data/establishments.json", false);
-  request.send(null)
-  var my_JSON_object = JSON.parse(request.responseText);
-  alert (my_JSON_object.result[0]);
-#}
 
   function customSuggest (query, syncResults) {
           var results = [
@@ -80,7 +59,6 @@
 
 
       autocomplete.addEventListener('blur', (event) => {
-        //event.target.style.background = '';
         var schoolParams = autocomplete.value.split(',');
         console.log(schoolParams);
         console.log('left the target')
@@ -89,8 +67,6 @@
         establishmentName.value = schoolParams[1];
         establishmentPostcode.value = schoolParams[2];
       });
-
-
 
 
   </script>
@@ -121,7 +97,7 @@
         <input type="hidden" id="establishment-name" name="establishment-name" value="">
 
         <input type="hidden" id="establishment-postcode" name="establishment-postcode" value="">
-      
+
 
         {{ govukInput({
           label: {
@@ -155,6 +131,7 @@
             Category
           </label>
           <select class="govuk-select" id="sort" name="category">
+            <option selected="selected" value="Not supplied">Not supplied</option>
           <optgroup label="Business services">
             <option value="Audit">Audit</option>
             <option value="Books">Books</option>
@@ -169,7 +146,6 @@
             <option value="Cleaning">Cleaning</option>
             <option value="Build, ground and supplies">Build, ground and supplies</option>
             <option value="Furniture">Furniture</option>
-            <option value="Other"</option>
           </optgroup>
           <optgroup label="ICT">
             <option value="Hardware and commodities">Hardware and commodities</option>
@@ -190,14 +166,8 @@
           </select>
         </div>
 
-        {{ govukTextarea({
-          name: "case-notes",
-          id: "case-notes",
-          label: {
-            text: "Case notes"
-          }
-        }) }}
-
+        
+{#
         {{ govukRadios({
           idPrefix: "where-do-you-live",
           name: "type-of-case",
@@ -228,15 +198,15 @@
             }
           ]
         }) }}
+#}
 
         <br>
-        <mark>this could be split onto another page and only shown based on the selection above</mark>
         <h2 class="govuk-heading-l">Hubs migration case information</h2>
-        <p>The following fields are only required for a Hubs case that has been migrated.</p>
+        <p>The following fields are only for NW Hubs cases that are being migrated.</p>
       
         {{ govukInput({
           label: {
-            text: "Identification number (Hubs only)"
+            text: "Identification number (optional)"
           },
           hint: {
             text: "We will use the existing Hubs identification number to link the existing case data to a new case number"
@@ -251,7 +221,7 @@
           namePrefix: "procurement-estimated-completion-date",
           fieldset: {
             legend: {
-              text: "Procurement estimated completion date (Hubs only)"
+              text: "Procurement estimated completion date (optional)"
             }
           },
           hint: {
@@ -263,7 +233,7 @@
           id: "savings-total-estimate-hubs",
           name: "savings-total-estimate-hubs",
           label: {
-            text: "Estimated total savings (Hubs only)"
+            text: "Estimated total savings (optional)"
           },
           hint: {
             text: "Enter the estimated savings supplied from the Hubs"
@@ -275,6 +245,27 @@
           spellcheck: false
         }) }}
 
+        {{ govukTextarea({
+          name: "case-notes",
+          id: "case-notes",
+          label: {
+            text: "Hub notes / comments (optional)"
+          },
+          hint: {
+            text: "Enter a summary of the query from the Hubs case"
+          }
+        }) }}
+
+        {{ govukTextarea({
+          name: "progress-notes",
+          id: "progress-notes",
+          label: {
+            text: "Progress notes from CRM (optional)"
+          },
+          hint: {
+            text: "Enter any additional information relating to the correspondance between the Hubs and the establishment"
+          }
+        }) }}
         
 
         {{ govukButton({

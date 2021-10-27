@@ -19,21 +19,21 @@
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Source of enquiry
+          Type of case
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ supportInformation['specify-question'] | safe}}
+          {{ cas.typeOfCase }}
         </dd>  
         <dd class="govuk-summary-list__actions">
         </dd>       
       </div>
-
+      
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Hubs identification number
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ supportInformation['specify-question'] | safe}}
+          {{ case.hubIdentificationNumber }}
         </dd>  
         <dd class="govuk-summary-list__actions">
         </dd>       
@@ -44,7 +44,7 @@
           Hubs estimated total savings
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ supportInformation['specify-question'] | safe}}
+          {{ case.hubsSavingsTotalEstimate }}
         </dd>  
         <dd class="govuk-summary-list__actions">
         </dd>       
@@ -55,7 +55,7 @@
           Hubs procurement estimated completion date
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ supportInformation['specify-question'] | safe}}
+          {{ case.hubProcurementCompletionDate }}
         </dd>  
         <dd class="govuk-summary-list__actions">
         </dd>       

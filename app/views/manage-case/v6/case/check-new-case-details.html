@@ -13,6 +13,7 @@
 
       <h2 class="govuk-heading-m">Establishment details</h2>
 
+      <form action="0/create-new-case-post" method="post">
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
@@ -26,7 +27,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "create-a-new-case",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -72,7 +73,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "create-a-new-case",
                   text: "Change",
                   visuallyHiddenText: "contact details"
                 }
@@ -89,7 +90,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "create-a-new-case",
                   text: "Change",
                   visuallyHiddenText: "contact details"
                 }
@@ -106,7 +107,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "create-a-new-case",
                   text: "Change",
                   visuallyHiddenText: "contact details"
                 }
@@ -126,16 +127,10 @@
               text: "Type of case"
             },
             value: {
-              text: data['type-of-case']
+              text: "NW Hubs case" if data['hub-identification-number'] else "Specify"
             },
             actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
-                }
-              ]
+
             }
           },
           {
@@ -148,24 +143,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Case notes"
-            },
-            value: {
-              text: data['case-notes']
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
+                  href: "create-a-new-case",
                   text: "Change",
                   visuallyHiddenText: "contact details"
                 }
@@ -182,7 +160,7 @@
         rows: [
           {
             key: {
-              text: "Hub identification number"
+              text: "Identification number"
             },
             value: {
               text: data['hub-identification-number']
@@ -190,7 +168,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "create-a-new-case",
                   text: "Change",
                   visuallyHiddenText: "contact details"
                 }
@@ -199,7 +177,7 @@
           },
           {
             key: {
-              text: "Hubs procurement estimated completion date"
+              text: "Procurement estimated completion date"
             },
             value: {
               text: data['procurement-estimated-completion-date-day'] + " " + data['procurement-estimated-completion-date-month'] + " " + data['procurement-estimated-completion-date-year']
@@ -207,7 +185,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "create-a-new-case",
                   text: "Change",
                   visuallyHiddenText: "contact details"
                 }
@@ -216,7 +194,7 @@
           },
           {
             key: {
-              text: "Hubs savings total estimate"
+              text: "Savings total estimate"
             },
             value: {
               text: data['savings-total-estimate-hubs']
@@ -224,7 +202,41 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Notes / comments"
+            },
+            value: {
+              text: data['case-notes']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Progress notes from CRM"
+            },
+            value: {
+              text: data['progress-notes']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
                   text: "Change",
                   visuallyHiddenText: "contact details"
                 }
@@ -239,6 +251,8 @@
       {{ govukButton({
         text: "Create case"
       }) }}
+
+      </form>
       
     </div>
   </div>

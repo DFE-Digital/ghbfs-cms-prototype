@@ -63,6 +63,14 @@
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% block footer %}
+  {#
+  <p>session data</p>
+
+  {% for key, value in data %}
+    {{ key }} : {{ value }} <br>
+  {% endfor %}
+  #}
+
   {% include "includes/footer.html" %}
 {% endblock %}
 
