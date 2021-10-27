@@ -385,7 +385,7 @@ router.post("/case/0/create-new-case-post", function(req, res, next) {
 		last_name: req.session.data['contact-name'].split(' ')[1],
 		email: req.session.data['contact-email'],
 		status: "new",
-		school: {"urn":req.session.data['establishment-urn'],"name":"Pilgrims' Way Primary School","street":"Tustin Estate","town":"London","county":"Manor Grove","postcode":"SE15 1EF"},
+		school: {"urn":req.session.data['establishment-urn'],"name":req.session.data['establishment-name'],"street":"Tustin Estate","town":"London","county":"Manor Grove","postcode":req.session.data['establishment-postcode']},
 		receivedDate: moment(),
 		lastUpdated: moment(),
 		assignedTo: "",
