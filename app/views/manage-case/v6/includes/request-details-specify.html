@@ -22,11 +22,24 @@
           Type of case
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ cas.typeOfCase }}
+          {{ "NW Hubs case" if case.typeOfCase else "Specify" }}
         </dd>  
         <dd class="govuk-summary-list__actions">
         </dd>       
       </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Description of problem
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ case.notes or supportInformation['specify-question'] | safe  }}
+        </dd>  
+        <dd class="govuk-summary-list__actions">
+        </dd>       
+      </div>
+
+    {% if case.hubIdentificationNumber  %}
       
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -55,24 +68,11 @@
           Hubs procurement estimated completion date
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ case.hubProcurementCompletionDate }}
+          {{ case.hubProcurementCompletionDate | formatTableDate }}
         </dd>  
         <dd class="govuk-summary-list__actions">
         </dd>       
       </div>
-
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Description of problem
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ supportInformation['specify-question'] | safe}}
-        </dd>  
-        <dd class="govuk-summary-list__actions">
-        </dd>       
-      </div>
-
-      
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -88,5 +88,7 @@
         <dd class="govuk-summary-list__actions">
         </dd>        
       </div>
+
+      {% endif %}
     
 </dl>

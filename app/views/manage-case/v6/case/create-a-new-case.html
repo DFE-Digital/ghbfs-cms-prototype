@@ -1,6 +1,7 @@
 {% extends "layout_case.html" %}
 <link href="public/autocomplete/accessible-autocomplete.min.css" media="all" rel="stylesheet" type="text/css" />
 <script src="/public/autocomplete/accessible-autocomplete-min.js"></script>
+
 {% block pageScripts %}
   
 
@@ -165,40 +166,6 @@
           </optgroup>
           </select>
         </div>
-
-        
-{#
-        {{ govukRadios({
-          idPrefix: "where-do-you-live",
-          name: "type-of-case",
-          fieldset: {
-            legend: {
-              text: "Type of case"
-            }
-          },
-          hint: {
-            text: "Enter where the case originated"
-          },
-          items: [
-            {
-              value: "North West Hubs case",
-              text: "North West Hubs case"
-            },
-            {
-              value: "South West Hubs case",
-              text: "South West Hubs case"
-            },
-            {
-              value: "Support call",
-              text: "Support call"
-            },
-            {
-              value: "Other",
-              text: "Other"
-            }
-          ]
-        }) }}
-#}
 
         <br>
         <h2 class="govuk-heading-l">Hubs migration case information</h2>

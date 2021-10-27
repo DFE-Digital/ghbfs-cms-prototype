@@ -377,9 +377,10 @@ router.post("/case/:id/type-of-email-post", function(req, res, next){
 
 router.post("/case/0/create-new-case-post", function(req, res, next) {
 	console.log('adding a new case')
+	let id = Math.floor(Math.random() * (100 - 21 + 1)) + 21;
 	let data = {
-		id: 21,
-		uid: '000021',
+		id: id,
+		uid: '0000' + id,
 		first_name: req.session.data['contact-name'].split(' ')[0],
 		last_name: req.session.data['contact-name'].split(' ')[1],
 		email: req.session.data['contact-email'],
@@ -390,16 +391,23 @@ router.post("/case/0/create-new-case-post", function(req, res, next) {
 		assignedTo: "",
 		typeOfCase: req.session.data['type-of-case'],
 		hubIdentificationNumber: req.session.data['hub-identification-number'],
-		hubProcurementCompletionDate: moment(req.session.data['procurement-estimated-completion-date-day'] + req.session.data['procurement-estimated-completion-date-month'] + req.session.data['procurement-estimated-completion-date-year']),
+		hubProcurementCompletionDate: moment(req.session.data['procurement-estimated-completion-date-year'] + ' ' + req.session.data['procurement-estimated-completion-date-month'] + ' ' + req.session.data['procurement-estimated-completion-date-day']),
 		hubsSavingsTotalEstimate: req.session.data['savings-total-estimate-hubs'],
 		notes: req.session.data['case-notes'],
 		category: req.session.data['category'],
 		phone: req.session.data['contact-phone']
 	};
 
+	let historyData = {
+		title: "Progress notes from CRM",
+		caseNote: req.session.data["progress-notes"] 
+	};
+
 	schools.push(data)
 	res.locals.cases = schools
-	res.redirect(`/manage-case/${folderVersion}/case-list`);
+	
+	addToHistory(data.id, historyData);
+	res.redirect(`/manage-case/${folderVersion}/case/${data.id}/specify`);
 	console.log(schools)
 
 
