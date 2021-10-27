@@ -380,7 +380,7 @@ router.post("/case/0/create-new-case-post", function(req, res, next) {
 	let id = Math.floor(Math.random() * (100 - 21 + 1)) + 21;
 	let caseType = "";
 	if (req.session.data['hub-identification-number']) {
-		caseType = "NW Hubs"
+		caseType = "NW Hub"
 	} else {
 		caseType = "Other"
 	}

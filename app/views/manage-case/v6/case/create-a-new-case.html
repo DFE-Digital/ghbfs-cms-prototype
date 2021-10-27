@@ -168,15 +168,15 @@
         </div>
 
         <br>
-        <h2 class="govuk-heading-l">Hubs migration case information</h2>
-        <p>The following fields are only for NW Hubs cases that are being migrated.</p>
+        <h2 class="govuk-heading-l">Hub migration case information</h2>
+        <p>The following fields are only for NW Hub cases that are being migrated.</p>
       
         {{ govukInput({
           label: {
             text: "Identification number (optional)"
           },
           hint: {
-            text: "We will use the existing Hubs identification number to link the existing case data to a new case number"
+            text: "We will use the existing Hub identification number to link the existing case data to a new case number"
           },
           classes: "govuk-input--width-10",
           id: "hub-identification-number",
@@ -192,7 +192,7 @@
             }
           },
           hint: {
-            text: "Enter the procurement estimated completion date supplied from the Hubs"
+            text: "Enter the procurement estimated completion date supplied from the Hub"
           }
         }) }}
 
@@ -203,7 +203,7 @@
             text: "Estimated total savings (optional)"
           },
           hint: {
-            text: "Enter the estimated savings supplied from the Hubs"
+            text: "Enter the estimated savings supplied from the Hub"
           },
           prefix: {
             text: "£"
@@ -219,7 +219,7 @@
             text: "Hub notes / comments (optional)"
           },
           hint: {
-            text: "Enter a summary of the query from the Hubs case"
+            text: "Enter a summary of the query from the Hub case"
           }
         }) }}
 
@@ -230,7 +230,7 @@
             text: "Progress notes from CRM (optional)"
           },
           hint: {
-            text: "Enter any additional information relating to the correspondance between the Hubs and the establishment"
+            text: "Enter any additional information relating to the correspondance between the Hub and the establishment"
           }
         }) }}
         
