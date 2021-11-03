@@ -6,10 +6,6 @@
 {% endset %}
 
 {% set schoolDetails %}
-
-
-
-
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-5',
         rows: [
@@ -180,6 +176,12 @@
 {% endset %}
 
 
+{% set procurementDetails %}
+
+{% include "../includes/procurement-details-specify.html" %}
+
+{% endset %}
+
 
 
 
@@ -204,6 +206,13 @@
       id: "case-history",
       panel: {
         html: historyDetails
+      }
+    },
+    {
+      label: "Procurement details",
+      id: "procurement-details",
+      panel: {
+        html: procurementDetails
       }
     }
   ]
