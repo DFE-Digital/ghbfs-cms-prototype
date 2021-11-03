@@ -1,0 +1,70 @@
+{% extends "layout_case.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Add new contract details</h1>
+
+      <form action="check-new-contract-details" method="post">
+        {{ govukInput({
+          label: {
+            text: "New contract supplier"
+          },
+          id: "new-contract-supplier",
+          name: "new-contract-supplier"
+        }) }}
+
+        {{ govukDateInput({
+          id: "new-contract-start-date",
+          namePrefix: "new-contract-start-date",
+          fieldset: {
+            legend: {
+              text: "New contract start date"
+            }
+          }
+        }) }}
+
+        {{ govukDateInput({
+          id: "new-contract-end-date",
+          namePrefix: "new-contract-end-date",
+          fieldset: {
+            legend: {
+              text: "New contract end date"
+            }
+          }
+        }) }}
+        
+        {{ govukInput({
+          id: "new-contract-spend",
+          name: "new-contract-spend",
+          label: {
+            text: "New contract spend"
+          },
+          prefix: {
+            text: "£"
+          },
+          classes: "govuk-input--width-5",
+          spellcheck: false
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
