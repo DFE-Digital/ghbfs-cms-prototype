@@ -375,8 +375,55 @@ router.post("/case/:id/type-of-email-post", function(req, res, next){
 	}
 })
 
+router.post("/case/:id/add-new-contract-details-post", function(req, res, next){
+	let school = schools.find(school => school.id == req.params.id);
+	console.log(school)
+
+	let data = {
+		supplier: req.session.data['new-contract-supplier'],
+		startDate: moment(req.session.data['new-contract-start-date-year'] + ' ' + req.session.data['new-contract-start-date-month'] + ' ' + req.session.data['new-contract-start-date-day']),
+		endDate: moment(req.session.data['new-contract-end-date-year'] + ' ' + req.session.data['new-contract-end-date-month'] + ' ' + req.session.data['new-contract-end-date-day']),
+		contractSpend: req.session.data['new-contract-spend']
+	};
+
+	school.newContractTask = "Completed";
+
+	let historyData = {
+		title: "New contract details added",
+		caseNote: "more info"
+	}
+
+	school.newContract = data
+	addToHistory(req.params.id, historyData);
+
+	res.redirect(`/manage-case/${folderVersion}/case/${school.id}/specify#procurement-details`)
+})
+
+router.post("/case/:id/add-existing-contract-details-post", function(req, res, next){
+	let school = schools.find(school => school.id == req.params.id);
+	console.log(school)
+
+	let data = {
+		supplier: req.session.data['existing-contract-supplier'],
+		startDate: moment(req.session.data['existing-contract-start-date-year'] + ' ' + req.session.data['existing-contract-start-date-month'] + ' ' + req.session.data['existing-contract-start-date-day']),
+		endDate: moment(req.session.data['existing-contract-end-date-year'] + ' ' + req.session.data['existing-contract-end-date-month'] + ' ' + req.session.data['existing-contract-end-date-day']),
+		contractSpend: req.session.data['existing-contract-spend']
+	};
+
+	school.existingContractTask = "Completed"
+
+	let historyData = {
+		title: "Existing contract details added",
+		caseNote: "more info"
+	}
+
+	school.existingContract = data
+	addToHistory(req.params.id, historyData);
+
+	res.redirect(`/manage-case/${folderVersion}/case/${school.id}/specify#procurement-details`)
+})
+
 router.post("/case/0/create-new-case-post", function(req, res, next) {
-	console.log('adding a new case')
 	let id = Math.floor(Math.random() * (100 - 21 + 1)) + 21;
 	let caseType = "";
 	if (req.session.data['hub-identification-number']) {
@@ -411,12 +458,8 @@ router.post("/case/0/create-new-case-post", function(req, res, next) {
 
 	schools.push(data)
 	res.locals.cases = schools
-	
 	addToHistory(data.id, historyData);
 	res.redirect(`/manage-case/${folderVersion}/case/${data.id}/specify`);
-	console.log(schools)
-
-
 })
 
 // Add your routes above the module.exports line

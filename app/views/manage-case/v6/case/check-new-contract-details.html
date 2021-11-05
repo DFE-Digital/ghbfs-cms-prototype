@@ -19,16 +19,16 @@
     <h1 class="govuk-heading-l">Check your answers</h1>
 
 
-      <form action="add-existing-contract-details-post" method="post">
+      <form action="add-new-contract-details-post" method="post">
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Existing contract supplier "
+              text: "New contract supplier "
             },
             value: {
-              text: data['existing-contract-supplier']
+              text: data['new-contract-supplier']
             },
             actions: {
               items: [
@@ -42,10 +42,10 @@
           },
           {
             key: {
-              text: "Existing contract start date"
+              text: "New contract start date"
             },
             value: {
-              text: data['existing-contract-start-date-day'] + " " + data['existing-contract-start-date-month'] + " " + data['existing-contract-start-date-year']
+              text: data['new-contract-start-date-day'] + " " + data['new-contract-start-date-month'] + " " + data['new-contract-start-date-year']
             },
             actions: {   
               items: [
@@ -59,10 +59,10 @@
           },
           {
             key: {
-              text: "Existing contract end date"
+              text: "New contract end date"
             },
             value: {
-              text: data['existing-contract-end-date-day'] + " " + data['existing-contract-end-date-month'] + " " + data['existing-contract-end-date-year'] 
+              text: data['new-contract-end-date-day'] + " " + data['new-contract-end-date-month'] + " " + data['new-contract-end-date-year'] 
             },
             actions: {
               items: [
@@ -76,10 +76,10 @@
           },
           {
             key: {
-              text: "Existing contract spend"
+              text: "New contract spend"
             },
             value: {
-              text: data['existing-contract-spend']
+              text: data['new-contract-spend']
             },
             actions: {
               items: [

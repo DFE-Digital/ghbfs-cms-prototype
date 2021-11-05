@@ -4,43 +4,46 @@
       Add to this case
     </h2>
     <ul class="app-task-list__items" style="padding-left:0;">
-      <li class="app-task-list__item">
+      {#<li class="app-task-list__item">
         <span class="app-task-list__task-name">
-          <a href="add-new-contract-details" aria-describedby="read-declaration-status">
+          <a href="#" aria-describedby="read-declaration-status">
             Procurement details
           </a>
         </span>
         <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
-      </li>
-      {#<li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="#" aria-describedby="eligibility-status">
-            Current contract details
-          </a>
-        </span>
-        <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
-      </li>
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="#" aria-describedby="eligibility-status">
-            New contract details
-          </a>
-        </span>
         <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
       </li>#}
       <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="add-existing-contract-details" aria-describedby="eligibility-status">
+            Existing contract details
+          </a>
+        </span>
+        <strong class="govuk-tag {{ '' if case.existingContractTask == 'Completed' else 'govuk-tag--grey' }} app-task-list__tag" id="list-convictions-status">{{ case.existingContractTask or "Not started" }}</strong>
+      </li>
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="add-new-contract-details" aria-describedby="eligibility-status">
+            New contract details
+          </a>
+        </span>
+        <strong class="govuk-tag {{ '' if case.newContractTask == 'Completed' else 'govuk-tag--grey' }} app-task-list__tag" id="list-convictions-status">{{ case.newContractTask or "Not started" }}</strong>
+      </li>
+      {#<li class="app-task-list__item">
         <span class="app-task-list__task-name">
           <a href="add-existing-contract-details" aria-describedby="eligibility-status">
             Savings details
           </a>
         </span>
         <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
-      </li>
+      </li>#}
     </ul>
   </li>
 </ol>
 
+{% if case.newContractTask == 'Completed' or case.existingContractTask == 'Completed' %}
 <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+  {% if case.newContractTask == 'Completed' %}
   <div class="govuk-accordion__section ">
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
@@ -53,13 +56,26 @@
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
+            Supplier
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ case.newContract.supplier or "-" }}
+          </dd>    
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="add-new-contract-details">
+              Change<span class="govuk-visually-hidden"> name</span>
+            </a>
+          </dd>    
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
             Start date
           </dt>
           <dd class="govuk-summary-list__value">
-            1 Jan 2022
+            {{ case.newContract.startDate | formatDate or "-" }}
           </dd>    
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="category">
+            <a class="govuk-link" href="add-new-contract-details">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>    
@@ -69,10 +85,10 @@
             End date
           </dt>
           <dd class="govuk-summary-list__value">
-            1 Jan 2025
+            {{ case.newContract.endDate | formatDate or "-" }}
           </dd>    
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="category">
+            <a class="govuk-link" href="add-new-contract-details">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>    
@@ -82,10 +98,10 @@
             Contract duration
           </dt>
           <dd class="govuk-summary-list__value">
-            36 months
+            {{ case.newContract.duration or "-" }}
           </dd>    
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="category">
+            <a class="govuk-link" href="add-new-contract-details">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>    
@@ -95,10 +111,10 @@
             Contract spend
           </dt>
           <dd class="govuk-summary-list__value">
-            £100,000
+            £ {{ case.newContract.contractSpend or "-" }}
           </dd>    
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="category">
+            <a class="govuk-link" href="add-new-contract-details">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>    
@@ -106,11 +122,14 @@
       </dl>
     </div>
   </div>
+  {% endif %}
+
+  {% if case.existingContractTask == 'Completed' %}
   <div class="govuk-accordion__section ">
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
         <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-          Current contract details
+          Existing contract details
         </span>
       </h2>
     </div>
@@ -122,10 +141,10 @@
             Supplier
           </dt>
           <dd class="govuk-summary-list__value">
-            ABC Suppliers
+            {{ case.existingContract.supplier or "-" }}
           </dd>    
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="category">
+            <a class="govuk-link" href="add-existing-contract-details">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>    
@@ -135,10 +154,10 @@
             Start date
           </dt>
           <dd class="govuk-summary-list__value">
-            1 Jan 2018
+            {{ case.existingContract.startDate | formatDate or "-" }}
           </dd>    
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="category">
+            <a class="govuk-link" href="add-existing-contract-details">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>    
@@ -148,10 +167,10 @@
             End date
           </dt>
           <dd class="govuk-summary-list__value">
-            31 Dec 2021
+            {{ case.existingContract.endDate | formatDate or "-" }}
           </dd>    
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="category">
+            <a class="govuk-link" href="add-existing-contract-details">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>    
@@ -162,10 +181,10 @@
             Contract duration
           </dt>
           <dd class="govuk-summary-list__value">
-            36 months
+            {{ case.existingContract.duration or "-" }}
           </dd>    
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="category">
+            <a class="govuk-link" href="add-existing-contract-details">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>    
@@ -175,10 +194,10 @@
             Contract spend
           </dt>
           <dd class="govuk-summary-list__value">
-            £90,000
+            £ {{ case.existingContract.contractSpend or "-" }}
           </dd>    
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="category">
+            <a class="govuk-link" href="add-existing-contract-details">
               Change<span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>    
@@ -186,4 +205,6 @@
       </dl>
     </div>
   </div>
+  {% endif %}
 </div>
+{% endif %}
