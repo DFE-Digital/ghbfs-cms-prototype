@@ -16,7 +16,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    <h1 class="govuk-heading-l">Check your answers</h1>
+    <h1 class="govuk-heading-l">Check your answers before {{ 'updating' if case.newContractTask == 'Completed' else 'adding' }} existing contract details</h1>
 
 
       <form action="add-existing-contract-details-post" method="post">
@@ -31,6 +31,23 @@
               text: data['existing-contract-supplier']
             },
             actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Existing contract duration"
+            },
+            value: {
+              text: data['existing-contract-duration']
+            },
+            actions: {   
               items: [
                 {
                   href: "create-a-new-case",
@@ -95,7 +112,7 @@
       }) }}
 
       {{ govukButton({
-        text: "Create case"
+        text: "Submit"
       }) }}
 
       </form>

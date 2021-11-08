@@ -15,52 +15,110 @@
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-
-      <h1 class="govuk-heading-l">Add new contract details</h1>
+      
+      <h1 class="govuk-heading-l">{{ 'Edit' if case.newContractTask == 'Completed' else 'Add' }} new contract details</h1>
 
       <form action="check-new-contract-details" method="post">
         {{ govukInput({
           label: {
-            text: "New contract supplier"
+            text: "New contract supplier (optional)"
           },
           classes: "govuk-input--width-20",
           id: "new-contract-supplier",
-          name: "new-contract-supplier"
+          name: "new-contract-supplier",
+          value: case.newContract.supplier
         }) }}
 
-        <mark>need to allow user to input either start and end, start and duration or end and duration</mark>
-        {{ govukDateInput({
-          id: "new-contract-start-date",
-          namePrefix: "new-contract-start-date",
-          fieldset: {
-            legend: {
-              text: "New contract start date"
-            }
-          }
-        }) }}
-
-        {{ govukDateInput({
-          id: "new-contract-end-date",
-          namePrefix: "new-contract-end-date",
-          fieldset: {
-            legend: {
-              text: "New contract end date"
-            }
-          }
-        }) }}
-        
         {{ govukInput({
           id: "new-contract-spend",
           name: "new-contract-spend",
           label: {
-            text: "New contract spend"
+            text: "New contract spend (optional)"
           },
           prefix: {
             text: "£"
           },
           classes: "govuk-input--width-5",
-          spellcheck: false
+          spellcheck: false,
+          value: case.newContract.spend
         }) }}
+
+        {% call govukFieldset({
+          legend: {
+            text: "New contract dates",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+          <p>You will need to fill in at least two sections for us to accurately calculate the contract dates.</p>
+
+          {{ govukInput({
+            label: {
+              text: "Duration of new contract in months (optional)"
+            },
+            classes: "govuk-input--width-5",
+            id: "new-contract-duration",
+            name: "new-contract-duration",
+            value: case.newContract.duration
+          }) }}
+
+          {{ govukDateInput({
+            id: "new-contract-start-date",
+            namePrefix: "new-contract-start-date",
+            fieldset: {
+              legend: {
+                text: "New contract start date (optional)"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: case.newContract.startDate | returnDay
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: case.newContract.startDate | returnMonth
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: case.newContract.startDate | returnYear
+              }
+            ]
+          }) }}
+
+          {{ govukDateInput({
+            id: "new-contract-end-date",
+            namePrefix: "new-contract-end-date",
+            fieldset: {
+              legend: {
+                text: "New contract end date (optional)"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: case.newContract.endDate | returnDay
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: case.newContract.endDate | returnMonth
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: case.newContract.endDate | returnYear
+              }
+            ]
+          }) }}
+        
+        {% endcall %}
+
+        
 
         {{ govukButton({
           text: "Continue"

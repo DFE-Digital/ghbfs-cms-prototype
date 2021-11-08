@@ -69,6 +69,19 @@ module.exports = function (env) {
       else return ''
   }
 
+  // could be combined into a single filter, passing in the type
+  filters.returnDay = function(date) {   
+    return date ? moment(date).day() : "";
+  }
+
+  filters.returnMonth = function(date) {
+    return date ? moment(date).month() : "";
+  }
+
+  filters.returnYear = function(date) {
+    return date ? moment(date).year() : "";
+  }
+
 
 let statuses = {
   "new": {

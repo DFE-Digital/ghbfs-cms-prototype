@@ -377,13 +377,33 @@ router.post("/case/:id/type-of-email-post", function(req, res, next){
 
 router.post("/case/:id/add-new-contract-details-post", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
-	console.log(school)
+
+	var duration = req.session.data['new-contract-duration']
+	var startDate = moment(req.session.data['new-contract-start-date-year'] + ' ' + req.session.data['new-contract-start-date-month'] + ' ' + req.session.data['new-contract-start-date-day'], "YYYY-MM-DD")
+	var endDate =  moment(req.session.data['new-contract-end-date-year'] + ' ' + req.session.data['new-contract-end-date-month'] + ' ' + req.session.data['new-contract-end-date-day'], "YYYY-MM-DD")
+
+	if (duration && !isNaN(startDate) && !isNaN(endDate)) {
+ 	} else {
+		if (!duration) {
+			duration = endDate.diff(startDate, 'months');
+			console.log("duration updated: " + duration)
+		}
+		if (isNaN(startDate)) {
+			startDate = moment(endDate.clone().subtract(duration, 'months'))
+			console.log("startDate updated: " + startDate)
+		}
+		if (isNaN(endDate)) {
+			endDate = moment(startDate.clone().add(duration, 'months'))
+			console.log("endDate updated: " + endDate)
+		}
+	}
 
 	let data = {
 		supplier: req.session.data['new-contract-supplier'],
-		startDate: moment(req.session.data['new-contract-start-date-year'] + ' ' + req.session.data['new-contract-start-date-month'] + ' ' + req.session.data['new-contract-start-date-day']),
-		endDate: moment(req.session.data['new-contract-end-date-year'] + ' ' + req.session.data['new-contract-end-date-month'] + ' ' + req.session.data['new-contract-end-date-day']),
-		contractSpend: req.session.data['new-contract-spend']
+		startDate: startDate,
+		endDate: endDate,
+		spend: req.session.data['new-contract-spend'],
+		duration: duration
 	};
 
 	school.newContractTask = "Completed";
@@ -401,13 +421,34 @@ router.post("/case/:id/add-new-contract-details-post", function(req, res, next){
 
 router.post("/case/:id/add-existing-contract-details-post", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
-	console.log(school)
+	//console.log(school)
+
+	var duration = req.session.data['existing-contract-duration']
+	var startDate = moment(req.session.data['existing-contract-start-date-year'] + ' ' + req.session.data['existing-contract-start-date-month'] + ' ' + req.session.data['existing-contract-start-date-day'], "YYYY-MM-DD")
+	var endDate =  moment(req.session.data['existing-contract-end-date-year'] + ' ' + req.session.data['existing-contract-end-date-month'] + ' ' + req.session.data['existing-contract-end-date-day'], "YYYY-MM-DD")
+
+	if (duration && !isNaN(startDate) && !isNaN(endDate)) {
+ 	} else {
+		if (!duration) {
+			duration = endDate.diff(startDate, 'months');
+			console.log("duration updated: " + duration)
+		}
+		if (isNaN(startDate)) {
+			startDate = moment(endDate.clone().subtract(duration, 'months'))
+			console.log("startDate updated: " + startDate)
+		}
+		if (isNaN(endDate)) {
+			endDate = moment(startDate.clone().add(duration, 'months'))
+			console.log("endDate updated: " + endDate)
+		}
+	}
 
 	let data = {
 		supplier: req.session.data['existing-contract-supplier'],
-		startDate: moment(req.session.data['existing-contract-start-date-year'] + ' ' + req.session.data['existing-contract-start-date-month'] + ' ' + req.session.data['existing-contract-start-date-day']),
-		endDate: moment(req.session.data['existing-contract-end-date-year'] + ' ' + req.session.data['existing-contract-end-date-month'] + ' ' + req.session.data['existing-contract-end-date-day']),
-		contractSpend: req.session.data['existing-contract-spend']
+		startDate: startDate,
+		endDate: endDate,
+		spend: req.session.data['existing-contract-spend'],
+		duration: duration
 	};
 
 	school.existingContractTask = "Completed"
