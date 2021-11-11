@@ -1,4 +1,22 @@
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <h2 class="govuk-heading-m">Procurement details</h2>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Agreement type
+    </dt>
+    <dd class="govuk-summary-list__value">
+        {{ case.procurementDetails.agreementType or "-" }}
+    </dd>    
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="add-procurement-details">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>    
+  </div>
+</dl>
+
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
   <h2 class="govuk-heading-m">Existing contract</h2>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">

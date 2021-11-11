@@ -385,7 +385,7 @@ router.post("/case/:id/add-new-contract-details-post", function(req, res, next){
 		duration: req.session.data['new-contract-duration']
 	};
 
-	school.newContractTask = "Completed";
+	//school.newContractTask = "Completed";
 
 	let historyData = {
 		title: "New contract details updated",
@@ -408,7 +408,7 @@ router.post("/case/:id/add-existing-contract-details-post", function(req, res, n
 		duration: req.session.data['existing-contract-duration']
 	};
 
-	school.existingContractTask = "Completed"
+	//school.existingContractTask = "Completed"
 
 	let historyData = {
 		title: "Existing contract details updated",
@@ -418,6 +418,29 @@ router.post("/case/:id/add-existing-contract-details-post", function(req, res, n
 	school.existingContract = data
 	addToHistory(req.params.id, historyData);
 
+	res.redirect(`/manage-case/${folderVersion}/case/${school.id}/specify#procurement-details`)
+})
+
+router.post("/case/:id/add-procurement-details-post", function(req, res, next){
+	let school = schools.find(school => school.id == req.params.id);
+
+	console.log(req.session.data['agreement-type'])
+
+	let data = {
+		agreementType: req.session.data['agreement-type']
+	};
+
+	//school.existingContractTask = "Completed"
+
+	let historyData = {
+		title: "Procurement details updated",
+		caseNote: "more info"
+	}
+
+	school.procurementDetails = data
+	addToHistory(req.params.id, historyData);
+
+	console.log(school.procurementDetails.agreementType)
 	res.redirect(`/manage-case/${folderVersion}/case/${school.id}/specify#procurement-details`)
 })
 
