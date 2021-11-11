@@ -16,17 +16,45 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       
-      <h1 class="govuk-heading-l">{{ 'Edit' if case.newContractTask == 'Completed' else 'Add' }} new contract details</h1>
+      <h1 class="govuk-heading-l">Update new contract details</h1>
 
       <form action="check-new-contract-details" method="post">
+
+       {{ govukDateInput({
+          id: "new-contract-start-date",
+          namePrefix: "new-contract-start-date",
+          fieldset: {
+            legend: {
+              text: "Start date of new contract (optional)"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: case.newContract.startDate | returnDay if case.newContract.startDate else data['new-contract-start-date-day']
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: case.newContract.startDate | returnMonth if case.newContract.startDate else data['new-contract-start-date-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: case.newContract.startDate | returnYear if case.newContract.startDate else data['new-contract-start-date-year']
+            }
+          ]
+        }) }}
+
         {{ govukInput({
           label: {
-            text: "New contract supplier (optional)"
+            text: "Duration of new contract in months (optional)"
           },
-          classes: "govuk-input--width-20",
-          id: "new-contract-supplier",
-          name: "new-contract-supplier",
-          value: case.newContract.supplier
+          classes: "govuk-input--width-5",
+          id: "new-contract-duration",
+          name: "new-contract-duration",
+          value: case.newContract.duration if case.newContract.duration else data['new-contract-duration']
         }) }}
 
         {{ govukInput({
@@ -40,85 +68,18 @@
           },
           classes: "govuk-input--width-5",
           spellcheck: false,
-          value: case.newContract.spend
+          value: case.newContract.spend if case.newContract.spend else data['new-contract-spend']
         }) }}
 
-        {% call govukFieldset({
-          legend: {
-            text: "New contract dates",
-            classes: "govuk-fieldset__legend--m"
-          }
-        }) %}
-
-          <p>You will need to fill in at least two sections for us to accurately calculate the contract dates.</p>
-
-          {{ govukInput({
-            label: {
-              text: "Duration of new contract in months (optional)"
-            },
-            classes: "govuk-input--width-5",
-            id: "new-contract-duration",
-            name: "new-contract-duration",
-            value: case.newContract.duration
-          }) }}
-
-          {{ govukDateInput({
-            id: "new-contract-start-date",
-            namePrefix: "new-contract-start-date",
-            fieldset: {
-              legend: {
-                text: "New contract start date (optional)"
-              }
-            },
-            items: [
-              {
-                name: "day",
-                classes: "govuk-input--width-2",
-                value: case.newContract.startDate | returnDay
-              },
-              {
-                name: "month",
-                classes: "govuk-input--width-2",
-                value: case.newContract.startDate | returnMonth
-              },
-              {
-                name: "year",
-                classes: "govuk-input--width-4",
-                value: case.newContract.startDate | returnYear
-              }
-            ]
-          }) }}
-
-          {{ govukDateInput({
-            id: "new-contract-end-date",
-            namePrefix: "new-contract-end-date",
-            fieldset: {
-              legend: {
-                text: "New contract end date (optional)"
-              }
-            },
-            items: [
-              {
-                name: "day",
-                classes: "govuk-input--width-2",
-                value: case.newContract.endDate | returnDay
-              },
-              {
-                name: "month",
-                classes: "govuk-input--width-2",
-                value: case.newContract.endDate | returnMonth
-              },
-              {
-                name: "year",
-                classes: "govuk-input--width-4",
-                value: case.newContract.endDate | returnYear
-              }
-            ]
-          }) }}
-        
-        {% endcall %}
-
-        
+        {{ govukInput({
+          label: {
+            text: "New contract supplier (optional)"
+          },
+          classes: "govuk-input--width-20",
+          id: "new-contract-supplier",
+          name: "new-contract-supplier",
+          value: case.newContract.supplier if case.newContract.supplier else data['new-contract-supplier']
+        }) }}
 
         {{ govukButton({
           text: "Continue"

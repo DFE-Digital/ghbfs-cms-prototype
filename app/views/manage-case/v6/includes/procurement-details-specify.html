@@ -1,210 +1,128 @@
-<ol class="app-task-list">
-  <li>
-    <h2 class="app-task-list__section">
-      Add to this case
-    </h2>
-    <ul class="app-task-list__items" style="padding-left:0;">
-      {#<li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="#" aria-describedby="read-declaration-status">
-            Procurement details
-          </a>
-        </span>
-        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
-        <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
-      </li>#}
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="add-existing-contract-details" aria-describedby="eligibility-status">
-            Existing contract details
-          </a>
-        </span>
-        <strong class="govuk-tag {{ '' if case.existingContractTask == 'Completed' else 'govuk-tag--grey' }} app-task-list__tag" id="list-convictions-status">{{ case.existingContractTask or "Not started" }}</strong>
-      </li>
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="add-new-contract-details" aria-describedby="eligibility-status">
-            New contract details
-          </a>
-        </span>
-        <strong class="govuk-tag {{ '' if case.newContractTask == 'Completed' else 'govuk-tag--grey' }} app-task-list__tag" id="list-convictions-status">{{ case.newContractTask or "Not started" }}</strong>
-      </li>
-      {#<li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="add-existing-contract-details" aria-describedby="eligibility-status">
-            Savings details
-          </a>
-        </span>
-        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
-      </li>#}
-    </ul>
-  </li>
-</ol>
-
-{% if case.newContractTask == 'Completed' or case.existingContractTask == 'Completed' %}
-<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-  {% if case.newContractTask == 'Completed' %}
-  <div class="govuk-accordion__section ">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-          New contract details
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Supplier
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.newContract.supplier or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-new-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Start date
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.newContract.startDate | formatDate or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-new-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            End date
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.newContract.endDate | formatDate or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-new-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Contract duration
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.newContract.duration or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-new-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Contract spend
-          </dt>
-          <dd class="govuk-summary-list__value">
-            £ {{ case.newContract.spend or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-new-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>    
-      </dl>
-    </div>
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <h2 class="govuk-heading-m">Existing contract</h2>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      End date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.existingContract.endDate %}
+        {{ case.existingContract.endDate | formatDate or "-" }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="add-existing-contract-details">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>    
   </div>
-  {% endif %}
-
-  {% if case.existingContractTask == 'Completed' %}
-  <div class="govuk-accordion__section ">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-          Existing contract details
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <h2 class="govuk-heading-m">Current contract</h2>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Supplier
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.existingContract.supplier or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-existing-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Start date
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.existingContract.startDate | formatDate or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-existing-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            End date
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.existingContract.endDate | formatDate or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-existing-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Contract duration
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.existingContract.duration or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-existing-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Contract spend
-          </dt>
-          <dd class="govuk-summary-list__value">
-            £ {{ case.existingContract.spend or "-" }}
-          </dd>    
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="add-existing-contract-details">
-              Change<span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>    
-        </div>    
-      </dl>
-    </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract duration
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.existingContract.duration or "-" }}
+    </dd>    
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="add-existing-contract-details">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>    
   </div>
-  {% endif %}
-</div>
-{% endif %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract spend
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.existingContract.spend %}
+        £{{ case.existingContract.spend }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="add-existing-contract-details">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Supplier
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.existingContract.supplier or "-" }}
+    </dd>    
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="add-existing-contract-details">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>    
+  </div>   
+</dl>
+
+<h2 class="govuk-heading-m">New contract details</h2>
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Start date
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {% if case.newContract.startDate %}
+      {{ case.newContract.startDate | formatDate or "-" }}
+    {% else %}
+      -
+    {% endif %}
+    </dd>    
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="add-new-contract-details">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract duration
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.newContract.duration or "-" }}
+    </dd>    
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="add-new-contract-details">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract spend
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.newContract.spend %}
+        £{{ case.newContract.spend }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="add-new-contract-details">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Supplier
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.newContract.supplier or "-" }}
+    </dd>    
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="add-new-contract-details">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>    
+  </div>    
+</dl>

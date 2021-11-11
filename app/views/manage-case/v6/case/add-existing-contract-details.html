@@ -16,16 +16,45 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-l">{{ 'Edit' if case.existingContractTask == 'Completed' else 'Add' }} existing contract details</h1>
+      <h1 class="govuk-heading-l">Update existing contract details</h1>
 
       <form action="check-existing-contract-details" method="post">
+        
+        {{ govukDateInput({
+          id: "existing-contract-end-date",
+          namePrefix: "existing-contract-end-date",
+          fieldset: {
+            legend: {
+              text: "End date of existing contract (optional)"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: case.existingContract.endDate | returnDay if case.existingContract.endDate else data['existing-contract-end-date-day']
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: case.existingContract.endDate | returnMonth if case.existingContract.endDate else data['existing-contract-end-date-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: case.existingContract.endDate | returnYear if case.existingContract.endDate else data['existing-contract-end-date-year']
+            }
+          ]
+        }) }}
+
         {{ govukInput({
           label: {
-            text: "Existing contract supplier (optional)"
+            text: "Duration of existing contract in months (optional)"
           },
-          classes: "govuk-input--width-20",
-          id: "existing-contract-supplier",
-          name: "existing-contract-supplier"
+          classes: "govuk-input--width-5",
+          id: "existing-contract-duration",
+          name: "existing-contract-duration",
+          value: case.existingContract.duration if case.existingContract.duration else data['existing-contract-duration']
         }) }}
 
         {{ govukInput({
@@ -38,84 +67,20 @@
             text: "£"
           },
           classes: "govuk-input--width-5",
-          spellcheck: false
+          spellcheck: false,
+          value: case.existingContract.spend if case.existingContract.spend else data['existing-contract-spend']
         }) }}
-
-        {% call govukFieldset({
-          legend: {
-            text: "Existing contract dates",
-            classes: "govuk-fieldset__legend--m"
-          }
-        }) %}
-
-          <p>You will need to fill in at least two sections for us to accurately calculate the contract dates.</p>
-
-          {{ govukInput({
-            label: {
-              text: "Duration of existing contract in months (optional)"
-            },
-            classes: "govuk-input--width-5",
-            id: "existing-contract-duration",
-            name: "existing-contract-duration"
-          }) }}
-
-          {{ govukDateInput({
-            id: "existing-contract-start-date",
-            namePrefix: "existing-contract-start-date",
-            fieldset: {
-              legend: {
-                text: "Existing contract start date (optional)"
-              }
-            },
-            items: [
-              {
-                name: "day",
-                classes: "govuk-input--width-2",
-                value: case.existingContract.startDate | returnDay
-              },
-              {
-                name: "month",
-                classes: "govuk-input--width-2",
-                value: case.existingContract.startDate | returnMonth
-              },
-              {
-                name: "year",
-                classes: "govuk-input--width-4",
-                value: case.existingContract.startDate | returnYear
-              }
-            ]
-          }) }}
-
-          {{ govukDateInput({
-            id: "existing-contract-end-date",
-            namePrefix: "existing-contract-end-date",
-            fieldset: {
-              legend: {
-                text: "Existing contract end date (optional)"
-              }
-            },
-            items: [
-              {
-                name: "day",
-                classes: "govuk-input--width-2",
-                value: case.existingContract.endDate | returnDay
-              },
-              {
-                name: "month",
-                classes: "govuk-input--width-2",
-                value: case.existingContract.endDate | returnMonth
-              },
-              {
-                name: "year",
-                classes: "govuk-input--width-4",
-                value: case.existingContract.endDate | returnYear
-              }
-            ]
-          }) }}
         
-        {% endcall %}
-
-
+        {{ govukInput({
+          label: {
+            text: "Existing contract supplier (optional)"
+          },
+          classes: "govuk-input--width-20",
+          id: "existing-contract-supplier",
+          name: "existing-contract-supplier",
+          value: case.existingContract.supplier if case.existingContract.supplier else data['existing-contract-supplier']
+        }) }}
+   
         {{ govukButton({
           text: "Continue"
         }) }}

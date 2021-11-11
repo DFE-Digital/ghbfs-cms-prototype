@@ -70,12 +70,12 @@ module.exports = function (env) {
   }
 
   // could be combined into a single filter, passing in the type
-  filters.returnDay = function(date) {   
-    return date ? moment(date).day() : "";
+  filters.returnDay = function(date) {
+    return date ? moment(date).date() : "";
   }
 
   filters.returnMonth = function(date) {
-    return date ? moment(date).month() : "";
+    return date ? (moment(date).month() + 1) : "";
   }
 
   filters.returnYear = function(date) {

@@ -16,7 +16,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    <h1 class="govuk-heading-l">Check your answers before {{ 'updating' if case.newContractTask == 'Completed' else 'adding' }} existing contract details</h1>
+    <h1 class="govuk-heading-l">Check your answers before updating existing contract details</h1>
 
 
       <form action="add-existing-contract-details-post" method="post">
@@ -25,58 +25,7 @@
         rows: [
           {
             key: {
-              text: "Existing contract supplier "
-            },
-            value: {
-              text: data['existing-contract-supplier']
-            },
-            actions: {
-              items: [
-                {
-                  href: "create-a-new-case",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Existing contract duration"
-            },
-            value: {
-              text: data['existing-contract-duration']
-            },
-            actions: {   
-              items: [
-                {
-                  href: "create-a-new-case",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Existing contract start date"
-            },
-            value: {
-              text: data['existing-contract-start-date-day'] + " " + data['existing-contract-start-date-month'] + " " + data['existing-contract-start-date-year']
-            },
-            actions: {   
-              items: [
-                {
-                  href: "create-a-new-case",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Existing contract end date"
+              text: "End date of existing contract"
             },
             value: {
               text: data['existing-contract-end-date-day'] + " " + data['existing-contract-end-date-month'] + " " + data['existing-contract-end-date-year'] 
@@ -84,7 +33,24 @@
             actions: {
               items: [
                 {
-                  href: "create-a-new-case",
+                  href: "add-existing-contract-details",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Duration of existing contract"
+            },
+            value: {
+              text: data['existing-contract-duration']
+            },
+            actions: {   
+              items: [
+                {
+                  href: "add-existing-contract-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -96,12 +62,29 @@
               text: "Existing contract spend"
             },
             value: {
-              text: data['existing-contract-spend']
+              text: '£' + data['existing-contract-spend']
             },
             actions: {
               items: [
                 {
-                  href: "create-a-new-case",
+                  href: "add-existing-contract-details",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Existing contract supplier "
+            },
+            value: {
+              text: data['existing-contract-supplier']
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-existing-contract-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }

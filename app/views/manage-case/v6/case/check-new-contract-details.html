@@ -16,8 +16,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    <h1 class="govuk-heading-l">Check your answers before {{ 'updating' if case.newContractTask == 'Completed' else 'adding' }} new contract details</h1>
-
+    <h1 class="govuk-heading-l">Check your answers before updating new contract details</h1>
 
       <form action="add-new-contract-details-post" method="post">
       {{ govukSummaryList({
@@ -25,41 +24,7 @@
         rows: [
           {
             key: {
-              text: "New contract supplier "
-            },
-            value: {
-              text: data['new-contract-supplier']
-            },
-            actions: {
-              items: [
-                {
-                  href: "create-a-new-case",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "New contract duration"
-            },
-            value: {
-              text: data['new-contract-duration']
-            },
-            actions: {   
-              items: [
-                {
-                  href: "create-a-new-case",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "New contract start date"
+              text: "Start date of new contract"
             },
             value: {
               text: data['new-contract-start-date-day'] + " " + data['new-contract-start-date-month'] + " " + data['new-contract-start-date-year']
@@ -67,7 +32,7 @@
             actions: {   
               items: [
                 {
-                  href: "create-a-new-case",
+                  href: "add-new-contract-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -76,15 +41,15 @@
           },
           {
             key: {
-              text: "New contract end date"
+              text: "Duration of new contract"
             },
             value: {
-              text: data['new-contract-end-date-day'] + " " + data['new-contract-end-date-month'] + " " + data['new-contract-end-date-year'] 
+              text: data['new-contract-duration']
             },
-            actions: {
+            actions: {   
               items: [
                 {
-                  href: "create-a-new-case",
+                  href: "add-new-contract-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -96,12 +61,29 @@
               text: "New contract spend"
             },
             value: {
-              text: data['new-contract-spend']
+              text: '£' + data['new-contract-spend']
             },
             actions: {
               items: [
                 {
-                  href: "create-a-new-case",
+                  href: "add-new-contract-details",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "New contract supplier "
+            },
+            value: {
+              text: data['new-contract-supplier']
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-new-contract-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
