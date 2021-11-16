@@ -9,14 +9,14 @@ module.exports = {
   // URL for heroku app (used in footer when running locally)
   herokuURL: 'https://ghbfs-prototype.herokuapp.com',
 
+  // Default port that prototype runs on
+  port: '3000',
+
   // URL for the repo (used in footer)
   repoURL: '',
 
   // Enable internal class on html element and the styles associated to it
   internal: true,
-
-  // Default port that prototype runs on
-  port: '3000',
 
   // Enable or disable password protection on production
   useAuth: 'true',
