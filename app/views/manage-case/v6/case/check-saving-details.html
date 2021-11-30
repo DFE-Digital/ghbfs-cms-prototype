@@ -16,23 +16,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    <h1 class="govuk-heading-l">Check your answers before updating procurement details</h1>
+    <h1 class="govuk-heading-l">Check your answers before updating saving details</h1>
 
-      <form action="add-procurement-details-post" method="post">
+      <form action="add-saving-details-post" method="post">
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Required agreement type"
+              text: "Saving status"
             },
             value: {
-              text: data['agreement-type']
+              text: data['status']
             },
             actions: {   
               items: [
                 {
-                  href: "add-procurement-details",
+                  href: "add-saving-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -41,15 +41,15 @@
           },
           {
             key: {
-              text: "Route to market"
+              text: "Saving estimate method"
             },
             value: {
-              text: data['route']
+              text: data['estimate-method']
             },
             actions: {   
               items: [
                 {
-                  href: "add-procurement-details",
+                  href: "add-saving-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -58,15 +58,15 @@
           },
           {
             key: {
-              text: "Reason for route to market"
+              text: "Saving actual method"
             },
             value: {
-              text: data['reason']
+              text: data['actual-method']
             },
             actions: {   
               items: [
                 {
-                  href: "add-procurement-details",
+                  href: "add-saving-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -75,15 +75,15 @@
           },
           {
             key: {
-              text: "Framework name"
+              text: "Saving estimate"
             },
             value: {
-              text: data['framework']
+              text: data['estimate']
             },
             actions: {   
               items: [
                 {
-                  href: "add-procurement-details",
+                  href: "add-saving-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -92,49 +92,15 @@
           },
           {
             key: {
-              text: "Start date of procurement"
+              text: "Saving actual"
             },
             value: {
-              text: data['procurement-start-date-day'] + " " + data['procurement-start-date-month'] + " " + data['procurement-start-date-year']
+              text: data['actual']
             },
             actions: {   
               items: [
                 {
-                  href: "add-procurement-details",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "End date of procurement"
-            },
-            value: {
-              text: data['procurement-end-date-day'] + " " + data['procurement-end-date-month'] + " " + data['procurement-end-date-year']
-            },
-            actions: {   
-              items: [
-                {
-                  href: "add-procurement-details",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Procurement stage"
-            },
-            value: {
-              text: data['stage']
-            },
-            actions: {   
-              items: [
-                {
-                  href: "add-procurement-details",
+                  href: "add-saving-details",
                   text: "Change",
                   visuallyHiddenText: "name"
                 }

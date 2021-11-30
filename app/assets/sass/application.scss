@@ -21,6 +21,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/internal";
 @import "components/card";
 @import "components/flash-card";
+@import "components/pagination";
 
 
 .autocomplete__option {

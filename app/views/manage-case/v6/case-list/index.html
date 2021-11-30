@@ -1,5 +1,9 @@
 {% extends "layout_noback.html" %}
 
+{% block header %}
+  {% include "manage-case/v6/includes/logged_in_user.html" %}
+{% endblock %}
+
 {% block content %}
   <h1 style="display:block" class="govuk-heading-l govuk-button-group flexalign__left">All cases 
     <span style="float:right; display: relative">
@@ -44,6 +48,7 @@
       <tbody class="govuk-table__body">
 
         {% for case in cases | sort(false, false, "lastUpdated")%}
+        {% if loop.index0 < 10 %}    
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
               <a href="case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.uid}}</a>
@@ -69,9 +74,25 @@
             {{ case.lastUpdated | formatTableDate }}
           </td>
         </tr>
+        {% endif %}
         {% endfor %}
       </tbody>
     </table>
+    <nav class="moj-pagination" id="pagination-label">
+      <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+      <ul class="moj-pagination__list">
+        <li class="moj-pagination__item  moj-pagination__item--prev">
+          <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
+        </li>
+        <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=1">1</a></li>
+        <li class="moj-pagination__item moj-pagination__item--active">2</li>
+        <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3">3</a></li>
+        <li class="moj-pagination__item  moj-pagination__item--next">
+          <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
+        </li>
+      </ul>
+      <p class="moj-pagination__results">Showing <b>10</b> to <b>20</b> of <b>30</b> results</p>
+    </nav>
   </div>
 </div>
 {% endblock %}

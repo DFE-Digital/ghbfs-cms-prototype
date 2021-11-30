@@ -197,11 +197,13 @@ router.post("/case/:id/call-back/contract-details-2-post", function(req, res, ne
 
 
 router.all("/case-list*", function(req, res, next){
-	
-
 	res.locals.cases = schools;
 	next()
+})
 
+router.all("/find-a-case*", function(req, res, next){
+	res.locals.cases = schools;
+	next()
 })
 
 router.get("/case/:id/:pageName", function(req, res, next){
@@ -424,13 +426,17 @@ router.post("/case/:id/add-existing-contract-details-post", function(req, res, n
 router.post("/case/:id/add-procurement-details-post", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
 
-	console.log(req.session.data['agreement-type'])
+	//console.log(req.session.data['agreement-type'])
 
 	let data = {
-		agreementType: req.session.data['agreement-type']
+		agreementType: req.session.data['agreement-type'],
+		route: req.session.data['route'],
+		reason: req.session.data['reason'],
+		framework: req.session.data['framework'],
+		startDate: moment(req.session.data['procurement-start-date-year'] + '-' + req.session.data['procurement-start-date-month'] + '-' + req.session.data['procurement-start-date-day'], "YYYY-MM-DD"),
+		endDate: moment(req.session.data['procurement-end-date-year'] + '-' + req.session.data['procurement-end-date-month'] + '-' + req.session.data['procurement-end-date-day'], "YYYY-MM-DD"),
+		stage: req.session.data['stage']
 	};
-
-	//school.existingContractTask = "Completed"
 
 	let historyData = {
 		title: "Procurement details updated",
@@ -440,7 +446,32 @@ router.post("/case/:id/add-procurement-details-post", function(req, res, next){
 	school.procurementDetails = data
 	addToHistory(req.params.id, historyData);
 
-	console.log(school.procurementDetails.agreementType)
+	//console.log(school.procurementDetails.agreementType)
+	res.redirect(`/manage-case/${folderVersion}/case/${school.id}/specify#procurement-details`)
+})
+
+router.post("/case/:id/add-saving-details-post", function(req, res, next){
+	let school = schools.find(school => school.id == req.params.id);
+
+	//console.log(req.session.data['agreement-type'])
+
+	let data = {
+		status:  req.session.data['status'],
+		estimateMethod:  req.session.data['estimate-method'],
+		actualMethod:  req.session.data['actual-method'],
+		estimate:  req.session.data['estimate'],
+		actual:  req.session.data['actual']
+	};
+
+	let historyData = {
+		title: "Saving details updated",
+		caseNote: "more info"
+	}
+
+	school.savingDetails = data
+	addToHistory(req.params.id, historyData);
+
+	//console.log(school.procurementDetails.agreementType)
 	res.redirect(`/manage-case/${folderVersion}/case/${school.id}/specify#procurement-details`)
 })
 

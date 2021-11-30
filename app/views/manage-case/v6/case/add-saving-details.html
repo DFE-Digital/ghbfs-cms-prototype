@@ -1,0 +1,142 @@
+{% extends "layout_case.html" %}
+
+{% block header %}
+  {% include "manage-case/v6/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      
+      <h1 class="govuk-heading-l">Update saving details</h1>
+
+      <form action="check-saving-details" method="post">
+
+        {{ govukRadios({
+          idPrefix: "status",
+          name: "status",
+          fieldset: {
+            legend: {
+              text: "Saving status (optional)"
+            }
+          },
+          items: [
+            {
+              value: "Realised",
+              text: "Realised"
+            },
+            {
+              value: "Potential",
+              text: "Potential"
+            },
+            {
+              value: "Not realised",
+              text: "Not realised"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "estimate-method",
+          name: "estimate-method",
+          fieldset: {
+            legend: {
+              text: "Saving estimate method used (optional)"
+            }
+          },
+          items: [
+            {
+              value: "[Previous spend] - [Cheapest quote]",
+              text: "[Previous spend] - [Cheapest quote",
+              checked: case.savingDetails.estimateMethod == "[Previous spend] - [Cheapest quote]"
+            },
+            {
+              value: "[RRP] - [Cheapest quote]",
+              text: "[RRP] - [Cheapest quote]",
+              checked: case.savingDetails.estimateMethod == "[RRP] - [Cheapest quote]"
+            },
+            {
+              value: "[Previous spend] - [Estimated Contract Value]",
+              text: "[Previous spend] - [Estimated Contract Value]",
+              checked: case.savingDetails.estimateMethod == "[Previous spend] - [Estimated Contract Value]"
+            },
+            {
+              value: "[RRP] - [Estimated Contract Value]",
+              text: "[RRP] - [Estimated Contract Value]",
+              checked: case.savingDetails.estimateMethod == "[RRP] - [Estimated Contract Value]"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "actual-method",
+          name: "actual-method",
+          fieldset: {
+            legend: {
+              text: "Saving actual method used (optional)"
+            }
+          },
+          items: [
+            {
+              value: "[Previous spend] - [Award Price ]",
+              text: "[Previous spend] - [Award Price ]"
+            },
+            {
+              value: "[Alternative received price] - [Award Price ]",
+              text: "[Alternative received price] - [Award Price ]"
+            },
+            {
+              value: "[RRP] - [Award Price ]",
+              text: "[RRP] - [Award Price ]"
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          id: "estimate",
+          name: "estimate",
+          label: {
+            text: "Saving estimate (optional)"
+          },
+          prefix: {
+            text: "£"
+          },
+          classes: "govuk-input--width-10",
+          spellcheck: false,
+          value: case.saving.estimate if case.saving.estimate else data['estimate']
+        }) }}
+
+        {{ govukInput({
+          id: "actual",
+          name: "actual",
+          label: {
+            text: "Saving actual (optional)"
+          },
+          prefix: {
+            text: "£"
+          },
+          classes: "govuk-input--width-10",
+          spellcheck: false,
+          value: case.saving.actual if case.saving.actual else data['actual']
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -24,6 +24,9 @@
 
 {% extends "layout.html" %}
 
+{% block header %}
+  {% include "manage-case/v6/includes/logged_in_user.html" %}
+{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">

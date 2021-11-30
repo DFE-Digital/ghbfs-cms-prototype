@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v6/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+    <form action="find-a-case-results" method="post">
+        {{ govukInput({
+          label: {
+            text: "Find a case",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          classes: "govuk-input--width-20",
+          hint: {
+            text: "Search using the case number or organisation."
+          },
+          id: "event-name",
+          name: "event-name"
+        }) }}
+
+        {{ govukButton({
+            text: "Search"
+        }) }}
+    </form>
+{% endblock %}

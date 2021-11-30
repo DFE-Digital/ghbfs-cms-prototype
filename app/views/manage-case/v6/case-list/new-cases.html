@@ -1,5 +1,9 @@
 {% extends "layout_noback.html" %}
 
+{% block header %}
+  {% include "manage-case/v6/includes/logged_in_user.html" %}
+{% endblock %}
+
 {% block content %}
 <h1 style="display:block" class="govuk-heading-l govuk-button-group flexalign__left">New cases
   <span style="float:right; display: relative">
