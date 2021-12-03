@@ -110,19 +110,50 @@
       }) }}
     </div>
   </div>
+
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-quarter">
-      {{ govukButton({
-        text: "Clear filter",
-        classes: "govuk-button--secondary"
+    <div class="govuk-grid-column-one-third">
+      {{ govukDateInput({
+        id: "passport-issued",
+        namePrefix: "passport-issued",
+        fieldset: {
+          legend: {
+            text: "Date from"
+          }
+        }
+      }) }}
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      {{ govukDateInput({
+        id: "passport-issued",
+        namePrefix: "passport-issued",
+        fieldset: {
+          legend: {
+            text: "Date to"
+          }
+        }
       }) }}
     </div>
   </div>
-  <hr>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Apply filter",
+          classes: "govuk-button--secondary"
+        }) }}
+        
+        {{ govukButton({
+          text: "Clear filter",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+    </div>
+  </div>
 </div>
 
-
-<p><strong>9 results</strong></p>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <table class="govuk-table">
@@ -166,6 +197,21 @@
         {% endfor %}
       </tbody>
     </table>
+    <nav class="moj-pagination" id="pagination-label">
+      <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+      <ul class="moj-pagination__list">
+       <!-- <li class="moj-pagination__item  moj-pagination__item--prev">
+          <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
+        </li>-->
+        <!--<li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=1">1</a></li>
+        <li class="moj-pagination__item moj-pagination__item--active">2</li>
+        <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3">3</a></li>
+        <li class="moj-pagination__item  moj-pagination__item--next">
+          <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
+        </li>-->
+      </ul>
+      <p class="moj-pagination__results">Showing <b>1</b> to <b>9</b> of <b>9</b> results</p>
+    </nav>
   </div>
 </div>
 

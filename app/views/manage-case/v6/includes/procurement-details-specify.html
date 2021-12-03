@@ -8,11 +8,6 @@
     <dd class="govuk-summary-list__value">
         {{ case.procurementDetails.agreementType or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-procurement-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd> #}   
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -21,11 +16,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.procurementDetails.route or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-procurement-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>   #} 
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -34,11 +24,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.procurementDetails.reason or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-procurement-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>#}    
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -47,11 +32,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.procurementDetails.framework or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-procurement-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd> #}   
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -64,11 +44,6 @@
         -
       {% endif %}
     </dd>  
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-procurement-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>    #}
   </div>  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -80,12 +55,7 @@
       {% else %}
         -
       {% endif %}
-    </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-procurement-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>  #}  
+    </dd>     
   </div>    
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -94,11 +64,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.procurementDetails.stage or "-" }}
     </dd>    
-   {# <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-procurement-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>    #}
   </div>    
 </dl>
 
@@ -116,11 +81,6 @@
         -
       {% endif %}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-existing-contract-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>   #} 
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -129,11 +89,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.existingContract.duration or "-" }}
     </dd>    
-   {# <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-existing-contract-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>  #}  
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -146,11 +101,6 @@
         -
       {% endif %}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-existing-contract-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>   #} 
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -159,11 +109,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.existingContract.supplier or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-existing-contract-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>    #}
   </div>   
 </dl>
 
@@ -182,11 +127,6 @@
       -
     {% endif %}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-new-contract-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>  #}  
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -195,11 +135,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.newContract.duration or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-new-contract-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>    #}
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -212,11 +147,6 @@
         -
       {% endif %}
     </dd>    
-   {# <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-new-contract-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>  #}  
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -225,11 +155,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.newContract.supplier or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-new-contract-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>   #} 
   </div>    
 </dl>
 
@@ -242,12 +167,7 @@
     </dt>
     <dd class="govuk-summary-list__value">
       {{ case.savingDetails.status or "-" }}
-    </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-saving-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>  #}  
+    </dd>     
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -256,11 +176,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.savingDetails.estimateMethod or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-saving-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd> #}   
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -269,11 +184,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.savingDetails.estimateMethod or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-saving-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>   #} 
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -282,11 +192,6 @@
     <dd class="govuk-summary-list__value">
       {{ case.savingDetails.estimate or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-saving-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>   #} 
   </div>  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -295,10 +200,5 @@
     <dd class="govuk-summary-list__value">
       {{ case.savingDetails.actual or "-" }}
     </dd>    
-    {#<dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-saving-details">
-        Change<span class="govuk-visually-hidden"> name</span>
-      </a>
-    </dd>  #}  
   </div>    
 </dl>
