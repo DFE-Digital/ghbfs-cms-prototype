@@ -503,6 +503,8 @@ router.post("/case/0/create-new-case-post", function(req, res, next) {
 		phone: req.session.data['contact-phone']
 	};
 
+	//supportInformation.typeOfCase = caseType;
+
 	let historyData = {
 		title: "Progress notes from CRM",
 		caseNote: req.session.data["progress-notes"] 

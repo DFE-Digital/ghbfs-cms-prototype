@@ -56,9 +56,10 @@ let oldData = [{
 
 module.exports = [{
       "id": 1,
-      "type-of-help": "specify",
-      "category": "Catering",
-      "specify-question": "I've completed a specification, but I'm not sure what to do with it now. How do I contact suppliers?",
+      "type-of-help": "Find a framework",
+      "category": "Unknown",
+      "typeOfCase": "Find a framework<br><a href='https://find-dfe-approved-framework.service.gov.uk/find/type/on-going/services-categories'>https://find-dfe-approved-framework.service.gov.uk/find/type/on-going/services-categories</a>",
+      "specify-question": "I've completed a specification, but I'm not sure what to do with it now. How do I contact suppliers as I'm confused about which framework to use?",
       "docUrl": "/public/images/manage-case/v4/specification-1.pdf",
       "docName": "specification-1.pdf"
    },

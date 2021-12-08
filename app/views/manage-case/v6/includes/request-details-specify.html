@@ -16,18 +16,18 @@
           </a>
         </dd>    
       </div>
-
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Type of case
+          Source
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ case.typeOfCase or "Specify" }}
+          {{ case.typeOfCase or supportInformation['typeOfCase'] | safe }}
         </dd>  
         <dd class="govuk-summary-list__actions">
         </dd>       
       </div>
 
+      {#
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Level of case
@@ -41,6 +41,7 @@
           </a>
         </dd>           
       </div>
+      #}
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">

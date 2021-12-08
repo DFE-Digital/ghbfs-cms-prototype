@@ -26,9 +26,6 @@
 
 <h1 style="display:block" class="govuk-heading-l govuk-button-group flexalign__left">Search results 
     <span style="float:right; display: relative">
-      <a href="find-a-case" role="button" draggable="false" class="govuk-button" data-module="govuk-button">Search again</a>
-    </span>
-    <span style="float:right; display: relative">
       <button id="filter-toggle" class="govuk-button govuk-button--secondary">Filter results</button>
     </span>
 </h1>
@@ -98,6 +95,10 @@
             value: "All",
             text: "All"
           },
+          {
+            value: "Unassigned",
+            text: "Unassigned"
+          },           
           {
             value: "Dave",
             text: "Dave"
@@ -213,6 +214,8 @@
       <p class="moj-pagination__results">Showing <b>1</b> to <b>9</b> of <b>9</b> results</p>
     </nav>
   </div>
+
+  <a href="find-a-case" role="button" draggable="false" class="govuk-button" data-module="govuk-button">Start a new search</a>
 </div>
 
 

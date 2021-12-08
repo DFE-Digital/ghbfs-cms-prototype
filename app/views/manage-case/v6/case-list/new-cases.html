@@ -43,7 +43,7 @@
       </thead>
       <tbody class="govuk-table__body">
 
-        {% for case in cases | sort(false, false, "receivedDate") %}
+        {% for case in cases | sort(true, false, "receivedDate") %}
 
           {% if case.status === "new" %}
           <tr class="govuk-table__row">
