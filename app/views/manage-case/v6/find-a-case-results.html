@@ -17,8 +17,6 @@
 </script>
 {% endblock %}
 
-
-
 {% block content %}
 <style>
   select { width: 90% }
@@ -108,32 +106,6 @@
             text: "Julie"
           }
         ]
-      }) }}
-    </div>
-  </div>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-third">
-      {{ govukDateInput({
-        id: "passport-issued",
-        namePrefix: "passport-issued",
-        fieldset: {
-          legend: {
-            text: "Date from"
-          }
-        }
-      }) }}
-    </div>
-
-    <div class="govuk-grid-column-one-third">
-      {{ govukDateInput({
-        id: "passport-issued",
-        namePrefix: "passport-issued",
-        fieldset: {
-          legend: {
-            text: "Date to"
-          }
-        }
       }) }}
     </div>
   </div>

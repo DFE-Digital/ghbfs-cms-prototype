@@ -4,14 +4,28 @@
   {% include "manage-case/v6/includes/logged_in_user.html" %}
 {% endblock %}
 
+{% block pageScripts %}
+<script type="text/javascript">
+  document.getElementById('filter-toggle').onclick = function() {
+    var filter = document.getElementById('filter');
+    if (filter.style.display === "none") {
+      filter.style.display = "block";
+    } else {
+      filter.style.display = "none";
+    }
+  }  
+</script>
+{% endblock %}
+
 {% block content %}
-  <h1 style="display:block" class="govuk-heading-l govuk-button-group flexalign__left">All cases 
-    <span style="float:right; display: relative">
-      <a href="case/create-a-new-case" role="button" draggable="false" class="govuk-button" data-module="govuk-button">Create a new case</a>
-    </span>
-  </h1>
 
-
+<style>
+  select { width: 90% }
+</style>
+  
+  <span style="">
+    <a href="case/create-a-new-case" role="button" draggable="false" class="govuk-button" data-module="govuk-button">Create a new case</a>
+  </span>
 
 <ul class="govuk-tabs__list govuk-!-margin-bottom-5" role="tablist">
   <li class="govuk-tabs__list-item" role="presentation">
@@ -34,6 +48,113 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+    <h1 style="display:block" class="govuk-heading-l flexalign__left">All cases 
+      <span style="float:right; display: relative">
+        <button id="filter-toggle" class="govuk-button govuk-button--secondary">Filter results</button>
+      </span>
+    </h1>
+
+    <div id="filter" style="display:none">
+  <h2 class="govuk-heading-m">Filter results</h2>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+          text: "Filter by status"
+        },
+        items: [
+          {
+            value: "All",
+            text: "All"
+          },
+          {
+            value: "New",
+            text: "New"
+          },
+          {
+            value: "Open",
+            text: "Open"
+          },
+          {
+            value: "Resolved",
+            text: "Resolved"
+          }
+        ]
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+          text: "Filter by category"
+        },
+        items: [
+          {
+            value: "All",
+            text: "All"
+          },
+          {
+            value: "MFD",
+            text: "MFD"
+          },
+          {
+            value: "Catering",
+            text: "Catering"
+          }
+        ]
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+          text: "Filter by assignee"
+        },
+        items: [
+          {
+            value: "All",
+            text: "All"
+          },
+          {
+            value: "Unassigned",
+            text: "Unassigned"
+          },           
+          {
+            value: "Dave",
+            text: "Dave"
+          },
+          {
+            value: "Julie",
+            text: "Julie"
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Apply filter",
+          classes: "govuk-button--secondary"
+        }) }}
+        
+        {{ govukButton({
+          text: "Clear filter",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
