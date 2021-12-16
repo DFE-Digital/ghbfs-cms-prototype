@@ -32,6 +32,8 @@
     <a class="govuk-tabs__tab" href="my-cases" id="tab_school-details" role="tab" aria-controls="school-details" aria-selected="true" tabindex="0">
       My cases
     </a>
+    <!--<span id="notifications" class="hmrc-notification-badge">3</span>-->
+</a>
   </li>
   <li class="govuk-tabs__list-item  " role="presentation">
     <a class="govuk-tabs__tab" href="new-cases" id="tab_request-details" role="tab" aria-controls="request-details" aria-selected="false" tabindex="-1">
@@ -169,6 +171,65 @@
       </thead>
       <tbody class="govuk-table__body">
 
+        {% for case in cases | sort(false, false, "lastUpdated") %}
+
+          {% if (case.status != "new") and (case.assignedTo === "Jenni Weiner") %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.uid}}</a>
+            </td>
+            <td class="govuk-table__cell">
+              
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>&nbsp;
+                <span id="notifications" class="hmrc-notification-badge">2</span>
+              
+            </td>
+            <td class="govuk-table__cell">
+              {{case.category}}
+            </td>
+
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: case.status, 
+                classes: case.status | formatCaseTagColour
+              })}}
+            </td>
+            <td class="govuk-table__cell">
+              {{ case.lastUpdated | formatTableDate }}
+            </td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+
+        {% for case in cases | sort(false, false, "lastUpdated") %}
+
+          {% if (case.status != "new") and (case.assignedTo === "Jenni Weiner") %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.uid}}</a>
+            </td>
+            <td class="govuk-table__cell">
+              
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>&nbsp;
+                 <span id="notifications" class="hmrc-notification-badge">1</span>
+
+            </td>
+            <td class="govuk-table__cell">
+              {{case.category}}
+            </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: case.status, 
+                classes: case.status | formatCaseTagColour
+              })}}
+            </td>
+            <td class="govuk-table__cell">
+              {{ case.lastUpdated | formatTableDate }}
+            </td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+        
         {% for case in cases | sort(false, false, "lastUpdated") %}
 
           {% if (case.status != "new") and (case.assignedTo === "Jenni Weiner") %}
