@@ -180,8 +180,8 @@
             </td>
             <td class="govuk-table__cell">
               
-                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a><!--&nbsp;
-                <span id="notifications" class="hmrc-notification-badge">3</span>-->
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>&nbsp;
+                <span id="notifications" class="hmrc-notification-badge">3</span>
               
             </td>
             <td class="govuk-table__cell">
@@ -190,8 +190,8 @@
 
             <td class="govuk-table__cell">
               {{govukTag({
-                text: "action",
-                classes: "govuk-tag--red"
+                text: case.status, 
+                classes: case.status | formatCaseTagColour
               })}}
             </td>
             <td class="govuk-table__cell">
@@ -210,8 +210,8 @@
             </td>
             <td class="govuk-table__cell">
               
-                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a><!--&nbsp;
-                 <span id="notifications" class="hmrc-notification-badge">1</span>-->
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>&nbsp;
+                 <span id="notifications" class="hmrc-notification-badge">1</span>
 
             </td>
             <td class="govuk-table__cell">

@@ -1,0 +1,109 @@
+<!--<p>Last updated on  {{ case.lastUpdated | formatTableDate }}-->
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date
+        <dt class="govuk-summary-list__key">
+          Subject
+        <dt class="govuk-summary-list__key">
+          Case
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          26 Nov 2021 &nbsp; 10:02am
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ "Survey response" }}
+        </dd>
+        <dd class="govuk-summary-list__value">
+          <a href="#" class="govuk-link">000012</a>    
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          25 Nov 2021 &nbsp; 9:42am
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ "Updated response" }}
+        </dd>
+        <dd class="govuk-summary-list__value">
+          <a href="#" class="govuk-link">000012</a>   
+        <!--<dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="">
+            000012<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd>-->        
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          24 Nov 2021 &nbsp; 9:51am
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ "More information to help you complete your specification" }}
+        </dd>  
+        <dd class="govuk-summary-list__value">
+          <a href="#" class="govuk-link">000012</a>   
+        <!--<dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="">
+            000012<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd>-->           
+      </div>
+
+    {% if case.hubIdentificationNumber  %}
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Hub identification number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ case.hubIdentificationNumber }}
+        </dd>  
+        <dd class="govuk-summary-list__actions">
+        </dd>       
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Hub estimated total savings
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £ {{ case.hubsSavingsTotalEstimate }}
+        </dd>  
+        <dd class="govuk-summary-list__actions">
+        </dd>       
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Hub procurement estimated completion date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ case.hubProcurementCompletionDate | formatTableDate }}
+        </dd>  
+        <dd class="govuk-summary-list__actions">
+        </dd>       
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Attached specification
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            No Specification included
+          {% endif %}
+        </dd> 
+        <dd class="govuk-summary-list__actions">
+        </dd>        
+      </div>
+
+      {% endif %}
+    
+</dl>

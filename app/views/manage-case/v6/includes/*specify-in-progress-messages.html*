@@ -225,7 +225,7 @@
       }
     },
     {
-      label: ("Case history" + hmrcNotificationBadge({ text: '2' }) ) |safe,
+      label: "Case history", 
       id: "case-history",
       panel: {
         html: historyDetails
@@ -236,6 +236,13 @@
       id: "procurement-details",
       panel: {
         html: procurementDetails
+      }
+    },
+    { 
+      label: ("Messages" + hmrcNotificationBadge({ text: '3' }) ) |safe,
+      id: "notification-details",
+      panel: {
+        html: notificationDetails
       }
     }
   ]
