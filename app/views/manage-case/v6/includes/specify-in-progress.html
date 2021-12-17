@@ -182,7 +182,32 @@
 
 {% endset %}
 
+{% set notificationDetails %}
 
+<p>Last updated on {{ 0 |daysAgo}}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Advice and support provided
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['notification-details'] |safe }}
+        </dd>        
+      </div> 
+  
+</dl>
+
+
+{% endset %}
+
+{% set notificationDetails %}                
+
+{% include "../includes/notification-details-specify.html" %}
+
+
+{% endset %}
 
 
 {{ govukTabs({
@@ -214,6 +239,20 @@
       panel: {
         html: procurementDetails
       }
+    },
+    { from: "hmrc/components/notification-badge/macro.njk",
+      import: hmrcNotificationBadge,
+      text: '3',
+      label: "Notifications (3)",
+      id: "notification-details",
+      panel: {
+        html: notificationDetails
+      }
     }
   ]
 }) }} 
+
+<!--{%- from "hmrc/components/notification-badge/macro.njk" import hmrcNotificationBadge -%}
+
+<a class="" href=""> {{ hmrcNotificationBadge({ text: '3' }) }}</a>-->
+
