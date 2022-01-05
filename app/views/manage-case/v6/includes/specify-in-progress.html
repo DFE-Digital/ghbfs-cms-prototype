@@ -171,6 +171,73 @@
 </dl>
     </div>
   </div>
+  
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-0">
+          Email from school
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        {{ case.lastUpdated | formatTableDate }}
+      </div>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-0">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Recieved from
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            Rachel Cliff
+          {% endif %}
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Subject
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            Re: Frameworks
+          {% endif %}
+        </dd>       
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Message
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            Hi Jenni,
+            <br><br>
+            Thank you for informing us on how frameworks work. We'll get back in touch if we need further help.
+            <br><br>
+            Kind Regards,
+            <br><br>
+            Rachel Cliff
+            <br>
+            Procurement Support Officer<br> St Michael's Church of England Primary School
+            <br>Tel: 01234 567891
+          {% endif %}
+        </dd>        
+      </div>
+    
+</dl>
+    </div>
+  </div>
 </div>
   
 {% endset %}
