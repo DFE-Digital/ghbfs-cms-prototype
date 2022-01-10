@@ -1,8 +1,13 @@
 {% extends "layout.html" %} {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">View email</h1>
-        <h2 class="govuk-heading-m">Case ID: 000012</h2>
+    <h1 class="govuk-heading-l">View email&nbsp;
+      <span id="statustag">
+        <strong class="govuk-tag govuk-tag--green" id="statusread" style="position:relative;top:-5px;left:0; display:none">read</strong>
+      </span>
+    </h1>
+
+    <h2 class="govuk-heading-m">Case ID: 000012</h2>
 
     <div class="govuk-button-group">
       <!--<a href="/manage-case/v6/case/create-a-new-case.html">
@@ -14,12 +19,35 @@
         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
           Remove link to existing case
         </button></a>-->
-      
+
+      <!--<a href="/manage-case/v6/email/view-email-read.html">-->
+      <button class="govuk-button" data-module="govuk-button" id="markasread" onclick="changeStatus()">
+        Mark as read
+      </button></a>
+
       <!--<a href="#">
         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
           Save attachments
         </button></a>-->
     </div>
+
+    <script>
+      function changeStatus() {
+        var tag = document.getElementById("statusread");
+        var btn = document.getElementById("markasread");
+        if (tag.style.display === "none") {
+          tag.style.display = "inline";
+            btn.innerText = "Mark as unread"
+            btn.style.backgroundColor = '#f3f2f1';
+            btn.style.color = "black";
+        } else {
+          tag.style.display = "none";
+            btn.innerText = "Mark as read"
+            btn.style.backgroundColor = '#00703c';
+            btn.style.color = "white";
+        }
+      }
+    </script>
 
     <!--<span style="">
       <a
@@ -49,14 +77,14 @@
             <dt class="govuk-summary-list__key">Recieved from</dt>
             <dd class="govuk-summary-list__value">
               MEHMOOD, Aqib <br />
-              < aqib.mehmood@digital.education.gov.uk >
+              < aqib.mehmood@digital.education.gov.uk>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Recipients</dt>
             <dd class="govuk-summary-list__value">
               sharedProcopsMailbox <br />
-              < sharedprocopsmailbox@education.gov.uk >
+              < sharedprocopsmailbox@education.gov.uk>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
