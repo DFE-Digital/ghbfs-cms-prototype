@@ -27,7 +27,7 @@
       <button id="filter-toggle" class="govuk-button govuk-button--secondary">Filter results</button>
     </span>
 </h1>
-<p>9 cases found found containing '{{ data['search-term'] or '001' }}'</p>
+<p>9 cases found found containing '{{ data['search-term'] or '000012' }}'</p>
 
 <div id="filter" style="display:none">
   <h2 class="govuk-heading-m">Filter results</h2>
@@ -147,11 +147,11 @@
           {% if case.status === "new" %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.uid}}</a>
+              <a href="/manage-case/v6/email/merge-question.html" class="govuk-link--no-visited-state">{{case.uid}}</a>
             </td>
             <td class="govuk-table__cell">
               
-                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>
+                <a href="/manage-case/v6/email/merge-question.html" class="govuk-link--no-visited-state">{{case.school.name}}</a>
               
             </td>
             <td class="govuk-table__cell">
