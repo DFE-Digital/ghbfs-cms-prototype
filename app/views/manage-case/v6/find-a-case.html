@@ -14,14 +14,24 @@
           },
           classes: "govuk-input--width-20",
           hint: {
-            text: "Search using the case number or organisation."
+            text: "Enter the case ID, organisation name, establishment unique reference number (URN) or case owner"
           },
           id: "event-name",
           name: "event-name"
         }) }}
-
-        {{ govukButton({
-            text: "Search"
-        }) }}
     </form>
+
+    <div class="govuk-button-group">
+    <button class="govuk-button" data-module="govuk-button" onclick="goToPage()">
+    Search
+    </button>
+      
+    <script>
+        function goToPage() {
+                  window.location = "/manage-case/v6/email/merge-question.html";
+                }
+    </script>
+
 {% endblock %}
+
+

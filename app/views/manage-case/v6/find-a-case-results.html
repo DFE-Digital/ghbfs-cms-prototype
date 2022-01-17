@@ -137,6 +137,7 @@
           <th class="govuk-table__header" scope="col"> Organisation </th>
           <th class="govuk-table__header" scope="col"> Category </th>
           <th class="govuk-table__header" scope="col"> Status </th>
+          <th class="govuk-table__header" scope="col"> Assigned to </th>
           <th class="govuk-table__header" scope="col"> Date received </th>
         </tr>
       </thead>
@@ -147,21 +148,24 @@
           {% if case.status === "new" %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a href="/manage-case/v6/email/merge-question.html" class="govuk-link--no-visited-state">{{case.uid}}</a>
+              <a href="#" class="govuk-link--no-visited-state">{{case.uid}}</a>
             </td>
             <td class="govuk-table__cell">
               
-                <a href="/manage-case/v6/email/merge-question.html" class="govuk-link--no-visited-state">{{case.school.name}}</a>
+                <a href="#" class="govuk-link--no-visited-state">{{case.school.name}}</a>
               
             </td>
             <td class="govuk-table__cell">
             {{case.category}}
-          </td>
+            </td>
             <td class="govuk-table__cell">
               {{govukTag({
                 text: case.status, 
                 classes: case.status | formatCaseTagColour
               })}}
+            </td>
+            <td class="govuk-table__cell">
+                Inna Goodluck
             </td>
             <td class="govuk-table__cell">
               {{ case.receivedDate | formatTableDate }}
