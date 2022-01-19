@@ -138,6 +138,20 @@
 <div class="govuk-grid-row">
   <div class="key-info"></div>
 </div>
+
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#nationality">Please select a query category</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <h1 class="govuk-heading-l">Create a new case</h1>
@@ -181,21 +195,19 @@
 
       <br />
 
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+      <div class="govuk-form-group govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint nationality-error">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
               Query type
             </h1>
           </legend>
-          <br>
           <div id="changed-name-hint" class="govuk-label">
             Is the query category related?
-            <script>
-                  document.write(title);
-                </script>
           </div>
-          <br>
+          <p id="nationality-error" class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span> Please select a query category
+          </p>
           <div
             class="govuk-radios govuk-radios--inline"
             data-module="govuk-radios"
@@ -234,19 +246,18 @@
             </div>
           </div>
         </fieldset>
-      </div>
-
-       <div class="govuk-form-group govuk-inset-text" id="showcategory" style="display:none">
+        
+        <div class="govuk-form-group govuk-inset-text" id="showcategory" style="display:none">
         <label
           class="govuk-label"
-          style="position: relative; left: 10px"
+          style="position: relative; left: 0px"
           for=""
         >
           Category
         </label>
         <select
           class="govuk-select"
-          style="position: relative; left: 10px"
+          style="position: relative; left: 0px"
           id="category"
           name="category"
         >
@@ -292,6 +303,10 @@
           </optgroup>
         </select>
       </div>
+
+      </div>
+
+       
 
     <script>
     function toggleCategory() {
