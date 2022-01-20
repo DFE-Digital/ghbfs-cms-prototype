@@ -16,7 +16,7 @@
           name: "procurement-category",
           fieldset: {
             legend: {
-              text: "Select a procurement category",
+              text: "Select or remove a procurement category",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -131,6 +131,13 @@
 
         {{ govukButton({
           text: "Save and continue"
+        }) }}
+        
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Remove procurement category",
+          classes: "govuk-button--warning"
         }) }}
       </form>
 
