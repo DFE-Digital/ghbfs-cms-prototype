@@ -146,7 +146,7 @@
   <div class="govuk-error-summary__body">
     <ul class="govuk-list govuk-error-summary__list">
       <li>
-        <a href="#nationality">Please select a query category</a>
+        <a href="#nationality">Please select a procurement category</a>
       </li>
     </ul>
   </div>
@@ -199,15 +199,13 @@
         <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint nationality-error">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Query type
+              Request type
             </h1>
           </legend>
           <div id="changed-name-hint" class="govuk-label">
-            Is the query category related?
+            Is the request related to a procurement category?
           </div>
-          <p id="nationality-error" class="govuk-error-message">
-      <span class="govuk-visually-hidden">Error:</span> Please select a query category
-          </p>
+          <br>
           <div
             class="govuk-radios govuk-radios--inline"
             data-module="govuk-radios"
@@ -244,26 +242,28 @@
                 No
               </label>
             </div>
-          </div>
-        </fieldset>
+            <div class="govuk-form-group govuk-inset-text" id="showcategory" style="display:none">
         
-        <div class="govuk-form-group govuk-inset-text" id="showcategory" style="display:none">
         <label
           class="govuk-label"
           style="position: relative; left: 0px"
           for=""
         >
-          Category
+
+        <br>
+
+          Procurement category
+          <p id="nationality-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> Please select a procurement category
+        </p>
         </label>
         <select
-          class="govuk-select"
+          class="govuk-select govuk-select--error"
           style="position: relative; left: 0px"
           id="category"
           name="category"
         >
           <option selected="selected" value="Please select">Please select</option>
-            <option value="Not applicable">Not applicable</option>
-            <option value="Not yet known">Not yet known</option>
           <optgroup label="Business services">
             <option value="Audit">Audit</option>
             <option value="Books">Books</option>
@@ -299,14 +299,16 @@
             <option value="Water">Water</option>
           </optgroup>
           <optgroup label="Or">
-            <option value="Other">Other</option>
+            <option value="Not yet known">Not yet known</option>
+            <option value="No applicable category">No applicable category</option>
           </optgroup>
         </select>
       </div>
+          </div>
+        </fieldset>
+        
 
-      </div>
-
-       
+    </div>
 
     <script>
     function toggleCategory() {

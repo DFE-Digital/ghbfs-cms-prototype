@@ -124,17 +124,17 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">Case details</h2>
+      <h2 class="govuk-heading-m">Request details</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Type of case"
+              text: ""
             },
             value: {
-              text: "NW Hub case" if data['hub-identification-number'] else "Specify"
+              text: "NW Hub case" if data['hub-identification-number'] else ""
             },
             actions: {
 

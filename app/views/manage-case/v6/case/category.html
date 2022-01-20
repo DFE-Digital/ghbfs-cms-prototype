@@ -16,7 +16,7 @@
           name: "procurement-category",
           fieldset: {
             legend: {
-              text: "Select a category",
+              text: "Select a procurement category",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -118,9 +118,13 @@
             },{
               divider: "Or"
             },{
-              value: "Other",
-              checked: checked("procurement-category", "Other"),
-              text: "Other"
+              value: "Not yet known",
+              checked: checked("procurement-category", "Not yet known"),
+              text: "Not yet known"
+            },{
+              value: "No applicable category",
+              checked: checked("procurement-category", "No applicable category"),
+              text: "No applicable category"
             }
           ]
         }) }}

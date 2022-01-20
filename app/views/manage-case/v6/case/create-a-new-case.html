@@ -185,15 +185,12 @@
         <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Query type
+              Request type
             </h1>
           </legend>
           <br>
           <div id="changed-name-hint" class="govuk-label">
-            Is the query category related?
-            <script>
-                  document.write(title);
-                </script>
+            Is the request related to a procurement category?
           </div>
           <br>
           <div
@@ -242,7 +239,7 @@
           style="position: relative; left: 10px"
           for=""
         >
-          Category
+          Procurement category
         </label>
         <select
           class="govuk-select"
@@ -251,8 +248,6 @@
           name="category"
         >
           <option selected="selected" value="Please select">Please select</option>
-            <option value="Not applicable">Not applicable</option>
-            <option value="Not yet known">Not yet known</option>
           <optgroup label="Business services">
             <option value="Audit">Audit</option>
             <option value="Books">Books</option>
@@ -288,7 +283,8 @@
             <option value="Water">Water</option>
           </optgroup>
           <optgroup label="Or">
-            <option value="Other">Other</option>
+            <option value="Not yet known">Not yet known</option>
+            <option value="No applicable category">No applicable category</option>
           </optgroup>
         </select>
       </div>
