@@ -36,25 +36,25 @@
           },
           {
             key: {
-              text: "School type"
+              text: "Organisation name"
             },
             value: {
-              text: "Single" | safe
+              text: case.school.name | safe
             }
           },
           {
             key: {
-              text: "School address"
+              text: "Organisation type"
             },
             value: {
-              text: addressHtml | safe
+              text: "Single school" | safe
             }
           }
         ]
       }) }}
 
 <p>
-  <a href="https://www.get-information-schools.service.gov.uk/Establishments/Establishment/Details/{{case.school.urn}}" target="_blank">View school information (opens in a new tab)</a>
+  <a href="https://www.get-information-schools.service.gov.uk/Establishments/Establishment/Details/{{case.school.urn}}" target="_blank">View organisation information (opens in a new tab)</a>
 </p>
 {% endset %}
 
