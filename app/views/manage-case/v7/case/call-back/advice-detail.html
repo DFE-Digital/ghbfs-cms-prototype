@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="task-list" method="post">
+      
+        {{ govukTextarea({
+          name: "advice-detail",
+          id: "advice-detail",
+          value: data['advice-detail'],
+          label: {
+            text: "How can we help you?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Add details of the new procurement"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
+
+
+

@@ -1,0 +1,39 @@
+{% extends "layout_case.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ case.school.name }}</h1>
+      {{govukTag({
+          text: "New",
+          classes: "govuk-tag--blue govuk-!-margin-bottom-7 govuk-!-margin-top-1"
+        })}}
+
+{% include "../includes/school-details-specify.html" %}
+
+<h3 class="govuk-heading-m">Actions</h3>
+<ul class="govuk-list">
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="close-case">Close case</a>
+  </li>
+</ul>
+
+
+      
+
+    </div>
+  </div>
+{% endblock %}

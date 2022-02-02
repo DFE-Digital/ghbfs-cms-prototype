@@ -1,13 +1,8 @@
 {% extends "layout.html" %} {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">View email&nbsp;
-      <span id="statustag">
-        <strong class="govuk-tag govuk-tag--active" id="statusunread" style="position:relative;top:-6px;left:0;">unread</strong>
-      </span>
-    </h1>
-
-    <h2 class="govuk-heading-m">Case ID: 000012</h2>
+    <h1 class="govuk-heading-l">View email</h1>
+    <h2 class="govuk-heading-m">Case ID: 000999</h2>
 
     <div class="govuk-button-group">
       <!--<a href="/manage-case/v6/case/create-a-new-case.html">
@@ -15,50 +10,16 @@
           Create new case
         </button></a>-->
 
-      <!--<a href="/manage-case/v6/email/enter-case-id.html">
+      <a href="/manage-case/v6/email/enter-case-id.html">
         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
           Remove link to existing case
-        </button></a>-->
-
-      <!--<a href="/manage-case/v6/email/view-email-read.html">-->
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="markasunread" onclick="changeStatus()">
-        Mark as read
-      </button></a>
-
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="markasunread" onclick="saveAttachments()">
-        Save attachments
-      </button></a>
-
+        </button></a>
+      
       <!--<a href="#">
         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
           Save attachments
         </button></a>-->
     </div>
-
-    <script>
-      function changeStatus() {
-        var tag = document.getElementById("statusunread");
-        var btn = document.getElementById("markasunread");
-        if (tag.style.display === "none") {
-          tag.style.display = "inline";
-            btn.innerText = "Mark as read"
-            btn.style.backgroundColor = '#f3f2f1';
-            btn.style.color = "black";
-        } else {
-          tag.style.display = "none";
-            btn.innerText = "Mark as unread"
-            btn.style.backgroundColor = '#f3f2f1';
-            btn.style.color = "black";
-        }
-      }
-    </script>
-
-    <script>
-        function saveAttachments() {
-                  window.location = "/manage-case/v6/email/save-attachments-select.html";
-                  localStorage.setItem('login','true');
-                }
-    </script>
 
     <!--<span style="">
       <a
@@ -107,15 +68,13 @@
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Subject</dt>
             <dd class="govuk-summary-list__value">
-              <p class="govuk-body">Help creating specification</p>
+              <p class="govuk-body">Re: Help needed with procuring Catering</p>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Attachments</dt>
             <dd class="govuk-summary-list__value">
-              <a href="#" class="govuk-link">School intro pack.pdf</a><!--<a class="govuk-label govuk-link" style="position: relative; right: -570px; top: -25px">Save</a>-->
-              <br><a href="#" class="govuk-link">School requirements brief.docx</a><br>
-              <a href="#" class="govuk-link">Equipment required.xlsx</a><br>
+              <p class="govuk-body">No</p>
             </dd>
           </div>
         </dl>
@@ -123,12 +82,10 @@
         <div class="email-preview-body">
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
           <div dir="ltr">
-            Hi, <br /><br />
-            I need some help. <br /><br />
-            I've started a specification but not sure how to get quotes on it.
+            Hi there, <br /><br />
+            Can I get some help with procuring school meals for years 7-11?<br /><br />
+            The elder, sixth form students have their own set-up in the Canteen.
             <br /><br />
-            Can you take a look at the attached files to see if I've
-            provided sufficient information? <br /><br />
             Kind Regards,<br />
             Aqib
             <div><br /></div>
@@ -138,5 +95,4 @@
     </form>
   </div>
 </div>
-  
 {% endblock %}

@@ -1,0 +1,109 @@
+{% extends "layout_case.html" %}
+
+{% block pageTitle %}
+  Task list
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+       <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ case.school.name }}</h1>
+      {{govukTag({
+          text: "Consultation started",
+          classes: "govuk-tag--purple govuk-!-margin-bottom-7 govuk-!-margin-top-1"
+        })}}
+
+      {% include "../../includes/school-details-consultation.html" %}
+
+
+      <h2 class="govuk-heading-m">
+        Procurement details
+      </h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">Use this to record details of the school's procurement needs. You do not need to complete all the sections.</p>
+
+      <ol class="app-task-list">
+
+        <li>
+          
+          <ul class="app-task-list__items govuk-!-padding-left-0">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="category" aria-describedby="category-status" class="govuk-link--no-visited-state">
+                  Category
+                </a>
+              </span>
+              {% if data['procurement-category'] %}
+              <strong class="govuk-tag app-task-list__tag" id="category-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="procurement-detail" aria-describedby="new-proc-status" class="govuk-link--no-visited-state">
+                  Procurement requirements
+                </a>
+              </span>
+              {% if data.tags_procurementRequirements == "true" %}
+              <strong class="govuk-tag app-task-list__tag" id="new-proc-status">Completed</strong>
+              {% endif %}
+            </li>
+
+             <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="procurement-terms" aria-describedby="new-proc-status" class="govuk-link--no-visited-state">
+                  Procurement terms
+                </a>
+              </span>
+              {% if data.tags_procurementTerms == "true" %}
+              <strong class="govuk-tag app-task-list__tag" id="new-proc-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="existing-contract" aria-describedby="contract-status" class="govuk-link--no-visited-state">
+                  Existing contract details
+                </a>
+              </span>
+              {% if data.tags_existingContract == "true" %}
+              <strong class="govuk-tag app-task-list__tag" id="contract-status">Completed</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="frameworks" aria-describedby="contract-status" class="govuk-link--no-visited-state">
+                  Available frameworks
+                </a>
+              </span>
+              {% if data.tags_frameworks == "true" %}
+              <strong class="govuk-tag app-task-list__tag" id="contract-status">Completed</strong>
+              {% endif %}
+            </li>
+            
+          </ul>
+        </li>
+      </ol>
+
+      <h3 class="govuk-heading-m">Actions</h3>
+       <ul class="govuk-list">
+            <li>
+                <a href="close-case" aria-describedby="company-information-status" class="govuk-link--no-visited-state">
+                  Close case
+                </a>
+          </li>
+            <li>
+                <a href="type-of-procurement" aria-describedby="frameworks" class="govuk-link--no-visited-state">
+                  Start a managed procurement
+                </a>
+              
+            </li>
+          </ul>
+
+    </div>
+  </div>
+
+{% endblock %}

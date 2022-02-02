@@ -7,12 +7,50 @@
         Case management - call back
       </h1>
     </div>
-
+    
+    
     <div class="govuk-grid-column-two-thirds">
-      <p>Used for procurement ops to contact user to find out more about their requirements.</p>
+
+      <!--<p>Used for procurement ops to contact user to find out more about their requirements.</p>-->
       <h2 class="govuk-heading-m">
-        Version 6
+        Version 7 - Sprint 28 to Sprint 32
       </h2>
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Ability for incoming email attachments to be stored with a case in CM</li>
+        <li>Case worker can save email attachments to a case within CM</li>
+        <li>View files (saved attachments) linked to a case</li>
+        <li>Notification alert when a new email arrives - 'action' status</li>
+        <li>Unread email status on case history to alert user of a new email</li>
+        <li>Case worker can see the case that an email is auto linked to as part of the email view</li>
+        <li>Case worker can view email attachments within CM</li>
+        <li>Case worker can mark an email as read or unread from email preview</li>
+        <li>Ability to move a new email case into an existing case</li>
+        <!--<li>New case shows contact email if organisation name unknown - to support Auto Create - WIP</li>-->
+        <li>View case 'assigned to' in find a case search results</li>
+        <li>Specifying request type and procurement category on 'Create a Case'</li>
+        <li>Removing a procurement category from 'Request details' after specifying procurement category</li>
+        <li>Notifications - UI for incoming Email integration into CM</li>
+        <li>Notifications - Case worker can create a case as a result on an email being received</li>
+        <li>Notifications - Remove link to existing case from email preview</li>
+        <li>Notifications - Remove link to existing case from email preview</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Design notes, user flows and journeys</h3>
+      <p><a href="https://lucid.app/lucidspark/07d0eab5-cbae-43ec-9bda-5f3f476d8bc2/edit?invitationId=inv_085d2727-f88f-4def-8d9d-4296850165b2">View on Lucid board</a></p>
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>Case auto-create functionality for incoming (new) cases after feedback from ProcOps suggested that the Notifications UI added extra steps. Notifications UI still relevant for management. Speak to Rachel Smith for further insights.</p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/manage-case/v7/case-list/my-cases'
+      }) }}
+
+      {% set v6 %}
+
+      <p>Used for procurement ops to contact user to find out more about their requirements.</p>
 
       <h3 class="govuk-heading-s">Changes</h3>
       <ul class="govuk-list govuk-list--bullet">
@@ -36,6 +74,8 @@
         text: 'View prototype',
         href: '/manage-case/v6/case-list/my-cases'
       }) }}
+
+      {% endset %}
 
       {% set v5 %}
 
@@ -149,6 +189,9 @@
       {{ govukAccordion({
         items: [
           {
+            heading: { text: 'Version 6' },
+            content: { html: v6 }
+          },{
             heading: { text: 'Version 5 - first release' },
             content: { html: v5 }
           },{

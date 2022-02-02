@@ -1,0 +1,77 @@
+{% set templateEmails = [
+  {
+    name: "What is a framework?",
+    id: "f4696e59-8d89-4ac5-84ca-17293b79c337",
+    description: "General advice about a frameworks."
+  },
+  {
+    name: "How to approach suppliers",
+    id: "6c76ed8c-030e-4c69-8f25-ea0c66091bc5",
+    description: "General advice on finding suppliers"
+  },
+  {
+    name: "Catering frameworks",
+    id: "12430165-4ae7-47aa-baa3-d0b3c5440a9b",
+    description: "Link to catering on find a framework"
+  },
+  {
+    name: "Social value",
+    id: "bb4e6925-3491-44b8-8747-bdbb31257403",
+    description: "Help on social value section in creating a specification"
+  }
+]%}
+
+
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v6/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+
+      <h1 class="govuk-heading-l">Send template email</h1>
+
+      <form action="template-search-results" method="post">
+
+
+
+{#
+        {{ govukInput({
+          label: {
+            text: "Search for a template"
+          },
+ 
+          id: "teamplate-search",
+          name: "teamplate-search",
+          spellcheck: false
+        }) }}
+
+        {{ govukButton({
+            text: "Search"
+          }) }}
+
+      </form>
+
+
+      <h2 class="govuk-heading-m">Search results</h2>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+#}
+      {% for template in templateEmails %}
+      <div class="Search-result">
+      	<h3 class="govuk-heading-m"><a href="template-preview/{{template.id}}">{{template.name}}</a></h3>
+      	<p>{{template.description}}</p>
+		    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      </div>
+
+      {% endfor %}
+
+
+    </div>
+  </div>
+{% endblock %}

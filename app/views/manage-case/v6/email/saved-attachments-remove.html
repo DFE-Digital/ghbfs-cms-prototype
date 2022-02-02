@@ -1,0 +1,68 @@
+{% extends "layout.html" %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+      Select attachments to save
+      </h1>
+    </legend>
+
+    <br>
+
+<table class="govuk-table">
+  <!--<caption class="govuk-table__caption govuk-table__caption--m">Months and rates</caption>-->
+  <thead class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__cell govuk-!-font-weight-regular">
+      <a href="#" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="">School intro pack.pdf</a>
+        </label>
+      </th>
+            <td class="govuk-link govuk-link--no-visited-state govuk-table__cell govuk-table__cell--numeric">Remove</td>
+      </div>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">
+      <a href="#" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">School requirements brief.docx</a>
+        </label>
+      </th>
+            <td class="govuk-link govuk-link--no-visited-state govuk-table__cell govuk-table__cell--numeric">Remove</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">
+        <a href="#" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Equipment required.xlsx</a>
+        </label>
+      </th>
+            <td class="govuk-link govuk-link--no-visited-state govuk-table__cell govuk-table__cell--numeric">Remove</td>
+
+    </tr>
+  </tbody>
+</table>
+
+    <br>
+    
+  </fieldset>
+    
+    <div class="govuk-button-group">
+    <button class="govuk-button" data-module="govuk-button" onclick="goToPage()">
+    Save to case
+    </button>
+      
+    <script>
+        function goToPage() {
+                  window.location = "/manage-case/v6/email/merge-confirmation.html";
+                  localStorage.setItem('login','true');
+                }
+    </script>
+
+  <a class="govuk-link" href="/manage-case/v6/find-a-case.html">Cancel</a>
+  </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

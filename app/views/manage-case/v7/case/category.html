@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v6/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+      <form action="category-post" method="post">
+        {{ govukRadios({
+          classes: "govuk-radios--small",
+          idPrefix: "procurement-category",
+          name: "procurement-category",
+          fieldset: {
+            legend: {
+              text: "Select or remove a procurement category",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              divider: "Business&nbsp;services" | safe
+            },
+            {
+              value: "Audit",
+              checked: checked("procurement-category", "Audit"),
+              text: "Audit"
+            },
+            {
+              value: "books",
+              checked: checked("procurement-category", "books"),
+              text: "Books"
+            },
+            {
+              value: "insurance",
+              checked: checked("procurement-category", "insurance"),
+              text: "Insurance"
+            },
+            {
+              value: "leasing",
+              checked: checked("procurement-category", "leasing"),
+              text: "Leasing"
+            },
+            {
+              value: "Multi Function Devices",
+              checked: checked("procurement-category", "Multi Function Devices"),
+              text: "Multi Function Devices (MFDs)"
+            },
+            {
+              value: "Spend analysis",
+              checked: checked("procurement-category", "Spend analysis"),
+              text: "Spend analysis"
+            },
+            {
+              value: "Stationary",
+              checked: checked("procurement-category", "Stationary"),
+              text: "Stationery"
+            },{
+              divider: "Facilities&nbsp;management" | safe
+            },{
+              value: "Catering",
+              checked: checked("procurement-category", "Catering"),
+              text: "Catering"
+            },{
+              value: "Cleaning",
+              checked: checked("procurement-category", "Cleaning"),
+              text: "Cleaning"
+            },{
+              value: "Build, ground and supplies",
+              checked: checked("procurement-category", "Build, ground and supplies"),
+              text: "Build, ground and supplies"
+            },{
+              value: "Furniture",
+              checked: checked("procurement-category", "Furniture"),
+              text: "Furniture"
+            },{
+              value: "Other",
+              checked: checked("procurement-category", "Other"),
+              text: "Other"
+            },{
+              divider: "ICT"
+            },{
+              value: "ICT - Hardware and commodity",
+              checked: checked("procurement-category", "Hardward and commodity"),
+              text: "Hardware and commodities"
+            },{
+              value: "ICT - Software and service",
+              checked: checked("procurement-category", "Software and service"),
+              text: "Software and service"
+            },{
+              divider: "Professional&nbsp;services"| safe
+            },{
+              value: "Legal",
+              checked: checked("procurement-category", "Legal"),
+              text: "Legal"
+            },{
+              value: "Payroll",
+              checked: checked("procurement-category", "Payroll"),
+              text: "Payroll"
+            },{
+              value: "Recruitment",
+              checked: checked("procurement-category", "Recruitment"),
+              text: "Recruitment"
+            },{
+              divider: "Utilities"
+            },{
+              value: "Energy",
+              checked: checked("procurement-category", "Energy"),
+              text: "Energy"
+            },{
+              value: "Water",
+              checked: checked("procurement-category", "Water"),
+              text: "Water"
+            },{
+              divider: "Or"
+            },{
+              value: "Not yet known",
+              checked: checked("procurement-category", "Not yet known"),
+              text: "Not yet known"
+            },{
+              value: "No applicable category",
+              checked: checked("procurement-category", "No applicable category"),
+              text: "No applicable category"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+        
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Remove procurement category",
+          classes: "govuk-button--warning"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<style type="text/css" media="screen">
+  .govuk-radios--small .govuk-radios__divider {
+
+    font-weight: bold;
+  }
+</style>
+{% endblock %}

@@ -3,7 +3,7 @@
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">View email&nbsp;
       <span id="statustag">
-        <strong class="govuk-tag govuk-tag--active" id="statusunread" style="position:relative;top:-6px;left:0;">unread</strong>
+        <strong class="govuk-tag govuk-tag--green" id="statusread" style="position:relative;top:-5px;left:0; display:none">read</strong>
       </span>
     </h1>
 
@@ -21,12 +21,8 @@
         </button></a>-->
 
       <!--<a href="/manage-case/v6/email/view-email-read.html">-->
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="markasunread" onclick="changeStatus()">
+      <button class="govuk-button" data-module="govuk-button" id="markasread" onclick="changeStatus()">
         Mark as read
-      </button></a>
-
-      <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="markasunread" onclick="saveAttachments()">
-        Save attachments
       </button></a>
 
       <!--<a href="#">
@@ -37,27 +33,20 @@
 
     <script>
       function changeStatus() {
-        var tag = document.getElementById("statusunread");
-        var btn = document.getElementById("markasunread");
+        var tag = document.getElementById("statusread");
+        var btn = document.getElementById("markasread");
         if (tag.style.display === "none") {
           tag.style.display = "inline";
-            btn.innerText = "Mark as read"
+            btn.innerText = "Mark as unread"
             btn.style.backgroundColor = '#f3f2f1';
             btn.style.color = "black";
         } else {
           tag.style.display = "none";
-            btn.innerText = "Mark as unread"
-            btn.style.backgroundColor = '#f3f2f1';
-            btn.style.color = "black";
+            btn.innerText = "Mark as read"
+            btn.style.backgroundColor = '#00703c';
+            btn.style.color = "white";
         }
       }
-    </script>
-
-    <script>
-        function saveAttachments() {
-                  window.location = "/manage-case/v6/email/save-attachments-select.html";
-                  localStorage.setItem('login','true');
-                }
     </script>
 
     <!--<span style="">
@@ -88,14 +77,14 @@
             <dt class="govuk-summary-list__key">Recieved from</dt>
             <dd class="govuk-summary-list__value">
               MEHMOOD, Aqib <br />
-              < aqib.mehmood@digital.education.gov.uk >
+              < aqib.mehmood@digital.education.gov.uk>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Recipients</dt>
             <dd class="govuk-summary-list__value">
               sharedProcopsMailbox <br />
-              < sharedprocopsmailbox@education.gov.uk >
+              < sharedprocopsmailbox@education.gov.uk>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -113,9 +102,7 @@
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Attachments</dt>
             <dd class="govuk-summary-list__value">
-              <a href="#" class="govuk-link">School intro pack.pdf</a><!--<a class="govuk-label govuk-link" style="position: relative; right: -570px; top: -25px">Save</a>-->
-              <br><a href="#" class="govuk-link">School requirements brief.docx</a><br>
-              <a href="#" class="govuk-link">Equipment required.xlsx</a><br>
+              <a href="#" class="govuk-link">School requirements.pdf (2MB)</a>
             </dd>
           </div>
         </dl>
@@ -127,7 +114,7 @@
             I need some help. <br /><br />
             I've started a specification but not sure how to get quotes on it.
             <br /><br />
-            Can you take a look at the attached files to see if I've
+            Can you take a look at the attached specification to see if I've
             provided sufficient information? <br /><br />
             Kind Regards,<br />
             Aqib
@@ -138,5 +125,4 @@
     </form>
   </div>
 </div>
-  
 {% endblock %}
