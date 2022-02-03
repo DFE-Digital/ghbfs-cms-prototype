@@ -1,24 +1,21 @@
 {% extends "layout.html" %} {% block content %}
-
-{{ govukErrorSummary({
-  "titleText": "'School intro pack.pdf' already exists",
-  "errorList": [
-    {
-      "text": "",
-      "href": "#full-name-input"
-    },
-    {
-      "text": "Enter new attachment name",
-      "href": "#full-name-input"
-    }
-  ]
-}) }}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    
+{%- from "moj/components/banner/macro.njk" import mojBanner -%}
+
+{% set bannerHtml %}
+  <h2 class="govuk-heading-s">Attachments that cannot be saved due to their file type have been excluded &nbsp;</h2>
+{% endset %}
+
+{{ mojBanner({
+  type: 'information',
+  html: bannerHtml
+}) }}
+
       <h1 class="govuk-fieldset__heading">
       Select attachments to save
       </h1>
@@ -36,7 +33,7 @@
       <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">
       <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes--small govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input--error govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+        <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
         <label class="govuk-label govuk-checkboxes__label" for="contact">
           <a href="#" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">School intro pack.pdf</a>
         </label>
@@ -44,12 +41,9 @@
       <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
         <div class="govuk-form-group">
           <label class="govuk-label" for="contact-by-email">
-            Rename attachment
+            Rename attachment (optional)
           </label>
-          <p id="full-name-input-error" class="govuk-error-message">
-    <span class="govuk-visually-hidden">Error:</span>Enter new attachment name
-  </p>
-          <input class="govuk-input govuk-input--error govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
         <br>
           <label class="govuk-label" for="contact-by-email">
             Add attachment description
@@ -77,7 +71,7 @@
           <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
         <br>
           <label class="govuk-label" for="contact-by-email">
-            Add attachment description 
+            Add attachment description
           </label>
           <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
         </div>
