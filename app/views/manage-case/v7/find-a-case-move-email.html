@@ -5,25 +5,30 @@
 {% endblock %}
 
 {% block content %}
+
+<h2 class="govuk-heading-l">Find an existing case</h2>
+
+<p class="govuk-body">This should be the case you want to move the emails to.</p>
+
+<!--{{ govukInsetText({
+  text: "This should be the case you want to move the emails to."
+}) }}-->
+
     <form action="find-a-case-results" method="post">
         {{ govukInput({
-          label: {
-            text: "Find a case",
-            classes: "govuk-label--l",
-            isPageHeading: true
-          },
-          classes: "govuk-input--width-20",
+          classes: "govuk-input--width-40",
           hint: {
-            text: "Enter the case ID, organisation name, establishment unique reference number (URN) or case owner"
+            text: "Enter the case ID, organisation name, URN, UKPRN or case owner"
           },
           id: "event-name",
           name: "event-name"
         }) }}
+
     </form>
 
     <div class="govuk-button-group">
     <button class="govuk-button" data-module="govuk-button" onclick="goToPage()">
-    Search
+    Continue
     </button>
       
     <script>
