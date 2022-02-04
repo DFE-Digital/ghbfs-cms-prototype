@@ -7,7 +7,7 @@ const moment = require("moment")
 const schools = require(`./data/schools.js`);
 const supportInformation = require(`./data/support-information.js`);
 
-let folderVersion = "v6"
+let folderVersion = "v7"
 
 let addToHistory = function(caseId, data){
 	let school = schools.find(school => school.id == caseId);
