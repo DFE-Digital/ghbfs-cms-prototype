@@ -1,0 +1,279 @@
+{% extends "layout_noback.html" %}
+
+{% block header %}
+  {% include "manage-case/v7/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+  document.getElementById('filter-toggle').onclick = function() {
+    var filter = document.getElementById('filter');
+    if (filter.style.display === "none") {
+      filter.style.display = "block";
+    } else {
+      filter.style.display = "none";
+    }
+  }  
+</script>
+{% endblock %}
+
+{% block content %}
+
+<style>
+  select { width: 90% }
+</style>
+
+  <span style="">
+    <a href="case/create-a-new-case" role="button" draggable="false" class="govuk-button" data-module="govuk-button">Create a new case</a>
+  </span>
+
+<ul class="govuk-tabs__list govuk-!-margin-bottom-5" role="tablist">
+  <li class="govuk-tabs__list-item  govuk-tabs__list-item--selected" role="presentation">
+    <a class="govuk-tabs__tab" href="my-cases" id="tab_school-details" role="tab" aria-controls="school-details" aria-selected="true" tabindex="0">
+      My cases
+    </a>
+    <!--<span id="notifications" class="hmrc-notification-badge">3</span>-->
+</a>
+  </li>
+  <li class="govuk-tabs__list-item  " role="presentation">
+    <a class="govuk-tabs__tab" href="new-cases" id="tab_request-details" role="tab" aria-controls="request-details" aria-selected="false" tabindex="-1">
+      New cases
+    </a>
+  </li>
+  <li class="govuk-tabs__list-item" role="presentation">
+    <a class="govuk-tabs__tab " href="../case-list" id="tab_case-history" role="tab" aria-controls="case-history" aria-selected="false" tabindex="-1">
+      All cases
+    </a>
+  </li>
+</ul>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 style="display:block" class="govuk-heading-l flexalign__left">My cases 
+      <span style="float:right; display: relative">
+        <button id="filter-toggle" class="govuk-button govuk-button--secondary">Filter results</button>
+      </span>
+    </h1>
+       <div id="filter" style="display:none">
+  <h2 class="govuk-heading-m">Filter results</h2>
+  <div class="govuk-grid-row">
+    {#<div class="govuk-grid-column-one-quarter">
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+          text: "Filter by status"
+        },
+        items: [
+          {
+            value: "All",
+            text: "All"
+          },
+          {
+            value: "New",
+            text: "New"
+          },
+          {
+            value: "Open",
+            text: "Open"
+          },
+          {
+            value: "Resolved",
+            text: "Resolved"
+          }
+        ]
+      }) }}
+    </div>
+    #}
+    <div class="govuk-grid-column-one-quarter">
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+          text: "Filter by category"
+        },
+        items: [
+          {
+            value: "All",
+            text: "All"
+          },
+          {
+            value: "Unknown",
+            text: "Unknown"
+          },
+          {
+            value: "MFD",
+            text: "MFD"
+          },
+          {
+            value: "Catering",
+            text: "Catering"
+          }
+        ]
+      }) }}
+    </div>
+
+    {#<div class="govuk-grid-column-one-quarter">
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+          text: "Filter by assignee"
+        },
+        items: [
+          {
+            value: "All",
+            text: "All"
+          },
+          {
+            value: "Unassigned",
+            text: "Unassigned"
+          },           
+          {
+            value: "Dave",
+            text: "Dave"
+          },
+          {
+            value: "Julie",
+            text: "Julie"
+          }
+        ]
+      }) }}
+      
+    </div>#}
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Apply filter",
+          classes: "govuk-button--secondary"
+        }) }}
+        
+        {{ govukButton({
+          text: "Clear filter",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+    </div>
+  </div>
+</div>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"> Case </th>
+          <th class="govuk-table__header" scope="col"> Organisation </th>
+          <th class="govuk-table__header" scope="col"> Category </th>
+          <th class="govuk-table__header" scope="col"> Status </th>
+          <th class="govuk-table__header" scope="col"> Last updated </th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        {% for case in cases | sort(false, false, "lastUpdated") %}
+
+          {% if (case.status != "new") and (case.assignedTo === "Jenni Weiner") %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.uid}}</a>
+            </td>
+            <td class="govuk-table__cell">
+              
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>&nbsp;
+                <span id="notifications" class="hmrc-notification-badge">3</span>
+              
+            </td>
+            <td class="govuk-table__cell">
+              {{case.category}}
+            </td>
+
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: case.status, 
+                classes: case.status | formatCaseTagColour
+              })}}
+            </td>
+            <td class="govuk-table__cell">
+              {{ case.lastUpdated | formatTableDate }}
+            </td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+
+        {% for case in cases | sort(false, false, "lastUpdated") %}
+
+          {% if (case.status != "new") and (case.assignedTo === "Jenni Weiner") %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.uid}}</a>
+            </td>
+            <td class="govuk-table__cell">
+              
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>&nbsp;
+                 <span id="notifications" class="hmrc-notification-badge">1</span>
+
+            </td>
+            <td class="govuk-table__cell">
+              {{case.category}}
+            </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: case.status, 
+                classes: case.status | formatCaseTagColour
+              })}}
+            </td>
+            <td class="govuk-table__cell">
+              {{ case.lastUpdated | formatTableDate }}
+            </td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+        
+        {% for case in cases | sort(false, false, "lastUpdated") %}
+
+          {% if (case.status != "new") and (case.assignedTo === "Jenni Weiner") %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.uid}}</a>
+            </td>
+            <td class="govuk-table__cell">
+              
+                <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>
+              
+            </td>
+            <td class="govuk-table__cell">
+              {{case.category}}
+            </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: case.status, 
+                classes: case.status | formatCaseTagColour
+              })}}
+            </td>
+            <td class="govuk-table__cell">
+              {{ case.lastUpdated | formatTableDate }}
+            </td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+    <nav class="moj-pagination" id="pagination-label">
+      <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+      <ul class="moj-pagination__list">
+       <!-- <li class="moj-pagination__item  moj-pagination__item--prev">
+          <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
+        </li>-->
+        <!--<li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=1">1</a></li>
+        <li class="moj-pagination__item moj-pagination__item--active">2</li>
+        <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3">3</a></li>
+        <li class="moj-pagination__item  moj-pagination__item--next">
+          <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
+        </li>-->
+      </ul>
+      <p class="moj-pagination__results">Showing <b>1</b> to <b>3</b> of <b>3</b> results</p>
+    </nav>
+  </div>
+</div>
+{% endblock %}

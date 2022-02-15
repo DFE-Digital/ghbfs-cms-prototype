@@ -1,0 +1,139 @@
+{% extends "layout.html" %} {% block content %}
+
+{{ govukErrorSummary({
+  "titleText": "'School intro pack.pdf' already exists",
+  "errorList": [
+    {
+      "text": "",
+      "href": "#full-name-input"
+    },
+    {
+      "text": "Enter new attachment name",
+      "href": "#full-name-input"
+    }
+  ]
+}) }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+      Select attachments to save
+      </h1>
+    </legend>
+
+    <br>
+
+  <p class="govuk-body">You can rename and add a description to attachments you select</p>
+
+
+<table class="govuk-table">
+  <!--<caption class="govuk-table__caption govuk-table__caption--s govuk-!-font-weight-regular">You can rename attachments and add a description</caption>-->
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes--small govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input--error govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-checkboxes__label" for="contact">
+          <a href="#" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">School intro pack.pdf</a>
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Rename attachment
+          </label>
+          <p id="full-name-input-error" class="govuk-error-message">
+    <span class="govuk-visually-hidden">Error:</span>Enter new attachment name
+  </p>
+          <input class="govuk-input govuk-input--error govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+        <br>
+          <label class="govuk-label" for="contact-by-email">
+            Add attachment description
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+        </div>
+    </tr>
+  </tbody>
+  
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes--small govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-checkboxes__label" for="contact">
+          <a href="#" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">School requirements brief.docx</a>
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Rename attachment (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+        <br>
+          <label class="govuk-label" for="contact-by-email">
+            Add attachment description 
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+        </div>
+    </tr>
+  </tbody>
+
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes--small govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-checkboxes__label" for="contact">
+          <a href="#" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">Equipment required.xlsx</a>
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Rename attachment (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+        <br>
+          <label class="govuk-label" for="contact-by-email">
+            Add attachment description
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+        </div>
+    </tr>
+  </tbody>
+  
+</table>
+
+    <br>
+
+<!--<td class="govuk-table__cell govuk-table__cell--numeric">Save</td>-->
+    
+  </fieldset>
+    
+    <div class="govuk-button-group">
+    <button class="govuk-button" data-module="govuk-button" onclick="goToPage()">
+    Save to case
+    </button>
+      
+    <script>
+        function goToPage() {
+                  window.location = "/manage-case/v7/email/attachments-saved.html";
+                  localStorage.setItem('login','true');
+                }
+    </script>
+
+  <a class="govuk-link" href="/manage-case/v7/email/email-unread.html">Cancel</a>
+  </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

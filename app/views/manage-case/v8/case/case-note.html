@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v7/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+
+
+
+      <form action="case-note-post" method="post">
+
+        {{ govukTextarea({
+          name: "case-note-details",
+          id: "case-note-details",
+          value: data['case-note-details'],
+          label: {
+            text: "Add case note",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
