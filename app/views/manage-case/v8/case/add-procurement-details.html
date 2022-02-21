@@ -1,0 +1,416 @@
+{% extends "layout_case.html" %}
+<link
+  href="public/autocomplete/accessible-autocomplete.min.css"
+  media="all"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="/public/autocomplete/accessible-autocomplete-min.js"></script>
+
+{% block header %}
+  {% include "manage-case/v8/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      
+      <h1 class="govuk-heading-l">Update procurement details</h1>
+
+      <form action="check-procurement-details" method="post">
+
+        {{ govukRadios({
+          idPrefix: "agreement-type",
+          name: "agreement-type",
+          fieldset: {
+            legend: {
+              text: "Required agreement type (optional)"
+            }
+          },
+          items: [
+            {
+              value: "One-off",
+              text: "One-off"
+            },
+            {
+              value: "Ongoing",
+              text: "Ongoing"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "route",
+          name: "route",
+          fieldset: {
+            legend: {
+              text: "Route to market (optional)"
+            }
+          },
+          items: [
+            {
+              value: "DfE Approved Deal / Framework",
+              text: "DfE Approved Deal / Framework"
+            },
+            {
+              value: "Bespoke Procurement",
+              text: "Bespoke Procurement"
+            },
+            {
+              value: "Direct Award",
+              text: "Direct Award"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "reason",
+          name: "reason",
+          fieldset: {
+            legend: {
+              text: "Reason for route to market (optional)"
+            }
+          },
+          items: [
+            {
+              value: "School Preference",
+              text: "School Preference"
+            },
+            {
+              value: "DfE Deal/Framework Selected",
+              text: "DfE Deal/Framework Selected"
+            },
+            {
+              value: "No DfE Deal/Framework Available",
+              text: "No DfE Deal/Framework Available"
+            },
+            {
+              value: "Better Spec/Terms than DfE Deal",
+              text: "Better Spec/Terms than DfE Deal"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-grid-row">
+  <div class="key-info"></div>
+</div>
+
+<div class="govuk-form-group">
+    <form action="check-new-case-details" method="post">
+      <div class="govuk-form-group govuk-!-width-30">
+        <label for="my-autocomplete" class="govuk-label"
+          >Framework name (optional)</label><nobr>
+      </div>
+        <div id="my-autocomplete-container"></div>
+      </div>
+
+      <input
+        type="hidden"
+        id="category-name"
+        name="category-name"
+        value=""
+      />
+
+      <input
+        type="hidden"
+        id="supplier-name"
+        name="supplier-name"
+        value=""
+      />
+
+      <input
+        type="hidden"
+        id="framework-name"
+        name="framework-name"
+        value=""
+      />
+
+      <input
+        type="hidden"
+        id="expiry-date"
+        name="expiry-date"
+        value=""
+      />
+
+        <!--<div class="govuk-form-group">
+          <label class="govuk-label" for="sort">
+            Framework name (optional)
+          </label>
+          <select class="govuk-select" id="framework" name="framework">
+            <option value="">-- Select framework --</option>
+            <option value="CCS - Cyber Security Services 3">CCS - Cyber Security Services 3</option>
+            <option value="CCS - Digital marketplace (G-Cloud 12)">CCS - Digital marketplace (G-Cloud 12)</option>
+            <option value="CCS - Education technology">CCS - Education technology</option>
+            <option value="CCS - Facilities management (FM) marketplace">CCS - Facilities management (FM) marketplace</option>
+            <option value="CCS - Hiring supply teachers and agency workers">CCS - Hiring supply teachers and agency workers</option>
+            <option value="CCS - Multifunctional Devices, Managed Print and Content Services and Records and Information Management">CCS - Multifunctional Devices, Managed Print and Content Services and Records and Information Management</option>
+            <option value="CCS - Office supplies">CCS - Office supplies</option>
+            <option value="CCS - Print marketplace">CCS - Print marketplace</option>
+            <option value="CCS - Safer working supplies">CCS - Safer working supplies</option>
+            <option value="CCS - School Switch">CCS - School Switch</option>
+            <option value="CCS - Spend analysis and recovery services">CCS - Spend analysis and recovery services</option>
+            <option value="CCS - Supply of energy and ancillary services">CCS - Supply of energy and ancillary services</option>
+            <option value="CCS - Transport services – taxi and coaches">CCS - Transport services – taxi and coaches</option>
+            <option value="CCS - Water, wastewater and ancillary services 2">CCS - Water, wastewater and ancillary services 2</option>
+            <option value="CPC - Audit services">CPC - Audit services</option>
+            <option value="CPC - Building cleaning services">CPC - Building cleaning services</option>
+            <option value="CPC - Employee screening services">CPC - Employee screening services</option>
+            <option value="CPC - ICT hardware and peripherals equipment">CPC - ICT hardware and peripherals equipment</option>
+            <option value="CPC - ICT Networking and storage solutions">CPC - ICT Networking and storage solutions</option>
+            <option value="CPC - Insurance and related services for public sector schools">CPC - Insurance and related services for public sector schools</option>
+            <option value="CPC - Leasing services">CPC - Leasing services</option>
+            <option value="CPC - Legal services">CPC - Legal services</option>
+            <option value="CPC - Library resources">CPC - Library resources</option>
+            <option value="CPC - Multifunctional devices and digital transformation solutions">CPC - Multifunctional devices and digital transformation solutions</option>
+            <option value="CPC - Outsourced catering services">CPC - Outsourced catering services</option>
+            <option value="CPC - Outsourced human resources including payroll services">CPC - Outsourced human resources including payroll services</option>
+            <option value="CPC - Removal, relocation and additional services">CPC - Removal, relocation and additional services</option>
+            <option value="CPC - Software licenses and associated services for academies and schools">CPC - Software licenses and associated services for academies and schools</option>
+            <option value="CPC - Staff absence protection and reimbursement">CPC - Staff absence protection and reimbursement</option>
+            <option value="CPC - Stationery and education supplies">CPC - Stationery and education supplies</option>
+            <option value="CPC - Synthetic sports facilities">CPC - Synthetic sports facilities</option>
+            <option value="CPC - Utilities supplies and services">CPC - Utilities supplies and services</option>
+            <option value="DFE - DFE furniture">DFE - DFE furniture</option>
+            <option value="DFE - Risk protection arrangement – alternative to commercial insurance">DFE - Risk protection arrangement – alternative to commercial insurance</option>
+            <option value="Econocom - Schools leasing framework">Econocom - Schools leasing framework</option>
+            <option value="ESPO - Books for schools">ESPO - Books for schools</option>
+            <option value="ESPO - Catering services">ESPO - Catering services</option>
+            <option value="ESPO - Commercial catering equipment">ESPO - Commercial catering equipment</option>
+            <option value="ESPO - Eastern Shires Purchasing Organisation online catalogue">ESPO - Eastern Shires Purchasing Organisation online catalogue</option>
+            <option value="Everything ICT - ICT procurement">Everything ICT - ICT procurement</option>
+            <option value="Fusion21 - Heating systems and renewable technology">Fusion21 - Heating systems and renewable technology</option>
+            <option value="KCS - Audio visual solutions">KCS - Audio visual solutions</option>
+            <option value="KCS - Photocopiers, printers and scanners with toners included">KCS - Photocopiers, printers and scanners with toners included</option>
+            <option value="NEPO - North East Purchasing Organisation online catalogue">NEPO - North East Purchasing Organisation online catalogue</option>
+            <option value="NEPO - Specialist professional services">NEPO - Specialist professional services</option>
+            <option value="SBS - Construction consultancy services">SBS - Construction consultancy services</option>
+            <option value="YPO - Building in use - support services">YPO - Building in use - support services</option>
+            <option value="YPO - Electricity (half hourly, non-half hourly and unmetered)">YPO - Electricity (half hourly, non-half hourly and unmetered)</option>
+            <option value="YPO - Firms mains gas">YPO - Firms mains gas</option>
+            <option value="YPO - Internal fit-out and maintenance">YPO - Internal fit-out and maintenance</option>
+            <option value="YPO - Liquid fuels">YPO - Liquid fuels</option>
+            <option value="YPO - Network connectivity and telecommunication solution">YPO - Network connectivity and telecommunication solution</option>
+            <option value="YPO - Water, wastewater and ancillary services">YPO - Water, wastewater and ancillary services</option>
+            <option value="YPO - Yorkshire Purchasing Organisation online catalogue">YPO - Yorkshire Purchasing Organisation online catalogue</option>  
+          </select>
+        </div>-->
+
+        {{ govukDateInput({
+          id: "procurement-start-date",
+          namePrefix: "procurement-start-date",
+          fieldset: {
+            legend: {
+              text: "Start date of the procurement (optional)"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: case.procurementDetails.startDate | returnDay if case.procurementDetails.startDate else data['procurement-start-date-day']
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: case.procurementDetails.startDate | returnMonth if case.procurementDetails.startDate else data['procurement-start-date-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: case.procurementDetails.startDate | returnYear if case.procurementDetails.startDate else data['procurement-start-date-year']
+            }
+          ]
+        }) }}
+
+        {{ govukDateInput({
+          id: "procurement-end-date",
+          namePrefix: "procurement-end-date",
+          fieldset: {
+            legend: {
+              text: "End date of the procurement (optional)"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: case.procurementDetails.endDate | returnDay if case.procurementDetails.endDate else data['procurement-end-date-day']
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: case.procurementDetails.endDate | returnMonth if case.procurementDetails.endDate else data['procurement-end-date-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: case.procurementDetails.endDate | returnYear if case.procurementDetails.endDate else data['procurement-end-date-year']
+            }
+          ]
+        }) }}
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="stage">
+            Procurement stage (optional)
+          </label>
+          <select class="govuk-select" id="stage" name="stage">
+            <option value="">-- Select stage --</option>
+            <option value="Need">Need</option>
+            <option value="Market Analysis">Market Analysis</option>
+            <option value="Sourcing Options">Sourcing Options</option>
+            <option value="Go to Market">Go to Market</option>
+            <option value="Evaluation">Evaluation</option>
+            <option value="Contract Award">Contract Award</option>
+            <option value="Handover">Handover</option>
+          </select>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+  
+  
+  
+  
+  <script type="text/javascript">
+  function customSuggest(query, syncResults) {
+    var results = [
+      {
+        Framework: "Audio visual solutions",
+        Supplier: "KCS",
+        Category: "Books, stationery and education supplies",
+        Expiry: "Expires: 31 January 2024",
+      },
+       {
+        Framework: "Building in use - Support services",
+        Supplier: "YPO",
+        Category: "Consultancy services",
+        Expiry: "Expires: 31 July 2025",
+      },
+      {
+        Framework: "Catering services",
+        Supplier: "ESPO",
+        Category: "Energy and utilities",
+        Expiry: "Expires: 1 October 2022",
+      },
+      {
+        Framework: "Heating systems and renewable technology",
+        Supplier: "Fusion21",
+        Category: "Facilities management and estates",
+        Expiry: "Expires: 28 January 2024",
+      },
+      {
+        Framework: "Office Supplies",
+        Supplier: "CCS",
+        Category: "ICT",
+        Expiry: "Expires: 5 April 2022",
+      },
+      {
+        Framework: "Spend analysis and recovery services",
+        Supplier: "CCS",
+        Category: "Legal",
+        Expiry: "Expires: 15 January 2022",
+      },
+      {
+        Framework: "Staff absence protection and reimbursement",
+        Supplier: "CPC",
+        Category: "Personal protective equipment (PPE) and cleaning",
+        Expiry: "Expires: 23 May 2024",
+      },
+      {
+        Framework: "Transport services – Taxi and Coaches",
+        Supplier: "CCS",
+        Category: "Recruitment, HR and training",
+        Expiry: "Expires: 23 March 2022",
+      },
+      {
+        Framework: "Yorkshire Purchasing Organisation online catalogue",
+        Supplier: "YPO",
+        Category: "Transport",
+        Expiry: "Expires: 31 December 2021",
+      },
+    ];
+
+    syncResults(
+      query
+        ? results.filter(function (result) {
+            var frameworkContains =
+              result.Framework.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            var resultContains =
+              result.Supplier.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            var endonymContains =
+              result.Category.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            return resultContains || endonymContains || frameworkContains;
+          })
+        : []
+    );
+  }
+
+  function inputValueTemplate(result) {
+    return (
+      result &&
+        result.Framework
+    );
+  }
+
+  function suggestionTemplate(result) {
+    return (
+      result &&
+        "<strong>" + 
+        result.Framework +
+        ", " + "</strong>" +
+        result.Supplier +
+        "<br>" +
+        result.Category +
+        "<br>" +
+        result.Expiry
+    );
+  }
+
+  element = document.querySelector("#my-autocomplete-container");
+  id = "autocomplete-customTemplates";
+  accessibleAutocomplete({
+    element: element,
+    id: id,
+    name: "result",
+    source: customSuggest,
+    templates: {
+      inputValue: inputValueTemplate,
+      suggestion: suggestionTemplate,
+    },
+  });
+
+  autocomplete = document.querySelector("#autocomplete-customTemplates");
+  frameworkName = document.querySelector("#framework-name");
+  categoryName = document.querySelector("#category-name");
+  expiryDate = document.querySelector("#expiry-date");
+
+  autocomplete.addEventListener("blur", (event) => {
+    var schoolParams = autocomplete.value.split(",");
+    console.log(schoolParams);
+    console.log("left the target");
+    console.log(autocomplete.value);
+    frameworkName.value = schoolParams[0].slice(4);
+    categoryName.value = schoolParams[1];
+    expiryDate.value = schoolParams[2];
+  });
+</script>
+
+{% endblock %}
