@@ -1,0 +1,45 @@
+{% extends "layout.html" %} {% block header %} {% include
+"manage-case/v8/includes/logged_in_user.html" %} {% endblock %} {% block content
+%}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Upload a file</h1>
+
+      <div class="govuk-form-group govuk-inset-text">
+        <div id="event-name-hint" class="govuk-body">
+          Choose a file. The maximum size of the file can be X MB and it must be
+          a X, Y, or Z.
+        </div>
+        <input
+          class="govuk-file-upload fileUpload"
+          id="fileUpload"
+          name=""
+          type="file"
+        />
+        <div id="clearFile" style="display: none; width: 85px; margin-top: 8px">
+          <a href="#">Clear File</a>
+        </div>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="width-40">Add description</label>
+        <input
+          class="govuk-input govuk-input--width-40"
+          id="width-40"
+          name="width-40"
+          type="text"
+        />
+      </div>
+
+      <div class="govuk-button-group">
+  <a class="govuk-button" href="/manage-case/v8/files/upload-confirmation">
+    Upload to case
+  </a>
+</div>
+
+      {% endblock %}
+    </div>
+  </div>
+</div>

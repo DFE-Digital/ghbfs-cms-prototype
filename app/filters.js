@@ -107,6 +107,14 @@ let statuses = {
   "Bespoke procurement": {
     statusClass : "govuk-tag--turquoise",
     statusUrl : "manage-procurement"
+  },
+  "action": {
+    statusClass : "govuk-tag--red",
+    statusUrl : "notification"
+  },
+  "on hold": {
+    statusClass : "govuk-tag--yellow",
+    statusUrl : "on-hold-case"
   }
 }
 

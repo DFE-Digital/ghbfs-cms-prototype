@@ -1,0 +1,565 @@
+{%- from "hmrc/components/notification-badge/macro.njk" import hmrcNotificationBadge -%}
+
+{% set addressHtml %}
+{{case.school.street}} <br>
+{{case.school.town}} <br>
+{{case.school.postcode}} <br>
+{% endset %}
+
+{% set schoolDetails %}
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-5',
+        rows: [
+          {
+            key: {
+              text: "Contact name"
+            },
+            value: {
+              text: case["first_name"] + " " + case["last_name"]
+            }
+          },
+          {
+            key: {
+              text: "Contact phone"
+            },
+            value: {
+              text: "0" + case["phone"]
+            }
+          },
+          {
+            key: {
+              text: "Contact email"
+            },
+            value: {
+              text: case["email"]
+            }
+          },
+          {
+            key: {
+              text: "Organisation name"
+            },
+            value: {
+              text: case.school.name | safe
+            }
+          },
+          {
+            key: {
+              text: "Organisation type"
+            },
+            value: {
+              text: "Voluntary aided school" | safe
+            }
+          }
+        ]
+      }) }}
+
+<p>
+  <a href="https://www.get-information-schools.service.gov.uk/Establishments/Establishment/Details/{{case.school.urn}}" target="_blank">View organisation information (opens in a new tab)</a>
+</p>
+{% endset %}
+
+{% set replyDetails %}
+
+<p>Request sent on {{ 0 |daysAgo}}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Advice and support provided
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['reply-details'] |safe }}
+        </dd>        
+      </div> 
+  
+</dl>
+
+
+{% endset %}
+
+{% set requestDetails %}
+
+
+{% include "../includes/request-details-specify.html" %}
+{% include "../includes/procurement-details-specify.html" %}
+
+
+{% endset %}
+
+
+{% set historyDetails %}
+
+{% if case.status !== "new" %}
+<p>Case owner: {{ case.assignedTo }} <a href="assign">change <span class="govuk-visually-hidden">case owner</span></a> </p>
+{% endif %}
+<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{case.id}}">
+  {% for note in case.history | sort(true, false, "index") %}
+    <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-{{case.index}}">
+          {{ note.title }}
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        {{ note.date  }} at {{ note.time }}
+      </div>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-{{case.index}}">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Created by
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ note.addedBy  }}
+        </dd>        
+      </div> 
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Notes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ note.caseNote | safe |nl2br}}
+        </dd>        
+      </div> 
+      </dl>
+    </div>
+  </div>
+  {% endfor %}
+
+     <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-0">
+          Email from school &nbsp;
+                  <strong class="govuk-tag govuk-tag--active" style="position:relative;top:-3px;left:0;">unread</strong>
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        {{ case.lastUpdated | formatTableDate }}
+      </div>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-0">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Created by
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            Aqib Mehmood
+          {% endif %}
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Notes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            <a href="/manage-case/v8/email/email-unread.html" class="govuk-link" rel="noreferrer noopener" target="_blank">View email (opens in new tab)</a>
+          {% endif %}
+        </dd>        
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Attachments
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            <a href="#" class="govuk-link">School intro pack.pdf</a><br>
+            <a href="#" class="govuk-link">School requirements brief.docx</a><br>
+            <a href="#" class="govuk-link">Equipment required.xlsx</a> 
+          {% endif %}
+        </dd>        
+      </div>
+    
+</dl>
+    </div>
+  </div>
+
+       <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-0">
+          Email from school &nbsp;
+        <!--<strong class="govuk-tag govuk-tag--grey" style="position:relative;top:-3px;left:0;">read</strong>-->
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        {{ case.lastUpdated | formatTableDate }}
+      </div>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-0">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Created by
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            Aqib Mehmood
+          {% endif %}
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Notes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            <a href="/manage-case/v8/email/email-unread.html" class="govuk-link" rel="noreferrer noopener" target="_blank">View email (opens in new tab)</a>
+          {% endif %}
+        </dd>        
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Attachments
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            <a href="#" class="govuk-link">School requirements.pdf (2MB)</a> 
+          {% endif %}
+        </dd>        
+      </div>
+    
+</dl>
+    </div>
+  </div>
+  
+  <!--<div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-0">
+          Email from school
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        {{ case.lastUpdated | formatTableDate }}
+      </div>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-0">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Recieved from
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            Aqib Mehmood
+          {% endif %}
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Subject
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            Help creating specification
+          {% endif %}
+        </dd>       
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Message
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            Hi,
+            <br><br>
+            I need some help.
+            <br><br>
+            I've started a specification but not sure how to get quotes on it.
+            <br><br>
+            Can you take a look at the attached specification to see if I've provided sufficient information?
+            <br><br>
+            Kind Regards,<br> Aqib
+          {% endif %}
+        </dd>        
+      </div>
+    
+</dl>
+    </div>
+  </div>-->
+
+<div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-0">
+          Request for support
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        {{ case.lastUpdated | formatTableDate }}
+      </div>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-0">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Category
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ supportInformation.category }}
+        </dd>       
+
+         
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Description of problem
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ supportInformation['specify-question'] | safe}}
+        </dd>        
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Attached specification
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            No Specification included
+          {% endif %}
+        </dd>        
+      </div>
+    
+</dl>
+    </div>
+  </div>
+
+</div>
+  
+{% endset %}
+
+{% set procurementDetails %}
+
+{% include "../includes/procurement-details-specify.html" %}
+
+{% endset %}
+
+{% set attachmentDetails %}
+
+<table class="govuk-table">
+  <!--<caption class="govuk-table__caption govuk-table__caption--s govuk-!-font-weight-regular">Saved attachments</caption>-->
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">Attachment name</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      <th scope="col" class="govuk-table__header">Date added</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">School intro pack.pdf</a></th>
+      <td class="govuk-table__cell">Information pack about the school</td>
+      <td class="govuk-table__cell">2 Feb 2022 4:32pm</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">School requirements brief.docx</a></th>
+      <td class="govuk-table__cell">School needs</td>
+      <td class="govuk-table__cell">2 Feb 2022 4:31pm</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">Equipment required.xlsx</a></th>
+      <td class="govuk-table__cell">List of equipment and budgets</td>
+      <td class="govuk-table__cell">2 Feb 2022 4:30pm</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">St_Michaels_Library.xlsx</a></th>
+      <td class="govuk-table__cell">Hardware needed for school library</td>
+      <td class="govuk-table__cell">31 Jan 2022 10.05am</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">Dinner lady trays.pdf</a></th>
+      <td class="govuk-table__cell">Pictures of school dinner tray type required</td>
+      <td class="govuk-table__cell">29 Jan 2022 1:15pm</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">Pupil_seating_science.xlsx</a></th>
+      <td class="govuk-table__cell">Tables and chairs needed for science classrooms</td>
+      <td class="govuk-table__cell">19 Jan 2022 6:25pm</td>
+    </tr>
+  </tbody>
+</table>
+  
+{% endset %}
+
+{% set fileDetails %}
+
+<table class="govuk-table">
+
+<div class="govuk-button-group">
+  <a class="govuk-button" href="/manage-case/v8/files/upload-file">
+    Upload a file
+  </a>
+
+  <!--<a class="govuk-button govuk-button--secondary" href="../specify/download.html">
+    Save as draft
+  </a>-->
+</div>
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">File</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      <th scope="col" class="govuk-table__header">Date added</th>
+      <th scope="col" class="govuk-table__header">Share</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">Filename.pdf</a></th>
+      <td class="govuk-table__cell">Information about file</td>
+      <td class="govuk-table__cell">2 Feb 2022 4:32pm</td>
+      <td class="govuk-table__cell">
+        <a href="/manage-case/v8/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Get link</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">Filename2.pdf</a></th>
+      <td class="govuk-table__cell">Information about file</td>
+      <td class="govuk-table__cell">2 Feb 2022 4:32pm</td>
+      <td class="govuk-table__cell">
+        <a href="/manage-case/v8/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Get link</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">Filename3.pdf</a></th>
+      <td class="govuk-table__cell">Information about file</td>
+      <td class="govuk-table__cell">2 Feb 2022 4:32pm</td>
+      <td class="govuk-table__cell">
+        <a href="/manage-case/v8/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Get link</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-link govuk-table__header">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">Filename4.pdf</a></th>
+      <td class="govuk-table__cell">Information about file</td>
+      <td class="govuk-table__cell">2 Feb 2022 4:32pm</td>
+      <td class="govuk-table__cell">
+        <a href="/manage-case/v8/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Get link</a></td>
+    </tr>
+  </tbody>
+</table>
+  
+{% endset %}
+
+{% set notificationDetails %}
+
+<p>Last updated on {{ 0 |daysAgo}}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Advice and support provided
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['notification-details'] |safe }}
+        </dd>        
+      </div> 
+  
+</dl>
+
+{% endset %}
+
+{% set notificationDetails %}                
+
+{% include "../includes/notification-details-specify.html" %}
+
+
+{% endset %}
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "School details",
+      id: "school-details",
+      panel: {
+        html: schoolDetails
+      }
+    },
+    {
+      label: "Case details",
+      id: "request-details",
+      panel: {
+        html: requestDetails
+      }
+    },
+    {
+      label: "Procurement",
+      id: "procurement-details",
+      panel: {
+        html: procurementDetails
+      }
+    },
+    {
+      label: ("Case history"),
+      id: "case-history",
+      panel: {
+        html: historyDetails
+      }
+    },
+    {
+      label: "Attachments",
+      id: "attachments",
+      panel: {
+        html: attachmentDetails
+      }
+    },
+    {
+      label: "Files",
+      id: "files",
+      panel: {
+        html: fileDetails
+      }
+    }
+  ]
+}) }} 

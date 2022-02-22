@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v8/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Close case
+      </h1>
+    </legend>
+    <div id="contact-hint" class="govuk-hint">
+      Select reason for closing case.
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-radios__label" for="contact">
+          Spam
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-radios__label" for="contact-3">
+          Out of scope
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+        <label class="govuk-label govuk-radios__label" for="contact-2">
+          Other
+        </label>
+      </div>
+      <!--<div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-phone">
+            Enter reason (character limited)
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel" autocomplete="tel"></div>
+      </div>-->
+    </div>
+  </fieldset>
+</div>
+
+<button class="govuk-button" data-module="govuk-button" onclick="goToPage()">
+  Save and close case
+</button>
+      
+    <script>
+        function goToPage() {
+                  window.location = "/manage-case/v8/case-list/new-case-closed.html";
+                  localStorage.setItem('login','true');
+                }
+    </script>
+
+<!--<script>
+    function toggleCategory() {
+    // Get the radio
+    var radioOther = document.getElementById("otherradio");
+    var radioSPAM = document.getElementById("spamradio");
+    // Get the output category dropdown
+    var showCategory = document.getElementById("showcategory");
+    // If the checkbox is checked, display the output category dropdown
+    if (radioSPAM.checked == true){
+    showCategory.style.display = "none";
+    }
+    if (radioOther.checked == true){
+    showCategory.style.display = "block";
+    } else {
+    showCategory.style.display = "none";
+      }
+    }
+    </script>-->
+
+  </div>
+{% endblock %}

@@ -43,3 +43,29 @@ $govuk-assets-path: '/govuk/assets/';
 		padding-right: 60px
 	}
 }
+
+.box{  
+    background-color: #f3f2f1; 
+    position: relative;
+    padding-top: 3%;
+    padding-bottom: 0.25%;
+    padding-left: 3%;
+    padding-right: 3%;
+    height: auto;
+    width: auto; 
+  }
+
+  .border{ 
+	width: 500px;
+	height: 50px;
+	padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+	border: 5px solid #1d70b8;
+  }
+
+  .altbutton{
+	background-color: #505a5f;
+	color: #ffffff;
+  }

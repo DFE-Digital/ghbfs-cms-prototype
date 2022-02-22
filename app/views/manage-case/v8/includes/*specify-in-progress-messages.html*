@@ -1,0 +1,249 @@
+{%- from "hmrc/components/notification-badge/macro.njk" import hmrcNotificationBadge -%}
+
+{% set addressHtml %}
+{{case.school.street}} <br>
+{{case.school.town}} <br>
+{{case.school.postcode}} <br>
+{% endset %}
+
+{% set schoolDetails %}
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-5',
+        rows: [
+          {
+            key: {
+              text: "Contact name"
+            },
+            value: {
+              text: case["first_name"] + " " + case["last_name"]
+            }
+          },
+          {
+            key: {
+              text: "Contact phone"
+            },
+            value: {
+              text: "0" + case["phone"]
+            }
+          },
+          {
+            key: {
+              text: "Contact email"
+            },
+            value: {
+              text: case["email"]
+            }
+          },
+          {
+            key: {
+              text: "School Address"
+            },
+            value: {
+              text: addressHtml | safe
+            }
+          }
+        ]
+      }) }}
+
+<p>
+  <a href="https://www.get-information-schools.service.gov.uk/Establishments/Establishment/Details/{{case.school.urn}}" target="_blank">View school information (opens in a new tab)</a>
+</p>
+{% endset %}
+
+{% set replyDetails %}
+
+<p>Request sent on {{ 0 |daysAgo}}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Advice and support provided
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['reply-details'] |safe }}
+        </dd>        
+      </div> 
+  
+</dl>
+
+
+{% endset %}
+
+{% set requestDetails %}
+
+
+{% include "../includes/request-details-specify.html" %}
+
+
+{% endset %}
+
+
+{% set historyDetails %}
+
+{% if case.status !== "new" %}
+<p>Case owner: {{ case.assignedTo }} <a href="assign">change <span class="govuk-visually-hidden">case owner</span></a> </p>
+{% endif %}
+<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{case.id}}">
+  {% for note in case.history | sort(true, false, "index") %}
+    <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-{{case.index}}">
+          {{ note.title }}
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        {{ note.date  }} at {{ note.time }}
+      </div>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-{{case.index}}">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Created by
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ note.addedBy  }}
+        </dd>        
+      </div> 
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Notes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ note.caseNote | safe |nl2br}}
+        </dd>        
+      </div> 
+      </dl>
+    </div>
+  </div>
+  {% endfor %}
+  
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-{{case.id}}-heading-0">
+          Request for support
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        {{ case.lastUpdated | formatTableDate }}
+      </div>
+    </div>
+    <div id="accordion-{{case.id}}-content-0" class="govuk-accordion__section-content" aria-labelledby="accordion-{{case.id}}-heading-0">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Category
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ supportInformation.category }}
+        </dd>       
+
+         
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Description of problem
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ supportInformation['specify-question'] | safe}}
+        </dd>        
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Attached specification
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if supportInformation.docUrl %}
+            <a href="{{ supportInformation.docUrl }}" type="download">{{ supportInformation.docName }}</a>
+          {% else %}
+            No Specification included
+          {% endif %}
+        </dd>        
+      </div>
+    
+</dl>
+    </div>
+  </div>
+</div>
+  
+{% endset %}
+
+{% set procurementDetails %}
+
+{% include "../includes/procurement-details-specify.html" %}
+
+{% endset %}
+
+{% set notificationDetails %}
+
+<p>Last updated on {{ 0 |daysAgo}}
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Advice and support provided
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['notification-details'] |safe }}
+        </dd>        
+      </div> 
+  
+</dl>
+
+{% endset %}
+
+{% set notificationDetails %}                
+
+{% include "../includes/notification-details-specify.html" %}
+
+
+{% endset %}
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "School details",
+      id: "school-details",
+      panel: {
+        html: schoolDetails
+      }
+    },
+    {
+      label: "Request details",
+      id: "request-details",
+      panel: {
+        html: requestDetails
+      }
+    },
+    {
+      label: "Case history", 
+      id: "case-history",
+      panel: {
+        html: historyDetails
+      }
+    },
+    {
+      label: "Procurement details",
+      id: "procurement-details",
+      panel: {
+        html: procurementDetails
+      }
+    },
+    { 
+      label: ("Messages" + hmrcNotificationBadge({ text: '3' }) ) |safe,
+      id: "notification-details",
+      panel: {
+        html: notificationDetails
+      }
+    }
+  ]
+}) }} 

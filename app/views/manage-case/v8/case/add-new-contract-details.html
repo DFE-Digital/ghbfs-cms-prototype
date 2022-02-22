@@ -1,0 +1,95 @@
+{% extends "layout_case.html" %}
+
+{% block header %}
+  {% include "manage-case/v8/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      
+      <h1 class="govuk-heading-l">Update new contract details</h1>
+
+      <form action="check-new-contract-details" method="post">     
+
+       {{ govukDateInput({
+          id: "new-contract-start-date",
+          namePrefix: "new-contract-start-date",
+          fieldset: {
+            legend: {
+              text: "Start date of new contract (optional)"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: case.newContract.startDate | returnDay if case.newContract.startDate else data['new-contract-start-date-day']
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: case.newContract.startDate | returnMonth if case.newContract.startDate else data['new-contract-start-date-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: case.newContract.startDate | returnYear if case.newContract.startDate else data['new-contract-start-date-year']
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Duration of new contract in months (optional)"
+          },
+          classes: "govuk-input--width-5",
+          id: "new-contract-duration",
+          name: "new-contract-duration",
+          value: case.newContract.duration if case.newContract.duration else data['new-contract-duration']
+        }) }}
+
+        {{ govukInput({
+          id: "new-contract-spend",
+          name: "new-contract-spend",
+          label: {
+            text: "New contract spend (optional)"
+          },
+          prefix: {
+            text: "£"
+          },
+          classes: "govuk-input--width-5",
+          spellcheck: false,
+          value: case.newContract.spend if case.newContract.spend else data['new-contract-spend']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "New contract supplier (optional)"
+          },
+          classes: "govuk-input--width-20",
+          id: "new-contract-supplier",
+          name: "new-contract-supplier",
+          value: case.newContract.supplier if case.newContract.supplier else data['new-contract-supplier']
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

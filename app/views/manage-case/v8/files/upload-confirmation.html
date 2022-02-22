@@ -1,0 +1,27 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="govuk-grid-row govuk-width-container">
+  <div class="govuk-panel govuk-panel--confirmation">
+  <h1 class="govuk-panel__title">
+    Success
+  </h1>
+  <div class="govuk-panel__body">
+   Filename.pdf was uploaded
+  </div>
+</div>
+
+  <br>
+    <h1 class="govuk-body-m">
+      <p class="govuk-heading-m">What happens next</p>
+      <!--<p class="govuk-body">You can</p>-->
+
+              <ul class="govuk-list govuk-list">
+              <li><a href="/manage-case/v8/files/share-file">Get a link to share this file</a></li>
+              <li><a href="/manage-case/v8/case/12/specify#files">View files</a></li>
+              </ul>
+    </h1>
+     
+  </div>
+</div>
+
+{% endblock %}

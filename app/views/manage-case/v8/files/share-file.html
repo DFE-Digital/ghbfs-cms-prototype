@@ -1,0 +1,70 @@
+{% extends "layout.html" %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+      Share a file using a link
+      </h1>
+    </legend>
+    
+    <br>
+
+    <table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">You are sharing</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"> File </th>
+          <th class="govuk-table__header" scope="col"> Description </th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Filename.pdf</th>
+      <td class="govuk-table__cell">Information about the file</td>
+    </tr>
+  </tbody>
+</table>
+  
+  </fieldset>
+
+<br>
+
+  <p class="govuk-heading-m">Shareable link</p>
+  
+    <p class="govuk-body">Anyone with this link will be able to download the file.</p>
+
+    <div class="box govuk-form-group">
+    <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-20" id="link" name="weight" type="text" value="https://bitbucket.com/filename.pdf" spellcheck="false">
+    <button class="altbutton govuk-button govuk-button--secondary" type="button" aria-hidden="true" onclick="copyToClipboard('#link')">Copy</button>
+  </div>
+
+<script>
+function copyToClipboard(element) {
+    $(element).select();
+    document.execCommand("copy");
+}
+</script>
+
+</div>
+
+        <br><p class="govuk-body">The link will not work if you close this window. Select continue to use the link.</p>
+   
+    </div>
+
+    <br>
+    
+    <div class="govuk-button-group">
+    <a class="govuk-button" href="/manage-case/v8/files/write-message">
+    Continue
+    </a>
+
+  <a class="govuk-link" href="/manage-case/v8/case/12/specify#files">Cancel</a>
+  </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

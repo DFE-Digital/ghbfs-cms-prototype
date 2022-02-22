@@ -4,12 +4,39 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">
-        Case management - call back
+        Case management
       </h1>
     </div>
     
     
     <div class="govuk-grid-column-two-thirds">
+
+      <!--<p>Used for procurement ops to contact user to find out more about their requirements.</p>-->
+      <h2 class="govuk-heading-m">
+        Version 8 - Sprint 33
+      </h2>
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Ability to upload a file in CM</li>
+        <li>Ability to share a file with SBP</li>
+        <li>Selecting a framework using elastic search</li>
+        <li>Removing repetition of 'details' on tab names to allow room for future tabs</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Design notes, user flows and journeys</h3>
+      <p><a href="https://lucid.app/lucidspark/07d0eab5-cbae-43ec-9bda-5f3f476d8bc2/edit?invitationId=inv_085d2727-f88f-4def-8d9d-4296850165b2">View on Lucid board</a><br>
+      <a href="https://miro.com/welcomeonboard/ZUh1bmF6aGZtQm0xaW5lbWdPbEZONFB1WFZvWXZYUE84QlVBRE00SEl1ekE0WG5QNVFqR0FWTVQ1VHVRQmh6N3wzMDc0NDU3MzU1ODQ2MzAzMTc0?invite_link_id=362347398646">View on Miro board</a></p>
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>-</p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/manage-case/v8/case-list/my-cases'
+      }) }}
+
+      {% set v7 %}
 
       <!--<p>Used for procurement ops to contact user to find out more about their requirements.</p>-->
       <h2 class="govuk-heading-m">
@@ -21,6 +48,9 @@
         <li>Ability for incoming email attachments to be stored with a case in CM</li>
         <li>Case worker can save email attachments to a case within CM</li>
         <li>View files (saved attachments) linked to a case</li>
+        <li>Ability to close 'Inbound email' case in 'NEW' status</li>
+        <li>Not specifying a category on 'Create a Case'</li>
+        <li>Request type on 'Create a Case'</li>
         <li>Notification alert when a new email arrives - 'action' status</li>
         <li>Unread email status on case history to alert user of a new email</li>
         <li>Case worker can see the case that an email is auto linked to as part of the email view</li>
@@ -46,6 +76,8 @@
         text: 'View prototype',
         href: '/manage-case/v7/case-list/my-cases'
       }) }}
+
+      {% endset %}
 
       {% set v6 %}
 
@@ -188,6 +220,9 @@
       {{ govukAccordion({
         items: [
           {
+            heading: { text: 'Version 7' },
+            content: { html: v7 }
+          },{
             heading: { text: 'Version 6' },
             content: { html: v6 }
           },{
