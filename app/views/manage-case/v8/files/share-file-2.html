@@ -1,0 +1,67 @@
+{% extends "layout.html" %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="more-detail">
+      Share a file using a link
+    </label>
+  </h1>
+
+  <br>
+  
+  <!--<div id="more-detail-hint" class="govuk-hint">
+    A secure link has been generated. Write your message and share the file.
+  </div>-->
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">You are sharing</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"> File </th>
+          <th class="govuk-table__header" scope="col"> Description </th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Filename.pdf</th>
+      <td class="govuk-table__cell">Information about the file</td>
+    </tr>
+  </tbody>
+</table>
+
+  <div class="box govuk-form-group">
+
+
+
+  <!--<p class="govuk-heading-m">You are sharing<br></p>
+    <p class="govuk-body"><strong>File</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filename.pdf <br>
+    <strong>Description</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Information about the file</p>-->
+  
+  <p class="govuk-heading-m">Secure link</p>
+
+  <p class="govuk-body">Anyone with this link will be able to download the file. The link will not work if you close this window.</p>
+
+    <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-50" id="link" name="weight" type="text" value="https://bitbucket.com/filename.pdf" spellcheck="false">
+  </div>
+
+<br><br>
+
+  <p class="govuk-heading-m">Write your message</p>
+
+  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+    
+    <div class="govuk-button-group">
+    <a class="govuk-button" href="/manage-case/v8/files/file-shared">
+    Confirm and send
+    </a>
+
+  <a class="govuk-link" href="/manage-case/v8/case/12/specify#files">Cancel</a>
+  </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
