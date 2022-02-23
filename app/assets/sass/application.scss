@@ -29,10 +29,12 @@ $govuk-assets-path: '/govuk/assets/';
 }
 
 .email-preview {
+	width: 100%;
+	
 	border: 1px solid $govuk-border-colour;
 
 	&-body {
-		padding: 15px 60px;
+		padding: 5px 60px 10px;
 	}
 
 	.govuk-summary-list__key {
