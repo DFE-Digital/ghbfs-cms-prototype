@@ -91,7 +91,7 @@
 {% set historyDetails %}
 
 {% if case.status !== "new" %}
-<p>Case owner: {{ case.assignedTo }} <a href="assign">change <span class="govuk-visually-hidden">case owner</span></a> </p>
+<!--<p>Case owner: {{ case.assignedTo }} <a href="assign">change <span class="govuk-visually-hidden">case owner</span></a> </p>-->
 {% endif %}
 <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{case.id}}">
   {% for note in case.history | sort(true, false, "index") %}
@@ -531,13 +531,6 @@
       id: "request-details",
       panel: {
         html: requestDetails
-      }
-    },
-    {
-      label: "Procurement",
-      id: "procurement-details",
-      panel: {
-        html: procurementDetails
       }
     },
     {

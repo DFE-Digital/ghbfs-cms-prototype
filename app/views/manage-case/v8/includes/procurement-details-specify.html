@@ -1,9 +1,54 @@
-<h2 class="govuk-heading-m">Procurement details - <a href="add-procurement-details">change</a></h2>
+<h2 class="govuk-heading-m">Existing contract - <a class="govuk-!-font-weight-regular" href="add-existing-contract-details">change</a></h2>
 
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Required Agreement type
+      End date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.existingContract.endDate %}
+        {{ case.existingContract.endDate | formatDate or "-" }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract duration
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.existingContract.duration or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract spend
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.existingContract.spend %}
+        £{{ case.existingContract.spend }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Supplier
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.existingContract.supplier or "-" }}
+    </dd>    
+  </div>   
+</dl>
+
+<h2 class="govuk-heading-m">Procurement - <a class="govuk-!-font-weight-regular" href="add-procurement-details">change</a></h2>
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Agreement type
     </dt>
     <dd class="govuk-summary-list__value">
         {{ case.procurementDetails.agreementType or "-" }}
@@ -67,53 +112,8 @@
   </div>    
 </dl>
 
-<h2 class="govuk-heading-m">Existing contract details - <a href="add-existing-contract-details">change</a></h2>
 
-<dl class="govuk-summary-list govuk-!-margin-bottom-9">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      End date
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {% if case.existingContract.endDate %}
-        {{ case.existingContract.endDate | formatDate or "-" }}
-      {% else %}
-        -
-      {% endif %}
-    </dd>    
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Contract duration
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {{ case.existingContract.duration or "-" }}
-    </dd>    
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Contract spend
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {% if case.existingContract.spend %}
-        £{{ case.existingContract.spend }}
-      {% else %}
-        -
-      {% endif %}
-    </dd>    
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Supplier
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {{ case.existingContract.supplier or "-" }}
-    </dd>    
-  </div>   
-</dl>
-
-<h2 class="govuk-heading-m">New contract details - <a href="add-new-contract-details">change</a></h2>
-
+<h2 class="govuk-heading-m">New contract - <a class="govuk-!-font-weight-regular" href="add-new-contract-details">change</a></h2>
 
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
   <div class="govuk-summary-list__row">
@@ -158,7 +158,7 @@
   </div>    
 </dl>
 
-<h2 class="govuk-heading-m">Savings details - <a href="add-saving-details">change</a></h2>
+<h2 class="govuk-heading-m">Savings - <a class="govuk-!-font-weight-regular" href="add-saving-details">change</a></h2>
 
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
   <div class="govuk-summary-list__row">

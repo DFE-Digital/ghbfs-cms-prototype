@@ -70,11 +70,31 @@
           prefix: {
             text: "£"
           },
-          classes: "govuk-input--width-5",
+          classes: "govuk-input--width-10",
           spellcheck: false,
           value: case.existingContract.spend if case.existingContract.spend else data['existing-contract-spend']
         }) }}
-        
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "annum",
+      text: "per annum"
+    },
+    {
+      value: "total",
+      text: "total"
+    }
+  ]
+}) }}
         {{ govukInput({
           label: {
             text: "Existing contract supplier (optional)"

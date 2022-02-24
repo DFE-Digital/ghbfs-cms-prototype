@@ -1,12 +1,69 @@
-<p>Request sent on  {{ case.lastUpdated | formatTableDate }}
+<h2 class="govuk-heading-m">Case summary - <a class="govuk-!-font-weight-regular" href="case-summary-details">change</a></h2>
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Source
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.existingContract.endDate %}
+        {{ case.existingContract.endDate | formatDate or "-" }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Case owner
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.existingContract.duration or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Case level
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.existingContract.spend %}
+        £{{ case.existingContract.spend }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Case value
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.existingContract.supplier or "-" }}
+    </dd>    
+  </div>   
+</dl>
 
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-<h2 class="govuk-heading-m">Request details - <a href="category">change</a></h2>
+<h2 class="govuk-heading-m">Request - <a class="govuk-!-font-weight-regular" href="category">change</a></h2>
+      
+      <!--<p>Request sent on  {{ case.lastUpdated | formatTableDate }}-->
       
       <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+          Sent
+        </dt>
+        <dd class="govuk-summary-list__value">
+          4 January 2022 at 16:20
+        </dd>
+        </dd>  
+        <dd class="govuk-summary-list__actions">
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Procurement category
+          Category
         </dt>
         <dd class="govuk-summary-list__value">
           {{ case.category }}
@@ -15,11 +72,12 @@
           <!--<a class="govuk-link" href="category">
             Change<span class="govuk-visually-hidden"> name</span>
           </a>-->
-        </dd>    
+        </dd> 
       </div>
+
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Source
+          Description of problem
         </dt>
         <dd class="govuk-summary-list__value">
           {{ case.typeOfCase or supportInformation['typeOfCase'] | safe }}
@@ -46,7 +104,7 @@
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Description of problem
+          Attached specification
         </dt>
         <dd class="govuk-summary-list__value">
           {{ case.notes or supportInformation['specify-question'] | safe  }}

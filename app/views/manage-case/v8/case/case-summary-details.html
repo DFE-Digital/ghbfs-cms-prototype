@@ -1,0 +1,129 @@
+{% extends "layout_case.html" %}
+<link
+  href="public/autocomplete/accessible-autocomplete.min.css"
+  media="all"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="/public/autocomplete/accessible-autocomplete-min.js"></script>
+
+{% block header %}
+  {% include "manage-case/v8/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      
+      <h1 class="govuk-heading-l">Update case summary</h1>
+
+      <form action="check-procurement-details" method="post">
+
+        {{ govukRadios({
+          name: "case-owner",
+          id: "case-owner",
+          value: data['case-owner'],
+          fieldset: {
+            legend: {
+              text: "Case owner",
+              classes: "govuk-label",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "Jenni Weiner",
+              text: "Jenni Weiner"
+            },
+            {
+              value: "Ki Gomme",
+              text: "Ki Gomme"
+            },
+            {
+              value: "Elena Mityukov",
+              text: "Elena Mityukov"
+            },
+            {
+              value: "Inna Goodluck",
+              text: "Inna Goodluck"
+            },
+            {
+              value: "Carri Wearing",
+              text: "Carri Wearing"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          id: "case-level",
+          name: "case-level",
+          fieldset: {
+            legend: {
+              text: "Case level (optional)"
+            }
+          },
+          items: [
+            {
+              value: "one",
+              text: "1"
+            },
+            {
+              value: "two",
+              text: "2"
+            },
+            {
+              value: "three",
+              text: "3"
+            },
+            {
+              value: "four",
+              text: "4"
+            },
+            {
+              value: "five",
+              text: "5"
+            },
+            {
+              value: "notspecified",
+              text: "Not specified"
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          id: "case-value",
+          name: "case-value",
+          label: {
+            text: "Case value or estimated contract value (optional)"
+          },
+          prefix: {
+            text: "£"
+          },
+          classes: "govuk-input--width-10",
+          spellcheck: false,
+          value: data['case-value']
+        }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "check-summary-details"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
