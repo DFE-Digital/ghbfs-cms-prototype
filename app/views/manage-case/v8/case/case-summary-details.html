@@ -32,7 +32,7 @@
 
       <form action="check-procurement-details" method="post">
 
-        {{ govukRadios({
+        {#{{ govukRadios({
           name: "case-owner",
           id: "case-owner",
           value: data['case-owner'],
@@ -65,7 +65,7 @@
               text: "Carri Wearing"
             }
           ]
-        }) }}
+        }) }}#}
 
         {{ govukRadios({
           id: "case-level",

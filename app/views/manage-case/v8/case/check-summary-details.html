@@ -19,7 +19,8 @@
     <h1 class="govuk-heading-l">Check your answers before updating case summary</h1>
 
       <form action="add-procurement-details-post" method="post">
-      {{ govukSummaryList({
+      
+      {#{{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
@@ -38,8 +39,12 @@
                 }
               ]
             }
-          },
-          {
+          }) }}#}
+
+          {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
             key: {
               text: "Case level"
             },
