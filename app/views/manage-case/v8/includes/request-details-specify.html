@@ -14,12 +14,14 @@
     </dd>    
   </div>
   <div class="govuk-summary-list__row">
+  {% if case.status !== "new" %}
     <dt class="govuk-summary-list__key">
       Case owner
     </dt>
     <dd class="govuk-summary-list__value">
       {{ case.existingContract.duration or "-" }}
-    </dd>    
+    </dd>
+    {% endif %}   
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -51,7 +53,7 @@
       
       <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
-          Sent
+          Received
         </dt>
         <dd class="govuk-summary-list__value">
           4 January 2022 at 16:20

@@ -1,5 +1,9 @@
 {%- from "hmrc/components/notification-badge/macro.njk" import hmrcNotificationBadge -%}
 
+<!--{% if case.status !== "new" %}
+<p>Case owner: {{ case.assignedTo }} <a href="assign">change <span class="govuk-visually-hidden">case owner</span></a> </p>
+{% endif %}-->
+
 {% set addressHtml %}
 {{case.school.street}} <br>
 {{case.school.town}} <br>
