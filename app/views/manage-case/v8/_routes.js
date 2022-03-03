@@ -338,10 +338,10 @@ router.post("/case/:id/assign-post", function(req, res, next){
 
 	let school = schools.find(school => school.id == req.params.id);
 
-	school.assignedTo = req.session.data['assign-to-caseworker']
+	school.assignedTo = req.session.data['caseworker-name']
 	school.status = "Open";
 	console.log(school)
-	req.session.data['assign-to-caseworker'] = "";
+	req.session.data['caseworker-name'] = "";
 	
 
 	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify#case-history`)
