@@ -26,7 +26,7 @@
 <ul class="govuk-list">
   {% if case.status === "new" %}
   <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="assign">Assign to caseworker</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Assign to caseworker</a>
     <br>
     <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v8/find-a-case-move-email.html">Move emails to existing case</a>
     <br>
@@ -36,7 +36,7 @@
 
   {% if case.status === "Open" %}
   <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="assign">Change case owner</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
   </li>
   <!--<li>
     <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v8/find-a-case-move-email.html">Move emails to existing case</a>
@@ -57,7 +57,7 @@
 
   {% if case.status === "action" %}
   <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="assign">Change case owner</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
   </li>
   <!--<li>
     <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v8/find-a-case-move-email.html">Move emails to existing case</a>
@@ -78,7 +78,7 @@
 
   {% if case.status === "on hold" %}
   <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="assign">Change case owner</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
   </li>
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>

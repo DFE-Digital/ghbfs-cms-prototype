@@ -1,7 +1,7 @@
 {%- from "hmrc/components/notification-badge/macro.njk" import hmrcNotificationBadge -%}
 
 {% if case.status !== "new" %}
-<p>Case owner: {{ case.assignedTo }} <a href="assign"> <span class="govuk-visually-hidden">case owner</span></a> </p>
+<p> <strong>{{ case.uid }}</strong> &nbsp;Case owner: {{ case.assignedTo }} <a href="assign"> <span class="govuk-visually-hidden">case owner</span></a> </p>
 {% endif %}
 
 {% set addressHtml %}
@@ -452,8 +452,10 @@
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header app-custom-class">File</th>
       <th scope="col" class="govuk-table__header app-custom-class">Description</th>
-      <th scope="col" class="govuk-table__header">Date added</th>
+      <!--<th scope="col" class="govuk-table__header">Date added</th>-->
+      <th scope="col" class="govuk-table__header">Status</th>
       <th scope="col" class="govuk-table__header">Share</th>
+      <th scope="col" class="govuk-table__header">File history</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -461,33 +463,90 @@
       <th scope="row" class="govuk-link govuk-table__header">
         <a href="#" class="govuk-link govuk-link--no-visited-state">Filename.pdf</a></th>
       <td class="govuk-table__cell">Information about file</td>
-      <td class="govuk-table__cell">2 Feb 2022 4:32pm</td>
+      <!--<td class="govuk-table__cell">2 Feb 2022 4:32pm</td>-->
+      <td class="govuk-table__cell">
+        <strong class="govuk-tag">Downloaded</strong></td>
       <td class="govuk-table__cell">
         <a href="/manage-case/v8/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
+      <td class="govuk-table__cell"><details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Details
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    Downloaded by Sharon Mitchell on 1 Mar 2022 10:05am<br><br>
+    Shared by Jenni Weiner on 20 Feb 2022 11:10am<br><br>
+    Downloaded by Sharon Mitchell on 11 Feb 2022 2:46pm<br><br>
+    Shared by Jenni Weiner on 3 Feb 2022 11:10am<br><br>
+    Uploaded by Jenni Weiner on 2 Feb 2022 4:32pm
+  </div>
+</details></td>
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-link govuk-table__header">
         <a href="#" class="govuk-link govuk-link--no-visited-state">Filename2.pdf</a></th>
       <td class="govuk-table__cell">Information about file</td>
-      <td class="govuk-table__cell">2 Feb 2022 4:32pm</td>
+      <!--<td class="govuk-table__cell">2 Feb 2022 4:32pm</td>-->
+      <td class="govuk-table__cell">
+        <strong class="govuk-tag govuk-tag--grey">Not shared</strong></td>
       <td class="govuk-table__cell">
         <a href="/manage-case/v8/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
+      <td class="govuk-table__cell"><details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Details
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    Uploaded by Jenni Weiner on 2 Feb 2022 4:32pm
+  </div>
+</details></td>
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-link govuk-table__header">
         <a href="#" class="govuk-link govuk-link--no-visited-state">Filename3.pdf</a></th>
       <td class="govuk-table__cell">Information about file</td>
-      <td class="govuk-table__cell">2 Feb 2022 4:32pm</td>
+      <!--<td class="govuk-table__cell">2 Feb 2022 4:32pm</td>-->
+      <td class="govuk-table__cell">
+        <strong class="govuk-tag govuk-tag--blue">Shared</strong></td>
       <td class="govuk-table__cell">
         <a href="/manage-case/v8/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
+      <td class="govuk-table__cell"><details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Details
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    Shared by Jenni Weiner on 1 Mar 2022 12:09pm<br><br>
+    Downloaded by Sharon Mitchell on 11 Feb 2022 2:46pm<br><br>
+    Shared by Jenni Weiner on 10 Feb 2022 3:15pm<br><br>
+    Downloaded by Sharon Mitchell on 3 Feb 2022 11:10am<br><br>
+    Shared by Jenni Weiner on 2 Feb 2022 10:05am<br><br>
+    Uploaded by Jenni Weiner on 2 Feb 2022 4:32pm
+  </div>
+</details></td>
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-link govuk-table__header">
         <a href="#" class="govuk-link govuk-link--no-visited-state">Filename4.pdf</a></th>
       <td class="govuk-table__cell">Information about file</td>
-      <td class="govuk-table__cell">2 Feb 2022 4:32pm</td>
+      <!--<td class="govuk-table__cell">2 Feb 2022 4:32pm</td>-->
+      <td class="govuk-table__cell">
+        <strong class="govuk-tag govuk-tag--grey">Not shared</strong></td>
       <td class="govuk-table__cell">
         <a href="/manage-case/v8/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
+      <td class="govuk-table__cell"><details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Details
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    Uploaded by Jenni Weiner on 2 Feb 2022 4:32pm
+  </div>
+</details></td>
     </tr>
   </tbody>
 </table>

@@ -173,7 +173,7 @@
 
         {% for case in cases | sort(false, false, "lastUpdated") %}
 
-          {% if (case.status != "new") and (case.assignedTo === "Jenni Weiner") %}
+          {% if (case.status != "new") and (case.assignedTo === "Aqib Mehmood") %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
                 <a href="../case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.uid}}</a>
