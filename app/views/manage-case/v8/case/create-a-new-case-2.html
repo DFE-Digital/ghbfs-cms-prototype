@@ -334,14 +334,14 @@
 <p class="govuk-heading-m">Case source</p>
 
 <div class="govuk-form-group">
-  <label class="govuk-label" for="sort">
+  <label class="govuk-label" for="source">
     Source
   </label>
-  <select class="govuk-select" id="sort" name="sort">
-    <option value="published">South West (SW) Hub</option>
-    <option value="updated" selected>North West (NW) Hub</option>
-    <option value="views">Engagement and Outreach (E&O)</option>
-    <option value="comments">Schools Commercial Team (SCT)</option>
+  <select class="govuk-select" id="source" name="source">
+    <option value="South West (SW) Hub">South West (SW) Hub</option>
+    <option value="North West (NW) Hub" selected>North West (NW) Hub</option>
+    <option value="Engagement and Outreach (E&O)">Engagement and Outreach (E&O)</option>
+    <option value="Schools Commercial Team (SCT)">Schools Commercial Team (SCT)</option>
   </select>
 </div>
 
@@ -716,7 +716,7 @@
   accessibleAutocomplete({
     element: element,
     id: id,
-    name: "result",
+    name: "result-caseworker",
     source: customSuggest,
     templates: {
       inputValue: inputValueTemplate,

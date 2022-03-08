@@ -18,6 +18,8 @@
 
     <h1 class="govuk-heading-l">Check your answers before creating a new case</h1>
 
+    <br>
+
       <h2 class="govuk-heading-m">Organisation details</h2>
 
       <form action="0/create-new-case-post" method="post">
@@ -72,7 +74,7 @@
         rows: [
           {
             key: {
-              text: "Contact details"
+              text: "Contact full name"
             },
             value: {
               text: data['contact-name']
@@ -124,22 +126,11 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">Case details</h2>
+      <h2 class="govuk-heading-m">Request type</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
-          {
-            key: {
-              text: ""
-            },
-            value: {
-              text: "NW Hub case" if data['hub-identification-number'] else ""
-            },
-            actions: {
-
-            }
-          },
           {
             key: {
               text: "Procurement category"
@@ -160,85 +151,67 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">Hub migration case information</h2>
+      <h2 class="govuk-heading-m">Case source</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Identification number"
+              text: "Source"
             },
             value: {
-              text: data['hub-identification-number']
+              text: data['source']
             },
             actions: {
               items: [
                 {
-                  href: "create-a-new-case",
+                  href: "create-a-new-case-2",
                   text: "Change",
                   visuallyHiddenText: "contact details"
                 }
               ]
             }
-          },
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Caseworker</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
           {
             key: {
-              text: "Procurement estimated completion date"
+              text: "Caseworker name"
             },
             value: {
-              text: data['procurement-estimated-completion-date-day'] + " " + data['procurement-estimated-completion-date-month'] + " " + data['procurement-estimated-completion-date-year']
+              text: data['result-caseworker']
             },
             actions: {
               items: [
                 {
-                  href: "create-a-new-case",
+                  href: "create-a-new-case-2",
                   text: "Change",
                   visuallyHiddenText: "contact details"
                 }
               ]
             }
-          },
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Case notes</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
           {
             key: {
-              text: "Savings total estimate"
-            },
-            value: {
-              text: data['savings-total-estimate-hubs']
-            },
-            actions: {
-              items: [
-                {
-                  href: "create-a-new-case",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Notes / comments"
+              text: "Summary of query"
             },
             value: {
               text: data['case-notes']
-            },
-            actions: {
-              items: [
-                {
-                  href: "create-a-new-case",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Progress notes from CRM"
-            },
-            value: {
-              text: data['progress-notes']
             },
             actions: {
               items: [
@@ -253,7 +226,8 @@
         ]
       }) }}
 
-      <p class="govuk-body">Check all the details before submitting as it is not currently possible to edit case details once they are created.</p>
+      <p class="govuk-inset-text">Check all the details before submitting as it is not currently possible to edit case details once they are created.</p>
+
 
       {{ govukButton({
         text: "Create case"
