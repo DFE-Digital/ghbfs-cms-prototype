@@ -74,10 +74,27 @@
         rows: [
           {
             key: {
-              text: "Contact full name"
+              text: "Contact first name"
             },
             value: {
               text: data['contact-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact last name"
+            },
+            value: {
+              text: data['contact-surname']
             },
             actions: {
               items: [

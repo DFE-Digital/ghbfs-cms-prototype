@@ -179,9 +179,11 @@
               Contact details
             </p>
 
-      {{ govukInput({ label: { text: "Contact full name" }, classes:
-      "govuk-!-width-three-quarters", id: "contact-name", name: "contact-name" }) }} {{
-      govukInput({ label: { text: "Contact email" }, classes:
+      {{ govukInput({ label: { text: "Contact first name" }, classes:
+      "govuk-!-width-three-quarters", id: "contact-name", name: "contact-name" }) }}
+      {{ govukInput({ label: { text: "Contact last name" }, classes:
+      "govuk-!-width-three-quarters", id: "contact-surname", name: "contact-surname" }) }}
+      {{ govukInput({ label: { text: "Contact email" }, classes:
       "govuk-!-width-three-quarters", id: "contact-email", name: "contact-email" }) }}
       {{ govukInput({ label: { text: "Contact phone number (optional)" },
       classes: "govuk-!-width-three-quarters", id: "contact-phone", name:
