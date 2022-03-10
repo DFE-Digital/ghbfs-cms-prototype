@@ -21,7 +21,7 @@ let addToHistory = function(caseId, data){
 	data.index = school.history.length;
 	school.history.push(data);
 	school.lastUpdated = now.format("YYYY-MM-DD H:mma")
-	data.addedBy = "	Jenni Weiner"
+	data.addedBy = "	Aqib Mehmood"
 }
 
 
@@ -84,7 +84,7 @@ router.get("/case/:id/template-preview/:templateId", function(req, res, next){
 
 	personalisation = { 
 		"toName": `${school.first_name} ${school.last_name}`,
-		"fromName": "Jenni Weiner" 
+		"fromName": "Aqib Mehmood" 
 	}
 
 	notifyClient
@@ -106,7 +106,7 @@ router.post("/case/:id/non-template-preview", function(req, res, next){
 
 	personalisation = { 
 		"toName": `${school.first_name} ${school.last_name}`,
-		"fromName": "Jenni Weiner",
+		"fromName": "Aqib Mehmood",
 		"text": req.body["non-template-email-body"]
 	}
 
@@ -127,7 +127,7 @@ router.post("/case/:id/non-template-preview-post", function(req, res, next){
 
 	personalisation = { 
 		"toName": `${school.first_name} ${school.last_name}`,
-		"fromName": "Jenni Weiner",
+		"fromName": "Aqib Mehmood",
 		"text": req.session.data["non-template-email-body"]
 	}
  console.log(personalisation)
@@ -506,8 +506,8 @@ router.post("/case/0/create-new-case-post", function(req, res, next) {
 	//supportInformation.typeOfCase = caseType;
 
 	let historyData = {
-		title: "Progress notes from CRM",
-		caseNote: req.session.data["progress-notes"] 
+		title: "Case created",
+		caseNote: req.session.data["query"] 
 	};
 
 	schools.push(data)

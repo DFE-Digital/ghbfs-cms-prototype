@@ -193,7 +193,7 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">Caseworker</h2>
+      <!--<h2 class="govuk-heading-m">Caseworker</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -216,19 +216,19 @@
             }
           }
         ]
-      }) }}
+      }) }}-->
 
-      <h2 class="govuk-heading-m">Case notes</h2>
+      <h2 class="govuk-heading-m">Description of query</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Summary of query"
+              text: "Summary"
             },
             value: {
-              text: data['case-notes']
+              text: data['query']
             },
             actions: {
               items: [
