@@ -88,7 +88,7 @@ let statuses = {
     statusClass : "govuk-tag--green",
     statusUrl : "new-case"
   },
-  "Open": {
+  "open": {
     statusClass : "govuk-tag--blue",
     statusUrl : "in-progress-specify"
   },
