@@ -290,7 +290,7 @@ router.post("/case/:id/reply-post", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
 	console.log(school)
 
-	school.status = "Open";
+	school.status = "open";
 	let data = {
 		title: "Reply to school",
 		caseNote: req.body['reply-details']
@@ -299,7 +299,7 @@ router.post("/case/:id/reply-post", function(req, res, next){
 
 	req.session.data['reply-details'] = "";
 
-	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/in-progress-specify`)
+	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify-in-progress`)
 
 })
 
@@ -339,7 +339,7 @@ router.post("/case/:id/assign-post", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
 
 	school.assignedTo = req.session.data['caseworker-name']
-	school.status = "Open";
+	school.status = "open";
 	console.log(school)
 	req.session.data['caseworker-name'] = "";
 	
