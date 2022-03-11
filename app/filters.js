@@ -97,8 +97,12 @@ let statuses = {
     statusUrl : "consultation-booked"
   },
   "resolved": {
+    statusClass : "govuk-tag--purple",
+    statusUrl : "resolved-case"
+  },
+  "closed": {
     statusClass : "govuk-tag--grey",
-    statusUrl : "closed-case"
+    statusUrl : "close-case"
   },
   "Framework procurement": {
     statusClass : "govuk-tag--turquoise",

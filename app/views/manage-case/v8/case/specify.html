@@ -50,9 +50,9 @@
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
   </li>
-  <!--<li>
+  <li>
     <a class="govuk-link govuk-link--no-visited-state" href="on-hold-case">Place on hold</a>
-  </li>-->
+  </li>
   {% endif %}
 
   {% if case.status === "action" %}
@@ -71,9 +71,9 @@
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
   </li>
-  <!--<li>
+  <li>
     <a class="govuk-link govuk-link--no-visited-state" href="on-hold-case">Place on hold</a>
-  </li>-->
+  </li>
   {% endif %}
 
   {% if case.status === "on hold" %}
@@ -89,15 +89,28 @@
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
   </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="open-case">Reopen case</a>
+  <li>
   {% endif %}
 
-  {% if case.status !== "resolved" and case.status !== "new" and case.status !== "on hold" %}
+  {% if case.status !== "resolved" and case.status !== "new" and case.status !== "on hold" and case.status !== "closed" %}
   <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="close-case">Resolve case</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="resolve-case">Resolve case</a>
   </li>
   {% endif %}
 
   {% if case.status === "resolved" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Assign to caseworker</a>
+    <br>
+    <a class="govuk-link govuk-link--no-visited-state" href="open-case">Reopen case</a>
+    <br>
+    <a class="govuk-link govuk-link--no-visited-state" href="close-new-case">Close case</a>
+  </li>
+  {% endif %}
+
+  {% if case.status === "closed" %}
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="open-case">Reopen case</a>
   </li>

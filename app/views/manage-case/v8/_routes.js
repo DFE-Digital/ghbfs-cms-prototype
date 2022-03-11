@@ -349,7 +349,7 @@ router.post("/case/:id/assign-post", function(req, res, next){
 })
 
 
-router.post("/case/:id/close-case-post", function(req, res, next){
+router.post("/case/:id/resolve-case-post", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
 	console.log(school)
 
@@ -357,12 +357,12 @@ router.post("/case/:id/close-case-post", function(req, res, next){
 
 	let data = {
 		title: "Case resolved",
-		caseNote: req.body['close-case-details']
+		caseNote: req.body['resolve-case-details']
 	};
 	addToHistory(req.params.id, data);
 
 
-	req.session.data['close-case-details'] = "";
+	req.session.data['resolve-case-details'] = "";
 
 	res.redirect(`/manage-case/${folderVersion}/case-list`)
 })
