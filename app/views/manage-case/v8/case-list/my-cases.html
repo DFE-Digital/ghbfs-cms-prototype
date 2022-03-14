@@ -164,8 +164,8 @@
         <tr class="govuk-table__row">
           <th class="govuk-table__header" scope="col"> Case </th>
           <th class="govuk-table__header" scope="col"> Organisation </th>
-          <th class="govuk-table__header" scope="col"> Status </th>
           <th class="govuk-table__header" scope="col"> Category </th>
+          <th class="govuk-table__header" scope="col"> Status </th>
           <th class="govuk-table__header" scope="col"> Last updated </th>
         </tr>
       </thead>
@@ -185,14 +185,14 @@
             </td>
 
             <td class="govuk-table__cell">
+              {{case.category}}
+            </td>
+
+            <td class="govuk-table__cell">
               {{govukTag({
                 text: case.status, 
                 classes: case.status | formatCaseTagColour
               })}}
-            </td>
-
-            <td class="govuk-table__cell">
-              {{case.category}}
             </td>
 
             <td class="govuk-table__cell">

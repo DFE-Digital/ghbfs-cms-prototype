@@ -57,33 +57,7 @@
     <div class="" id="filter" style="display:none">
   <h2 class="govuk-heading-m">Filter results</h2>
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-quarter">
-      {{ govukSelect({
-        id: "sort",
-        name: "sort",
-        label: {
-          text: "Filter by status"
-        },
-        items: [
-          {
-            value: "All",
-            text: "All"
-          },
-          {
-            value: "New",
-            text: "New"
-          },
-          {
-            value: "Open",
-            text: "Open"
-          },
-          {
-            value: "Resolved",
-            text: "Resolved"
-          }
-        ]
-      }) }}
-    </div>
+   
     <div class="govuk-grid-column-one-quarter">
       {{ govukSelect({
         id: "sort",
@@ -111,6 +85,35 @@
         ]
       }) }}
     </div>
+
+    <div class="govuk-grid-column-one-quarter">
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+          text: "Filter by status"
+        },
+        items: [
+          {
+            value: "All",
+            text: "All"
+          },
+          {
+            value: "New",
+            text: "New"
+          },
+          {
+            value: "Open",
+            text: "Open"
+          },
+          {
+            value: "Resolved",
+            text: "Resolved"
+          }
+        ]
+      }) }}
+    </div>
+    
     <div class="govuk-grid-column-one-quarter">
       {{ govukSelect({
         id: "sort",
@@ -164,8 +167,8 @@
         <tr class="govuk-table__row">
           <th class="govuk-table__header" scope="col"> Case </th>
           <th class="govuk-table__header govuk-!-width-one-third" scope="col"> Organisation </th>
-          <th class="govuk-table__header" scope="col"> Status </th>
           <th class="govuk-table__header" scope="col"> Category </th>
+          <th class="govuk-table__header" scope="col"> Status </th>
           <th class="govuk-table__header" scope="col"> Assigned to </th>
           <th class="govuk-table__header" scope="col"> Last updated </th>
         </tr>
@@ -181,15 +184,18 @@
           <td class="govuk-table__cell">
               <a href="case/{{case.id}}/specify" class="govuk-link--no-visited-state">{{case.school.name}}</a>
           </td>
+          
+          <td class="govuk-table__cell">
+            {{case.category}}
+          </td>
+
           <td class="govuk-table__cell">
             {{govukTag({
               text: case.status,
               classes: case.status | formatCaseTagColour
             })}}
           </td>
-          <td class="govuk-table__cell">
-            {{case.category}}
-          </td>
+
           <td class="govuk-table__cell">
             {% if case.status == "Open" %}
               {{ case.assignedTo }}
