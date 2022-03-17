@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v9/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="assign-post" method="post">
+
+        {{ govukRadios({
+          name: "assign-to-caseworker",
+          id: "assign-to-caseworker",
+          value: data['assign-to-caseworker'],
+          fieldset: {
+            legend: {
+              text: "Assign to caseworker",
+              classes: "govuk-label--l",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "Jenni Weiner",
+              text: "Jenni Weiner"
+            },
+            {
+              value: "Ki Gomme",
+              text: "Ki Gomme"
+            },
+            {
+              value: "Elena Mityukov",
+              text: "Elena Mityukov"
+            },
+            {
+              value: "Inna Goodluck",
+              text: "Inna Goodluck"
+            },
+            {
+              value: "Carri Wearing",
+              text: "Carri Wearing"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Assign"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
+Ki Gomme
+Jenni Weiner
+3 Elena Mityukov
+4 Inna Goodluck
+5 Carri Wearing

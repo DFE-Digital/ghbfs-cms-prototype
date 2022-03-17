@@ -1,0 +1,134 @@
+{% extends "layout_case.html" %}
+
+
+
+{% set addressHtml %}
+{{ data.school['address-line-1'] }} <br>
+{{ data.school['address-line-2'] }} <br>
+{{ data.school['address-county'] }} <br>
+{{ data.school['address-postcode'] }}
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Arrange a consultation</h1>
+
+      <form action="consultation-post" method="post">
+      {{ govukDateInput({
+        id: "consultation-date",
+        namePrefix: "consultation-date",
+        fieldset: {
+          legend: {
+            text: "Enter the date",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "For example, 12 11 2007"
+        }
+      }) }}
+
+
+
+<div class="govuk-form-group">
+<fieldset class="govuk-fieldset" role="group" aria-describedby="consultation-date-hint">
+  
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+  
+    Enter the time
+  
+  </legend>
+  
+
+  <div id="consultation-date-hint" class="govuk-hint">
+    For example, 2 : 00 pm
+  </div>
+
+
+  <div class="govuk-date-input" id="consultation-date">
+    
+    <div class="govuk-date-input__item govuk-!-margin-right-2">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-date-input__label" for="consultation-date-hours">
+          Hours
+        </label>
+      
+      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="consultation-date-hours" name="consultation-date-hours" type="text" pattern="[0-9]*" inputmode="numeric"> 
+      </div>
+    </div>
+    <div class="govuk-date-input__item govuk-!-margin-right-2"><span class="govuk-label govuk-date-input__label">:</span></div>
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-date-input__label" for="consultation-date-minutes">
+          Minutes
+        </label>
+      
+      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="consultation-date-minutes" name="consultation-date-minutes" type="text" pattern="[0-9]*" inputmode="numeric">
+      </div>
+    </div>
+  
+    <div class="govuk-date-input__item">
+      
+      <fieldset class="govuk-fieldset hacky-fix">
+        
+        <legend class="govuk-fieldset__legend govuk-label govuk-date-input__label">
+          
+          AM or PM
+          
+        </legend>
+        
+        <div class="govuk-radios govuk-radios--inline ">
+        
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="consultation-date-ampm" name="consultation-date-ampm" type="radio" value="AM">
+            <label class="govuk-label govuk-radios__label" for="consultation-date-ampm">
+              AM
+            </label>
+            
+          </div>
+        
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="consultation-date-ampm-2" name="consultation-date-ampm" type="radio" value="PM">
+            <label class="govuk-label govuk-radios__label" for="consultation-date-ampm-2">
+              PM
+            </label>
+            
+          </div>
+        </div>
+      </fieldset>
+      
+
+
+      
+    </div>
+  
+  </div>
+  
+
+</fieldset>
+
+
+</div>
+      {{ govukButton({
+          text: "Save and continue"
+        }) }}
+    </form>
+      
+
+    </div>
+  </div>
+
+  <style type="text/css" media="screen">
+    .hacky-fix {
+      height: 56px;
+    }
+  </style>
+{% endblock %}

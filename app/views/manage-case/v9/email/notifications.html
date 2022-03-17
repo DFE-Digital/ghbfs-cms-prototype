@@ -1,0 +1,193 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">Notifications</h1>
+
+      <div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#past-day">
+        New emails
+      </a>
+    </li>
+    <!--<li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#past-week">
+        My case emails
+      </a>
+    </li>-->
+    <!--<li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#past-month">
+        Insert text
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#past-year">
+        Insert text
+      </a>
+    </li>-->
+  </ul>
+  <div class="govuk-tabs__panel" id="email-notifications">
+    <!--<h2 class="govuk-heading-l">Assign to case</h2>-->
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Sender</th>
+          <th scope="col" class="govuk-table__header">Subject</th>
+          <th scope="col" class="govuk-table__header">Case ID</th>
+          <th scope="col" class="govuk-table__header">Date recieved</th>
+
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">MEHMOOD, Aqib</p></td>
+
+          <td class="govuk-table__cell"><a href="/manage-case/v9/email/notifications-email.html" class="govuk-link govuk-body govuk-!-font-weight-bold govuk-link--no-visited-state govuk-link--no-underline">Help creating specification</a></td>
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">Not assigned</a></td>
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">5 Jan 2022&nbsp;&nbsp;10:30am</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">MEHMOOD, Aqib</p></td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link govuk-body govuk-!-font-weight-bold govuk-link--no-visited-state govuk-link--no-underline">Re: Help needed with procuring Catering</a></td>
+          <td class="govuk-table__cell"><a href="/manage-case/v9/email/notifications-email-case-id.html" class="govuk-link govuk-body govuk-!-font-weight-bold govuk-link--no-visited-state govuk-link--no-underline">000999</a></td>
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">5 Jan 2022&nbsp;&nbsp;10:30am</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-regular">COWLEY, Brian</p></td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link govuk-body govuk-!-font-weight-regular govuk-link--no-visited-state govuk-link--no-underline">Query for previous email</a></td>
+          <td class="govuk-table__cell">Not assigned</td>
+          <td class="govuk-table__cell">5 Jan 2022&nbsp;&nbsp;10:30am</td>
+        </tr>
+         <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-regular">COWLEY, Brian</p></td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link govuk-body govuk-!-font-weight-regular govuk-link--no-visited-state govuk-link--no-underline">Procuring laptops for school</a></td>
+          <td class="govuk-table__cell">Not assigned</td>
+          <td class="govuk-table__cell">5 Jan 2022&nbsp;&nbsp;10:30am</td>
+        </tr>
+         <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">SMITH, John</p></td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link govuk-body govuk-!-font-weight-bold govuk-link--no-visited-state govuk-link--no-underline">Support with Frameworks</a></td>
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">Not assigned</a></td>
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-bold">5 Jan 2022&nbsp;&nbsp;10:30am</a></td>
+        </tr>
+         <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><p class="govuk-body govuk-!-font-weight-regular">RICHARDS, Helen</p></td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link govuk-body govuk-!-font-weight-regular govuk-link--no-visited-state govuk-link--no-underline">What are Frameworks?</a></td>
+          <td class="govuk-table__cell">Not assigned</td>
+          <td class="govuk-table__cell">5 Jan 2022&nbsp;&nbsp;10:30am</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+    <h2 class="govuk-heading-l">Past week</h2>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Case manager</th>
+          <th scope="col" class="govuk-table__header">Cases opened</th>
+          <th scope="col" class="govuk-table__header">Cases closed</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">David Francis</td>
+          <td class="govuk-table__cell">24</td>
+          <td class="govuk-table__cell">18</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Paul Farmer</td>
+          <td class="govuk-table__cell">16</td>
+          <td class="govuk-table__cell">20</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Rita Patel</td>
+          <td class="govuk-table__cell">24</td>
+          <td class="govuk-table__cell">27</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+    <h2 class="govuk-heading-l">Past month</h2>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Case manager</th>
+          <th scope="col" class="govuk-table__header">Cases opened</th>
+          <th scope="col" class="govuk-table__header">Cases closed</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">David Francis</td>
+          <td class="govuk-table__cell">98</td>
+          <td class="govuk-table__cell">95</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Paul Farmer</td>
+          <td class="govuk-table__cell">122</td>
+          <td class="govuk-table__cell">131</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Rita Patel</td>
+          <td class="govuk-table__cell">126</td>
+          <td class="govuk-table__cell">142</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+    <h2 class="govuk-heading-l">Past year</h2>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Case manager</th>
+          <th scope="col" class="govuk-table__header">Cases opened</th>
+          <th scope="col" class="govuk-table__header">Cases closed</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">David Francis</td>
+          <td class="govuk-table__cell">1380</td>
+          <td class="govuk-table__cell">1472</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Paul Farmer</td>
+          <td class="govuk-table__cell">1129</td>
+          <td class="govuk-table__cell">1083</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Rita Patel</td>
+          <td class="govuk-table__cell">1539</td>
+          <td class="govuk-table__cell">1265</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!--<div class="govuk-button-group">
+  <button class="govuk-button" data-module="govuk-button">
+    Save and continue
+  </button>
+
+  <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Save as draft
+  </button>
+</div>-->
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v9/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+      <form action="category-post" method="post">
+        {{ govukRadios({
+          classes: "govuk-radios--small",
+          idPrefix: "case-level",
+          name: "case-level",
+          fieldset: {
+            legend: {
+              text: "Select the level of the case",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              divider: "Business&nbsp;services" | safe
+            },
+            {
+              value: "Advice",
+              checked: checked("case-level", "Audit"),
+              text: "Advice and guidance"
+            },
+            {
+              value: "Framework",
+              checked: checked("case-level", "Framework"),
+              text: "Framework guidance"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<style type="text/css" media="screen">
+  .govuk-radios--small .govuk-radios__divider {
+
+    font-weight: bold;
+  }
+</style>
+{% endblock %}

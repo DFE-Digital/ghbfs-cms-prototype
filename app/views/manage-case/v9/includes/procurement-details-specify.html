@@ -1,0 +1,204 @@
+<h2 class="govuk-heading-m">Existing contract - <a class="govuk-!-font-weight-regular" href="add-existing-contract-details">change</a></h2>
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      End date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.existingContract.endDate %}
+        {{ case.existingContract.endDate | formatDate or "-" }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract duration
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.existingContract.duration or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract spend
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.existingContract.spend %}
+        £{{ case.existingContract.spend }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Supplier
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.existingContract.supplier or "-" }}
+    </dd>    
+  </div>   
+</dl>
+
+<h2 class="govuk-heading-m">Procurement - <a class="govuk-!-font-weight-regular" href="add-procurement-details">change</a></h2>
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Agreement type
+    </dt>
+    <dd class="govuk-summary-list__value">
+        {{ case.procurementDetails.agreementType or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Route to market
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.procurementDetails.route or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Reason for route to market
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.procurementDetails.reason or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Framework name
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.procurementDetails.framework or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Procurement start date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.procurementDetails.startDate %}
+        {{ case.procurementDetails.startDate | formatDate or "-" }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>  
+  </div>  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Procurement end date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.procurementDetails.endDate %}
+        {{ case.procurementDetails.endDate | formatDate or "-" }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>     
+  </div>    
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Procurement stage
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.procurementDetails.stage or "-" }}
+    </dd>    
+  </div>    
+</dl>
+
+
+<h2 class="govuk-heading-m">New contract - <a class="govuk-!-font-weight-regular" href="add-new-contract-details">change</a></h2>
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Start date
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {% if case.newContract.startDate %}
+      {{ case.newContract.startDate | formatDate or "-" }}
+    {% else %}
+      -
+    {% endif %}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract duration
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.newContract.duration or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contract spend
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.newContract.spend %}
+        £{{ case.newContract.spend }}
+      {% else %}
+        -
+      {% endif %}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Supplier
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.newContract.supplier or "-" }}
+    </dd>    
+  </div>    
+</dl>
+
+<h2 class="govuk-heading-m">Savings - <a class="govuk-!-font-weight-regular" href="add-saving-details">change</a></h2>
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Saving status
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.savingDetails.status or "-" }}
+    </dd>     
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Saving estimate method used
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.savingDetails.estimateMethod or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Saving actual method used
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.savingDetails.estimateMethod or "-" }}
+    </dd>    
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Saving estimate
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.savingDetails.estimate or "-" }}
+    </dd>    
+  </div>  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Saving actual
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ case.savingDetails.actual or "-" }}
+    </dd>    
+  </div>    
+</dl>

@@ -1,0 +1,257 @@
+{% extends "layout_case.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "create-a-new-case-2"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-l">Check your answers before creating a new case</h1>
+
+    <br>
+
+      <h2 class="govuk-heading-m">Organisation details</h2>
+
+      <form action="0/create-new-case-post" method="post">
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Organisation URN"
+            },
+            value: {
+              text: data['establishment-urn']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Organisation name"
+            },
+            value: {
+              text: data['establishment-name']
+            },
+            actions: {   
+            }
+          },
+          {
+            key: {
+              text: "Organisation postcode"
+            },
+            value: {
+              text: data['establishment-postcode']
+            },
+            actions: {   
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m">Contact details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Contact first name"
+            },
+            value: {
+              text: data['contact-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact last name"
+            },
+            value: {
+              text: data['contact-surname']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact email"
+            },
+            value: {
+              text: data['contact-email']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact phone number"
+            },
+            value: {
+              text: data['contact-phone']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Request type</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Procurement category"
+            },
+            value: {
+              text: data['category']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Case source</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Source"
+            },
+            value: {
+              text: data['source']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case-2",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <!--<h2 class="govuk-heading-m">Caseworker</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Caseworker name"
+            },
+            value: {
+              text: data['result-caseworker']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case-2",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}-->
+
+      <h2 class="govuk-heading-m">Description of query</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Summary"
+            },
+            value: {
+              text: data['query']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <p class="govuk-inset-text">Check all the details before submitting as it is not currently possible to edit case details once they are created.</p>
+
+
+      {{ govukButton({
+        text: "Create case"
+      }) }}
+
+      </form>
+      
+    </div>
+  </div>
+{% endblock %}
