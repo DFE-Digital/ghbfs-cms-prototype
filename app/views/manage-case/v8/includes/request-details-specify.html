@@ -11,7 +11,7 @@
       {% else %}
         -
       {% endif %}
-    </dd>    
+    </dd>
   </div>
   <!--<div class="govuk-summary-list__row">
   {% if case.status !== "new" %}
@@ -21,7 +21,7 @@
     <dd class="govuk-summary-list__value">
       {{ case.existingContract.duration or "-" }}
     </dd>
-    {% endif %}   
+    {% endif %}
   </div>-->
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -33,7 +33,7 @@
       {% else %}
         -
       {% endif %}
-    </dd>    
+    </dd>
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -41,16 +41,16 @@
     </dt>
     <dd class="govuk-summary-list__value">
       {{ case.existingContract.supplier or "-" }}
-    </dd>    
-  </div>   
+    </dd>
+  </div>
 </dl>
 
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 <h2 class="govuk-heading-m">Request - <a class="govuk-!-font-weight-regular" href="category">change</a></h2>
-      
+
       <!--<p>Request sent on  {{ case.lastUpdated | formatTableDate }}-->
-      
+
       <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
           Received
@@ -58,7 +58,7 @@
         <dd class="govuk-summary-list__value">
           4 January 2022 at 16:20
         </dd>
-        </dd>  
+        </dd>
         <dd class="govuk-summary-list__actions">
         </dd>
       </div>
@@ -69,12 +69,12 @@
         </dt>
         <dd class="govuk-summary-list__value">
           {{ case.category }}
-        </dd>    
+        </dd>
         <dd class="govuk-summary-list__actions">
           <!--<a class="govuk-link" href="category">
             Change<span class="govuk-visually-hidden"> name</span>
           </a>-->
-        </dd> 
+        </dd>
       </div>
 
       <div class="govuk-summary-list__row">
@@ -83,9 +83,9 @@
         </dt>
         <dd class="govuk-summary-list__value">
           {{ case.typeOfCase or supportInformation['typeOfCase'] | safe }}
-        </dd>  
+        </dd>
         <dd class="govuk-summary-list__actions">
-        </dd>       
+        </dd>
       </div>
 
       {#
@@ -95,12 +95,12 @@
         </dt>
         <dd class="govuk-summary-list__value">
           {{ case.levelOfCase or "Specify" }}
-        </dd>  
+        </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="level">
             Change<span class="govuk-visually-hidden"> name</span>
           </a>
-        </dd>           
+        </dd>
       </div>
       #}
 
@@ -110,22 +110,22 @@
         </dt>
         <dd class="govuk-summary-list__value">
           {{ case.notes or supportInformation['specify-question'] | safe  }}
-        </dd>  
+        </dd>
         <dd class="govuk-summary-list__actions">
-        </dd>       
+        </dd>
       </div>
 
     {% if case.hubIdentificationNumber  %}
-      
+
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Hub identification number
         </dt>
         <dd class="govuk-summary-list__value">
           {{ case.hubIdentificationNumber }}
-        </dd>  
+        </dd>
         <dd class="govuk-summary-list__actions">
-        </dd>       
+        </dd>
       </div>
 
       <div class="govuk-summary-list__row">
@@ -134,9 +134,9 @@
         </dt>
         <dd class="govuk-summary-list__value">
           £ {{ case.hubsSavingsTotalEstimate }}
-        </dd>  
+        </dd>
         <dd class="govuk-summary-list__actions">
-        </dd>       
+        </dd>
       </div>
 
       <div class="govuk-summary-list__row">
@@ -145,9 +145,9 @@
         </dt>
         <dd class="govuk-summary-list__value">
           {{ case.hubProcurementCompletionDate | formatTableDate }}
-        </dd>  
+        </dd>
         <dd class="govuk-summary-list__actions">
-        </dd>       
+        </dd>
       </div>
 
       <div class="govuk-summary-list__row">
@@ -160,11 +160,11 @@
           {% else %}
             No Specification included
           {% endif %}
-        </dd> 
+        </dd>
         <dd class="govuk-summary-list__actions">
-        </dd>        
+        </dd>
       </div>
 
       {% endif %}
-    
+
 </dl>
