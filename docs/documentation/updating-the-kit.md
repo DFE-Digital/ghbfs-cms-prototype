@@ -20,7 +20,7 @@
 
 9. Copy `app/assets/sass/patterns` from the `govuk-prototype-kit` folder to your prototype.
 
-10. Open the `app/assets/sass/application.scss` file in the `govuk-prototype-kit` folder.
+10. open the `app/assets/sass/application.scss` file in the `govuk-prototype-kit` folder.
 
 11. Copy everything down to `// Add extra styles here`, then paste it into the `app/assets/sass/application.scss` file in your prototype so it replaces everything above `// Add extra styles here`.
 

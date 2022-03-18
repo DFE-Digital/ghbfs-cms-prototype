@@ -13,7 +13,7 @@ If you select a **Change** link, you’ll go back to the right question page, bu
 
 Radios and checkboxes have a `checked` option to set whether they are selected (checked) or not when the page loads.
 
-Open the `juggling-balls.html` file in your `app/views` folder.
+open the `juggling-balls.html` file in your `app/views` folder.
 
 For each of the `items`, we’ll add a `checked` value, like this:
 
@@ -42,7 +42,7 @@ Go to [http://localhost:3000/juggling-balls](http://localhost:3000/juggling-ball
 
 Text inputs and textareas have a `value` to set what text appears in them when the page loads.
 
-Open the `juggling-trick.html` file in your `app/views` folder.
+open the `juggling-trick.html` file in your `app/views` folder.
 
 Add `value: data['most-impressive-trick']` like this:
 

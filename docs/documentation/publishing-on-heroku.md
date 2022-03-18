@@ -58,4 +58,4 @@ That will be saved and you can add another KEY and VALUE.
 
 6. In VALUE put a password of your choice, click **Add**.
 
-7. In the top right, click **Open app** to see your prototype online!
+7. In the top right, click **open app** to see your prototype online!

@@ -103,8 +103,8 @@
             text: "New"
           },
           {
-            value: "Open",
-            text: "Open"
+            value: "open",
+            text: "open"
           },
           {
             value: "Resolved",
@@ -197,7 +197,7 @@
           </td>
 
           <td class="govuk-table__cell">
-            {% if case.status == "Open" %}
+            {% if case.status == "open" %}
               {{ case.assignedTo }}
             {% endif %}
           </td>

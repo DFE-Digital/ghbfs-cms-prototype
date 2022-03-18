@@ -2,7 +2,7 @@
 
 You’ll use the terminal to start and stop the kit.
 
-## Open the prototype folder in terminal
+## open the prototype folder in terminal
 
 If you're following the installation guide, you'll already have the terminal open in the right folder.
 

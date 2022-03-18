@@ -7,7 +7,7 @@ To take users from one page to another, you can use either:
 
 ## Link your start page to question 1
 
-1. Open `start.html` in your `app/views` folder.
+1. open `start.html` in your `app/views` folder.
 2. Find the `<a>` tag with 'Start now' inside.
 3. Change the value of the `href` attribute from `#` to `/juggling-balls`.
 
@@ -17,7 +17,7 @@ Links normally appear as text with underlines. We make **Start now** look like a
 
 ## Link question 1 to question 2
 
-1. Open `juggling-balls.html` in your `app/views` folder.
+1. open `juggling-balls.html` in your `app/views` folder.
 2. Find the line `<form class="form" action="/url/of/next/page" method="post">`.
 3. Change the value of the `action` attribute from `/url/of/next/page` to `/juggling-trick`.
 
@@ -27,7 +27,7 @@ This time it's a real HTML button, not a link. Buttons submit form data - the UR
 
 ## Link question 2 to your 'Check answers' page
 
-1. Open `juggling-trick.html` in your `app/views` folder.
+1. open `juggling-trick.html` in your `app/views` folder.
 2. Find the line `<form class="form" action="/url/of/next/page" method="post">`.
 3. Change the value of the `action` attribute from `/url/of/next/page` to `/check-answers`.
 

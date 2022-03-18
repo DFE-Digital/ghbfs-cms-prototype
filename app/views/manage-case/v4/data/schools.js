@@ -123,7 +123,7 @@ module.exports = [{
       "first_name": "Jenny ",
       "last_name": "Woodhouse",
       "email": "jenny.woodhouse@urbishopbarrington.net",
-      "status": "Open",
+      "status": "open",
       "school": {
          "urn": 100952,
          "name": "Bishop Barrington School",

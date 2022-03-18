@@ -14,7 +14,7 @@ In the Design System, components have both Nunjucks and HTML example code. Eithe
 
 1. Go to the [radios component](https://design-system.service.gov.uk/components/radios/) in the Design System.
 2. Select the **Nunjucks** tab under the first example, then **Copy code**.
-3. Open `juggling-balls.html` in your `app/views` folder.
+3. open `juggling-balls.html` in your `app/views` folder.
 4. Replace the 2 example `<p>...</p>` paragraphs with the code you copied.
 5. The example comes with a heading that is connected to the answers for accessibility, so delete the old `<h1>` tag with "How many balls can you juggle?".
 

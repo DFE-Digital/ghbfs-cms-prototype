@@ -4,7 +4,7 @@ The Prototype Kit stores answers that users enter. This means you can make more 
 
 ## Show the answer to question 1
 
-1. Open `check-answers.html` in your `app/views` folder.
+1. open `check-answers.html` in your `app/views` folder.
 2. Find the `<dt>` tag that contains the text 'Name'.
 3. Change 'Name' to 'Number of balls you can juggle'.
 4. In the `<dd>` tag on the next line, change 'Sarah Philips' to `{{ data['how-many-balls'] }}`.

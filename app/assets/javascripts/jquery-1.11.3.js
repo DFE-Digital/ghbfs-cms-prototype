@@ -9593,7 +9593,7 @@ var xhrId = 0,
 	xhrSupported = jQuery.ajaxSettings.xhr();
 
 // Support: IE<10
-// Open requests must be manually aborted on unload (#5280)
+// open requests must be manually aborted on unload (#5280)
 // See https://support.microsoft.com/kb/2856746 for more info
 if ( window.attachEvent ) {
 	window.attachEvent( "onunload", function() {
@@ -9622,7 +9622,7 @@ if ( xhrSupported ) {
 						xhr = options.xhr(),
 						id = ++xhrId;
 
-					// Open the socket
+					// open the socket
 					xhr.open( options.type, options.url, options.async, options.username, options.password );
 
 					// Apply custom fields if provided

@@ -182,7 +182,7 @@ router.post("/case/:id/reply-post", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
 	console.log(school)
 
-	school.status = "Open";
+	school.status = "open";
 	let data = {
 		title: "Reply to school",
 		caseNote: req.body['reply-details']
@@ -231,7 +231,7 @@ router.post("/case/:id/assign-post", function(req, res, next){
 	let school = schools.find(school => school.id == req.params.id);
 
 	school.assignedTo = req.session.data['assign-to-caseworker']
-	school.status = "Open";
+	school.status = "open";
 	console.log(school)
 	req.session.data['assign-to-caseworker'] = "";
 	

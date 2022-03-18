@@ -24,7 +24,7 @@ Currently, the `juggling-balls` page sends the user directly to question 2. Inst
 
 1. In `juggling-balls.html` change the form action to `/juggling-balls-answer`.
 
-2. Open `/app/routes.js`.
+2. open `/app/routes.js`.
 
 3. Insert new JavaScript into line 5, before `module.exports = router`.
 

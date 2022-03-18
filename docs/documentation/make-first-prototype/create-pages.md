@@ -18,7 +18,7 @@ Preview the pages in your prototype by going to ht<span>tp</span>://localhost:30
 
 You'll normally edit the HTML to make changes to pages, but the service name is in a config file. This is so we can change it in one place to update it on every page in your prototype.
 
-1. Open the `config.js` file in your `app` folder.
+1. open the `config.js` file in your `app` folder.
 2. Change `serviceName` from `Service name goes here` to `Apply for a juggling licence`.
 3. Press Cmd+S on Mac or Ctrl+S on Windows to save your change.
 
