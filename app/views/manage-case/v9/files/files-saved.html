@@ -1,0 +1,81 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="govuk-grid-row govuk-width-container">
+  <div class="govuk-panel govuk-panel--confirmation">
+  <h1 class="govuk-panel__title">
+    Files saved
+  </h1>
+  <!--<div class="govuk-panel__body">
+    The emails have been moved to:<br><strong>Case 000005 - Canberra Primary school <br><br> Assigned to Inna Goodluck</strong>
+  </div>-->
+</div>
+
+  <!--<p class"govuk-body">Selected files saved to case.</p>-->
+
+  <table class="govuk-table">
+  <!--<caption class="govuk-table__caption govuk-table__caption--m">Dates and amounts</caption>-->
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <br><th scope="col" class="govuk-table__header app-custom-class">3 files</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header app-custom-class govuk-!-font-weight-regular">School requirements.pdf</th>
+      <td class="govuk-table__cell app-custom-class govuk-!-font-weight-regular">Requirements pack from school</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header app-custom-class govuk-!-font-weight-regular">School brief.docx</th>
+      <td class="govuk-table__cell app-custom-class govuk-!-font-weight-regular">School needs</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header app-custom-class govuk-!-font-weight-regular">School budget.xlsx</th>
+      <td class="govuk-table__cell app-custom-class govuk-!-font-weight-regular">Previous costings and budgets</td>
+    </tr>
+  </tbody>
+</table>
+
+  <br>
+    <h1 class="govuk-body-m">
+      <p class="govuk-heading-m">Actions</p>
+      <!--<p class="govuk-body">You can</p>-->
+
+              <ul class="govuk-list govuk-list">
+              <li><a href="">Go back to email</a></li>
+              <li><a href="/manage-case/v9/case/10/specify#files">View files</a></li>
+              <!--<li><a href="/manage-case/v9/case/12/specify#files">Remove files from case</a></li>-->
+              </ul>
+    </h1>
+     
+  </div>
+</div>
+
+<!--<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-panel govuk-panel--confirmation">
+  
+      <h1 class="govuk-panel__title">
+       Email successfully linked to
+      </h1>
+
+      <div class="govuk-panel__body">
+        Case ID<br><strong>000012</strong>
+    </div>
+  </main>
+
+  </div>
+    <h1 class="govuk-body-m">
+      <p class="govuk-body">To continue, you can go back to:</p>
+              <ul class="govuk-list govuk-list">
+              <li><a href="/manage-case/v9/email/notifications.html">Notifications</a></li>
+              <li><a href="/manage-case/v9/case-list/my-cases">My cases</a></li>
+              </ul>
+    </h1>
+</div>-->
+
+{% endblock %}

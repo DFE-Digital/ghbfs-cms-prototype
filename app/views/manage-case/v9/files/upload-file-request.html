@@ -1,0 +1,176 @@
+{% extends "layout.html" %} {% block header %} {% include
+"manage-case/v9/includes/logged_in_user.html" %} {% endblock %} {% block content
+%}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Upload file(s) requested from GHBFS</h1>
+
+    <form action="/components/multi-file-upload/examples/default" method="post" enctype="multipart/form-data">
+
+      <!--<div class="moj-multi-file-upload">
+        <div class="moj-multi-file__uploaded-files">
+          <h2 class="govuk-heading-m">Files added</h2>
+          <div class="govuk-summary-list moj-multi-file-upload__list">
+          </div>
+        </div>-->
+
+      <div class="moj-multi-file-upload">
+        <div class="moj-multi-file__uploaded-files">
+
+        <div class="moj-multi-file-upload__upload">
+
+          <div class="govuk-form-group">
+            <!--<label class="govuk-label govuk-label--m" for="documents">
+              Upload files
+            </label>-->
+
+            <div id="event-name-hint" class="govuk-hint">
+          The maximum size of each file can be X MB and it must be a PDF, TXT, XLS, DOC, PPT, PNG, JPG, MP4 or MOV file.
+        </div>
+
+            <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" name="documents" type="file" multiple="">
+          </div>
+
+          <button class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+            Upload file
+          </button>
+
+        </div>
+      </div>
+
+      <br>
+
+      <div class="moj-multi-file-upload">
+        <div class="moj-multi-file__uploaded-files">
+          <h2 class="govuk-heading-m">Files added</h2>
+          <!--<div class="govuk-summary-list moj-multi-file-upload__list">-->
+          
+          <!--<table class="govuk-table">
+
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Filename.pdf</th>
+      <td class="govuk-table__cell">100%</td>
+      <td class="govuk-table__cell govuk-table__header--numeric">
+        <a href="" class="govuk-link govuk-link--no-visited-state">Add description</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Filename2.pdf</th>
+      <td class="govuk-table__cell">100%</td>
+      <td class="govuk-table__cell govuk-table__header--numeric">
+        <a href="" class="govuk-link govuk-link--no-visited-state">Add description</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Filename3.pdf</th>
+      <td class="govuk-table__cell">100%</td>
+      <td class="govuk-table__cell govuk-table__header--numeric">
+        <a href="" class="govuk-link govuk-link--no-visited-state">Add description</a></td>
+    </tr>
+  </tbody>
+</table>-->
+
+<div class="govuk-inset-text">You can add description to files by selecting the checkbox</div>
+<table class="govuk-table">
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell govuk-!-font-weight-regular">
+      <!--<div class="govuk-table__cell--numeric" style="position: relative; top: -50px">100%</td>-->
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes--small govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-checkboxes__label" for="contact">School requirements.pdf
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        100%
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="" class="govuk-link govuk-link--no-visited-state">Remove</a></label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Add description
+          </label>
+          <input class="govuk-input" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+        </div>
+    </tr>
+  </tbody>
+  
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes--small govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="contact2" name="contact2" type="checkbox" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-checkboxes__label" for="contact2">School brief.docx
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        100%
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="" class="govuk-link govuk-link--no-visited-state">Remove</a></label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Add description
+          </label>
+          <input class="govuk-input" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+        </div>
+    </tr>
+  </tbody>
+
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes--small govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="contact3" name="contact3" type="checkbox" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-checkboxes__label" for="contact3">School budget.xlsx
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        100%
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="" class="govuk-link govuk-link--no-visited-state">Remove</a></label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Add description
+          </label>
+          <input class="govuk-input" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+        </div>
+    </tr>
+  </tbody>
+</table>
+</div>
+ </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+
+
+      <!--<div class="govuk-form-group">
+        <label class="govuk-label" for="width-40">Add description</label>
+        <input
+          class="govuk-input govuk-input--width-40"
+          id="width-40"
+          name="width-40"
+          type="text"
+        />
+      </div>-->
+
+      <div class="govuk-button-group">
+  <a class="govuk-button" href="/manage-case/v9/files/files-uploaded">
+    Upload and send
+  </a>
+</div>
+
+      {% endblock %}
+    </div>
+  </div>
+</div>
