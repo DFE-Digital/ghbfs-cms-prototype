@@ -122,9 +122,9 @@
               checked: checked("procurement-category", "Not yet known"),
               text: "Not yet known"
             },{
-              value: "No applicable category",
-              checked: checked("procurement-category", "No applicable category"),
-              text: "No applicable category"
+              value: "Other",
+              checked: checked("procurement-category", "Other"),
+              text: "Other"
             }
           ]
         }) }}
@@ -136,7 +136,7 @@
         {% from "govuk/components/button/macro.njk" import govukButton %}
 
         {{ govukButton({
-          text: "Remove procurement category",
+          text: "Remove category",
           classes: "govuk-button--warning"
         }) }}
       </form>
