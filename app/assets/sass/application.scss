@@ -49,8 +49,8 @@ $govuk-assets-path: '/govuk/assets/';
 .box{  
     background-color: #f3f2f1; 
     position: relative;
-    padding-top: 3%;
-    padding-bottom: 0.25%;
+    padding-top: 2%;
+    padding-bottom: 2.5%;
     padding-left: 3%;
     padding-right: 3%;
     height: auto;
@@ -70,4 +70,9 @@ $govuk-assets-path: '/govuk/assets/';
   .altbutton{
 	background-color: #505a5f;
 	color: #ffffff;
+  }
+  
+  .scrolly_table {
+	white-space: normal;
+	overflow: auto;
   }
