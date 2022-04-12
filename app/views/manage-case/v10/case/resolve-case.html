@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v10/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form action="resolve-case-post" method="post">
+
+        {{ govukTextarea({
+          name: "resolve-case-details",
+          id: "resolve-case-details",
+          value: data['resolve-case-details'],
+          label: {
+            text: "Resolve case",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          } 
+        }) }}
+
+        {{ govukButton({
+          text: "Save and resolve case"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

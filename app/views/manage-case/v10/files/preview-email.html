@@ -1,0 +1,68 @@
+
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+
+      <h1 class="govuk-heading-l">Preview  your email</h1>
+
+      <form action="non-template-preview-post" method="post">
+
+      <div class="email-preview govuk-body govuk-!-margin-bottom-4">
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              To
+            </dt>
+            <dd class="govuk-summary-list__value">
+             johnsmith@eliotbank.sch.uk
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Subject
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Aqib Mehmood from GHBS sent you a file
+            </dd>
+          </div>
+        </dl>
+
+        <div class="email-preview-body">
+          {{ emailPreview.html | safe}}
+          Dear John,<br><br>
+
+A secure link has been shared with you to download the following file:<br><br>
+
+<strong>File:</strong> Filename.pdf<br>
+<strong>Description:</strong> Information about the file<br>
+<strong>Secure link for download:</strong> https://bitbucket.com/filename.pdf<br><br>
+
+Please note that this download link can only be used once and must be used within X hours. Anyone with this link will be able to download the file.<br><br>
+
+Regards<br>
+Aqib Mehmood<br>
+Procurement Specialist<br>
+Get help buying for schools<br><br>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="govuk-button-group">
+    <a class="govuk-button" href="/manage-case/v10/files/file-shared">
+    Confirm and send
+    </a>
+
+  <a class="govuk-link" href="/manage-case/v10/case/17/specify#files">Cancel</a>
+  </div>
+      
+      </form>
+    </div>
+  </div>
+{% endblock %}

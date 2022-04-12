@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v10/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+
+      <h1 class="govuk-heading-l">Send email</h1>
+
+      <form action="type-of-email-post" method="post">
+
+        {{ govukRadios({
+          idPrefix: "type-of-email",
+          name: "type-of-email",
+          fieldset: {
+            legend: {
+              text: "Type of email",
+            classes: "govuk-label--m"
+            }
+          },
+          items: [
+            {
+              value: "Template",
+              text: "Template"
+            },
+            {
+              value: "Non-template",
+              text: "Non-template"
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters-from-desktop">
+
+
+
+      <h1 class="govuk-heading-l">Preview  email</h1>
+
+      <form action="non-template-preview-post" method="post">
+
+        
+
+      
+
+        
+
+
+      <div class="email-preview govuk-body govuk-!-margin-bottom-4">
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              To
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{case.email}}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Subject
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ emailPreview.subject | safe}}
+            </dd>
+          </div>
+        </dl>
+
+
+        <div class="email-preview-body">
+          {{ emailPreview.html | safe}}
+        </div>
+      </div>
+
+      
+      {{ govukButton({
+          text: "Confirm and send email"
+        }) }}
+      
+      </form>
+    </div>
+  </div>
+{% endblock %}

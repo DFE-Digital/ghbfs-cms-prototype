@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+
+      <h1 class="govuk-heading-l">Preview  your email</h1>
+
+      <form action="non-template-preview-post" method="post">
+
+      <div class="email-preview govuk-body govuk-!-margin-bottom-4">
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              To
+            </dt>
+            <dd class="govuk-summary-list__value">
+             joebloggs@hopeprimary.sch.uk
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Subject
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Aqib Mehmood from GHBS requested files
+            </dd>
+          </div>
+        </dl>
+
+        <div class="email-preview-body">
+          {{ emailPreview.html | safe}}
+          Dear Joe,<br><br>
+
+A secure link has been shared with you to upload the following files:<br><br>
+
+<strong>Files requested:</strong> School requirements, School brief, School budget<br>
+<strong>Secure link for upload:</strong> https://bitbucket.com/add<br><br>
+
+Please note that this upload link can only be used once and must be used within X hours. Anyone with this link will be able to upload files.<br><br>
+
+Regards<br>
+Aqib Mehmood<br>
+Procurement Specialist<br>
+Get help buying for schools<br><br>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="govuk-button-group">
+    <a class="govuk-button" href="/manage-case/v10/files/file-requested">
+    Confirm and send
+    </a>
+
+  <a class="govuk-link" href="/manage-case/v10/case/17/specify#files">Cancel</a>
+  </div>
+      
+      </form>
+    </div>
+  </div>
+{% endblock %}

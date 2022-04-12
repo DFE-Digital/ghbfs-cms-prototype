@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      What case do you want to link this email to?
+    </h1>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="national-insurance-number">
+        Enter Case ID
+      </label>
+      <div id="national-insurance-number-hint" class="govuk-hint">
+        For example, ‘000012’.
+      </div>
+      <input
+        class="govuk-input govuk-input--width-10"
+        id="national-insurance-number"
+        name="national-insurance-number"
+        type="text"
+        spellcheck="false"
+        aria-describedby="national-insurance-number-hint"
+      />
+
+    <br><br><br>
+    
+    <a href="/manage-case/v10/email/merge-confirmation.html">
+    <button class="govuk-button" data-module="govuk-button">
+        Continue
+    </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

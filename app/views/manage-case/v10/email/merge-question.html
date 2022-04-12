@@ -1,0 +1,107 @@
+{% extends "layout.html" %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+      You are moving emails
+      </h1>
+    </legend>
+    
+    <br>
+
+    <table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">From</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"> Case </th>
+          <th class="govuk-table__header" scope="col"> Organisation </th>
+          <th class="govuk-table__header" scope="col"> Category </th>
+          <th class="govuk-table__header" scope="col"> Status </th>
+          <th class="govuk-table__header" scope="col"> Assigned to </th>
+          <th class="govuk-table__header" scope="col"> Date received </th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">000012</th>
+      <td class="govuk-table__cell">Canberra Primary School</td>
+      <td class="govuk-table__cell">MFD</td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">New</strong></td>
+      <td class="govuk-table__cell">Inna Goodluck</td>
+      <td class="govuk-table__cell">2 Aug 2021 0:00am</td>
+    </tr>
+  </tbody>
+</table>
+
+    <br>
+
+    <table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">To</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"> Case </th>
+          <th class="govuk-table__header" scope="col"> Organisation </th>
+          <th class="govuk-table__header" scope="col"> Category </th>
+          <th class="govuk-table__header" scope="col"> Status </th>
+          <th class="govuk-table__header" scope="col"> Assigned to </th>
+          <th class="govuk-table__header" scope="col"> Date received </th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">000005</th>
+      <td class="govuk-table__cell">Canberra Primary School</td>
+      <td class="govuk-table__cell">MFD</td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">open</strong></td>
+      <td class="govuk-table__cell">Inna Goodluck</td>
+      <td class="govuk-table__cell">2 Aug 2021 0:00am</td>
+    </tr>
+  </tbody>
+</table>
+
+    <br>
+
+    <!--<p class="govuk-body-l">New case: 000085 - Canberra Primary School <br> Existing case: 000005 - Canberra Primary school</p>-->
+
+    <p class="govuk-body-m">Once the emails have been moved, <strong>Case 000012</strong> will be closed.</p>
+
+    <br>
+    
+    <!--<div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="changed-name">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="mergeno" name="changed-name" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+          No
+        </label>
+      </div>
+    </div>-->
+  </fieldset>
+    
+    <div class="govuk-button-group">
+    <button class="govuk-button" data-module="govuk-button" onclick="goToPage()">
+    Continue
+    </button>
+      
+    <script>
+        function goToPage() {
+                  window.location = "/manage-case/v10/email/merge-confirmation.html";
+                  localStorage.setItem('login','true');
+                }
+    </script>
+
+  <a class="govuk-link" href="/manage-case/v10/find-a-case.html">Cancel</a>
+  </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

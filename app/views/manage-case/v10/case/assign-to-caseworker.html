@@ -1,0 +1,307 @@
+{% extends "layout_case.html" %}
+<link
+  href="public/autocomplete/accessible-autocomplete.min.css"
+  media="all"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="/public/autocomplete/accessible-autocomplete-min.js"></script>
+
+{% block header %}
+  {% include "manage-case/v10/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      
+      <h1 class="govuk-heading-l">Assign to caseworker</h1>
+
+<div class="govuk-form-group">
+    <form action="assign-post" method="post">
+      <div class="govuk-form-group govuk-!-width-30">
+        <label for="my-autocomplete" class="govuk-label"
+          >Search for caseworker name</label><nobr>
+      </div>
+        <div id="my-autocomplete-container"></div>
+      </div>
+
+      <input
+        type="hidden"
+        id="caseworker-name"
+        name="caseworker-name"
+        value="caseworker-name"
+      />
+
+        {{ govukButton({
+          text: "Assign"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+  
+  
+  <script type="text/javascript">
+  function customSuggest(query, syncResults) {
+    var results = [
+      {
+        Caseworker: "Adam Raistrick",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+       {
+        Caseworker: "Aqib Mehmood",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Bola Sanni",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Brian Childwall",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Carri Wearing",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Chris Tucker",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "David Georgiou",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Debbie Kew",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Ellis James",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Elena Mityukov",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Francis Smith",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "George Appleby",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Harry Potter",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Inna Goodluck",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Jenni Weiner",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Ki Gomme",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Lima Thomas",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Mohamed Salah",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Norca Di Marzio",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Oscar Henry",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Priti Parera",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Quay Pho",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Rob McCracken",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Siobhan Jones",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Tonia Sagay",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Usyk Alexander",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Victor Simmons",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Wallis Gromet",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Yeri McCann",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Yvonne Laurence",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Zidane Iqbal",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+    ];
+
+    syncResults(
+      query
+        ? results.filter(function (result) {
+            var caseworkerContains =
+              result.Caseworker.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            var resultContains =
+              result.Supplier.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            var endonymContains =
+              result.Category.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            return resultContains || endonymContains || caseworkerContains;
+          })
+        : []
+    );
+  }
+
+  function inputValueTemplate(result) {
+    return (
+      result &&
+        result.Caseworker
+    );
+  }
+
+  function suggestionTemplate(result) {
+    return (
+      result &&
+        result.Caseworker
+    );
+  }
+
+  element = document.querySelector("#my-autocomplete-container");
+  id = "autocomplete-customTemplates";
+  accessibleAutocomplete({
+    element: element,
+    id: id,
+    name: "result",
+    source: customSuggest,
+    templates: {
+      inputValue: inputValueTemplate,
+      suggestion: suggestionTemplate,
+    },
+  });
+
+  autocomplete = document.querySelector("#autocomplete-customTemplates");
+  caseworkerName = document.querySelector("#caseworker-name");
+  categoryName = document.querySelector("#category-name");
+  expiryDate = document.querySelector("#expiry-date");
+
+  autocomplete.addEventListener("blur", (event) => {
+    var schoolParams = autocomplete.value.split(",");
+    console.log(schoolParams);
+    console.log("left the target");
+    console.log(autocomplete.value);
+    caseworkerName.value = schoolParams[0].slice(0);
+    categoryName.value = schoolParams[1];
+    expiryDate.value = schoolParams[2];
+  });
+</script>
+
+{% endblock %}

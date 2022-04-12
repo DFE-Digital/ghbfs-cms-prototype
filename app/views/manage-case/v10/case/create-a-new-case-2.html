@@ -1,0 +1,756 @@
+{% extends "layout_case.html" %}
+<link
+  href="public/autocomplete/accessible-autocomplete.min.css"
+  media="all"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="/public/autocomplete/accessible-autocomplete-min.js"></script>
+
+{% block pageScripts %}
+
+<script type="text/javascript">
+  function customSuggest(query, syncResults) {
+    var results = [
+      {
+        URN: "100000",
+        EstablishmentName: "The Aldgate School",
+        Postcode: "EC3A 5DE",
+      },
+      {
+        URN: "100002",
+        EstablishmentName: "St Paul's Cathedral School",
+        Postcode: "EC4M 9AD",
+      },
+      {
+        URN: "100005",
+        EstablishmentName: "Thomas Coram Centre",
+        Postcode: "WC1N 2NY",
+      },
+      {
+        URN: "100006",
+        EstablishmentName: "CCfL Key Stage 4 PRU",
+        Postcode: "NW3 2NY",
+      },
+      {
+        URN: "100007",
+        EstablishmentName: "Camden Primary Pupil Referral Unit",
+        Postcode: "NW1 3EX",
+      },
+      {
+        URN: "100008",
+        EstablishmentName: "Argyle Primary School",
+        Postcode: "WC1H 9EG",
+      },
+      {
+        URN: "100009",
+        EstablishmentName: "Beckford Primary School",
+        Postcode: "NW6 1QL",
+      },
+      {
+        URN: "100010",
+        EstablishmentName: "Brecknock Primary School",
+        Postcode: "NW1 9AL",
+      },
+      {
+        URN: "100011",
+        EstablishmentName: "Brookfield Primary School",
+        Postcode: "N19 5DH",
+      },
+      {
+        URN: "100012",
+        EstablishmentName: "Carlton Primary School",
+        Postcode: "NW5 4AX",
+      },
+    ];
+
+    syncResults(
+      query
+        ? results.filter(function (result) {
+            var resultContains =
+              result.URN.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            var endonymContains =
+              result.EstablishmentName.toLowerCase().indexOf(
+                query.toLowerCase()
+              ) !== -1;
+            return resultContains || endonymContains;
+          })
+        : []
+    );
+  }
+
+  function inputValueTemplate(result) {
+    return (
+      result &&
+      "URN: " +
+        result.URN +
+        ", " +
+        result.EstablishmentName +
+        ", " +
+        result.Postcode
+    );
+  }
+
+  function suggestionTemplate(result) {
+    return (
+      result &&
+      "URN: " +
+        result.URN +
+        ", " +
+        "<strong>" +
+        result.EstablishmentName +
+        "</strong>" +
+        ", " +
+        result.Postcode
+    );
+  }
+
+  element = document.querySelector("#my-autocomplete-container");
+  id = "autocomplete-customTemplates";
+  accessibleAutocomplete({
+    element: element,
+    id: id,
+    name: "result",
+    source: customSuggest,
+    templates: {
+      inputValue: inputValueTemplate,
+      suggestion: suggestionTemplate,
+    },
+  });
+
+  autocomplete = document.querySelector("#autocomplete-customTemplates");
+  establishmentURN = document.querySelector("#establishment-urn");
+  establishmentName = document.querySelector("#establishment-name");
+  establishmentPostcode = document.querySelector("#establishment-postcode");
+
+  autocomplete.addEventListener("blur", (event) => {
+    var schoolParams = autocomplete.value.split(",");
+    console.log(schoolParams);
+    console.log("left the target");
+    console.log(autocomplete.value);
+    establishmentURN.value = schoolParams[0].slice(4);
+    establishmentName.value = schoolParams[1];
+    establishmentPostcode.value = schoolParams[2];
+  });
+</script>
+{% endblock %} {% block content %}
+
+<div class="govuk-grid-row">
+  <div class="key-info"></div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-l">Create a new case</h1>
+
+    <br><p class="govuk-heading-m">
+              Organisation details
+            </p>
+
+    <form action="check-new-case-details-2" method="post">
+      <div class="govuk-form-group govuk-!-width-three-quarters">
+        <label for="my-autocomplete" class="govuk-hint"
+          >Enter organisation name, URN or postcode</label
+        >
+        <div id="my-autocomplete-container"></div>
+      </div>
+
+      <input
+        type="hidden"
+        id="establishment-urn"
+        name="establishment-urn"
+        value=""
+      />
+
+      <input
+        type="hidden"
+        id="establishment-name"
+        name="establishment-name"
+        value=""
+      />
+
+      <input
+        type="hidden"
+        id="establishment-postcode"
+        name="establishment-postcode"
+        value=""
+      />
+
+      <br><p class="govuk-heading-m">
+              Contact details
+            </p>
+
+      {{ govukInput({ label: { text: "Contact first name" }, classes:
+      "govuk-!-width-three-quarters", id: "contact-name", name: "contact-name" }) }}
+      {{ govukInput({ label: { text: "Contact last name" }, classes:
+      "govuk-!-width-three-quarters", id: "contact-surname", name: "contact-surname" }) }}
+      {{ govukInput({ label: { text: "Contact email" }, classes:
+      "govuk-!-width-three-quarters", id: "contact-email", name: "contact-email" }) }}
+      {{ govukInput({ label: { text: "Contact phone number (optional)" },
+      classes: "govuk-!-width-three-quarters", id: "contact-phone", name:
+      "contact-phone" }) }}
+
+      <br><div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Request type
+            </h1>
+          </legend>
+          
+          <div id="changed-name-hint" class="govuk-label">
+            Is the request related to a procurement category?
+          </div>
+          <br>
+          <div
+            class="govuk-radios govuk-radios--inline"
+            data-module="govuk-radios"
+          >
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="yesradio"
+                name="changed-name"
+                type="radio"
+                value="yes"
+                onclick="toggleCategory()"
+              />
+              <label
+                class="govuk-label govuk-radios__label"
+                for="yesradio"
+              >
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="noradio"
+                name="changed-name"
+                type="radio"
+                value="no"
+                onclick="toggleCategory()"
+              />
+              <label
+                class="govuk-label govuk-radios__label"
+                for="noradio"
+              >
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+       <div class="govuk-form-group govuk-inset-text" id="showcategory" style="display:none">
+        <label
+          class="govuk-label"
+          style="position: relative; left: 10px"
+          for=""
+        >
+          Procurement category
+        </label>
+        <select
+          class="govuk-select"
+          style="position: relative; left: 10px"
+          id="category"
+          name="category"
+        >
+          <option selected="selected" value="Please select">Please select</option>
+          <optgroup label="Business services">
+            <option value="Audit">Audit</option>
+            <option value="Books">Books</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Leasing">Leasing</option>
+            <option value="Multi Function Devices (MFDs)">
+              Multi Function Devices (MFDs)
+            </option>
+            <option value="Spend analysis">Spend analysis</option>
+            <option value="Stationery">Stationery</option>
+          </optgroup>
+          <optgroup label="Facilities management">
+            <option value="Catering">Catering</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Build, ground and supplies">
+              Build, ground and supplies
+            </option>
+            <option value="Furniture">Furniture</option>
+          </optgroup>
+          <optgroup label="ICT">
+            <option value="Hardware and commodities">
+              Hardware and commodities
+            </option>
+            <option value="Software and service">Software and service</option>
+          </optgroup>
+          <optgroup label="Professional services">
+            <option value="Legal">Legal</option>
+            <option value="Payroll">Payroll</option>
+            <option value="Recruitment">Recruitment</option>
+          </optgroup>
+          <optgroup label="Utilities">
+            <option value="Energy">Energy</option>
+            <option value="Water">Water</option>
+          </optgroup>
+          <optgroup label="Or">
+            <option value="Not yet known">Not yet known</option>
+            <option value="Other">Other</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <!--<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Case source
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          South West (SW) Hub
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+          North West (NW) Hub
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+          Engagement and Outreach (E&O)
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+          Schools Commercial Team (SCT)
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>-->
+
+<p class="govuk-heading-m">Case source</p>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="source">
+    Source
+  </label>
+  <select class="govuk-select" id="source" name="source">
+    <option value="South West (SW) Hub">South West (SW) Hub</option>
+    <option value="North West (NW) Hub" selected>North West (NW) Hub</option>
+    <option value="Engagement and Outreach (E&O)">Engagement and Outreach (E&O)</option>
+    <option value="Schools Commercial Team (SCT)">Schools Commercial Team (SCT)</option>
+  </select>
+</div>
+
+    <script>
+    function toggleCategory() {
+    // Get the radio
+    var radioYes = document.getElementById("yesradio");
+    var radioNo = document.getElementById("noradio");
+    // Get the output category dropdown
+    var showCategory = document.getElementById("showcategory");
+    // If the checkbox is checked, display the output category dropdown
+    if (radioNo.checked == true){
+    showCategory.style.display = "none";
+    }
+    if (radioYes.checked == true){
+    showCategory.style.display = "block";
+    } else {
+    showCategory.style.display = "none";
+      }
+    }
+    </script>
+
+      <!--<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Do you know the category your request belongs to?
+      </h1>
+    </legend>
+    <div id="contact-hint" class="govuk-hint">
+      Select one which best describes your request. Maybe further hint text to guide user on what 'Not applicable', 'Not yet known' and 'Not supplied' are 
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-radios__label" for="contact">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+
+      <div class="govuk-form-group" id="showcategory" style="">
+        <label
+          class="govuk-label"
+          style="position: relative; left: 0px"
+          for="sort"
+        >
+          Category
+        </label>
+        <select
+          class="govuk-select"
+          style="position: relative; left: 0px"
+          id="sort"
+          name="category"
+        >
+          <option selected="selected" value="Not supplied">Select</option>
+            <option value="Audit">Not applicable</option>
+            <option value="Audit">Not yet known</option>
+          <optgroup label="Business services">
+            <option value="Audit">Audit</option>
+            <option value="Books">Books</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Leasing">Leasing</option>
+            <option value="Multi Function Devices (MFDs)">
+              Multi Function Devices (MFDs)
+            </option>
+            <option value="Spend analysis">Spend analysis</option>
+            <option value="Stationery">Stationery</option>
+          </optgroup>
+          <optgroup label="Facilities management">
+            <option value="Catering">Catering</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Build, ground and supplies">
+              Build, ground and supplies
+            </option>
+            <option value="Furniture">Furniture</option>
+          </optgroup>
+          <optgroup label="ICT">
+            <option value="Hardware and commodities">
+              Hardware and commodities
+            </option>
+            <option value="Software and service">Software and service</option>
+          </optgroup>
+          <optgroup label="Professional services">
+            <option value="Legal">Legal</option>
+            <option value="Payroll">Payroll</option>
+            <option value="Recruitment">Recruitment</option>
+          </optgroup>
+          <optgroup label="Utilities">
+            <option value="Energy">Energy</option>
+            <option value="Water">Water</option>
+          </optgroup>
+          <optgroup label="Or">
+            <option value="Other">Other</option>
+          </optgroup>
+        </select>
+      </div>
+      
+      </div>
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+        <label class="govuk-label govuk-radios__label" for="contact-2">
+          No
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="text" data-aria-controls="conditional-contact-3">
+        <label class="govuk-label govuk-radios__label" for="contact-3">
+          Add later
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>-->
+
+      <!--<br>-->
+
+<!--<div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      
+      <h1 class="govuk-heading-m">Assign caseworker</h1>
+
+<div class="govuk-form-group">
+    <!--<form action="assign-post" method="post">-->
+      <!--<div class="govuk-form-group govuk-!-width-three-quarters">
+        <label for="my-caseworker-autocomplete" class="govuk-label"
+          >Search for caseworker name</label><nobr>
+      </div>
+        <div id="my-caseworker-autocomplete-container"></div>
+      </div>
+
+      <input
+        type="hidden"
+        id="caseworker-name"
+        name="caseworker-name"
+        value="caseworker-name"
+      />
+
+    </div>
+  </div>-->
+  
+  <script type="text/javascript">
+  function customSuggest(query, syncResults) {
+    var results = [
+      {
+        Caseworker: "Adam Raistrick",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+       {
+        Caseworker: "Aqib Mehmood",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Bola Sanni",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Brian Childwall",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Carri Wearing",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Chris Tucker",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "David Georgiou",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Debbie Kew",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Ellis James",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Elena Mityukov",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Francis Smith",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "George Appleby",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Harry Potter",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Inna Goodluck",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Jenni Weiner",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Ki Gomme",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Lima Thomas",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Mohamed Salah",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Norca Di Marzio",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Oscar Henry",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Priti Parera",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Quay Pho",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Rob McCracken",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Siobhan Jones",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Tonia Sagay",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Usyk Alexander",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Victor Simmons",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Wallis Gromet",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Yeri McCann",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Yvonne Laurence",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+      {
+        Caseworker: "Zidane Iqbal",
+        Supplier: "",
+        Category: "",
+        Expiry: "",
+      },
+    ];
+
+    syncResults(
+      query
+        ? results.filter(function (result) {
+            var caseworkerContains =
+              result.Caseworker.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            var resultContains =
+              result.Supplier.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            var endonymContains =
+              result.Category.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+            return resultContains || endonymContains || caseworkerContains;
+          })
+        : []
+    );
+  }
+
+  function inputValueTemplate(result) {
+    return (
+      result &&
+        result.Caseworker
+    );
+  }
+
+  function suggestionTemplate(result) {
+    return (
+      result &&
+        result.Caseworker
+    );
+  }
+
+  element = document.querySelector("#my-caseworker-autocomplete-container");
+  id = "autocomplete-customTemplates";
+  accessibleAutocomplete({
+    element: element,
+    id: id,
+    name: "result-caseworker",
+    source: customSuggest,
+    templates: {
+      inputValue: inputValueTemplate,
+      suggestion: suggestionTemplate,
+    },
+  });
+
+  autocomplete = document.querySelector("#autocomplete-customTemplates");
+  caseworkerName = document.querySelector("#caseworker-name");
+  categoryName = document.querySelector("#category-name");
+  expiryDate = document.querySelector("#expiry-date");
+
+  autocomplete.addEventListener("blur", (event) => {
+    var schoolParams = autocomplete.value.split(",");
+    console.log(schoolParams);
+    console.log("left the target");
+    console.log(autocomplete.value);
+    caseworkerName.value = schoolParams[0].slice(0);
+    categoryName.value = schoolParams[1];
+    expiryDate.value = schoolParams[2];
+  });
+</script>
+
+     <br><h2 class="govuk-heading-m">Description of query</h2>
+      
+      {{ govukTextarea({ name: "query", id:
+      "case-notes", hint: { text: "Enter a summary of the query" } }) }}
+
+      <br>
+      
+      {{ govukButton({ text: "Save and continue" }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
