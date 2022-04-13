@@ -9,125 +9,143 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
 
-      <form action="category-post" method="post">
+      <form action="check-category" method="post">
         {{ govukRadios({
           classes: "govuk-radios--small",
           idPrefix: "procurement-category",
           name: "procurement-category",
           fieldset: {
             legend: {
-              text: "Select or remove a procurement category",
+              text: "Update request details",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
-          },
-          items: [
-            {
-              divider: "Business&nbsp;services" | safe
-            },
-            {
-              value: "Audit",
-              checked: checked("procurement-category", "Audit"),
-              text: "Audit"
-            },
-            {
-              value: "books",
-              checked: checked("procurement-category", "books"),
-              text: "Books"
-            },
-            {
-              value: "insurance",
-              checked: checked("procurement-category", "insurance"),
-              text: "Insurance"
-            },
-            {
-              value: "leasing",
-              checked: checked("procurement-category", "leasing"),
-              text: "Leasing"
-            },
-            {
-              value: "Multi Function Devices",
-              checked: checked("procurement-category", "Multi Function Devices"),
-              text: "Multi Function Devices (MFDs)"
-            },
-            {
-              value: "Spend analysis",
-              checked: checked("procurement-category", "Spend analysis"),
-              text: "Spend analysis"
-            },
-            {
-              value: "Stationary",
-              checked: checked("procurement-category", "Stationary"),
-              text: "Stationery"
-            },{
-              divider: "Facilities&nbsp;management" | safe
-            },{
-              value: "Catering",
-              checked: checked("procurement-category", "Catering"),
-              text: "Catering"
-            },{
-              value: "Cleaning",
-              checked: checked("procurement-category", "Cleaning"),
-              text: "Cleaning"
-            },{
-              value: "Build, ground and supplies",
-              checked: checked("procurement-category", "Build, ground and supplies"),
-              text: "Build, ground and supplies"
-            },{
-              value: "Furniture",
-              checked: checked("procurement-category", "Furniture"),
-              text: "Furniture"
-            },{
-              value: "Other",
-              checked: checked("procurement-category", "Other"),
-              text: "Other"
-            },{
-              divider: "ICT"
-            },{
-              value: "ICT - Hardware and commodity",
-              checked: checked("procurement-category", "Hardward and commodity"),
-              text: "Hardware and commodities"
-            },{
-              value: "ICT - Software and service",
-              checked: checked("procurement-category", "Software and service"),
-              text: "Software and service"
-            },{
-              divider: "Professional&nbsp;services"| safe
-            },{
-              value: "Legal",
-              checked: checked("procurement-category", "Legal"),
-              text: "Legal"
-            },{
-              value: "Payroll",
-              checked: checked("procurement-category", "Payroll"),
-              text: "Payroll"
-            },{
-              value: "Recruitment",
-              checked: checked("procurement-category", "Recruitment"),
-              text: "Recruitment"
-            },{
-              divider: "Utilities"
-            },{
-              value: "Energy",
-              checked: checked("procurement-category", "Energy"),
-              text: "Energy"
-            },{
-              value: "Water",
-              checked: checked("procurement-category", "Water"),
-              text: "Water"
-            },{
-              divider: "Or"
-            },{
-              value: "Not yet known",
-              checked: checked("procurement-category", "Not yet known"),
-              text: "Not yet known"
-            },{
-              value: "Other",
-              checked: checked("procurement-category", "Other"),
-              text: "Other"
-            }
-          ]
+          }
         }) }}
+
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Request type
+      </h1>
+    </legend>
+    <div id="contact-hint" class="govuk-hint">
+
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-radios__label" for="contact">
+          Procurement
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+        <label
+          class="govuk-label"
+          for=""
+        >
+          Category
+        </label>
+        <select
+          class="govuk-select govuk-!-width-two-thirds"
+          id="category"
+          name="category"
+        >
+          <option selected="selected" value="Please select">Please select</option>
+          <optgroup label="Business services">
+            <option value="Audit">Audit</option>
+            <option value="Books">Books</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Leasing">Leasing</option>
+            <option value="Multi Function Devices (MFDs)">
+              Multi Function Devices (MFDs)
+            </option>
+            <option value="Spend analysis">Spend analysis</option>
+            <option value="Stationery">Stationery</option>
+          </optgroup>
+          <optgroup label="Facilities management">
+            <option value="Catering">Catering</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Build, ground and supplies">
+              Build, ground and supplies
+            </option>
+            <option value="Furniture">Furniture</option>
+          </optgroup>
+          <optgroup label="ICT">
+            <option value="Hardware and commodities">
+              Hardware and commodities
+            </option>
+            <option value="Software and service">Software and service</option>
+          </optgroup>
+          <optgroup label="Professional services">
+            <option value="Legal">Legal</option>
+            <option value="Payroll">Payroll</option>
+            <option value="Recruitment">Recruitment</option>
+          </optgroup>
+          <optgroup label="Utilities">
+            <option value="Energy">Energy</option>
+            <option value="Water">Water</option>
+          </optgroup>
+          <optgroup label="Or">
+            <option value="Not yet known">Not yet known</option>
+            <option value="Other">Other</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Other
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email">
+        </div>
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+        <label class="govuk-label govuk-radios__label" for="contact-2">
+          Non-procurement
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+        <div class="govuk-form-group">
+        <label
+          class="govuk-label"
+          for=""
+        >
+          Query
+        </label>
+        <select
+          class="govuk-select govuk-!-width-two-thirds"
+          id="category"
+          name="category"
+        >
+          <option selected="selected" value="Please select">Please select</option>
+          <optgroup label="Queries">
+            <option value="Legal">Legal</option>
+            <option value="PPNs">Procurement Policy Note (PPN)</option>
+            <option value="Playbook">Playbook</option>
+            <option value="Engagement and Outreach (E&O) Queries">Engagement and Outreach (E&O)</option>
+            <option value="Other">
+              Other
+            </option>
+          </optgroup>
+        </select>
+      </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Other
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email">
+        </div>
+
+      </div>
+    </div>
+
+  </fieldset>
+</div>
 
         {{ govukButton({
           text: "Save and continue"
@@ -135,10 +153,10 @@
         
         {% from "govuk/components/button/macro.njk" import govukButton %}
 
-        {{ govukButton({
+        <!--{{ govukButton({
           text: "Remove category",
           classes: "govuk-button--warning"
-        }) }}
+        }) }}-->
       </form>
 
 
