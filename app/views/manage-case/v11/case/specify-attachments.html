@@ -1,0 +1,125 @@
+{% extends "layout_case.html" %}
+
+{% block header %}
+  {% include "manage-case/v11/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-from-desktop">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ case.school.name }}</h1>
+    <br>
+      {{govukTag({
+        text: case.status,
+        classes: case.status | formatCaseTagColour + " govuk-!-margin-bottom-7 "
+      })}}
+
+{% include "../includes/specify-in-progress-attachments.html" %}
+
+<h3 class="govuk-heading-m">Actions</h3>
+<ul class="govuk-list">
+  {% if case.status === "new" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Assign to caseworker</a>
+    <br>
+    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v11/find-a-case-move-email.html">Move emails to existing case</a>
+    <br>
+    <a class="govuk-link govuk-link--no-visited-state" href="close-new-case">Close case</a>
+  </li>
+  {% endif %}
+
+  {% if case.status === "open" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
+  </li>
+  <!--<li>
+    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v11/find-a-case-move-email.html">Move emails to existing case</a>
+  </li>-->
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="type-of-email">Send email</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="on-hold-case">Place on hold</a>
+  </li>
+  {% endif %}
+
+  {% if case.status === "action" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
+  </li>
+  <!--<li>
+    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v11/find-a-case-move-email.html">Move emails to existing case</a>
+  </li>-->
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="type-of-email">Send email</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="on-hold-case">Place on hold</a>
+  </li>
+  {% endif %}
+
+  {% if case.status === "on hold" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="type-of-email">Send email</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="open-case">Reopen case</a>
+  <li>
+  {% endif %}
+
+  {% if case.status !== "resolved" and case.status !== "new" and case.status !== "on hold" and case.status !== "closed" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="resolve-case">Resolve case</a>
+  </li>
+  {% endif %}
+
+  {% if case.status === "resolved" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Assign to caseworker</a>
+    <br>
+    <a class="govuk-link govuk-link--no-visited-state" href="open-case">Reopen case</a>
+    <br>
+    <a class="govuk-link govuk-link--no-visited-state" href="close-new-case">Close case</a>
+  </li>
+  {% endif %}
+
+  {% if case.status === "closed" %}
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="open-case">Reopen case</a>
+  </li>
+  {% endif %}
+</ul>
+
+
+      
+
+    </div>
+  </div>
+{% endblock %}

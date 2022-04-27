@@ -10,16 +10,43 @@
     
     
     <div class="govuk-grid-column-two-thirds">
-
+      
       <h2 class="govuk-heading-m">
-        Version 10 - Sprint 37
+        Version 11
       </h2>
 
       <h3 class="govuk-heading-s">Changes</h3>
       <ul class="govuk-list govuk-list--bullet">
+        <li>Iteration of Messages tab to include sub-navigation of message options</li>
+        <li>Ability to mark messages as 'read/unread’ to acknowledge the action status</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Design notes, user flows and journeys</h3>
+      <p><a href="https://lucid.app/lucidspark/07d0eab5-cbae-43ec-9bda-5f3f476d8bc2/edit?invitationId=inv_085d2727-f88f-4def-8d9d-4296850165b2">View on Lucid board</a><br>
+      <a href="https://miro.com/welcomeonboard/ZUh1bmF6aGZtQm0xaW5lbWdPbEZONFB1WFZvWXZYUE84QlVBRE00SEl1ekE0WG5QNVFqR0FWTVQ1VHVRQmh6N3wzMDc0NDU3MzU1ODQ2MzAzMTc0?invite_link_id=362347398646">View on Miro board</a></p>
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>-</p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/manage-case/v11/case-list/my-cases'
+      }) }}
+
+      {% set v10 %}
+
+      <h2 class="govuk-heading-m">
+        Version 10 - Firebreak
+      </h2>
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Ability to change Request type</li>
         <li>Redesign for ability for in-service / in-case messaging</li>
         <li>Added Messages tab - separation of Email from Case history tab</li>
         <li>Separation of Case history interaction types into Case history tab</li>
+        <li>Ability to add attachment to a message</li>
+        <li>Ability to reply to email in CM</li>
       </ul>
 
       <h3 class="govuk-heading-s">Design notes, user flows and journeys</h3>
@@ -33,6 +60,8 @@
         text: 'View prototype',
         href: '/manage-case/v10/case-list/my-cases'
       }) }}
+
+      {% endset %}
 
       {% set v9 %}
 
@@ -289,6 +318,9 @@
       {{ govukAccordion({
         items: [
           {
+            heading: { text: 'Version 10' },
+            content: { html: v10 }
+          },{
             heading: { text: 'Version 9' },
             content: { html: v9 }
           },{

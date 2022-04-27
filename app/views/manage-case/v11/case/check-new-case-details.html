@@ -1,0 +1,266 @@
+{% extends "layout_case.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "create-a-new-case"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="key-info">
+      
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-l">Check your answers before creating a new case</h1>
+
+      <h2 class="govuk-heading-m">Establishment details</h2>
+
+      <form action="0/create-new-case-post" method="post">
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Establishment URN"
+            },
+            value: {
+              text: data['establishment-urn']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Establishment name"
+            },
+            value: {
+              text: data['establishment-name']
+            },
+            actions: {   
+            }
+          },
+          {
+            key: {
+              text: "Establishment postcode"
+            },
+            value: {
+              text: data['establishment-postcode']
+            },
+            actions: {   
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m">Contact details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Contact details"
+            },
+            value: {
+              text: data['contact-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact email"
+            },
+            value: {
+              text: data['contact-email']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact phone number"
+            },
+            value: {
+              text: data['contact-phone']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Case details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: ""
+            },
+            value: {
+              text: "NW Hub case" if data['hub-identification-number'] else ""
+            },
+            actions: {
+
+            }
+          },
+          {
+            key: {
+              text: "Procurement category"
+            },
+            value: {
+              text: data['category']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Hub migration case information</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Identification number"
+            },
+            value: {
+              text: data['hub-identification-number']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Procurement estimated completion date"
+            },
+            value: {
+              text: data['procurement-estimated-completion-date-day'] + " " + data['procurement-estimated-completion-date-month'] + " " + data['procurement-estimated-completion-date-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Savings total estimate"
+            },
+            value: {
+              text: data['savings-total-estimate-hubs']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Notes / comments"
+            },
+            value: {
+              text: data['case-notes']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Progress notes from CRM"
+            },
+            value: {
+              text: data['query']
+            },
+            actions: {
+              items: [
+                {
+                  href: "create-a-new-case",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <p class="govuk-body">Check all the details before submitting as it is not currently possible to edit case details once they are created.</p>
+
+      {{ govukButton({
+        text: "Create case"
+      }) }}
+
+      </form>
+      
+    </div>
+  </div>
+{% endblock %}

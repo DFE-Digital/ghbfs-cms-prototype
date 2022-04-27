@@ -1,0 +1,12 @@
+[
+  {"rowid": 1, "URN": "100000", "EstablishmentNumber": "3614", "EstablishmentName": "The Aldgate School", "Street": "St James's Passage", "Locality": "Duke's Place", "Postcode": "EC3A 5DE"},
+  {"rowid": 3, "URN": "100002", "EstablishmentNumber": "6006", "EstablishmentName": "St Paul's Cathedral School", "Street": "2 New Change", "Locality": "", "Postcode": "EC4M 9AD"},
+  {"rowid": 6, "URN": "100005", "EstablishmentNumber": "1048", "EstablishmentName": "Thomas Coram Centre", "Street": "49 Mecklenburgh Square", "Locality": "", "Postcode": "WC1N 2NY"},
+  {"rowid": 7, "URN": "100006", "EstablishmentNumber": "1100", "EstablishmentName": "CCfL Key Stage 4 PRU", "Street": "Agincourt Road", "Locality": "", "Postcode": "NW3 2NY"},
+  {"rowid": 8, "URN": "100007", "EstablishmentNumber": "1101", "EstablishmentName": "Camden Primary Pupil Referral Unit", "Street": "Robson House, Netley Campus", "Locality": "74 Stanhope Street", "Postcode": "NW1 3EX"},
+  {"rowid": 9, "URN": "100008", "EstablishmentNumber": "2019", "EstablishmentName": "Argyle Primary School", "Street": "Tonbridge Street", "Locality": "", "Postcode": "WC1H 9EG"},
+  {"rowid": 10, "URN": "100009", "EstablishmentNumber": "2036", "EstablishmentName": "Beckford Primary School", "Street": "Dornfell Street", "Locality": "West Hampstead", "Postcode": "NW6 1QL"},
+  {"rowid": 11, "URN": "100010", "EstablishmentNumber": "2065", "EstablishmentName": "Brecknock Primary School", "Street": "Cliff Villas", "Locality": "Camden", "Postcode": "NW1 9AL"},
+  {"rowid": 12, "URN": "100011", "EstablishmentNumber": "2078", "EstablishmentName": "Brookfield Primary School", "Street": "Chester Road", "Locality": "", "Postcode": "N19 5DH"},
+  {"rowid": 13, "URN": "100012", "EstablishmentNumber": "2095", "EstablishmentName": "Carlton Primary School", "Street": "Grafton Road", "Locality": "", "Postcode": "NW5 4AX"}
+]
