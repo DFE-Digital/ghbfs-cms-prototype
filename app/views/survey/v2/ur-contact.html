@@ -1,0 +1,38 @@
+{% extends "layout_gov.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="confirmation" method="POST">
+        {{ govukRadios({
+        idPrefix: "survey-satisfaction",
+        name: "survey-satisfaction",
+        fieldset: {
+          legend: {
+            text: "Are you happy to be contacted about research opportunities at DfE?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Your feedback helps us improve future services for schools"
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

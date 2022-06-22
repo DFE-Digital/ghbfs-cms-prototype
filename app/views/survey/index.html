@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        Exit survey
+      </h1>
+    </div>
+    
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      
+      <h2 class="govuk-heading-m">
+        Version 2
+      </h2>
+      <h3 class="govuk-heading-s">Changes</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>automate the sending of the survey email</li>
+        <li>prefill identifiable data from the system - case no, email etc</li>
+        <li>streamline the exit survey</li>
+        <li>increase open rate and conversion</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Design notes, user flows and journeys</h3>
+      <p><a href="">View on [insert board]</a><br>
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>-</p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/survey/v2/'
+      }) }}
+
+      {% set v1 %}
+
+      <h2 class="govuk-heading-m">
+        Version 1
+      </h2>
+
+      <h3 class="govuk-heading-s">First version</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li></li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Design notes, user flows and journeys</h3>
+      <p><a href="https://dferesearch.fra1.qualtrics.com/jfe/preview/SV_4T5BGrOBE2pUpYG?Q_CHL=preview&Q_SurveyVersionID=current">View on qualtrix</a><br>
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>Stats on exit survey version<p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>20% open rate</li>
+        <li>9% conversion</li>
+        <li>40 completed (20 after data cleanse)</li>
+      </ul>
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/survey/v1'
+      }) }}
+
+      {% endset %}
+
+
+      {{ govukAccordion({
+        items: [
+          {
+            heading: { text: 'Version 1' },
+            content: { html: v1 }
+          }
+        ]
+      }) }}
+
+
+
+    </div>
+  </div>
+{% endblock %}
