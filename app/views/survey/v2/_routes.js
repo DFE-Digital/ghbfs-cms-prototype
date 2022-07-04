@@ -12,7 +12,7 @@ router.get('*', function(req, res, next){
   next()
 })
 
-router.post("/confirmation", function(req, res) {
+router.post("/confirmation-post", function(req, res) {
 	console.log ("confiormation message")
 	var research = req.session.data['survey-satisfaction'];
 	if (research == 'yes') {
