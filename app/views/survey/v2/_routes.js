@@ -12,6 +12,16 @@ router.get('*', function(req, res, next){
   next()
 })
 
+router.post("/confirmation", function(req, res) {
+	console.log ("confiormation message")
+	var research = req.session.data['survey-satisfaction'];
+	if (research == 'yes') {
+		res.redirect('ur-contact-details');
+	} else {
+		res.redirect('confirmation');
+	}
+});
+
 /*
 router.post("/new-case/existing-contract-post", function(req, res, next){
 	console.log(req.url)

@@ -1,14 +1,38 @@
 {% extends "layout_email.html" %}
 
+{% block beforeContent %}
+<div class="govuk-grid-row  govuk-!-margin-top-5">
+  <div class="govuk-grid-column-full">
+    <p><strong>Subject:</strong> Case [ref]: Tell us how Get help buying for schools service worked for you </p>
+    <p><strong>From:</strong> get-help-buying-for-schools@education.gov.uk</p>
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+</div>
+</div>
+<div class="email-logo-container govuk-body">
+  <img class="email-logo" height="27" src="/public/images/email-crown-logo.png" alt="">
+  <p>Department for Education</p>
+</div>
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <h1 class="govuk-heading-l">
-        add some stuff Exit survey email
-      </h1>
-      <p>content</p>
-      <p>content</p>
-      <p><a href="start">survey link</a></p>
+      <p>Dear [first name],</p>
+
+      <p>Would you be willing to give us some feedback on your experience of using the Get help buying for schools service for:</p>
+      <ul  class="govuk-list govuk-list--bullet">
+        <li>Case reference:  [cas ref]</li>
+        <li>Category: [category]</li>
+        <li>Case resolved on: [resolve date]</li>
+      </ul>
+
+      <p>This will give you the chance to shape the future of the service, and will help us improve it for schools.</p>
+
+      <p>The survey will also help us understand how well the service has supported you. It will take about 5 minutes to complete.</p>
+
+      <p><a href="start">Give feedback</a></p>
+
+      <p>Regards<br>Get help buying for schools</p>
     </div>
   </div>
 {% endblock %}

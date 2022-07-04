@@ -1,0 +1,47 @@
+{% extends "layout_gov.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="Q5-capability" method="POST">
+        {{ govukRadios({
+        idPrefix: "survey-satisfaction",
+        name: "survey-satisfaction",
+        fieldset: {
+          legend: {
+            text: "Do you agree or disagree that using the service helped your school to buy better quality goods or services?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "strongly agree",
+            text: "Strongly agree"
+          },
+          {
+            value: "agree",
+            text: "Agree"
+          },
+          {
+            value: "neither agree nor disagree",
+            text: "Neither agree nor disagree"
+          },
+          {
+            value: "disagree",
+            text: "Disagree"
+          },
+          {
+            value: "strongly disagree",
+            text: "Strongly disagree"
+          }
+        ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

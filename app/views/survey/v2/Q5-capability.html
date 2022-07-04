@@ -1,0 +1,47 @@
+{% extends "layout_gov.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="hear-about-service" method="POST">
+        {{ govukRadios({
+        idPrefix: "survey-satisfaction",
+        name: "survey-satisfaction",
+        fieldset: {
+          legend: {
+            text: "Do you agree or disagree that you've learned enough to run the same type of procurement in the future with less support?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "strongly agree",
+            text: "Strongly agree"
+          },
+          {
+            value: "agree",
+            text: "Agree"
+          },
+          {
+            value: "neither agree nor disagree",
+            text: "Neither agree nor disagree"
+          },
+          {
+            value: "disagree",
+            text: "Disagree"
+          },
+          {
+            value: "strongly disagree",
+            text: "Strongly disagree"
+          }
+        ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

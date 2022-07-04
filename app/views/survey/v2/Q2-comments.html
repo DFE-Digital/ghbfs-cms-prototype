@@ -3,17 +3,14 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="Q3-capability" method="POST">
+      <form action="Q3-saved-time" method="POST">
         {{ govukTextarea({
           name: "more-detail",
           id: "more-detail",
           label: {
-            text: "Can you tell us why you felt " + data['survey-satisfaction'] + " with the service?",
+            text: "Tell us why you felt " + data['survey-satisfaction'] + " with the service?",
             classes: "govuk-label--l",
             isPageHeading: true
-          },
-          hint: {
-            text: "Do not include personal or financial information, like your National Insurance number or credit card details."
           }
         }) }}
         

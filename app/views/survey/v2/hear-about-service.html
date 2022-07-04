@@ -1,0 +1,80 @@
+{% extends "layout_gov.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="ur-contact" method="POST">
+        {% set otherHTML %}
+          {{ govukInput({
+            id: "contact-by-email",
+            name: "contact-by-email",
+            type: "email",
+            autocomplete: "email",
+            spellcheck: false,
+            classes: "govuk-!-width-one-third",
+            label: {
+              text: "Other"
+            }
+          }) }}
+        {% endset -%}
+        
+        {{ govukRadios({
+        idPrefix: "survey-satisfaction",
+        name: "survey-satisfaction",
+        fieldset: {
+          legend: {
+            text: "How did you hear about the service?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "An email from the DfE",
+            text: "An email from the DfE"
+          },
+          {
+            value: "At a DfE event",
+            text: "At a DfE event"
+          },
+          {
+            value: "At a non-DfE event or conference",
+            text: "At a non-DfE event or conference"
+          },
+          {
+            value: "A DfE promotion",
+            text: "A DfE promotion"
+          },
+          {
+            value: "Referred from another DfE service",
+            text: "Referred from another DfE service"
+          },
+          {
+            value: "Online search",
+            text: "Online search"
+          },
+          {
+            value: "Social media",
+            text: "Social media"
+          },
+          {
+            value: "Word of mouth",
+            text: "Word of mouth"
+          },
+          {
+            value: "Other please specify",
+            text: "Other please specify",
+            conditional: {
+              html: otherHTML
+            }
+          }
+        ]
+        }) }}        
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
