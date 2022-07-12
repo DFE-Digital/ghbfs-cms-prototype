@@ -12,6 +12,32 @@
     <div class="govuk-grid-column-two-thirds">
       
       <h2 class="govuk-heading-m">
+        Version 12
+      </h2>
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Ability to see email threads as a list and view independantly - todo</li>
+        <li>Ability to add CC / BCC recipients - todo</li>
+        <li>Ability to edit recipients - todo</li>
+        <li>Automatically collapse older messages in a thread to highlight the latest message - todo</li>
+        <li>Ability to start a new message thread - todo</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Design notes, user flows and journeys</h3>
+      <p><a href="https://www.figma.com/file/rH2qpj0F1rjOpOF1cYsor6/Proc-Ops?node-id=13212%3A2027">View on Figma</a><br>
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>-</p>
+      <!--<p><a href="#0">View user research report</a>.<p>-->
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/manage-case/v12/case-list/my-cases'
+      }) }}
+
+      {% set v11 %}
+
+      <h2 class="govuk-heading-m">
         Version 11
       </h2>
 
@@ -32,6 +58,8 @@
         text: 'View prototype',
         href: '/manage-case/v11/case-list/my-cases'
       }) }}
+
+      {% endset %}
 
       {% set v10 %}
 
@@ -318,6 +346,9 @@
       {{ govukAccordion({
         items: [
           {
+            heading: { text: 'Version 11' },
+            content: { html: v11 }
+          },{
             heading: { text: 'Version 10' },
             content: { html: v10 }
           },{

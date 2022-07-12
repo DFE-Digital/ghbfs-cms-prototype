@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v11/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-l">Are you sure you want to close this case?</h1>
+        <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Case ID</th>
+            <td class="govuk-table__cell">000167</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Organisation</th>
+            <td class="govuk-table__cell">Pilgrims' Way Primary School</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Category</th>
+            <td class="govuk-table__cell">Catering</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Contact email</th>
+            <td class="govuk-table__cell">amcmychem0@issuu.com</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Date received</th>
+            <td class="govuk-table__cell">4 January 2022 at 16:20</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Last updated</th>
+            <td class="govuk-table__cell">14 January 2022 at 12:20</td>
+          </tr>
+        </tbody>
+      </table>
+        <p class="govuk-body">This is a permanent action. Once you close this case, it cannot be reopened or edited. You will only be able to view the details of the case.</p>
+        <br>
+        <!-- <form action="goToPage()" method="post" novalidate> -->
+          <input type="hidden" name="answers-checked" value="true">
+          <div class="govuk-button-group">
+            <button class="govuk-button govuk-button--warning" data-module="govuk-button" onclick="goToPage()">
+              Permanently close case
+            </button>
+            <a class="govuk-link" href="specify">Cancel</a>
+          </div>
+        <!-- </form> -->
+      </div>
+    </div>
+
+
+
+
+
+<!-- <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+      <h1 class="govuk-fieldset__heading">
+        Are you sure you want to close this case?
+      </h1>
+    </legend>
+    <p class="govuk-body">This is a permanent action. Once you close this case, it cannot be reopened or edited. You will only be able to view the details of the case.</p>
+
+  </fieldset>
+</div> -->
+
+<!-- <button class="govuk-button" data-module="govuk-button" onclick="goToPage()">
+  Permanently close case
+</button> -->
+
+    <script>
+        function goToPage() {
+                  window.location = "/manage-case/v11/case-list/new-case-closed.html";
+                  localStorage.setItem('login','true');
+                }
+    </script>
+
+<!--<script>
+    function toggleCategory() {
+    // Get the radio
+    var radioOther = document.getElementById("otherradio");
+    var radioSPAM = document.getElementById("spamradio");
+    // Get the output category dropdown
+    var showCategory = document.getElementById("showcategory");
+    // If the checkbox is checked, display the output category dropdown
+    if (radioSPAM.checked == true){
+    showCategory.style.display = "none";
+    }
+    if (radioOther.checked == true){
+    showCategory.style.display = "block";
+    } else {
+    showCategory.style.display = "none";
+      }
+    }
+    </script>-->
+
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+
+
+
+      <form action="reply-post" method="post">
+
+        {{ govukTextarea({
+          name: "reply-details",
+          id: "reply-details",
+          value: data['reply-details'],
+          label: {
+            text: "Reply to school",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Add details of any advice and support shared with the school."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}
