@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">{{ data['tower'] }} Statistics</h1>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title govuk-!-margin-bottom-0">25</h1>
+            <div class="govuk-panel__body">Live cases</div>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title govuk-!-margin-bottom-0">£75k</h1>
+            <div class="govuk-panel__body">
+              Case values
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #00703c"><strong>20</strong> Open</div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #ffdd00"><strong>2</strong> On hold</div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #1d70b8"><strong>3</strong> New</div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #b1b4b6"><strong>3</strong> Resolved</div>
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">{{ data['tower'] }} Live Cases by Stage</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Stage</th>
+                <th scope="col" class="govuk-table__header">Open</th>
+                <th scope="col" class="govuk-table__header">On hold</th>
+                <th scope="col" class="govuk-table__header">Value</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Need</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Market Analysis</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Sourcing Options</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Go to Market</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Evaluation</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Contract award</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Handover</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">{{ data['tower'] }} Live Cases by Level</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Level</th>
+                <th scope="col" class="govuk-table__header">Open</th>
+                <th scope="col" class="govuk-table__header">On hold</th>
+                <th scope="col" class="govuk-table__header">Value</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">1</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">2</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">3</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">4</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">5</th>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">20</td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>      
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
