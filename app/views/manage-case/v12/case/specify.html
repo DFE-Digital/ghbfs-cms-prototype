@@ -1,7 +1,7 @@
 {% extends "layout_case.html" %}
 
 {% block header %}
-  {% include "manage-case/v11/includes/logged_in_user.html" %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
 {% endblock %}
 
 {% block content %}
@@ -27,9 +27,14 @@
   {% if case.status === "new" %}
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Assign to caseworker</a>
-    <br>
-    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v11/find-a-case-move-email.html">Move emails to existing case</a>
-    <br>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v12/find-a-case-move-email.html">Move emails to existing case</a>
+  </li>
+  <li>
     <a class="govuk-link govuk-link--no-visited-state" href="close-new-case">Close case</a>
   </li>
   {% endif %}
@@ -38,14 +43,11 @@
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
   </li>
-  <!--<li>
-    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v11/find-a-case-move-email.html">Move emails to existing case</a>
-  </li>-->
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
   </li>
   <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="type-of-email">Send email</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="template-email">Send template email</a>
   </li>
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
@@ -59,14 +61,11 @@
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
   </li>
-  <!--<li>
-    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v11/find-a-case-move-email.html">Move emails to existing case</a>
-  </li>-->
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
   </li>
   <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="type-of-email">Send email</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="template-email">Send template email</a>
   </li>
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
@@ -78,16 +77,7 @@
 
   {% if case.status === "on hold" %}
   <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
-  </li>
-  <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
-  </li>
-  <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="type-of-email">Send email</a>
-  </li>
-  <li>
-    <a class="govuk-link govuk-link--no-visited-state" href="contact">Log contact with school</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Assign to caseworker</a>
   </li>
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="open-case">Reopen case</a>

@@ -89,7 +89,7 @@ let statuses = {
     statusUrl : "new-case"
   },
   "open": {
-    statusClass : "govuk-tag--blue",
+    statusClass : "govuk-tag--green",
     statusUrl : "in-progress-specify"
   },
   "Consultation booked": {
@@ -97,7 +97,7 @@ let statuses = {
     statusUrl : "consultation-booked"
   },
   "resolved": {
-    statusClass : "govuk-tag--purple",
+    statusClass : "govuk-tag--green",
     statusUrl : "resolved-case"
   },
   "closed": {
@@ -117,7 +117,7 @@ let statuses = {
     statusUrl : "notification"
   },
   "on hold": {
-    statusClass : "govuk-tag--yellow",
+    statusClass : "govuk-tag--blue",
     statusUrl : "on-hold-case"
   }
 }

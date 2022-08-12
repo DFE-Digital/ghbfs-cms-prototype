@@ -334,6 +334,17 @@ router.post("/case/:id/contact-post", function(req, res, next){
 
 })
 
+router.post("/case/:id/contact-update-post", function(req, res, next){
+	let school = schools.find(school => school.id == req.params.id);
+	school.first_name = req.body['first_name']
+	school.last_name = req.body['last_name']
+	school.phone = req.body['phone']
+	school.extension = req.body['extension']
+	school.email = req.body['email']
+	//addToHistory(req.params.id, school.first_name);
+	res.redirect(`/manage-case/${folderVersion}/case/${req.params.id}/specify`)
+})
+
 router.post("/case/:id/assign-post", function(req, res, next){
 
 	let school = schools.find(school => school.id == req.params.id);

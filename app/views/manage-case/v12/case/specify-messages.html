@@ -1,7 +1,7 @@
 {% extends "layout_case.html" %}
 
 {% block header %}
-  {% include "manage-case/v11/includes/logged_in_user.html" %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
 {% endblock %}
 
 {% block content %}
@@ -27,9 +27,14 @@
   {% if case.status === "new" %}
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Assign to caseworker</a>
-    <br>
-    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v11/find-a-case-move-email.html">Move emails to existing case</a>
-    <br>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
+  </li>
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v12/find-a-case-move-email.html">Move emails to existing case</a>
+  <li>
+  </li>
     <a class="govuk-link govuk-link--no-visited-state" href="close-new-case">Close case</a>
   </li>
   {% endif %}
@@ -39,7 +44,7 @@
     <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
   </li>
   <!--<li>
-    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v11/find-a-case-move-email.html">Move emails to existing case</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v12/find-a-case-move-email.html">Move emails to existing case</a>
   </li>-->
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>
@@ -60,7 +65,7 @@
     <a class="govuk-link govuk-link--no-visited-state" href="assign-to-caseworker">Change case owner</a>
   </li>
   <!--<li>
-    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v11/find-a-case-move-email.html">Move emails to existing case</a>
+    <a class="govuk-link govuk-link--no-visited-state" href="/manage-case/v12/find-a-case-move-email.html">Move emails to existing case</a>
   </li>-->
   <li>
     <a class="govuk-link govuk-link--no-visited-state" href="case-note">Add a case note</a>

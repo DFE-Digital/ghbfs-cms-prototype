@@ -8,7 +8,7 @@
 <script src="/public/autocomplete/accessible-autocomplete-min.js"></script>
 
 {% block header %}
-  {% include "manage-case/v11/includes/logged_in_user.html" %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,40 +32,6 @@
 
       <form action="check-procurement-details" method="post">
 
-        {#{{ govukRadios({
-          name: "case-owner",
-          id: "case-owner",
-          value: data['case-owner'],
-          fieldset: {
-            legend: {
-              text: "Case owner",
-              classes: "govuk-label",
-              isPageHeading: true
-            }
-          },
-          items: [
-            {
-              value: "Jenni Weiner",
-              text: "Jenni Weiner"
-            },
-            {
-              value: "Ki Gomme",
-              text: "Ki Gomme"
-            },
-            {
-              value: "Elena Mityukov",
-              text: "Elena Mityukov"
-            },
-            {
-              value: "Inna Goodluck",
-              text: "Inna Goodluck"
-            },
-            {
-              value: "Carri Wearing",
-              text: "Carri Wearing"
-            }
-          ]
-        }) }}#}
 
         {{ govukRadios({
           id: "case-level",

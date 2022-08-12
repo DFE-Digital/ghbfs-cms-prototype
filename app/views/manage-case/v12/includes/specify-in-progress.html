@@ -20,6 +20,15 @@
             },
             value: {
               text: case["first_name"] + " " + case["last_name"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
           },
           {
@@ -28,6 +37,32 @@
             },
             value: {
               text: "0" + case["phone"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact extension"
+            },
+            value: {
+              text: case["extension"] or ""
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
           },
           {
@@ -36,6 +71,15 @@
             },
             value: {
               text: case["email"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
           },
           {
@@ -44,6 +88,15 @@
             },
             value: {
               text: case.school.name | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "organisation-details",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
           },
           {
@@ -112,60 +165,21 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header app-custom-class" style="width:140px">Added by</th>
-      <th scope="col" class="govuk-table__header app-custom-class">Message <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp; <a class="govuk-link" style="color:#1d70b8">Mark all as read<a/>--></th>
+      <th scope="col" class="govuk-table__header app-custom-class">Message</th>
       <th scope="col" class="govuk-table__header app-custom-class">Date</th>
     </tr>
   </thead>
-  <tbody class="govuk-table__body">
-    <!---<tr class="govuk-table__row">
-      <th scope="row" class="govuk-body govuk-!-font-weight-regular govuk-table__header"><strong>Aqib Mehmood</strong><br>Caseworker</th>
-      <td class="govuk-table__cell">
-        <strong>Sent to</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;johnsmith@hopeprimary.sch.uk&gt;
-        <hr><strong>Recipients</strong> &lt;sharedprocopsmailbox@education.gov.uk&gt;
-        <hr><strong>Subject</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Help creating specification
-        <hr><strong>Attachments</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" class="govuk-link govuk-link--no-visited-state">Attachment 3</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="/manage-case/v11/email/save-attachments-select" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">Save</a>
-          <hr>Hi John,
-
-                <br><br>I have attached and annotated a PDF for you with some guidance <br> on where we require additional information to help us proceed with your request.
-
-                <br><br>Look forward to hearing from you.
-
-                <br><br>Kind Regards,
-                <br>Aqib Mehmood
-          <br><br>
-      </td>
-      <td class="govuk-table__cell">28 Mar 2022 10:57</td>
-    </tr>-->
-    
+  <tbody class="govuk-table__body">    
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-body govuk-!-font-weight-regular govuk-table__header"><strong>John Smith</strong><br>from School
-      <br><!--<a class="govuk-link" style="color:#1d70b8"><strong>Mark as read</strong></a>-->
+      <br>
       </th>
       
       
       <td class="govuk-table__cell">
-        <!--<strong>Recieved from</strong> &nbsp;&nbsp;&nbsp; &lt;johnsmith@hopeprimary.sch.uk&gt;
-        <hr><strong>Recipients</strong> &lt;sharedprocopsmailbox@education.gov.uk&gt;
-        <hr><strong>Subject</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Help creating specification
-        <hr>-->
         <strong class="govuk-tag">Unread</strong>&nbsp;&nbsp;&nbsp;
         <a href="specify-read#case-messages" class="govuk-link govuk-link--no-underline" style="color:#1d70b8"><strong>Mark as read</strong></a>&nbsp;&nbsp;&nbsp;
-        <a href="/manage-case/v11/email/save-attachments-select" class="govuk-link govuk-link--no-underline govuk-link--no-visited-state govuk-!-font-weight-bold">Save attachments</a>
+        <a href="/manage-case/v12/email/save-attachments-select" class="govuk-link govuk-link--no-underline govuk-link--no-visited-state govuk-!-font-weight-bold">Save attachments</a>
         <hr>
         
         <a href="#" class="govuk-link govuk-link--no-visited-state">School intro pack.pdf</a><br>
@@ -223,17 +237,7 @@
   {% for note in case.history | sort(true, false, "index") %}
    
   {% endfor %}
-
-  <!--<div class="govuk-form-group">
-  <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--s" for="event-name">
-      Search case history
-    </label>
-  </h1>
-  <input class="govuk-input" id="event-name" name="event-name" type="text">
-</div>-->
-
   <table class="govuk-table">
-  <!--<caption class="govuk-table__caption govuk-table__caption--m">Month you apply</caption>-->
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header app-custom-class">Type</th>
@@ -338,10 +342,10 @@
 <table class="govuk-table">
 
 <div class="govuk-button-group">
-  <a class="govuk-button" href="/manage-case/v11/files/upload-file">
+  <a class="govuk-button" href="/manage-case/v12/files/upload-file">
     Upload files
   </a>
-  <a class="govuk-button govuk-button--secondary" href="/manage-case/v11/files/request-file">
+  <a class="govuk-button govuk-button--secondary" href="/manage-case/v12/files/request-file">
     Request files
   </a>
 
@@ -369,7 +373,7 @@
       <td class="govuk-table__cell">
         <strong class="govuk-tag">Downloaded</strong></td>
       <td class="govuk-table__cell">
-        <a href="/manage-case/v11/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
+        <a href="/manage-case/v12/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
       <td class="govuk-table__cell"><details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -393,7 +397,7 @@
       <td class="govuk-table__cell">
         <strong class="govuk-tag govuk-tag--grey">Not shared</strong></td>
       <td class="govuk-table__cell">
-        <a href="/manage-case/v11/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
+        <a href="/manage-case/v12/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
       <td class="govuk-table__cell"><details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -413,7 +417,7 @@
       <td class="govuk-table__cell">
         <strong class="govuk-tag govuk-tag--blue">Shared</strong></td>
       <td class="govuk-table__cell">
-        <a href="/manage-case/v11/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
+        <a href="/manage-case/v12/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
       <td class="govuk-table__cell"><details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -438,7 +442,7 @@
       <td class="govuk-table__cell">
         <strong class="govuk-tag govuk-tag--grey">Not shared</strong></td>
       <td class="govuk-table__cell">
-        <a href="/manage-case/v11/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
+        <a href="/manage-case/v12/files/share-file.html" class="govuk-link govuk-link--no-visited-state">Send link</a></td>
       <td class="govuk-table__cell"><details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -485,7 +489,7 @@
 {{ govukTabs({
   items: [
     {
-      label: "School",
+      label: "School details",
       id: "school-details",
       panel: {
         html: schoolDetails
@@ -517,13 +521,6 @@
       id: "attachments",
       panel: {
         html: attachmentDetails
-      }
-    },
-    {
-      label: "Files",
-      id: "files",
-      panel: {
-        html: fileDetails
       }
     }
   ]

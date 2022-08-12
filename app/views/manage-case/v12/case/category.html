@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block header %}
-  {% include "manage-case/v11/includes/logged_in_user.html" %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
 {% endblock %}
 
 {% block content %}
@@ -42,12 +42,7 @@
       </div>
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
         <div class="govuk-form-group">
-        <label
-          class="govuk-label"
-          for=""
-        >
-          Category
-        </label>
+        <label class="govuk-label" for="">Procurement sub-category</label>
         <select
           class="govuk-select govuk-!-width-two-thirds"
           id="category"
@@ -94,12 +89,6 @@
           </optgroup>
         </select>
       </div>
-      <div class="govuk-form-group">
-          <label class="govuk-label" for="contact-by-email">
-            Other
-          </label>
-          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email">
-        </div>
 
       </div>
       <div class="govuk-radios__item">
@@ -133,30 +122,29 @@
           </optgroup>
         </select>
       </div>
-
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="contact-by-email">
-            Other
-          </label>
-          <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email">
-        </div>
-
       </div>
     </div>
 
   </fieldset>
 </div>
-
+{{ govukTextarea({
+  name: "more-detail",
+  id: "more-detail",
+  label: {
+    text: "Description of query",
+    isPageHeading: false
+  },
+  hint: {
+    text: "Enter a summary of the query"
+  }
+}) }}
         {{ govukButton({
           text: "Save and continue"
         }) }}
         
         {% from "govuk/components/button/macro.njk" import govukButton %}
 
-        <!--{{ govukButton({
-          text: "Remove category",
-          classes: "govuk-button--warning"
-        }) }}-->
+
       </form>
 
 

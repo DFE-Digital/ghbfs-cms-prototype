@@ -20,26 +20,6 @@
 
       <form action="add-procurement-details-post" method="post">
       
-      {#{{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Case owner"
-            },
-            value: {
-              text: data['case-owner']
-            },
-            actions: {   
-              items: [
-                {
-                  href: "case-summary-details",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          }) }}#}
 
           {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-9',

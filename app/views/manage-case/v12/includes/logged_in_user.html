@@ -1,6 +1,6 @@
   {{ govukHeader({
     homepageUrl: "/",
-    serviceName: serviceName,
+    serviceName: data['serviceName'],
     serviceUrl: "/",
     containerClasses: "govuk-width-container",
     navigation: [
@@ -9,16 +9,12 @@
       text: "Logged in as Aqib Mehmood"
     },
     {
-      href: "/manage-case/v11/case-list/my-cases",
-      text: "My cases"
+      href: "/manage-case/v12/case/case-statistics",
+      text: "Case statistics"
     },
     {
-      href: "/manage-case/v11/find-a-case",
+      href: "/manage-case/v12/find-a-case",
       text: "Find a case"
-    },
-    {
-      href: "/manage-case/v11/email/notifications.html",
-      text: "Notifications"
     },
     {
       href: "/",

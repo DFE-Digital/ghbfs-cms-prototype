@@ -13,16 +13,6 @@
       {% endif %}
     </dd>    
   </div>
-  <!--<div class="govuk-summary-list__row">
-  {% if case.status !== "new" %}
-    <dt class="govuk-summary-list__key">
-      Case owner
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {{ case.existingContract.duration or "-" }}
-    </dd>
-    {% endif %}   
-  </div>-->
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Case level
@@ -47,10 +37,7 @@
 
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-<h2 class="govuk-heading-m">Request - <a class="govuk-!-font-weight-regular" href="category">change</a></h2>
-      
-      <!--<p>Request sent on  {{ case.lastUpdated | formatTableDate }}-->
-      
+<h2 class="govuk-heading-m">Request - <a class="govuk-!-font-weight-regular" href="category">change</a></h2>      
       <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
           Received
@@ -65,10 +52,10 @@
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Type
+          Sub-category
         </dt>
         <dd class="govuk-summary-list__value">
-          Procurement
+          {{ case.category }}
         </dd>    
         <dd class="govuk-summary-list__actions">
         </dd> 
@@ -76,15 +63,16 @@
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Category
+          Procurement amount
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ case.category }}
+          {% if case.procurementAmount %}
+            £{{ case.procurementAmount }}
+          {% else %}
+            -
+          {% endif %}
         </dd>    
         <dd class="govuk-summary-list__actions">
-          <!--<a class="govuk-link" href="category">
-            Change<span class="govuk-visually-hidden"> name</span>
-          </a>-->
         </dd> 
       </div>
 
@@ -96,9 +84,6 @@
           {{ "Very confident" }}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <!--<a class="govuk-link" href="category">
-            Change<span class="govuk-visually-hidden"> name</span>
-          </a>-->
         </dd>
       </div>
 
@@ -127,21 +112,6 @@
         </dd>       
       </div>
 
-      {#
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Level of case
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ case.levelOfCase or "Specify" }}
-        </dd>  
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="level">
-            Change<span class="govuk-visually-hidden"> name</span>
-          </a>
-        </dd>           
-      </div>
-      #}
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">

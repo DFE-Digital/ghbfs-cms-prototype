@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block header %}
-  {% include "manage-case/v11/includes/logged_in_user.html" %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
 {% endblock %}
 
 {% block pageScripts %}
@@ -64,7 +64,7 @@
         id: "sort",
         name: "sort",
         label: {
-          text: "Filter by category"
+          text: "Filter by sub-category"
         },
         items: [
           {
@@ -135,7 +135,7 @@
         <tr class="govuk-table__row">
           <th class="govuk-table__header" scope="col"> Case </th>
           <th class="govuk-table__header" scope="col"> Organisation </th>
-          <th class="govuk-table__header" scope="col"> Category </th>
+          <th class="govuk-table__header" scope="col"> Sub-category </th>
           <th class="govuk-table__header" scope="col"> Status </th>
           <th class="govuk-table__header" scope="col"> Assigned to </th>
           <th class="govuk-table__header" scope="col"> Date received </th>

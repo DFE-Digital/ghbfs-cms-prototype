@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block header %}
-  {% include "manage-case/v11/includes/logged_in_user.html" %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,7 @@
             <td class="govuk-table__cell">Pilgrims' Way Primary School</td>
           </tr>
           <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Category</th>
+            <th scope="row" class="govuk-table__header">Sub-category</th>
             <td class="govuk-table__cell">Catering</td>
           </tr>
           <tr class="govuk-table__row">
@@ -54,51 +54,14 @@
     </div>
 
 
-
-
-
-<!-- <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-
-      <h1 class="govuk-fieldset__heading">
-        Are you sure you want to close this case?
-      </h1>
-    </legend>
-    <p class="govuk-body">This is a permanent action. Once you close this case, it cannot be reopened or edited. You will only be able to view the details of the case.</p>
-
-  </fieldset>
-</div> -->
-
-<!-- <button class="govuk-button" data-module="govuk-button" onclick="goToPage()">
-  Permanently close case
-</button> -->
-
     <script>
         function goToPage() {
-                  window.location = "/manage-case/v11/case-list/new-case-closed.html";
+                  window.location = "/manage-case/v12/case-list/new-case-closed.html";
                   localStorage.setItem('login','true');
                 }
     </script>
 
-<!--<script>
-    function toggleCategory() {
-    // Get the radio
-    var radioOther = document.getElementById("otherradio");
-    var radioSPAM = document.getElementById("spamradio");
-    // Get the output category dropdown
-    var showCategory = document.getElementById("showcategory");
-    // If the checkbox is checked, display the output category dropdown
-    if (radioSPAM.checked == true){
-    showCategory.style.display = "none";
-    }
-    if (radioOther.checked == true){
-    showCategory.style.display = "block";
-    } else {
-    showCategory.style.display = "none";
-      }
-    }
-    </script>-->
+
 
   </div>
 

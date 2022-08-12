@@ -1,4 +1,9 @@
 {% extends "layout_case.html" %}
+
+
+{% block header %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
+{% endblock %}
 <link
   href="public/autocomplete/accessible-autocomplete.min.css"
   media="all"
@@ -214,7 +219,7 @@
           class="govuk-label"
           for=""
         >
-          Category
+          Sub-category
         </label>
         <select
           class="govuk-select govuk-!-width-two-thirds"
