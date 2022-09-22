@@ -1,10 +1,14 @@
+---
+title: Show the user’s answers
+caption: Build a basic prototype
+---
 # Show the user’s answers on the ‘Check answers’ page
 
 The Prototype Kit stores answers that users enter. This means you can make more realistic prototypes, for example by showing answers for users to check.
 
 ## Show the answer to question 1
 
-1. open `check-answers.html` in your `app/views` folder.
+1. Open `check-answers.html` in your `app/views` folder.
 2. Find the `<dt>` tag that contains the text 'Name'.
 3. Change 'Name' to 'Number of balls you can juggle'.
 4. In the `<dd>` tag on the next line, change 'Sarah Philips' to `{{ data['how-many-balls'] }}`.
@@ -36,7 +40,7 @@ to
 ```
 <span class="govuk-visually-hidden"> your most impressive juggling trick</span>
 ```
-Go to http://localhost:3000/start and answer the questions to check your answers show up correctly.
+[Go to http://localhost:3000/start](http://localhost:3000/start) and answer the questions to check your answers show up correctly.
 
 ## Delete the remaining example answers
 
