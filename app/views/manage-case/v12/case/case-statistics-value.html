@@ -1,0 +1,174 @@
+{% extends "layout_noback.html" %}
+
+{% block header %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">Case statistics</h1>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title govuk-!-margin-bottom-0">163</h1>
+            <div class="govuk-panel__body">Live cases</div>
+          </div>
+        </div>
+        
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title govuk-!-margin-bottom-0">£524k</h1>
+            <div class="govuk-panel__body">
+              Live value
+            </div>
+          </div>
+        </div>
+        <!--
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title govuk-!-margin-bottom-0">£54k</h1>
+            <div class="govuk-panel__body">
+              Est savings
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #00703c"><strong>52</strong> Open</div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #ffdd00"><strong>20</strong> On hold</div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #1d70b8"><strong>14</strong> New</div>
+        </div>
+        <!--
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #b1b4b6"><strong>10</strong> Resolved last 7 days</div>
+        </div>
+        -->
+      </div>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Overview by tower</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Tower</th>
+            <th scope="col" class="govuk-table__header">Live</th>
+            <th scope="col" class="govuk-table__header">Open</th>
+            <th scope="col" class="govuk-table__header">On hold</th>
+            <th scope="col" class="govuk-table__header">New</th>
+            <th scope="col" class="govuk-table__header">Value</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=ICT">ICT</a></th>
+            <td class="govuk-table__cell"><a href="">37<a/></td>
+            <td class="govuk-table__cell"><a href="">18<a/></td>
+            <td class="govuk-table__cell"><a href="">11<a/></td>
+            <td class="govuk-table__cell"><a href="">8</a></td>
+            <td class="govuk-table__cell">£100,000</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=FM and Catering">FM and Catering</a></th>
+            <td class="govuk-table__cell"><a href="">16</a></td>
+            <td class="govuk-table__cell"><a href="">11</a></td>
+            <td class="govuk-table__cell"><a href="">4<a/></td>
+            <td class="govuk-table__cell"><a href="">1<a/></td>
+            <td class="govuk-table__cell">£132,000</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=Services">Services</a></th>
+            <td class="govuk-table__cell"><a href="">12</a></td>
+            <td class="govuk-table__cell"><a href="">6</a></td>
+            <td class="govuk-table__cell"><a href="">4</a></td>
+            <td class="govuk-table__cell"><a href="">2</a></td>
+            <td class="govuk-table__cell">£82,000</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=Energy and Utilities">Energy and Utilities</a></th>
+            <td class="govuk-table__cell"><a href="">30</a></td>
+            <td class="govuk-table__cell"><a href="">3</a></td>
+            <td class="govuk-table__cell"><a href="">17</a></td>
+            <td class="govuk-table__cell"><a href="">10</a></td>
+            <td class="govuk-table__cell">£152,000</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=Unspecified">Unspecified</a></th>
+            <td class="govuk-table__cell"><a href="">68</a></td>
+            <td class="govuk-table__cell"><a href="">13</a></td>
+            <td class="govuk-table__cell"><a href="">43</a></td>
+            <td class="govuk-table__cell"><a href="">12</a></td>
+            <td class="govuk-table__cell">£58,000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Overview of case levels by tower</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Tower</th>
+            <th scope="col" class="govuk-table__header">1</th>
+            <th scope="col" class="govuk-table__header">2</th>
+            <th scope="col" class="govuk-table__header">3</th>
+            <th scope="col" class="govuk-table__header">4</th>
+            <th scope="col" class="govuk-table__header">5</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=ICT">ICT</a></th>
+            <td class="govuk-table__cell"><a href="">1</a></td>
+            <td class="govuk-table__cell"><a href="">6</a></td>
+            <td class="govuk-table__cell"><a href="">4</a></td>
+            <td class="govuk-table__cell"><a href="">2</a></td>
+            <td class="govuk-table__cell"><a href="">4</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=FM and Catering">FM and Catering</a></th>
+            <td class="govuk-table__cell"><a href="">0</a></td>
+            <td class="govuk-table__cell"><a href="">3</a></td>
+            <td class="govuk-table__cell"><a href="">6</a></td>
+            <td class="govuk-table__cell"><a href="">12</a></td>
+            <td class="govuk-table__cell"><a href="">13</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=Services">Services</a></th>
+            <td class="govuk-table__cell"><a href="">12</a></td>
+            <td class="govuk-table__cell"><a href="">6</a></td>
+            <td class="govuk-table__cell"><a href="">9</a></td>
+            <td class="govuk-table__cell"><a href="">2</a></td>
+            <td class="govuk-table__cell"><a href="">16</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=Energy and Utilities">Energy and Utilities</a></th>
+            <td class="govuk-table__cell"><a href="">21</a></td>
+            <td class="govuk-table__cell"><a href="">3</a></td>
+            <td class="govuk-table__cell"><a href="">17</a></td>
+            <td class="govuk-table__cell"><a href="">15</a></td>
+            <td class="govuk-table__cell"><a href="">14</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"><a href="case-statistics-drilldown-value?tower=Unspecified">Unspecified</a></th>
+            <td class="govuk-table__cell"><a href="">2</a></td>
+            <td class="govuk-table__cell"><a href="">0</a></td>
+            <td class="govuk-table__cell"><a href="">4</a></td>
+            <td class="govuk-table__cell"><a href="">2</a></td>
+            <td class="govuk-table__cell"><a href="">0</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      {{ govukButton({
+          text: "Download CSV"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

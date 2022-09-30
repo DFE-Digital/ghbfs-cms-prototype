@@ -1,0 +1,198 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "manage-case/v12/includes/logged_in_user.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">{{ data['tower'] }} statistics</h1>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title govuk-!-margin-bottom-0">25</h1>
+            <div class="govuk-panel__body">Live cases</div>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title govuk-!-margin-bottom-0">£75k</h1>
+            <div class="govuk-panel__body">
+              Live value
+            </div>
+          </div>
+        </div>
+        <!--
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title govuk-!-margin-bottom-0">£7k</h1>
+            <div class="govuk-panel__body">
+              Est savings
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #00703c"><strong>20</strong> Open</div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #ffdd00"><strong>2</strong> On hold</div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #1d70b8"><strong>3</strong> New</div>
+        </div>
+        <!--
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-inset-text" style="border-left-color: #b1b4b6"><strong>3</strong> Resolved</div>
+        </div>
+        -->
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Live cases by stage</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Stage</th>
+                <th scope="col" class="govuk-table__header">Open</th>
+                <th scope="col" class="govuk-table__header">On hold</th>
+                <th scope="col" class="govuk-table__header">New</th>
+                <th scope="col" class="govuk-table__header">Value</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">Need</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">Market analysis</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">Sourcing options</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">Go to market</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">Evaluation</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">Contract award</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">Handover</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">Unspecified</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Live cases by level</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Level</th>
+                <th scope="col" class="govuk-table__header">Open</th>
+                <th scope="col" class="govuk-table__header">On hold</th>
+                <th scope="col" class="govuk-table__header">New</th>
+                <th scope="col" class="govuk-table__header">Value</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">1</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">2</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">3</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">4</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">5</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>      
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a href="">Unspecified</a></th>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">20</a></td>
+                <td class="govuk-table__cell"><a href="">3</a></td>
+                <td class="govuk-table__cell">£100,000</td>
+              </tr>      
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+          <h2 class="govuk-heading-m">Missing data</h2>
+          <p><a href="">There are <strong>35</strong> live cases that have no value</a></p>
+          <p><a href="">There are <strong>43</strong> live cases that have no stage</a></p>
+          <p><a href="">There are <strong>25</strong> live cases that have no level</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
